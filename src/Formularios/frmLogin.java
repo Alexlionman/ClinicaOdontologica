@@ -48,9 +48,9 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Login");
+        jLabel1.setText("Login de Teste");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(120, -10, 90, 50);
+        jLabel1.setBounds(120, -10, 240, 50);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLogin.png"))); // NOI18N
         getContentPane().add(jLabel3);
