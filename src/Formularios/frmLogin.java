@@ -40,21 +40,23 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Login");
+        jLabel1.setText("Olá, seja bem vindo!");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(120, -10, 240, 50);
+        jLabel1.setBounds(70, 0, 250, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLogin.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconeDenteLogin.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(280, 0, 130, 180);
+        jLabel3.setBounds(340, 30, 130, 180);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +65,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(160, 140, 110, 30);
+        btnCancelar.setBounds(200, 160, 110, 30);
 
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,27 +74,31 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEntrar);
-        btnEntrar.setBounds(20, 140, 110, 30);
+        btnEntrar.setBounds(60, 160, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Senha");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 90, 50, 14);
+        jLabel4.setBounds(60, 110, 50, 14);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Login");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 40, 40, 15);
+        jLabel5.setBounds(60, 60, 40, 15);
 
-        txtLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtLogin.setBorder(null);
         getContentPane().add(txtLogin);
-        txtLogin.setBounds(20, 60, 250, 16);
+        txtLogin.setBounds(60, 80, 250, 14);
 
-        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSenha.setBorder(null);
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(20, 110, 250, 16);
+        txtSenha.setBounds(60, 130, 250, 14);
 
-        setSize(new java.awt.Dimension(439, 223));
+        jLabel6.setText("Para acessar, insira as suas credenciais");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(90, 40, 210, 14);
+
+        setSize(new java.awt.Dimension(510, 267));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -155,6 +161,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
