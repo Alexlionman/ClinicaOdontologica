@@ -48,7 +48,7 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Login de Chegaleo");
+        jLabel1.setText("Login");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(120, -10, 240, 50);
 
