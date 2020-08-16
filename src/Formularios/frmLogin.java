@@ -7,6 +7,7 @@ package Formularios;
 
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,7 +21,13 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+        
+        this.getContentPane().setBackground(Color.WHITE);
+        
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,8 +43,6 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnEntrar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
@@ -50,14 +55,17 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 191, 157));
         jLabel1.setText("Olá, seja bem vindo!");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(70, 0, 250, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconeDenteLogin.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(340, 30, 130, 180);
+        jLabel3.setBounds(360, 30, 130, 180);
 
+        btnCancelar.setBackground(new java.awt.Color(34, 191, 157));
+        btnCancelar.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,8 +73,10 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(200, 160, 110, 30);
+        btnCancelar.setBounds(200, 180, 110, 30);
 
+        btnEntrar.setBackground(new java.awt.Color(34, 191, 157));
+        btnEntrar.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 14)); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,31 +84,33 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEntrar);
-        btnEntrar.setBounds(60, 160, 110, 30);
+        btnEntrar.setBounds(60, 180, 110, 30);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Senha");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(60, 110, 50, 14);
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Login");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(60, 60, 40, 15);
-
+        txtLogin.setBackground(new java.awt.Color(204, 204, 204));
+        txtLogin.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        txtLogin.setForeground(new java.awt.Color(102, 102, 102));
+        txtLogin.setToolTipText("");
         txtLogin.setBorder(null);
+        txtLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         getContentPane().add(txtLogin);
-        txtLogin.setBounds(60, 80, 250, 14);
+        txtLogin.setBounds(60, 80, 250, 30);
 
+        txtSenha.setBackground(new java.awt.Color(204, 204, 204));
         txtSenha.setBorder(null);
+        txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSenhaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(60, 130, 250, 14);
+        txtSenha.setBounds(60, 130, 250, 30);
 
         jLabel6.setText("Para acessar, insira as suas credenciais");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 40, 210, 14);
+        jLabel6.setBounds(90, 40, 230, 14);
 
-        setSize(new java.awt.Dimension(510, 267));
+        setSize(new java.awt.Dimension(514, 272));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,8 +127,13 @@ public class frmLogin extends javax.swing.JFrame {
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
+            
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,8 +176,6 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;

@@ -1,5 +1,12 @@
 package Formularios;
 
+import java.text.DateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
+
 public class frmPrincipal extends javax.swing.JFrame {
 
     public void usuarioLogado(String usuario){
@@ -17,14 +24,23 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
         
+        
+        LocalDateTime datetime = LocalDateTime.now();
+        String horaFormatada = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(datetime);
+        labelData.setText(horaFormatada);
+
+       
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        labelData = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        lblUsuario1 = new javax.swing.JLabel();
+        lblUsuario2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiPacientes = new javax.swing.JMenuItem();
@@ -51,16 +67,29 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUsuario.setEnabled(false);
-        getContentPane().add(lblUsuario);
-        lblUsuario.setBounds(60, 10, 50, 20);
+        jPanel1.setBackground(new java.awt.Color(0, 158, 148));
+        jPanel1.setLayout(null);
 
-        lblUsuario1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblUsuario1.setText("Usuario:");
-        lblUsuario1.setEnabled(false);
-        getContentPane().add(lblUsuario1);
-        lblUsuario1.setBounds(10, 10, 50, 20);
+        labelData.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
+        labelData.setForeground(new java.awt.Color(255, 255, 255));
+        labelData.setText("Hora");
+        jPanel1.add(labelData);
+        labelData.setBounds(240, 10, 120, 20);
+
+        lblUsuario.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("userHere");
+        jPanel1.add(lblUsuario);
+        lblUsuario.setBounds(100, 10, 120, 20);
+
+        lblUsuario2.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
+        lblUsuario2.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario2.setText("Logado como");
+        jPanel1.add(lblUsuario2);
+        lblUsuario2.setBounds(10, 10, 80, 20);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(1000, 620, 380, 40);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/menuConsultorio.png"))); // NOI18N
         jMenu1.setText("Consultório");
@@ -261,6 +290,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenuItem jmiConsultas;
@@ -269,7 +299,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiPacientes;
     private javax.swing.JMenuItem jmiRecepcionistas;
     private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JLabel labelData;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JLabel lblUsuario1;
+    private javax.swing.JLabel lblUsuario2;
     // End of variables declaration//GEN-END:variables
 }
