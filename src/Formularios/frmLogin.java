@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  * @author Pichau
  */
 public class frmLogin extends javax.swing.JFrame {
+    //cores que serão usadas na tela
+    Color verde1 = new Color(34,191,157);
 
     /**
      * Creates new form frmLogin
@@ -64,9 +66,18 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(360, 30, 130, 180);
 
-        btnCancelar.setBackground(new java.awt.Color(34, 191, 157));
-        btnCancelar.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 14)); // NOI18N
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+        });
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -75,9 +86,23 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().add(btnCancelar);
         btnCancelar.setBounds(200, 180, 110, 30);
 
-        btnEntrar.setBackground(new java.awt.Color(34, 191, 157));
-        btnEntrar.setFont(new java.awt.Font("Swis721 BlkCn BT", 0, 14)); // NOI18N
-        btnEntrar.setText("Entrar");
+        btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
+        btnEntrar.setText("Login");
+        btnEntrar.setBorder(null);
+        btnEntrar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnEntrarFocusGained(evt);
+            }
+        });
+        btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEntrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEntrarMouseExited(evt);
+            }
+        });
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -91,13 +116,21 @@ public class frmLogin extends javax.swing.JFrame {
         txtLogin.setForeground(new java.awt.Color(102, 102, 102));
         txtLogin.setToolTipText("");
         txtLogin.setBorder(null);
-        txtLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtLoginFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtLoginFocusLost(evt);
+            }
+        });
         getContentPane().add(txtLogin);
         txtLogin.setBounds(60, 80, 250, 30);
 
         txtSenha.setBackground(new java.awt.Color(204, 204, 204));
         txtSenha.setBorder(null);
-        txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -108,7 +141,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel6.setText("Para acessar, insira as suas credenciais");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 40, 230, 14);
+        jLabel6.setBounds(90, 40, 230, 13);
 
         setSize(new java.awt.Dimension(514, 272));
         setLocationRelativeTo(null);
@@ -135,6 +168,40 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
 
+    private void btnEntrarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnEntrarFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEntrarFocusGained
+
+    private void btnEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseEntered
+        Color verde1 = new Color(34,191,157);
+        btnEntrar.setBackground(verde1);
+        btnEntrar.setForeground(Color.white);
+    }//GEN-LAST:event_btnEntrarMouseEntered
+
+    private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
+        Color verde1 = new Color(34,191,157);
+        btnCancelar.setBackground(verde1);
+        btnCancelar.setForeground(Color.white);
+    }//GEN-LAST:event_btnCancelarMouseEntered
+
+    private void btnEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseExited
+       btnEntrar.setBackground(Color.white);
+       btnEntrar.setForeground(Color.black);
+    }//GEN-LAST:event_btnEntrarMouseExited
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        btnCancelar.setBackground(Color.white);
+        btnCancelar.setForeground(Color.black);
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void txtLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLoginFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLoginFocusGained
+
+    private void txtLoginFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLoginFocusLost
+        
+    }//GEN-LAST:event_txtLoginFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -146,7 +213,7 @@ public class frmLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
