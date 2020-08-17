@@ -70,7 +70,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
             con.close();
             rs.close();
         } catch (Exception ErroSql) {
-            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao carregar tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
