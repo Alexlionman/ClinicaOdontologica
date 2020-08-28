@@ -1,13 +1,30 @@
 package Formularios;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.text.DateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.MenuElement;
+import javax.swing.plaf.basic.BasicMenuBarUI;
 import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 public class frmPrincipal extends javax.swing.JFrame {
+    Color azulPadrao = new Color(88, 138, 255);
+
+
+private void changeComponentColors(Component comp) {
+    comp.setBackground(Color.black);
+    comp.setForeground(Color.white);
+}
 
     public void usuarioLogado(String usuario){
         lblUsuario.setText(usuario);
@@ -23,7 +40,17 @@ public class frmPrincipal extends javax.swing.JFrame {
     
     public frmPrincipal() {
         initComponents();
-        
+        //dar cor a barra de menu
+    jMenuBar1.setOpaque(true);
+    jMenuBar1.setUI(new BasicMenuBarUI() {
+        public void paint(Graphics g, JComponent c) {
+            g.setColor(azulPadrao);
+            g.fillRect(0, 0, c.getWidth(), c.getHeight());
+        }
+    });
+    
+    jMenuItem1.setOpaque(true);
+    jMenuItem1.setBackground(Color.CYAN);
         
         LocalDateTime datetime = LocalDateTime.now();
         String horaFormatada = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(datetime);
@@ -37,10 +64,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        labelData = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        lblUsuario2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        labelData = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiPacientes = new javax.swing.JMenuItem();
@@ -67,31 +94,33 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(0, 158, 148));
-        jPanel1.setLayout(null);
+        lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(102, 153, 255));
+        lblUsuario.setText("CHIFRUDINHO");
+        getContentPane().add(lblUsuario);
+        lblUsuario.setBounds(470, 220, 250, 40);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel2.setText("Olá, bem vindo!");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(480, 170, 250, 40);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/foto-de-perfil.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(530, 270, 110, 140);
 
         labelData.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
-        labelData.setForeground(new java.awt.Color(255, 255, 255));
+        labelData.setForeground(new java.awt.Color(0, 0, 102));
         labelData.setText("Hora");
-        jPanel1.add(labelData);
-        labelData.setBounds(240, 10, 120, 20);
+        getContentPane().add(labelData);
+        labelData.setBounds(510, 420, 120, 20);
 
-        lblUsuario.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuario.setText("userHere");
-        jPanel1.add(lblUsuario);
-        lblUsuario.setBounds(100, 10, 120, 20);
+        jMenuBar1.setBackground(new java.awt.Color(88, 138, 255));
+        jMenuBar1.setForeground(new java.awt.Color(88, 138, 255));
 
-        lblUsuario2.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
-        lblUsuario2.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuario2.setText("Logado como");
-        jPanel1.add(lblUsuario2);
-        lblUsuario2.setBounds(10, 10, 80, 20);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(1000, 620, 380, 40);
-
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/menuConsultorio.png"))); // NOI18N
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
         jMenu1.setText("Consultório");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +181,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/menuAgendas.png"))); // NOI18N
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
         jMenu2.setText("Agendas");
 
         jMenuItem1.setText("Consultas");
@@ -173,7 +203,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/menuAjuda.png"))); // NOI18N
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
         jMenu3.setText("Ajuda");
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
@@ -245,10 +276,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jmiSairActionPerformed
 
+   
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -282,6 +315,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -290,7 +325,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenuItem jmiConsultas;
@@ -301,6 +335,5 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiSair;
     private javax.swing.JLabel labelData;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JLabel lblUsuario2;
     // End of variables declaration//GEN-END:variables
 }

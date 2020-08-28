@@ -23,7 +23,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
-        
+        this.setExtendedState(MAXIMIZED_BOTH);
         this.getContentPane().setBackground(Color.WHITE);
         
         
@@ -43,11 +43,18 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
         btnEntrar = new javax.swing.JButton();
         txtLogin = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -57,38 +64,20 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(34, 191, 157));
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("Olá, seja bem vindo!");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 0, 250, 40);
+        jLabel1.setBounds(660, 230, 250, 40);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconeDenteLogin.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/dente-login.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(360, 30, 130, 180);
+        jLabel3.setBounds(750, 90, 130, 180);
 
-        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(null);
-        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseExited(evt);
-            }
-        });
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(200, 180, 110, 30);
-
-        btnEntrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setBackground(new java.awt.Color(88, 138, 255));
         btnEntrar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 18)); // NOI18N
-        btnEntrar.setText("Login");
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/login.png"))); // NOI18N
+        btnEntrar.setText("Entrar");
         btnEntrar.setBorder(null);
         btnEntrar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -109,13 +98,11 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEntrar);
-        btnEntrar.setBounds(60, 180, 110, 30);
+        btnEntrar.setBounds(710, 480, 150, 50);
 
-        txtLogin.setBackground(new java.awt.Color(204, 204, 204));
-        txtLogin.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        txtLogin.setForeground(new java.awt.Color(102, 102, 102));
+        txtLogin.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         txtLogin.setToolTipText("");
-        txtLogin.setBorder(null);
+        txtLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         txtLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtLogin.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -126,10 +113,9 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtLogin);
-        txtLogin.setBounds(60, 80, 250, 30);
+        txtLogin.setBounds(550, 330, 480, 20);
 
-        txtSenha.setBackground(new java.awt.Color(204, 204, 204));
-        txtSenha.setBorder(null);
+        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,31 +123,77 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(60, 130, 250, 30);
+        txtSenha.setBounds(550, 420, 480, 20);
 
-        jLabel6.setText("Para acessar, insira as suas credenciais");
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("SENHA");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 40, 230, 13);
+        jLabel6.setBounds(740, 380, 70, 30);
 
-        setSize(new java.awt.Dimension(514, 272));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("LOGIN");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(740, 300, 100, 30);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel8.setText("SISTEMA ODONTOLÓGICO");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(120, 790, 230, 30);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel9.setText("O");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(120, 760, 20, 30);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel10.setText("NOSSO,");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(140, 760, 90, 30);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel11.setText("ESTE É O ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(120, 730, 90, 30);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel12.setText("SEU,");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(200, 730, 90, 30);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel13.setText("SEU,");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(200, 730, 90, 30);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/logo.png"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(40, 730, 70, 80);
+
+        setSize(new java.awt.Dimension(1165, 897));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        RecepcionistaDAO r = new RecepcionistaDAO();
-        if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
-            frmPrincipal fp = new frmPrincipal();
-            fp.setVisible(true);
-            fp.usuarioLogado(txtLogin.getText());
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
-            
-        }
+            frmPrincipal teste = new frmPrincipal();
+            teste.setVisible(true);
+            //RecepcionistaDAO r = new RecepcionistaDAO();
+//        if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
+//            frmPrincipal fp = new frmPrincipal();
+//            fp.setVisible(true);
+//            fp.usuarioLogado(txtLogin.getText());
+//            this.dispose();
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
+//            
+//        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
@@ -174,25 +206,14 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseEntered
         Color verde1 = new Color(34,191,157);
-        btnEntrar.setBackground(verde1);
-        btnEntrar.setForeground(Color.white);
+        
+        btnEntrar.setForeground(Color.black);
     }//GEN-LAST:event_btnEntrarMouseEntered
 
-    private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
-        Color verde1 = new Color(34,191,157);
-        btnCancelar.setBackground(verde1);
-        btnCancelar.setForeground(Color.white);
-    }//GEN-LAST:event_btnCancelarMouseEntered
-
     private void btnEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseExited
-       btnEntrar.setBackground(Color.white);
-       btnEntrar.setForeground(Color.black);
+       
+       btnEntrar.setForeground(Color.white);
     }//GEN-LAST:event_btnEntrarMouseExited
-
-    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
-        btnCancelar.setBackground(Color.white);
-        btnCancelar.setForeground(Color.black);
-    }//GEN-LAST:event_btnCancelarMouseExited
 
     private void txtLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLoginFocusGained
         // TODO add your handling code here:
@@ -238,12 +259,19 @@ public class frmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
