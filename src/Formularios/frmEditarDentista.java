@@ -92,7 +92,9 @@ public class frmEditarDentista extends javax.swing.JFrame {
 
     public frmEditarDentista() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         carregaTabela();
+        
     }
 
     /**
@@ -133,11 +135,11 @@ public class frmEditarDentista extends javax.swing.JFrame {
 
         jLabel11.setText("Data de Nasc:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 150, 80, 14);
+        jLabel11.setBounds(290, 160, 80, 13);
 
         jLabel7.setText("Nome:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 110, 40, 14);
+        jLabel7.setBounds(590, 110, 40, 13);
 
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -189,8 +191,10 @@ public class frmEditarDentista extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 240, 630, 140);
+        jScrollPane2.setBounds(190, 420, 630, 140);
 
+        btnExcluirDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnExcluirDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluirDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconExcluir.png"))); // NOI18N
         btnExcluirDentista.setText("Excluir Dentista");
         btnExcluirDentista.setEnabled(false);
@@ -200,13 +204,15 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnExcluirDentista);
-        btnExcluirDentista.setBounds(660, 340, 160, 40);
+        btnExcluirDentista.setBounds(860, 420, 160, 40);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Central de dentistas");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(270, 210, 138, 17);
+        jLabel1.setBounds(440, 390, 144, 17);
 
+        btnEditarDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnEditarDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconEditar.png"))); // NOI18N
         btnEditarDentista.setText("Editar Dentista");
         btnEditarDentista.setEnabled(false);
@@ -216,14 +222,16 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditarDentista);
-        btnEditarDentista.setBounds(660, 190, 160, 41);
+        btnEditarDentista.setBounds(860, 270, 160, 41);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Informações do dentista");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(260, 20, 170, 17);
+        jLabel4.setBounds(490, 70, 177, 17);
 
-        btnNovoDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconAdd.png"))); // NOI18N
+        btnNovoDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnNovoDentista.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoDentista.setText(" Novo Dentista");
         btnNovoDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,13 +239,15 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnNovoDentista);
-        btnNovoDentista.setBounds(660, 140, 160, 40);
+        btnNovoDentista.setBounds(860, 220, 160, 40);
 
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtNome.setEnabled(false);
         getContentPane().add(txtNome);
-        txtNome.setBounds(60, 110, 260, 16);
+        txtNome.setBounds(590, 130, 240, 15);
 
+        btnSalvarDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
         btnSalvarDentista.setText("Salvar Dentista");
         btnSalvarDentista.setEnabled(false);
@@ -247,8 +257,10 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarDentista);
-        btnSalvarDentista.setBounds(660, 240, 160, 40);
+        btnSalvarDentista.setBounds(860, 320, 160, 40);
 
+        btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
         btnLimparCampos.setEnabled(false);
@@ -258,39 +270,44 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(660, 290, 160, 40);
+        btnLimparCampos.setBounds(860, 370, 160, 40);
 
-        txtId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(88, 138, 255), 1, true));
         txtId.setEnabled(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtId);
-        txtId.setBounds(40, 70, 30, 16);
+        txtId.setBounds(290, 130, 240, 15);
 
         jLabel6.setText("ID:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 70, 30, 14);
+        jLabel6.setBounds(290, 110, 30, 13);
 
-        txtNomeConvenio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNomeConvenio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtNomeConvenio.setEnabled(false);
         getContentPane().add(txtNomeConvenio);
-        txtNomeConvenio.setBounds(400, 70, 177, 16);
+        txtNomeConvenio.setBounds(590, 180, 240, 15);
 
-        txtConsultorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtConsultorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtConsultorio.setDocument(new campoNumerico());
         txtConsultorio.setEnabled(false);
         getContentPane().add(txtConsultorio);
-        txtConsultorio.setBounds(430, 110, 80, 16);
+        txtConsultorio.setBounds(290, 230, 240, 15);
 
         jLabel2.setText("Convênio:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(340, 70, 60, 14);
+        jLabel2.setBounds(590, 160, 60, 13);
 
         jLabel3.setText("Valor Consulta:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(340, 150, 90, 14);
+        jLabel3.setBounds(590, 210, 90, 13);
 
         jLabel12.setText("N° Consultório:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(340, 110, 90, 14);
+        jLabel12.setBounds(290, 210, 90, 13);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
         jButton3.setText("Sair");
@@ -300,19 +317,24 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(660, 20, 160, 40);
+        jButton3.setBounds(860, 100, 160, 40);
 
-        txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
             txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         txtNascimento.setEnabled(false);
+        txtNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNascimentoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNascimento);
-        txtNascimento.setBounds(100, 150, 100, 16);
+        txtNascimento.setBounds(290, 180, 240, 15);
 
-        txtValorConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtValorConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
             txtValorConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.##")));
         } catch (java.text.ParseException ex) {
@@ -320,9 +342,9 @@ public class frmEditarDentista extends javax.swing.JFrame {
         }
         txtValorConsulta.setEnabled(false);
         getContentPane().add(txtValorConsulta);
-        txtValorConsulta.setBounds(430, 150, 109, 20);
+        txtValorConsulta.setBounds(590, 230, 240, 20);
 
-        setSize(new java.awt.Dimension(847, 437));
+        setSize(new java.awt.Dimension(1179, 929));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -457,6 +479,14 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNascimentoActionPerformed
 
     /**
      * @param args the command line arguments
