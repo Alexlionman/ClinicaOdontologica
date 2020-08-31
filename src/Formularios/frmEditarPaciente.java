@@ -3,16 +3,14 @@ package Formularios;
 import Classes.Conecta;
 import Classes.Paciente;
 import Classes.PacienteDAO;
-import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class frmEditarPaciente extends javax.swing.JFrame {
-public Color azulPadrao = new Color(88, 138, 255);
+
     public String situacao = "";
 
     public boolean verificaPreenchimento() {
@@ -80,19 +78,9 @@ public Color azulPadrao = new Color(88, 138, 255);
 
     public frmEditarPaciente() {
         initComponents();
-        
         carregaTabela();
-        this.setExtendedState(MAXIMIZED_BOTH);
-        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(azulPadrao);
-        headerRenderer.setForeground(Color.WHITE);
-       
+    }
 
-            for (int i = 0; i < tblPaciente.getModel().getColumnCount(); i++) {
-                tblPaciente.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
-        
-    }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,71 +106,64 @@ public Color azulPadrao = new Color(88, 138, 255);
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblPaciente = new javax.swing.JTable();
-        txtCpf = new javax.swing.JFormattedTextField();
-        txtData = new javax.swing.JFormattedTextField();
-        txtRg = new javax.swing.JFormattedTextField();
+        btnSair = new javax.swing.JButton();
         btnExcluirPaciente = new javax.swing.JButton();
         btnEditarPaciente = new javax.swing.JButton();
         btnNovoPaciente = new javax.swing.JButton();
         btnSalvarPaciente = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        txtCpf = new javax.swing.JFormattedTextField();
+        txtData = new javax.swing.JFormattedTextField();
+        txtRg = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(88, 138, 255));
-        jLabel1.setText("LISTA DE PACIENTES");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Central de pacientes");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 390, 200, 20);
+        jLabel1.setBounds(290, 290, 140, 17);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Informações do paciente");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(270, 10, 181, 17);
+        jLabel4.setBounds(270, 10, 172, 17);
 
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNome.setEnabled(false);
         getContentPane().add(txtNome);
-        txtNome.setBounds(410, 90, 260, 30);
+        txtNome.setBounds(70, 90, 300, 16);
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Endereço:*");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(410, 200, 60, 20);
+        jLabel5.setBounds(20, 250, 70, 14);
 
         txtId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtId.setEnabled(false);
         getContentPane().add(txtId);
-        txtId.setBounds(120, 90, 230, 30);
+        txtId.setBounds(50, 50, 27, 16);
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("ID:*");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(120, 70, 30, 13);
+        jLabel6.setBounds(20, 50, 30, 14);
 
         txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEndereco.setEnabled(false);
         getContentPane().add(txtEndereco);
-        txtEndereco.setBounds(410, 220, 260, 30);
+        txtEndereco.setBounds(90, 250, 280, 16);
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Nome:*");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(410, 70, 50, 17);
+        jLabel7.setBounds(20, 90, 50, 14);
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("RG:*");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(410, 140, 30, 17);
+        jLabel8.setBounds(20, 170, 30, 14);
 
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("CPF:*");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(120, 200, 40, 17);
+        jLabel9.setBounds(20, 130, 40, 14);
 
         jScrollPane1.setEnabled(false);
 
@@ -193,16 +174,15 @@ public Color azulPadrao = new Color(88, 138, 255);
         jScrollPane1.setViewportView(txtProntuario);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(250, 330, 270, 20);
+        jScrollPane1.setBounds(390, 70, 280, 200);
 
         jLabel10.setText("Prontuário:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(250, 310, 130, 13);
+        jLabel10.setBounds(390, 50, 70, 14);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Data de Nasc:*");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(120, 140, 100, 17);
+        jLabel11.setBounds(20, 210, 90, 14);
 
         tblPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -257,7 +237,71 @@ public Color azulPadrao = new Color(88, 138, 255);
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(60, 420, 650, 140);
+        jScrollPane2.setBounds(20, 320, 650, 140);
+
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSair);
+        btnSair.setBounds(680, 10, 160, 40);
+
+        btnExcluirPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconExcluir.png"))); // NOI18N
+        btnExcluirPaciente.setText("Excluir Paciente");
+        btnExcluirPaciente.setEnabled(false);
+        btnExcluirPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirPacienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluirPaciente);
+        btnExcluirPaciente.setBounds(680, 420, 160, 40);
+
+        btnEditarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconEditar.png"))); // NOI18N
+        btnEditarPaciente.setText(" Editar Paciente");
+        btnEditarPaciente.setEnabled(false);
+        btnEditarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPacienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditarPaciente);
+        btnEditarPaciente.setBounds(681, 270, 160, 41);
+
+        btnNovoPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconAdd.png"))); // NOI18N
+        btnNovoPaciente.setText(" Novo Paciente");
+        btnNovoPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoPacienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNovoPaciente);
+        btnNovoPaciente.setBounds(679, 220, 160, 40);
+
+        btnSalvarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
+        btnSalvarPaciente.setText("Salvar Paciente");
+        btnSalvarPaciente.setEnabled(false);
+        btnSalvarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarPacienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalvarPaciente);
+        btnSalvarPaciente.setBounds(679, 320, 160, 40);
+
+        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
+        btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setEnabled(false);
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLimparCampos);
+        btnLimparCampos.setBounds(680, 370, 160, 40);
 
         txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -267,7 +311,7 @@ public Color azulPadrao = new Color(88, 138, 255);
         }
         txtCpf.setEnabled(false);
         getContentPane().add(txtCpf);
-        txtCpf.setBounds(120, 220, 230, 30);
+        txtCpf.setBounds(60, 130, 190, 16);
 
         txtData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -282,7 +326,7 @@ public Color azulPadrao = new Color(88, 138, 255);
             }
         });
         getContentPane().add(txtData);
-        txtData.setBounds(120, 160, 230, 30);
+        txtData.setBounds(110, 210, 140, 20);
 
         txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -297,104 +341,15 @@ public Color azulPadrao = new Color(88, 138, 255);
             }
         });
         getContentPane().add(txtRg);
-        txtRg.setBounds(410, 160, 260, 30);
+        txtRg.setBounds(60, 170, 190, 20);
 
-        btnExcluirPaciente.setBackground(new java.awt.Color(88, 138, 255));
-        btnExcluirPaciente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnExcluirPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluirPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
-        btnExcluirPaciente.setText("Excluir Paciente");
-        btnExcluirPaciente.setBorder(null);
-        btnExcluirPaciente.setEnabled(false);
-        btnExcluirPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirPacienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExcluirPaciente);
-        btnExcluirPaciente.setBounds(730, 530, 220, 50);
-
-        btnEditarPaciente.setBackground(new java.awt.Color(88, 138, 255));
-        btnEditarPaciente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditarPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
-        btnEditarPaciente.setText("Editar Paciente");
-        btnEditarPaciente.setBorder(null);
-        btnEditarPaciente.setEnabled(false);
-        btnEditarPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPacienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEditarPaciente);
-        btnEditarPaciente.setBounds(730, 390, 220, 50);
-
-        btnNovoPaciente.setBackground(new java.awt.Color(88, 138, 255));
-        btnNovoPaciente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnNovoPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovoPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
-        btnNovoPaciente.setText(" Novo Paciente");
-        btnNovoPaciente.setBorder(null);
-        btnNovoPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoPacienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnNovoPaciente);
-        btnNovoPaciente.setBounds(730, 250, 220, 50);
-
-        btnSalvarPaciente.setBackground(new java.awt.Color(88, 138, 255));
-        btnSalvarPaciente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnSalvarPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalvarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
-        btnSalvarPaciente.setText("Salvar Paciente");
-        btnSalvarPaciente.setBorder(null);
-        btnSalvarPaciente.setEnabled(false);
-        btnSalvarPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarPacienteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalvarPaciente);
-        btnSalvarPaciente.setBounds(730, 320, 220, 50);
-
-        btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
-        btnLimparCampos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
-        btnLimparCampos.setText("Limpar Paciente");
-        btnLimparCampos.setBorder(null);
-        btnLimparCampos.setEnabled(false);
-        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparCamposActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(730, 460, 220, 50);
-
-        btnSair.setBackground(new java.awt.Color(88, 194, 234));
-        btnSair.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
-        btnSair.setText("voltar");
-        btnSair.setBorder(null);
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(840, 80, 100, 40);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("ESTE PRONTUÁRIO SERA REMOVIDO E INICIADO EM OUTRA TELA");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 280, 410, 30);
-
-        setSize(new java.awt.Dimension(1040, 729));
+        setSize(new java.awt.Dimension(866, 513));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     private void tblPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacienteMouseClicked
         desabilitaCampos();
@@ -416,37 +371,6 @@ public Color azulPadrao = new Color(88, 138, 255);
         btnLimparCampos.setEnabled(false);
     }//GEN-LAST:event_tblPacienteMouseClicked
 
-    private void txtRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRgActionPerformed
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
-
-    private void btnExcluirPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPacienteActionPerformed
-        switch (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse dentista?")) {
-            case 0:
-            Dentista dentista = new Dentista(Integer.parseInt(txtId.getText()));
-            String resp = new DentistaDAO().excluirDentista(dentista);
-
-            if (resp.equals("OK")) {
-                JOptionPane.showMessageDialog(null, "Dentista excluido com sucesso");
-            } else {
-                JOptionPane.showMessageDialog(null, resp);
-            }
-            carregaTabela();
-            limparCampos();
-            btnNovoPaciente.setEnabled(true);
-            btnEditarPaciente.setEnabled(false);
-            btnExcluirPaciente.setEnabled(false);
-            btnLimparCampos.setEnabled(false);
-            btnSalvarPaciente.setEnabled(false);
-            break;
-
-        }
-    }//GEN-LAST:event_btnExcluirPacienteActionPerformed
-
     private void btnEditarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPacienteActionPerformed
         habilitaCampos();
         situacao = "edicao";
@@ -455,11 +379,31 @@ public Color azulPadrao = new Color(88, 138, 255);
         btnExcluirPaciente.setEnabled(false);
         btnSalvarPaciente.setEnabled(true);
         btnEditarPaciente.setEnabled(false);
-
     }//GEN-LAST:event_btnEditarPacienteActionPerformed
 
-    private void btnNovoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoPacienteActionPerformed
+    private void btnExcluirPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPacienteActionPerformed
+        switch (JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse paciente?")) {
+            case 0:
+                Paciente paciente = new Paciente(Integer.parseInt(txtId.getText()));
+                String resp = new PacienteDAO().excluirPaciente(paciente);
+                if (resp.equals("OK")) {
+                    JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso");
+                } else {
+                    JOptionPane.showMessageDialog(null, resp);
+                }
+                carregaTabela();
+                limparCampos();
+                btnNovoPaciente.setEnabled(true);
+                btnEditarPaciente.setEnabled(false);
+                btnExcluirPaciente.setEnabled(false);
+                btnLimparCampos.setEnabled(false);
+                btnSalvarPaciente.setEnabled(false);
+                break;
 
+        }
+    }//GEN-LAST:event_btnExcluirPacienteActionPerformed
+
+    private void btnNovoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoPacienteActionPerformed
         limparCampos();
         habilitaCampos();
         btnLimparCampos.setEnabled(true);
@@ -468,21 +412,19 @@ public Color azulPadrao = new Color(88, 138, 255);
         btnEditarPaciente.setEnabled(false);
         btnExcluirPaciente.setEnabled(false);
         situacao = "cadastro";
-
     }//GEN-LAST:event_btnNovoPacienteActionPerformed
 
     private void btnSalvarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPacienteActionPerformed
         if (verificaPreenchimento()) {
             if (situacao == "cadastro") {
-                Dentista dentista=new Dentista(txtNome.getText(), txtNascimento.getText()
-                    , Integer.parseInt(txtConsultorio.getText()), Float.parseFloat(txtValorConsulta.getText())
-                    , txtNomeConvenio.getText());
-                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtNome.getText())) {
-                    JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");
+                Paciente paciente = new Paciente(txtNome.getText(), txtEndereco.getText(), txtCpf.getText(), txtRg.getText(),
+                        txtData.getText(), txtProntuario.getText());
+                if (new PacienteDAO().verificaCpfExistente(paciente).equals(txtCpf.getText())) {
+                    JOptionPane.showMessageDialog(null, "CPF ja cadastrado!\nEsse CPF ja esta cadastrado, digite outro.");
                 } else {
-                    String resp = new DentistaDAO().gravarDentista(dentista);
+                    String resp = new PacienteDAO().gravarPaciente(paciente);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(rootPane, "Dentista gravada(o) com sucesso.");
+                        JOptionPane.showMessageDialog(rootPane, "Paciente gravada(o) com sucesso");
                         limparCampos();
                         desabilitaCampos();
                         carregaTabela();
@@ -497,15 +439,14 @@ public Color azulPadrao = new Color(88, 138, 255);
                     btnNovoPaciente.setEnabled(true);
                 }
             } else if (situacao == "edicao") {
-                Dentista dentista=new Dentista(txtNome.getText(),Integer.parseInt(txtId.getText()), txtNascimento.getText()
-                    , Integer.parseInt(txtConsultorio.getText()), Float.parseFloat(txtValorConsulta.getText())
-                    , txtNomeConvenio.getText());
-                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtNome.getText())) {
-                    JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");
+                Paciente paciente = new Paciente(txtNome.getText(), Integer.parseInt(txtId.getText()), txtEndereco.getText(),
+                        txtCpf.getText(), txtRg.getText(), txtData.getText(), txtProntuario.getText());
+                if (new PacienteDAO().verificaCpfExistente(paciente).equals(txtCpf.getText())) {
+                    JOptionPane.showMessageDialog(null, "CPF ja cadastrado!\nEsse CPF ja esta cadastrado, digite outro.");
                 } else {
-                    String resp = new DentistaDAO().editarDentista(dentista);
+                    String resp = new PacienteDAO().editarPaciente(paciente);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(null, "Dentista Alterado com sucesso.");
+                        JOptionPane.showMessageDialog(null, "Paciente Alterado com sucesso");
                     } else {
                         JOptionPane.showMessageDialog(null, resp);
                     }
@@ -531,9 +472,13 @@ public Color azulPadrao = new Color(88, 138, 255);
         limparCampos();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+    private void txtRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRgActionPerformed
+
+    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -580,7 +525,6 @@ public Color azulPadrao = new Color(88, 138, 255);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
