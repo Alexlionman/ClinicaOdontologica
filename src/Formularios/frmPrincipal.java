@@ -40,6 +40,7 @@ private void changeComponentColors(Component comp) {
     
     public frmPrincipal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         //dar cor a barra de menu
     jMenuBar1.setOpaque(true);
     jMenuBar1.setUI(new BasicMenuBarUI() {

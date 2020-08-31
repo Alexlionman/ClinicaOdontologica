@@ -3,14 +3,16 @@ package Formularios;
 import Classes.Conecta;
 import Classes.Paciente;
 import Classes.PacienteDAO;
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class frmEditarPaciente extends javax.swing.JFrame {
-
+    Color azulPadrao = new Color(88, 138, 255);
     public String situacao = "";
 
     public boolean verificaPreenchimento() {
@@ -78,7 +80,16 @@ public class frmEditarPaciente extends javax.swing.JFrame {
 
     public frmEditarPaciente() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         carregaTabela();
+        //muda a cor do cabeçalho da tabela
+        //mudar a cor do cabeçalho da tabela
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(azulPadrao);
+
+        for (int i = 0; i < tblPaciente.getModel().getColumnCount(); i++) {
+            tblPaciente.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+}
     }
 
     /**
@@ -115,55 +126,62 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         txtCpf = new javax.swing.JFormattedTextField();
         txtData = new javax.swing.JFormattedTextField();
         txtRg = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Central de pacientes");
+        jLabel1.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel1.setText("LISTA DE PACIENTES");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(290, 290, 140, 17);
+        jLabel1.setBounds(100, 390, 170, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Informações do paciente");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(270, 10, 172, 17);
+        jLabel4.setBounds(270, 10, 181, 17);
 
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtNome.setEnabled(false);
         getContentPane().add(txtNome);
-        txtNome.setBounds(70, 90, 300, 16);
+        txtNome.setBounds(440, 110, 250, 30);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Endereço:*");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 250, 70, 14);
+        jLabel5.setBounds(440, 210, 110, 20);
 
-        txtId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtId.setEnabled(false);
         getContentPane().add(txtId);
-        txtId.setBounds(50, 50, 27, 16);
+        txtId.setBounds(160, 110, 250, 30);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("ID:*");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 50, 30, 14);
+        jLabel6.setBounds(160, 90, 70, 20);
 
-        txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEndereco.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtEndereco.setEnabled(false);
         getContentPane().add(txtEndereco);
-        txtEndereco.setBounds(90, 250, 280, 16);
+        txtEndereco.setBounds(440, 230, 250, 30);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Nome:*");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 90, 50, 14);
+        jLabel7.setBounds(440, 90, 90, 20);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("RG:*");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 170, 30, 14);
+        jLabel8.setBounds(440, 150, 70, 20);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("CPF:*");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 130, 40, 14);
+        jLabel9.setBounds(160, 210, 80, 20);
 
         jScrollPane1.setEnabled(false);
 
@@ -174,15 +192,16 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtProntuario);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(390, 70, 280, 200);
+        jScrollPane1.setBounds(420, 340, 180, 40);
 
         jLabel10.setText("Prontuário:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(390, 50, 70, 14);
+        jLabel10.setBounds(350, 350, 90, 10);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Data de Nasc:*");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 210, 90, 14);
+        jLabel11.setBounds(160, 150, 130, 20);
 
         tblPaciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,20 +256,26 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 320, 650, 140);
+        jScrollPane2.setBounds(90, 430, 650, 140);
 
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
-        btnSair.setText("Sair");
+        btnSair.setBackground(new java.awt.Color(51, 255, 255));
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnSair.setText("voltar");
+        btnSair.setBorder(null);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
             }
         });
         getContentPane().add(btnSair);
-        btnSair.setBounds(680, 10, 160, 40);
+        btnSair.setBounds(720, 60, 160, 40);
 
-        btnExcluirPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconExcluir.png"))); // NOI18N
+        btnExcluirPaciente.setBackground(new java.awt.Color(88, 138, 255));
+        btnExcluirPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
         btnExcluirPaciente.setText("Excluir Paciente");
+        btnExcluirPaciente.setBorder(null);
         btnExcluirPaciente.setEnabled(false);
         btnExcluirPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,10 +283,13 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnExcluirPaciente);
-        btnExcluirPaciente.setBounds(680, 420, 160, 40);
+        btnExcluirPaciente.setBounds(830, 480, 190, 40);
 
-        btnEditarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconEditar.png"))); // NOI18N
+        btnEditarPaciente.setBackground(new java.awt.Color(88, 138, 255));
+        btnEditarPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
         btnEditarPaciente.setText(" Editar Paciente");
+        btnEditarPaciente.setBorder(null);
         btnEditarPaciente.setEnabled(false);
         btnEditarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,20 +297,26 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditarPaciente);
-        btnEditarPaciente.setBounds(681, 270, 160, 41);
+        btnEditarPaciente.setBounds(830, 300, 190, 40);
 
-        btnNovoPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconAdd.png"))); // NOI18N
+        btnNovoPaciente.setBackground(new java.awt.Color(88, 138, 255));
+        btnNovoPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoPaciente.setText(" Novo Paciente");
+        btnNovoPaciente.setBorder(null);
         btnNovoPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoPacienteActionPerformed(evt);
             }
         });
         getContentPane().add(btnNovoPaciente);
-        btnNovoPaciente.setBounds(679, 220, 160, 40);
+        btnNovoPaciente.setBounds(830, 240, 190, 40);
 
-        btnSalvarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
+        btnSalvarPaciente.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarPaciente.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
         btnSalvarPaciente.setText("Salvar Paciente");
+        btnSalvarPaciente.setBorder(null);
         btnSalvarPaciente.setEnabled(false);
         btnSalvarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,10 +324,13 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarPaciente);
-        btnSalvarPaciente.setBounds(679, 320, 160, 40);
+        btnSalvarPaciente.setBounds(830, 360, 190, 40);
 
-        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
+        btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorder(null);
         btnLimparCampos.setEnabled(false);
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,9 +338,9 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(680, 370, 160, 40);
+        btnLimparCampos.setBounds(830, 420, 190, 40);
 
-        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -311,9 +348,9 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         }
         txtCpf.setEnabled(false);
         getContentPane().add(txtCpf);
-        txtCpf.setBounds(60, 130, 190, 16);
+        txtCpf.setBounds(160, 230, 250, 30);
 
-        txtData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
             txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -326,9 +363,9 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtData);
-        txtData.setBounds(110, 210, 140, 20);
+        txtData.setBounds(160, 170, 250, 30);
 
-        txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
             txtRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
         } catch (java.text.ParseException ex) {
@@ -341,9 +378,15 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtRg);
-        txtRg.setBounds(60, 170, 190, 20);
+        txtRg.setBounds(440, 170, 250, 30);
 
-        setSize(new java.awt.Dimension(866, 513));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setText("PRONTUARIO SERA REMOVIDO E INICIADO EM OUTRA TELA");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(330, 320, 350, 20);
+
+        setSize(new java.awt.Dimension(1148, 689));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -525,6 +568,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

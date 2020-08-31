@@ -3,16 +3,19 @@ package Formularios;
 import Classes.Conecta;
 import Classes.Dentista;
 import Classes.DentistaDAO;
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
 public class frmEditarDentista extends javax.swing.JFrame {
+       Color azulPadrao = new Color(88, 138, 255);
 
     public String situacao = "";
 
@@ -94,6 +97,13 @@ public class frmEditarDentista extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         carregaTabela();
+        //mudar a cor do cabeçalho da tabela
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(azulPadrao);
+
+        for (int i = 0; i < tblDentista.getModel().getColumnCount(); i++) {
+            tblDentista.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+}
         
     }
 
@@ -133,13 +143,15 @@ public class frmEditarDentista extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Data de Nasc:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(290, 160, 80, 13);
+        jLabel11.setBounds(370, 240, 140, 20);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Nome:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(590, 110, 40, 13);
+        jLabel7.setBounds(670, 180, 100, 20);
 
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,12 +203,13 @@ public class frmEditarDentista extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(190, 420, 630, 140);
+        jScrollPane2.setBounds(290, 460, 630, 140);
 
         btnExcluirDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnExcluirDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluirDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconExcluir.png"))); // NOI18N
         btnExcluirDentista.setText("Excluir Dentista");
+        btnExcluirDentista.setBorder(null);
         btnExcluirDentista.setEnabled(false);
         btnExcluirDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,17 +217,19 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnExcluirDentista);
-        btnExcluirDentista.setBounds(860, 420, 160, 40);
+        btnExcluirDentista.setBounds(990, 510, 180, 50);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Central de dentistas");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel1.setText("LISTA DE DENTISTAS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(440, 390, 144, 17);
+        jLabel1.setBounds(300, 430, 180, 17);
 
         btnEditarDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnEditarDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconEditar.png"))); // NOI18N
         btnEditarDentista.setText("Editar Dentista");
+        btnEditarDentista.setBorder(null);
         btnEditarDentista.setEnabled(false);
         btnEditarDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,34 +237,38 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditarDentista);
-        btnEditarDentista.setBounds(860, 270, 160, 41);
+        btnEditarDentista.setBounds(990, 330, 180, 50);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Informações do dentista");
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel4.setText("INFORMAÇÕES DO DENTISTA");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(490, 70, 177, 17);
+        jLabel4.setBounds(360, 120, 310, 40);
 
         btnNovoDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnNovoDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoDentista.setText(" Novo Dentista");
+        btnNovoDentista.setBorder(null);
         btnNovoDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoDentistaActionPerformed(evt);
             }
         });
         getContentPane().add(btnNovoDentista);
-        btnNovoDentista.setBounds(860, 220, 160, 40);
+        btnNovoDentista.setBounds(990, 270, 180, 50);
 
+        txtNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtNome.setEnabled(false);
         getContentPane().add(txtNome);
-        txtNome.setBounds(590, 130, 240, 15);
+        txtNome.setBounds(670, 200, 250, 30);
 
         btnSalvarDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnSalvarDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
         btnSalvarDentista.setText("Salvar Dentista");
+        btnSalvarDentista.setBorder(null);
         btnSalvarDentista.setEnabled(false);
         btnSalvarDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,12 +276,13 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarDentista);
-        btnSalvarDentista.setBounds(860, 320, 160, 40);
+        btnSalvarDentista.setBounds(990, 390, 180, 50);
 
         btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
         btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorder(null);
         btnLimparCampos.setEnabled(false);
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,8 +290,9 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(860, 370, 160, 40);
+        btnLimparCampos.setBounds(990, 450, 180, 50);
 
+        txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(88, 138, 255), 1, true));
         txtId.setEnabled(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
@@ -280,44 +301,53 @@ public class frmEditarDentista extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtId);
-        txtId.setBounds(290, 130, 240, 15);
+        txtId.setBounds(370, 200, 250, 30);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("ID:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(290, 110, 30, 13);
+        jLabel6.setBounds(370, 180, 90, 20);
 
+        txtNomeConvenio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtNomeConvenio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtNomeConvenio.setEnabled(false);
         getContentPane().add(txtNomeConvenio);
-        txtNomeConvenio.setBounds(590, 180, 240, 15);
+        txtNomeConvenio.setBounds(670, 260, 250, 30);
 
+        txtConsultorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtConsultorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtConsultorio.setDocument(new campoNumerico());
         txtConsultorio.setEnabled(false);
         getContentPane().add(txtConsultorio);
-        txtConsultorio.setBounds(290, 230, 240, 15);
+        txtConsultorio.setBounds(370, 320, 250, 30);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Convênio:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(590, 160, 60, 13);
+        jLabel2.setBounds(670, 240, 120, 20);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Valor Consulta:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(590, 210, 90, 13);
+        jLabel3.setBounds(670, 300, 150, 20);
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("N° Consultório:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(290, 210, 90, 13);
+        jLabel12.setBounds(370, 300, 150, 20);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
-        jButton3.setText("Sair");
+        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        jButton3.setText("voltar");
+        jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(860, 100, 160, 40);
+        jButton3.setBounds(960, 120, 160, 40);
 
         txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
@@ -326,13 +356,15 @@ public class frmEditarDentista extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtNascimento.setEnabled(false);
+        txtNascimento.setFocusable(false);
+        txtNascimento.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         txtNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNascimentoActionPerformed(evt);
             }
         });
         getContentPane().add(txtNascimento);
-        txtNascimento.setBounds(290, 180, 240, 15);
+        txtNascimento.setBounds(370, 260, 250, 30);
 
         txtValorConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
@@ -341,10 +373,11 @@ public class frmEditarDentista extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtValorConsulta.setEnabled(false);
+        txtValorConsulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(txtValorConsulta);
-        txtValorConsulta.setBounds(590, 230, 240, 20);
+        txtValorConsulta.setBounds(670, 320, 250, 30);
 
-        setSize(new java.awt.Dimension(1179, 929));
+        setSize(new java.awt.Dimension(1227, 929));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
