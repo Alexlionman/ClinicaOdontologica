@@ -18,7 +18,7 @@ import javax.swing.plaf.basic.BasicMenuBarUI;
 import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 public class frmPrincipal extends javax.swing.JFrame {
-    Color azulPadrao = new Color(88, 138, 255);
+    public Color azulPadrao = new Color(88, 138, 255);
 
 
 private void changeComponentColors(Component comp) {
@@ -40,6 +40,7 @@ private void changeComponentColors(Component comp) {
     
     public frmPrincipal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         //dar cor a barra de menu
     jMenuBar1.setOpaque(true);
     jMenuBar1.setUI(new BasicMenuBarUI() {
