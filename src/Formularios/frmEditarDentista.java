@@ -6,7 +6,10 @@ import Classes.DentistaDAO;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -136,8 +139,8 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        txtNascimento = new javax.swing.JFormattedTextField();
         txtValorConsulta = new javax.swing.JFormattedTextField();
+        txtNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -206,11 +209,20 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jScrollPane2.setBounds(290, 460, 630, 140);
 
         btnExcluirDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnExcluirDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnExcluirDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluirDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconExcluir.png"))); // NOI18N
         btnExcluirDentista.setText("Excluir Dentista");
         btnExcluirDentista.setBorder(null);
         btnExcluirDentista.setEnabled(false);
+        btnExcluirDentista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExcluirDentistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExcluirDentistaMouseExited(evt);
+            }
+        });
         btnExcluirDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirDentistaActionPerformed(evt);
@@ -226,11 +238,20 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jLabel1.setBounds(300, 430, 180, 17);
 
         btnEditarDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnEditarDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEditarDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconEditar.png"))); // NOI18N
         btnEditarDentista.setText("Editar Dentista");
         btnEditarDentista.setBorder(null);
         btnEditarDentista.setEnabled(false);
+        btnEditarDentista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarDentistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarDentistaMouseExited(evt);
+            }
+        });
         btnEditarDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarDentistaActionPerformed(evt);
@@ -246,10 +267,19 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jLabel4.setBounds(360, 120, 310, 40);
 
         btnNovoDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnNovoDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnNovoDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoDentista.setText(" Novo Dentista");
         btnNovoDentista.setBorder(null);
+        btnNovoDentista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoDentistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoDentistaMouseExited(evt);
+            }
+        });
         btnNovoDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoDentistaActionPerformed(evt);
@@ -265,11 +295,20 @@ public class frmEditarDentista extends javax.swing.JFrame {
         txtNome.setBounds(670, 200, 250, 30);
 
         btnSalvarDentista.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvarDentista.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarDentista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
         btnSalvarDentista.setText("Salvar Dentista");
         btnSalvarDentista.setBorder(null);
         btnSalvarDentista.setEnabled(false);
+        btnSalvarDentista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarDentistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarDentistaMouseExited(evt);
+            }
+        });
         btnSalvarDentista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarDentistaActionPerformed(evt);
@@ -279,11 +318,20 @@ public class frmEditarDentista extends javax.swing.JFrame {
         btnSalvarDentista.setBounds(990, 390, 180, 50);
 
         btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
+        btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
         btnLimparCampos.setBorder(null);
         btnLimparCampos.setEnabled(false);
+        btnLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseExited(evt);
+            }
+        });
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
@@ -336,11 +384,19 @@ public class frmEditarDentista extends javax.swing.JFrame {
         getContentPane().add(jLabel12);
         jLabel12.setBounds(370, 300, 150, 20);
 
-        jButton3.setBackground(new java.awt.Color(0, 204, 255));
+        jButton3.setBackground(new java.awt.Color(102, 204, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
         jButton3.setText("voltar");
         jButton3.setBorder(null);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -348,23 +404,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3);
         jButton3.setBounds(960, 120, 160, 40);
-
-        txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        try {
-            txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtNascimento.setEnabled(false);
-        txtNascimento.setFocusable(false);
-        txtNascimento.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        txtNascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNascimentoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtNascimento);
-        txtNascimento.setBounds(370, 260, 250, 30);
 
         txtValorConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
@@ -376,6 +415,16 @@ public class frmEditarDentista extends javax.swing.JFrame {
         txtValorConsulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         getContentPane().add(txtValorConsulta);
         txtValorConsulta.setBounds(670, 320, 250, 30);
+
+        txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        try {
+            txtNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtNascimento.setEnabled(false);
+        getContentPane().add(txtNascimento);
+        txtNascimento.setBounds(370, 260, 250, 30);
 
         setSize(new java.awt.Dimension(1227, 929));
         setLocationRelativeTo(null);
@@ -502,6 +551,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
 
         } else {
             JOptionPane.showMessageDialog(null, "Campo Vazio!\nPreencha todos os campos obrigatórios.");
+            
         }
     }//GEN-LAST:event_btnSalvarDentistaActionPerformed
 
@@ -511,15 +561,73 @@ public class frmEditarDentista extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
-    private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNascimentoActionPerformed
+    private void btnNovoDentistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoDentistaMouseEntered
+       btnNovoDentista.setBackground(Color.white);
+       btnNovoDentista.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnNovoDentistaMouseEntered
+
+    private void btnNovoDentistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoDentistaMouseExited
+        btnNovoDentista.setBackground(azulPadrao);
+       btnNovoDentista.setForeground(Color.white);
+    }//GEN-LAST:event_btnNovoDentistaMouseExited
+
+    private void btnEditarDentistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarDentistaMouseEntered
+         btnEditarDentista.setBackground(Color.white);
+         btnEditarDentista.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnEditarDentistaMouseEntered
+
+    private void btnEditarDentistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarDentistaMouseExited
+       btnEditarDentista.setBackground(azulPadrao);
+       btnEditarDentista.setForeground(Color.white);
+    }//GEN-LAST:event_btnEditarDentistaMouseExited
+
+    private void btnSalvarDentistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarDentistaMouseEntered
+        btnSalvarDentista.setBackground(Color.white);
+         btnSalvarDentista.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSalvarDentistaMouseEntered
+
+    private void btnSalvarDentistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarDentistaMouseExited
+        btnSalvarDentista.setBackground(azulPadrao);
+       btnSalvarDentista.setForeground(Color.white);
+    }//GEN-LAST:event_btnSalvarDentistaMouseExited
+
+    private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
+        btnLimparCampos.setBackground(Color.white);
+         btnLimparCampos.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnLimparCamposMouseEntered
+
+    private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
+         btnLimparCampos.setBackground(azulPadrao);
+       btnLimparCampos.setForeground(Color.white);
+    }//GEN-LAST:event_btnLimparCamposMouseExited
+
+    private void btnExcluirDentistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirDentistaMouseEntered
+        btnExcluirDentista.setBackground(Color.red);
+       btnExcluirDentista.setForeground(Color.white);
+    }//GEN-LAST:event_btnExcluirDentistaMouseEntered
+
+    private void btnExcluirDentistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirDentistaMouseExited
+         btnExcluirDentista.setBackground(azulPadrao);
+       btnExcluirDentista.setForeground(Color.white);
+    }//GEN-LAST:event_btnExcluirDentistaMouseExited
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        jButton3.setBackground(Color.red);
+       jButton3.setForeground(Color.white);
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+       Color azulClaro = new Color(0,204,255);
+        jButton3.setBackground(azulClaro);
+       jButton3.setForeground(Color.white);
+    }//GEN-LAST:event_jButton3MouseExited
 
     /**
      * @param args the command line arguments

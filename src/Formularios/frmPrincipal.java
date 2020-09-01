@@ -99,23 +99,23 @@ private void changeComponentColors(Component comp) {
         lblUsuario.setForeground(new java.awt.Color(102, 153, 255));
         lblUsuario.setText("CHIFRUDINHO");
         getContentPane().add(lblUsuario);
-        lblUsuario.setBounds(470, 220, 250, 40);
+        lblUsuario.setBounds(680, 290, 250, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 153, 255));
         jLabel2.setText("Olá, bem vindo!");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(480, 170, 250, 40);
+        jLabel2.setBounds(690, 240, 250, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/foto-de-perfil.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(530, 270, 110, 140);
+        jLabel3.setBounds(740, 340, 110, 140);
 
         labelData.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
         labelData.setForeground(new java.awt.Color(0, 0, 102));
         labelData.setText("Hora");
         getContentPane().add(labelData);
-        labelData.setBounds(510, 420, 120, 20);
+        labelData.setBounds(720, 490, 120, 20);
 
         jMenuBar1.setBackground(new java.awt.Color(88, 138, 255));
         jMenuBar1.setForeground(new java.awt.Color(88, 138, 255));
