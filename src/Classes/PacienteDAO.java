@@ -11,8 +11,10 @@ public class PacienteDAO {
         try {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO paciente(nome, endereco, cpf, rg, nascimento, prontuario) ";
-            sql += "VALUES ('" + paciente.getNome() +"','" + paciente.getEndereco() + "','" + paciente.getCpf() + "', '" + paciente.getRg() + "', '" + paciente.getNascimento() + "','" + paciente.getProntuario() + "')";
+            String sql = "INSERT INTO paciente(nome, endereco, logradouro, numero, complemento, cep, bairro, email, celular, telefone, estado, cidade, cpf, rg, nascimento) ";
+            sql += "VALUES ('" + paciente.getNome() +"','" + paciente.getRua()+ "','" + paciente.getRua()+ "','" + paciente.getNumero()+ "', '" + paciente.getComplemento()+ "', '" + paciente.getCep()+ "','"
+                    + paciente.getBairro()+"','" + paciente.getEmail()+"','" + paciente.getCelular()+"','" + paciente.getTelefone()+"','" + paciente.getEstado()+
+                    "','" + paciente.getCidade()+"','" + paciente.getCpf()+"','" + paciente.getRg()+"','" + paciente.getNascimento()+"')";
             stmt.executeUpdate(sql);
             stmt.close();
             con.close();
@@ -29,11 +31,20 @@ public class PacienteDAO {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
             String sql = "UPDATE paciente SET nome='" + paciente.getNome() + "',"
-                    + " endereco='" + paciente.getEndereco() + "',"
-                    + " prontuario='" + paciente.getProntuario() + "',"
+                    + " endereco='" + paciente.getRua()+ "',"
+                     + " logradouro='" + paciente.getRua()+ "',"
+                     + " numero='" + paciente.getNumero()+ "',"
+                     + " complemento='" + paciente.getComplemento()+ "',"
+                     + " cep='" + paciente.getCep()+ "',"
+                    + " bairro='" + paciente.getBairro()+ "',"
+                    + " email='" + paciente.getEmail()+ "',"
+                    + " celular='" + paciente.getCelular()+ "',"
+                    + " telefone='" + paciente.getTelefone()+ "',"
+                    + " estado='" + paciente.getEstado()+ "',"
+                    + " cidade='" + paciente.getCidade()+ "',"
+                    + " cpf='" + paciente.getCpf()+ "',"
                     + " rg='" + paciente.getRg() + "',"
-                    + " nascimento='" + paciente.getNascimento() + "',"
-                    + " cpf='" + paciente.getCpf() + "'WHERE id=" + paciente.getId();
+                    + " nascimento='" + paciente.getNascimento()+ "'WHERE id=" + paciente.getId();
 
             stmt.executeUpdate(sql);
             stmt.close();
@@ -72,11 +83,20 @@ public class PacienteDAO {
             while(rs.next()){
                 p.setId(rs.getInt("id"));
                 p.setNome(rs.getString("nome"));
-                p.setEndereco(rs.getString("endereco"));
+                p.setRua(rs.getString("endereco"));
+                p.setNumero(rs.getString("numero"));
+                p.setComplemento(rs.getString("complemento"));
+                p.setCep(rs.getString("cep"));
+                p.setBairro(rs.getString("bairro"));
+                p.setEmail(rs.getString("email"));
+                p.setCelular(rs.getString("celular"));
+                p.setTelefone(rs.getString("telefone"));
+                p.setEstado(rs.getString("estado"));
+                p.setCidade(rs.getString("cidade"));
                 p.setCpf(rs.getString("cpf"));
                 p.setRg(rs.getString("rg"));
                 p.setNascimento(rs.getString("nascimento"));
-                p.setProntuario(rs.getString("prontuario"));
+         
             }
             rs.close();
             stmt.close();
