@@ -3,9 +3,13 @@ package Formularios;
 import Classes.Conecta;
 import Classes.Dentista;
 import Classes.DentistaDAO;
+import Classes.Paciente;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -30,46 +34,35 @@ public class frmEditarDentista extends javax.swing.JFrame {
     }
     
     public boolean verificaPreenchimento() {
-        if (txtNome.getText().equals("") || txtConsultorio.getText().equals("") || txtNascimento.getText().equals("  /  /    ")
-                || txtNomeConvenio.getText().equals("") || txtValorConsulta.getText().equals("   .  ")) {
+        if (txtEmail.getText().equals("") || txtEmail.getText().equals("") || txtNascimento.getText().equals("  /  /    ")
+                 || txtValorConsulta.getText().equals("   .  ")) {
             return false;
         }
         return true;
     }
     public void limparCampos() {
-        txtNome.setText("");
-        txtConsultorio.setText("");
+        txtEmail.setText("");
+        txtEmail.setText("");
         txtValorConsulta.setText("");
         txtNascimento.setText("");
         txtId.setText("");
-        txtNomeConvenio.setText("");
     }
     public void habilitaCampos() {
         txtNascimento.setEnabled(true);
-        txtNome.setEnabled(true);
-        txtConsultorio.setEnabled(true);
-        txtNomeConvenio.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtEmail.setEnabled(true);
+       
         txtValorConsulta.setEnabled(true);
     }
     public void desabilitaCampos() {
         txtNascimento.setEnabled(false);
-        txtNome.setEnabled(false);
-        txtConsultorio.setEnabled(false);
-        txtNomeConvenio.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtEmail.setEnabled(false);
+     
         txtValorConsulta.setEnabled(false);
     }
 
-    public Dentista montarDentista() {
-        Dentista dentista = new Dentista();
-        dentista.setNome(txtNome.getText());
-        dentista.setId(Integer.parseInt(txtId.getText()));
-        dentista.setNascimento(txtNascimento.getText());
-        dentista.setConvenio(txtNomeConvenio.getText());
-        dentista.setValorConsulta(Float.parseFloat(txtValorConsulta.getText()));
-        dentista.setConsultorio(Integer.parseInt(txtConsultorio.getText()));
-
-        return dentista;
-    }
+   
 
     private void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tblDentista.getModel();
@@ -95,10 +88,17 @@ public class frmEditarDentista extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+     private void pegarResolucao() {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension dimensao = t.getScreenSize();
+        this.setSize((dimensao.width + 5), (dimensao.height - 38));
+
+ }
+    
 
     public frmEditarDentista() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        pegarResolucao();
         carregaTabela();
         //mudar a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
@@ -124,37 +124,65 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDentista = new javax.swing.JTable();
         btnExcluirDentista = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         btnEditarDentista = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnNovoDentista = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         btnSalvarDentista = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtNomeConvenio = new javax.swing.JTextField();
-        txtConsultorio = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        nconsu = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        txtValorConsulta = new javax.swing.JFormattedTextField();
         txtNascimento = new javax.swing.JFormattedTextField();
+        txtRg = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtCpf = new javax.swing.JFormattedTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtCelular = new javax.swing.JTextField();
+        txtTelefone = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtCro = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        txtRua = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtNumero = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtComplemento = new javax.swing.JTextField();
+        txtCep = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        txtBairro = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtCidade = new javax.swing.JTextField();
+        endwe = new javax.swing.JLabel();
+        txtValorConsulta = new javax.swing.JTextField();
+        nconsu1 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txtNumeroConsultorio = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        nconsu2 = new javax.swing.JLabel();
+        txtLogin = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
+        nconsu3 = new javax.swing.JLabel();
+        txtConfirmarSenha = new javax.swing.JTextField();
+        nconsu4 = new javax.swing.JLabel();
+        txtNome1 = new javax.swing.JTextField();
+        txtPesquisaDentista1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(null);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Data de Nasc:");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(370, 240, 140, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Nome:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(670, 180, 100, 20);
 
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,7 +201,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Convenio", "Consultório", "Valor Consulta"
+                "ID", "Nome", "CRO", "Consultório", "Valor Consulta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -205,9 +233,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
             tblDentista.getColumnModel().getColumn(4).setMaxWidth(95);
         }
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(290, 460, 630, 140);
-
         btnExcluirDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnExcluirDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnExcluirDentista.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,14 +253,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 btnExcluirDentistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExcluirDentista);
-        btnExcluirDentista.setBounds(990, 510, 180, 50);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(88, 138, 255));
-        jLabel1.setText("LISTA DE DENTISTAS");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(300, 430, 180, 17);
 
         btnEditarDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnEditarDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -257,14 +274,10 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 btnEditarDentistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditarDentista);
-        btnEditarDentista.setBounds(990, 330, 180, 50);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(88, 138, 255));
         jLabel4.setText("INFORMAÇÕES DO DENTISTA");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(360, 120, 310, 40);
 
         btnNovoDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnNovoDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -285,14 +298,9 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 btnNovoDentistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovoDentista);
-        btnNovoDentista.setBounds(990, 270, 180, 50);
 
-        txtNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        txtNome.setEnabled(false);
-        getContentPane().add(txtNome);
-        txtNome.setBounds(670, 200, 250, 30);
+        txtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
 
         btnSalvarDentista.setBackground(new java.awt.Color(88, 138, 255));
         btnSalvarDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -314,8 +322,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 btnSalvarDentistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarDentista);
-        btnSalvarDentista.setBounds(990, 390, 180, 50);
 
         btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
         btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -337,8 +343,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 btnLimparCamposActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(990, 450, 180, 50);
 
         txtId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtId.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(88, 138, 255), 1, true));
@@ -348,41 +352,12 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 txtIdActionPerformed(evt);
             }
         });
-        getContentPane().add(txtId);
-        txtId.setBounds(370, 200, 250, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("ID:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(370, 180, 90, 20);
 
-        txtNomeConvenio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtNomeConvenio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        txtNomeConvenio.setEnabled(false);
-        getContentPane().add(txtNomeConvenio);
-        txtNomeConvenio.setBounds(670, 260, 250, 30);
-
-        txtConsultorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtConsultorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        txtConsultorio.setDocument(new campoNumerico());
-        txtConsultorio.setEnabled(false);
-        getContentPane().add(txtConsultorio);
-        txtConsultorio.setBounds(370, 320, 250, 30);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Convênio:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(670, 240, 120, 20);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Valor Consulta:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(670, 300, 150, 20);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setText("N° Consultório:");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(370, 300, 150, 20);
+        nconsu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nconsu.setText("Email");
 
         jButton3.setBackground(new java.awt.Color(102, 204, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -402,19 +377,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(960, 120, 160, 40);
-
-        txtValorConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        try {
-            txtValorConsulta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtValorConsulta.setEnabled(false);
-        txtValorConsulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        getContentPane().add(txtValorConsulta);
-        txtValorConsulta.setBounds(670, 320, 250, 30);
 
         txtNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
@@ -422,11 +384,371 @@ public class frmEditarDentista extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtNascimento.setEnabled(false);
-        getContentPane().add(txtNascimento);
-        txtNascimento.setBounds(370, 260, 250, 30);
 
-        setSize(new java.awt.Dimension(1227, 929));
+        txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        try {
+            txtRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtRg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRgActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("RG:");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("CPF:");
+
+        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        try {
+            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setText("Telefone:");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setText("Celular:");
+
+        txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCelularActionPerformed(evt);
+            }
+        });
+
+        txtTelefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefoneActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("CRO:");
+
+        txtCro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCroActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setLayout(null);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("Rua:");
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(10, 10, 40, 20);
+
+        txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtRua);
+        txtRua.setBounds(10, 30, 270, 20);
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setText("Numero:");
+        jPanel1.add(jLabel16);
+        jLabel16.setBounds(10, 60, 80, 20);
+
+        txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtNumero);
+        txtNumero.setBounds(10, 80, 120, 20);
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setText("Complemento:");
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(140, 60, 120, 20);
+
+        txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtComplemento);
+        txtComplemento.setBounds(140, 80, 120, 20);
+
+        txtCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtCep);
+        txtCep.setBounds(10, 130, 220, 20);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setText("CEP:");
+        jPanel1.add(jLabel19);
+        jLabel19.setBounds(10, 110, 120, 20);
+
+        txtBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtBairro);
+        txtBairro.setBounds(10, 170, 220, 20);
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setText("Bairro:");
+        jPanel1.add(jLabel20);
+        jLabel20.setBounds(10, 150, 120, 20);
+
+        txtEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtEstado);
+        txtEstado.setBounds(10, 210, 220, 20);
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setText("Estado:");
+        jPanel1.add(jLabel24);
+        jLabel24.setBounds(10, 190, 120, 20);
+
+        txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        jPanel1.add(txtCidade);
+        txtCidade.setBounds(10, 250, 220, 20);
+
+        endwe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        endwe.setText("Cidade:");
+        jPanel1.add(endwe);
+        endwe.setBounds(10, 230, 120, 20);
+
+        txtValorConsulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtValorConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+
+        nconsu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nconsu1.setText("Valor da Consulta:");
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setText("Nº Consultório");
+
+        txtNumeroConsultorio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtNumeroConsultorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroConsultorioActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações de Login"));
+
+        nconsu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nconsu2.setText("Login");
+
+        txtLogin.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+
+        txtSenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+
+        nconsu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nconsu3.setText("Senha:");
+
+        txtConfirmarSenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtConfirmarSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+
+        nconsu4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nconsu4.setText("Confirmar senha:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nconsu2)
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nconsu3)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nconsu4)
+                    .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(nconsu2)
+                .addGap(1, 1, 1)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nconsu3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nconsu4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
+        );
+
+        txtNome1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtNome1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+
+        txtPesquisaDentista1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtPesquisaDentista1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaDentista1ActionPerformed(evt);
+            }
+        });
+        txtPesquisaDentista1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisaDentista1KeyPressed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Pesquisa Dentista:");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtNumeroConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(95, 95, 95)
+                                        .addComponent(jLabel9))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(120, 120, 120)
+                                        .addComponent(jLabel14))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtCro, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addGap(56, 56, 56)
+                                        .addComponent(jLabel13))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nconsu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(nconsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNovoDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditarDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvarDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExcluirDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(230, 230, 230)
+                        .addComponent(txtPesquisaDentista1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisaDentista1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel13))
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nconsu, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(nconsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNumeroConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)
+                        .addComponent(btnNovoDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnEditarDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnSalvarDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnExcluirDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+
+        setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -434,12 +756,12 @@ public class frmEditarDentista extends javax.swing.JFrame {
         int item = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblDentista.getModel().getValueAt(item, 0);
         Dentista d = new DentistaDAO().pesquisarDentista(item);
-        txtNome.setText(d.getNome());
+        txtEmail.setText(d.getNome());
         txtId.setText(d.getId() + "");
         txtNascimento.setText(d.getNascimento());
-        txtConsultorio.setText(d.getConsultorio() + "");
+        txtEmail.setText(d.getConsultorio() + "");
         txtValorConsulta.setText(d.getValorConsulta() + "");
-        txtNomeConvenio.setText(d.getConvenio());
+        
 
         btnEditarDentista.setEnabled(true);
         btnExcluirDentista.setEnabled(true);
@@ -501,10 +823,11 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private void btnSalvarDentistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDentistaActionPerformed
         if (verificaPreenchimento()) {
             if (situacao == "cadastro") {
-                Dentista dentista=new Dentista(txtNome.getText(), txtNascimento.getText()
-                        , Integer.parseInt(txtConsultorio.getText()), Float.parseFloat(txtValorConsulta.getText())
-                        , txtNomeConvenio.getText());
-                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtNome.getText())) {
+                Dentista dentista = new Dentista(txtEmail.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
+                         txtCep.getText(), txtBairro.getText(), txtEstado.getText(),  txtCidade.getText(),
+                        txtCro.getText(), txtEmail.getText(),txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
+                txtLogin.getText(), txtSenha.getText());
+                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtEmail.getText())) {
                     JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");
                 } else {
                     String resp = new DentistaDAO().gravarDentista(dentista);
@@ -524,10 +847,11 @@ public class frmEditarDentista extends javax.swing.JFrame {
                     btnNovoDentista.setEnabled(true);
                 }
             } else if (situacao == "edicao") {
-                Dentista dentista=new Dentista(txtNome.getText(),Integer.parseInt(txtId.getText()), txtNascimento.getText()
-                        , Integer.parseInt(txtConsultorio.getText()), Float.parseFloat(txtValorConsulta.getText())
-                        , txtNomeConvenio.getText());
-                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtNome.getText())) {
+                Dentista dentista=new Dentista(txtEmail.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
+                         txtCep.getText(), txtBairro.getText(), txtEstado.getText(),  txtCidade.getText(),
+                        txtCro.getText(), txtEmail.getText(),txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
+                txtLogin.getText(), txtSenha.getText());
+                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtEmail.getText())) {
                     JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");
                 } else {
                     String resp = new DentistaDAO().editarDentista(dentista);
@@ -629,6 +953,50 @@ public class frmEditarDentista extends javax.swing.JFrame {
        jButton3.setForeground(Color.white);
     }//GEN-LAST:event_jButton3MouseExited
 
+    private void txtRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRgActionPerformed
+
+    private void txtCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCelularActionPerformed
+
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefoneActionPerformed
+
+    private void txtCroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCroActionPerformed
+
+    private void txtNumeroConsultorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroConsultorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroConsultorioActionPerformed
+
+    private void txtPesquisaDentista1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaDentista1KeyPressed
+        //para pesquisar conforme o usuario digita uma letra
+        String nome = "%" +txtPesquisaDentista1.getText()+ "%";
+
+        DentistaDAO dao = new DentistaDAO();
+        List<Dentista> lista = dao.buscaDentistaPorNome(nome);
+        DefaultTableModel dados = (DefaultTableModel) tblDentista.getModel();
+        dados.setNumRows(0); //limpar
+
+        for(Dentista c: lista){
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getCro(),
+                c.getConsultorio(),
+                c.getValorConsulta()
+            });
+        }
+    }//GEN-LAST:event_txtPesquisaDentista1KeyPressed
+
+    private void txtPesquisaDentista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaDentista1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaDentista1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -670,22 +1038,55 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoDentista;
     private javax.swing.JButton btnSalvarDentista;
+    private javax.swing.JLabel endwe;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel nconsu;
+    private javax.swing.JLabel nconsu1;
+    private javax.swing.JLabel nconsu2;
+    private javax.swing.JLabel nconsu3;
+    private javax.swing.JLabel nconsu4;
     private javax.swing.JTable tblDentista;
-    private javax.swing.JTextField txtConsultorio;
+    private javax.swing.JTextField txtBairro;
+    private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCep;
+    private javax.swing.JTextField txtCidade;
+    private javax.swing.JTextField txtComplemento;
+    private javax.swing.JTextField txtConfirmarSenha;
+    private javax.swing.JFormattedTextField txtCpf;
+    private javax.swing.JTextField txtCro;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtLogin;
     private javax.swing.JFormattedTextField txtNascimento;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNomeConvenio;
-    private javax.swing.JFormattedTextField txtValorConsulta;
+    private javax.swing.JTextField txtNome1;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtNumeroConsultorio;
+    private javax.swing.JTextField txtPesquisaDentista1;
+    private javax.swing.JFormattedTextField txtRg;
+    private javax.swing.JTextField txtRua;
+    private javax.swing.JTextField txtSenha;
+    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JTextField txtValorConsulta;
     // End of variables declaration//GEN-END:variables
 }

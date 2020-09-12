@@ -1,10 +1,21 @@
 package Classes;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 public class PacienteDAO {
+    
+    private Connection con;
+
+    public PacienteDAO() {
+        this.con = new Conecta().getConexao();
+    }
 
     public String gravarPaciente(Paciente paciente) {
         String resp = "";
@@ -125,4 +136,51 @@ public class PacienteDAO {
         }
         return resp;
     }
+    
+    
+     public List<Paciente> buscaPacientePorNome(String nome) {
+          //esse método é usado para buscar quando digitado uma letra no campo de texto de pesquisa
+        try {
+
+           
+            List<Paciente> lista = new ArrayList<>();
+
+            //pega tudo de clientes
+            String sql = "select * from paciente where nome like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,nome);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Paciente obj = new Paciente();
+
+                obj.setId(rs.getInt("id"));
+                obj.setNome(rs.getString("nome"));
+                obj.setRg(rs.getString("rg"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setEmail(rs.getString("email"));
+                obj.setTelefone(rs.getString("telefone"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCep(rs.getString("cep"));
+                obj.setRua(rs.getString("endereco"));
+                obj.setNascimento(rs.getString("nascimento"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setEstado(rs.getString("estado"));
+                obj.setNumero(rs.getString("numero"));
+
+                lista.add(obj);  //adiciona o objeto criado na lista
+            }
+
+            return lista;
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "Erro" + erro);
+            return null;
+        }
+
+    }   
 }
