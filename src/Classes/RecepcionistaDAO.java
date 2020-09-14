@@ -15,9 +15,10 @@ public class RecepcionistaDAO {
         try {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO recepcionista(nome, cpf, login, senha) "
-                    + "VALUES ('" + recepcionista.getNome() + "', '" + recepcionista.getCpf() + "', '" + recepcionista.getLogin() + "','"
-                    + recepcionista.getSenha() + "')";
+            String sql = "INSERT INTO recepcionista(nome, rg, cpf, dataDeNascimento, telefone, celular, email, rua, numero, complemento, cep, bairo, estado, cidade, login, senha) "
+                    + "VALUES ('" + recepcionista.getNome() +"','" + recepcionista.getRg()+ "','" + recepcionista.getCpf()+ "','" + recepcionista.getDataDeNascimento()+ "', '" + recepcionista.getTelefone()+ "', '" + recepcionista.getCelular()+ "','"
+                    + recepcionista.getEmail()+"','" + recepcionista.getRua()+"','" + recepcionista.getNumero()+"','" + recepcionista.getComplemento()+"','" + recepcionista.getCep()+
+                    "','" + recepcionista.getBairro()+"','" + recepcionista.getEstado()+"', '" + recepcionista.getCidade()+"','" + recepcionista.getLogin()+"','" + recepcionista.getSenha()+"')";
             stmt.executeUpdate(sql);
             stmt.close();
             con.close();
@@ -40,7 +41,19 @@ public class RecepcionistaDAO {
             if (rs.next()) {
                 r.setId(rs.getInt("id"));
                 r.setNome(rs.getString("nome"));
+                r.setRg(rs.getString("rg"));
                 r.setCpf(rs.getString("cpf"));
+                r.setDataDeNascimento(rs.getString("dataDeNascimento"));
+                r.setTelefone(rs.getString("telefone"));
+                r.setCelular(rs.getString("celular"));
+                r.setEmail(rs.getString("email"));
+                r.setRua(rs.getString("rua"));
+                r.setNumero(rs.getString("numero"));
+                r.setComplemento(rs.getString("complemento"));
+                r.setCep(rs.getString("cep"));
+                r.setBairro(rs.getString("bairro"));
+                r.setEstado(rs.getString("estado"));
+                r.setCidade(rs.getString("cidade"));
                 r.setLogin(rs.getString("login"));
                 r.setSenha(rs.getString("senha"));
             }

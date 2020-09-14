@@ -15,9 +15,9 @@ public class Conecta {
         try{
             String username = "root";
             String password = "1234";
-            String driverName = "com.mysql.jdbc.Driver";    //conectei dessa forma ocm o meu banco(usei o Xampp e Workbench) - baixei outro driver para usar            
+            String driverName = "com.mysql.jdbc.Driver";                
             Class.forName(driverName); 
-            String url = "jdbc:mysql://localhost:3306/projetov1?useTimezone=true&serverTimezone=UTC";     //esses são os dados da minha conexão
+            String url = "jdbc:mysql://localhost:3306/projetov1?useTimezone=true&serverTimezone=UTC";     //esses são os dados da *minha* conexão
             con = DriverManager.getConnection(url, username, password);
         }catch(ClassNotFoundException e){
             System.out.println("Driver não foi encontrado "+ e.toString());
