@@ -29,14 +29,14 @@ private void changeComponentColors(Component comp) {
     public void usuarioLogado(String usuario){
         lblUsuario.setText(usuario);
     }
-    private void logado(String user){
-        
-        if(user.equals("admin")){
-            jmiRecepcionistas.setEnabled(true);            
-        }else{
-            jmiRecepcionistas.setEnabled(false);
-        }
-    } 
+//    private void logado(String user){
+//        
+//        if(user.equals("admin")){
+//            jmiRecepcionistas.setEnabled(true);            
+//        }else{
+//            jmiRecepcionistas.setEnabled(false);
+//        }
+//    } 
     
     public frmPrincipal() {
         initComponents();
@@ -146,7 +146,6 @@ private void changeComponentColors(Component comp) {
         jMenu1.add(jmiDentistas);
 
         jmiRecepcionistas.setText("Registrar Recepcionista");
-        jmiRecepcionistas.setEnabled(false);
         jmiRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiRecepcionistasActionPerformed(evt);
@@ -270,7 +269,7 @@ private void changeComponentColors(Component comp) {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        logado(lblUsuario.getText());
+//        logado(lblUsuario.getText());
     }//GEN-LAST:event_formWindowActivated
 
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed

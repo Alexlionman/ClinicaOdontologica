@@ -9,6 +9,8 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.AttributeSet;
@@ -37,27 +39,62 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     }
 
     public void habilitaCampos() {
-        txtId.setEnabled(false);
-        txtNome.setEnabled(true);
+       txtNome.setEnabled(true);
+        txtTelefone.setEnabled(true);
+        txtRg.setEnabled(true);
         txtCpf.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtBairro.setEnabled(true);
+        txtCelular.setEnabled(true);
+        txtCep.setEnabled(true);;
+        txtCidade.setEnabled(true);
+        txtRua.setEnabled(true);
+        txtComplemento.setEnabled(true);
+        txtNumero.setEnabled(true);
+        txtEstado.setEnabled(true);
+        txtEmail.setEnabled(true);
         txtLogin.setEnabled(true);
         txtSenha.setEnabled(true);
         txtConfirmarSenha.setEnabled(true);
+        txtDataNascimento.setEnabled(true);
     }
 
     public void desabilitaCampos() {
-        txtId.setEnabled(true);
         txtNome.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtRg.setEnabled(false);
         txtCpf.setEnabled(false);
+        txtNome.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtCelular.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtCidade.setEnabled(false);
+        txtRua.setEnabled(false);
+        txtComplemento.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtEstado.setEnabled(false);
+        txtEmail.setEnabled(false);
         txtLogin.setEnabled(false);
         txtSenha.setEnabled(false);
         txtConfirmarSenha.setEnabled(false);
+        txtDataNascimento.setEnabled(false);
     }
 
     public void limparCampos() {
-        txtId.setText("");
-        txtNome.setText("");
+          txtNome.setText("");
+        txtTelefone.setText("");
+        txtRg.setText("");
         txtCpf.setText("");
+        txtNome.setText("");
+        txtBairro.setText("");
+        txtCelular.setText("");
+        txtCep.setText("");
+        txtCidade.setText("");
+        txtRua.setText("");
+        txtComplemento.setText("");
+        txtNumero.setText("");
+        txtEstado.setText("");
+        txtEmail.setText("");
         txtLogin.setText("");
         txtSenha.setText("");
         txtConfirmarSenha.setText("");
@@ -65,7 +102,32 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
 
     public frmAdicionarRecepcionista() {
         initComponents();
+        pegarResolucao();
     }
+    
+    public void limpaCampos(){
+        txtNome.setText("");
+        txtTelefone.setText("");
+        txtRg.setText("");
+        txtCpf.setText("");
+        txtNome.setText("");
+        txtBairro.setText("");
+        txtCelular.setText("");
+        txtCep.setText("");
+        txtCidade.setText("");
+        txtRua.setText("");
+        txtComplemento.setText("");
+        txtNumero.setText("");
+        txtEstado.setText("");
+        txtEmail.setText("");
+    }
+     private void pegarResolucao() {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension dimensao = t.getScreenSize();
+        this.setSize((dimensao.width + 5), (dimensao.height - 38));
+
+ }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -113,18 +175,16 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         nconsu3 = new javax.swing.JLabel();
         txtConfirmarSenha = new javax.swing.JTextField();
         nconsu4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLimparCampos = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         btnSair1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
         jLabel1.setText("Cadastrar Recepcionista");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(150, 20, 146, 15);
 
         btnSalvarRecepcionista.setBackground(new java.awt.Color(88, 138, 255));
         btnSalvarRecepcionista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -138,13 +198,9 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                 btnSalvarRecepcionistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarRecepcionista);
-        btnSalvarRecepcionista.setBounds(820, 420, 190, 50);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("E-mail:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 330, 80, 20);
 
         btnNovoRecepcionista.setBackground(new java.awt.Color(88, 138, 255));
         btnNovoRecepcionista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -157,8 +213,6 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                 btnNovoRecepcionistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovoRecepcionista);
-        btnNovoRecepcionista.setBounds(820, 360, 190, 50);
 
         btnPesquisarRecepcionista.setBackground(new java.awt.Color(88, 138, 255));
         btnPesquisarRecepcionista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -171,80 +225,60 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                 btnPesquisarRecepcionistaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPesquisarRecepcionista);
-        btnPesquisarRecepcionista.setBounds(820, 480, 190, 50);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("ID:");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 70, 24, 17);
-        getContentPane().add(txtId);
-        txtId.setBounds(50, 70, 50, 20);
 
         txtCpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtCpf);
-        txtCpf.setBounds(160, 170, 140, 30);
+        txtCpf.setEnabled(false);
 
         txtEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(20, 350, 280, 30);
+        txtEmail.setEnabled(false);
 
         txtDataNascimento.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtDataNascimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtDataNascimento);
-        txtDataNascimento.setBounds(20, 230, 280, 30);
+        txtDataNascimento.setEnabled(false);
 
         txtNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtNome);
-        txtNome.setBounds(20, 110, 280, 30);
+        txtNome.setEnabled(false);
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Nome:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 90, 60, 20);
 
         txtTelefone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtTelefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtTelefone);
-        txtTelefone.setBounds(20, 290, 130, 30);
+        txtTelefone.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("RG:");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 150, 30, 20);
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setText("CPF:");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(160, 150, 40, 20);
 
         txtRg.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtRg);
-        txtRg.setBounds(20, 170, 130, 30);
+        txtRg.setEnabled(false);
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setText("Data de nasc.:");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 210, 120, 20);
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel14.setText("Celular:");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(160, 270, 90, 20);
 
         txtCelular.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
-        getContentPane().add(txtCelular);
-        txtCelular.setBounds(160, 290, 140, 30);
+        txtCelular.setEnabled(false);
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel15.setText("Telefone:");
-        getContentPane().add(jLabel15);
-        jLabel15.setBounds(20, 270, 80, 20);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         jPanel1.setLayout(null);
@@ -255,6 +289,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jLabel16.setBounds(10, 10, 40, 20);
 
         txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtRua.setEnabled(false);
         txtRua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRuaActionPerformed(evt);
@@ -269,6 +304,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jLabel17.setBounds(10, 60, 80, 20);
 
         txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtNumero.setEnabled(false);
         jPanel1.add(txtNumero);
         txtNumero.setBounds(10, 80, 120, 20);
 
@@ -278,10 +314,12 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jLabel18.setBounds(140, 60, 120, 20);
 
         txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtComplemento.setEnabled(false);
         jPanel1.add(txtComplemento);
         txtComplemento.setBounds(140, 80, 120, 20);
 
         txtCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCep.setEnabled(false);
         jPanel1.add(txtCep);
         txtCep.setBounds(10, 130, 220, 20);
 
@@ -291,6 +329,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jLabel19.setBounds(10, 110, 120, 20);
 
         txtBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtBairro.setEnabled(false);
         jPanel1.add(txtBairro);
         txtBairro.setBounds(10, 170, 220, 20);
 
@@ -300,6 +339,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jLabel20.setBounds(10, 150, 120, 20);
 
         txtEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtEstado.setEnabled(false);
         jPanel1.add(txtEstado);
         txtEstado.setBounds(10, 210, 220, 20);
 
@@ -309,6 +349,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jLabel24.setBounds(10, 190, 120, 20);
 
         txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCidade.setEnabled(false);
         jPanel1.add(txtCidade);
         txtCidade.setBounds(10, 250, 220, 20);
 
@@ -317,9 +358,6 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         jPanel1.add(endwe);
         endwe.setBounds(10, 230, 120, 20);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 390, 280, 280);
-
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações de Login"));
 
         nconsu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -327,15 +365,18 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
 
         txtLogin.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtLogin.setEnabled(false);
 
         txtSenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtSenha.setEnabled(false);
 
         nconsu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         nconsu3.setText("Senha:");
 
         txtConfirmarSenha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtConfirmarSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtConfirmarSenha.setEnabled(false);
 
         nconsu4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         nconsu4.setText("Confirmar senha:");
@@ -372,17 +413,17 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                 .addGap(0, 49, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(430, 360, 260, 208);
-
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
-        jButton1.setText("Limpar Campos");
-        jButton1.setBorder(null);
-        getContentPane().add(jButton1);
-        jButton1.setBounds(820, 540, 190, 50);
+        btnLimparCampos.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
+        btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorder(null);
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
+            }
+        });
 
         btnSair.setBackground(new java.awt.Color(51, 255, 255));
         btnSair.setForeground(new java.awt.Color(255, 255, 255));
@@ -394,8 +435,6 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(850, 50, 120, 40);
 
         btnSair1.setBackground(new java.awt.Color(88, 138, 255));
         btnSair1.setForeground(new java.awt.Color(255, 255, 255));
@@ -406,8 +445,124 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                 btnSair1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair1);
-        btnSair1.setBounds(730, 50, 100, 40);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(640, 640, 640)
+                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel10)
+                .addGap(8, 8, 8)
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(160, 160, 160)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(230, 230, 230)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNovoRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvarRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNovoRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnSalvarRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnPesquisarRecepcionista, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
@@ -450,9 +605,6 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     private void btnNovoRecepcionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoRecepcionistaActionPerformed
         limparCampos();
         habilitaCampos();
-        btnNovoRecepcionista.setEnabled(false);
-        btnSalvarRecepcionista.setEnabled(true);
-        btnPesquisarRecepcionista.setEnabled(false);
     }//GEN-LAST:event_btnNovoRecepcionistaActionPerformed
 
     private void btnPesquisarRecepcionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarRecepcionistaActionPerformed
@@ -487,6 +639,14 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSair1ActionPerformed
+
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        limpaCampos();
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
+
+    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
+        
+    }//GEN-LAST:event_txtNomeKeyPressed
 
     /**
      * @param args the command line arguments
@@ -524,13 +684,13 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoRecepcionista;
     private javax.swing.JButton btnPesquisarRecepcionista;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarRecepcionista;
     private javax.swing.JLabel endwe;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
