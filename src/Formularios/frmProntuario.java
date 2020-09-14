@@ -5,17 +5,36 @@
  */
 package Formularios;
 
+import Classes.Dentista;
+import Classes.DentistaDAO;
+import Classes.Paciente;
+import Classes.PacienteDAO;
+import Classes.Prontuario;
+import Classes.ProntuarioDAO;
+import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author a.pereira
  */
 public class frmProntuario extends javax.swing.JFrame {
-
+        Color azulPadrao = new Color(88, 138, 255);
     /**
      * Creates new form frmProntuario
      */
     public frmProntuario() {
         initComponents();
+        
+        //define a cor do cabeçalho da tabela
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(azulPadrao);
+
+        for (int i = 0; i < tblProntuario.getModel().getColumnCount(); i++) {
+            tblProntuario.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+}
     }
 
     /**
@@ -27,21 +46,398 @@ public class frmProntuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtPesquisaProntuario = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblProntuario = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtProntuario1 = new javax.swing.JTextArea();
+        btnEditarPront = new javax.swing.JButton();
+        btnSalvarpront = new javax.swing.JButton();
+        btnPesquisarPacienteNovo = new javax.swing.JButton();
+        btnSair1 = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        btnSalvarEdicaoPront = new javax.swing.JButton();
+        btnAdicionarPront = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel4.setText("Selecione o paciente: ");
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel5.setText("PRONTUÁRIOS");
+
+        txtPesquisaProntuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtPesquisaProntuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaProntuarioActionPerformed(evt);
+            }
+        });
+        txtPesquisaProntuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisaProntuarioKeyPressed(evt);
+            }
+        });
+
+        tblProntuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome"
+            }
+        ));
+        jScrollPane1.setViewportView(tblProntuario);
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel6.setText("Pesquisar Paciente:");
+
+        txtProntuario1.setColumns(20);
+        txtProntuario1.setForeground(new java.awt.Color(51, 102, 255));
+        txtProntuario1.setRows(5);
+        txtProntuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Prontuário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        txtProntuario1.setEnabled(false);
+        txtProntuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtProntuario1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txtProntuario1);
+
+        btnEditarPront.setBackground(new java.awt.Color(88, 138, 255));
+        btnEditarPront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEditarPront.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarPront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
+        btnEditarPront.setText("Editar");
+        btnEditarPront.setBorder(null);
+        btnEditarPront.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarProntMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarProntMouseExited(evt);
+            }
+        });
+        btnEditarPront.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarProntActionPerformed(evt);
+            }
+        });
+
+        btnSalvarpront.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarpront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSalvarpront.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarpront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/incluir.png"))); // NOI18N
+        btnSalvarpront.setText("Salvar");
+        btnSalvarpront.setBorder(null);
+        btnSalvarpront.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarprontMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarprontMouseExited(evt);
+            }
+        });
+        btnSalvarpront.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarprontActionPerformed(evt);
+            }
+        });
+
+        btnPesquisarPacienteNovo.setBackground(new java.awt.Color(88, 138, 255));
+        btnPesquisarPacienteNovo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnPesquisarPacienteNovo.setForeground(new java.awt.Color(255, 255, 255));
+        btnPesquisarPacienteNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/pesquisar.png"))); // NOI18N
+        btnPesquisarPacienteNovo.setText("Pesquisar");
+        btnPesquisarPacienteNovo.setBorder(null);
+        btnPesquisarPacienteNovo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPesquisarPacienteNovoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPesquisarPacienteNovoMouseExited(evt);
+            }
+        });
+        btnPesquisarPacienteNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarPacienteNovoActionPerformed(evt);
+            }
+        });
+
+        btnSair1.setBackground(new java.awt.Color(88, 138, 255));
+        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair1.setText("Zoom");
+        btnSair1.setBorder(null);
+        btnSair1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair1ActionPerformed(evt);
+            }
+        });
+
+        btnSair.setBackground(new java.awt.Color(51, 255, 255));
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnSair.setText("voltar");
+        btnSair.setBorder(null);
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
+        btnSalvarEdicaoPront.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarEdicaoPront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSalvarEdicaoPront.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarEdicaoPront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
+        btnSalvarEdicaoPront.setText("Salvar Edição");
+        btnSalvarEdicaoPront.setBorder(null);
+        btnSalvarEdicaoPront.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarEdicaoProntMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarEdicaoProntMouseExited(evt);
+            }
+        });
+        btnSalvarEdicaoPront.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarEdicaoProntActionPerformed(evt);
+            }
+        });
+
+        btnAdicionarPront.setBackground(new java.awt.Color(88, 138, 255));
+        btnAdicionarPront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAdicionarPront.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdicionarPront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
+        btnAdicionarPront.setText("Adicionar ");
+        btnAdicionarPront.setBorder(null);
+        btnAdicionarPront.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAdicionarProntMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAdicionarProntMouseExited(evt);
+            }
+        });
+        btnAdicionarPront.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarProntActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4)
+                    .addComponent(txtPesquisaProntuario)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE))
+                .addGap(99, 99, 99)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addComponent(btnEditarPront, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarEdicaoPront, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(395, 395, 395))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(btnPesquisarPacienteNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAdicionarPront, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSalvarpront, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(jLabel5)
+                    .addContainerGap(1049, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addComponent(jLabel6)
+                    .addContainerGap(1045, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(280, 280, 280)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSalvarpront, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdicionarPront, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPesquisarPacienteNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(txtPesquisaProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSalvarEdicaoPront, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEditarPront, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(2, 2, 2)))
+                .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(694, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(136, 136, 136)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(579, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtPesquisaProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaProntuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaProntuarioActionPerformed
+
+    private void txtPesquisaProntuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaProntuarioKeyPressed
+        //para pesquisar conforme o usuario digita uma letra
+        String nome = "%" +txtPesquisaProntuario.getText()+ "%";
+
+        PacienteDAO dao = new PacienteDAO();
+        List<Paciente> lista = dao.buscaPacientePorNome(nome);
+        DefaultTableModel dados = (DefaultTableModel) tblProntuario.getModel();
+        dados.setNumRows(0); //limpar
+
+        for(Paciente c: lista){
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome()
+            });
+        }
+    }//GEN-LAST:event_txtPesquisaProntuarioKeyPressed
+
+    private void btnEditarProntMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarProntMouseEntered
+        btnEditarPront.setBackground(Color.white);
+        btnEditarPront.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnEditarProntMouseEntered
+
+    private void btnEditarProntMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarProntMouseExited
+        btnEditarPront.setBackground(azulPadrao);
+        btnEditarPront.setForeground(Color.white);
+    }//GEN-LAST:event_btnEditarProntMouseExited
+
+    private void btnEditarProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProntActionPerformed
+            txtProntuario1.setEnabled(true);
+
+    }//GEN-LAST:event_btnEditarProntActionPerformed
+
+    private void btnPesquisarPacienteNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarPacienteNovoMouseEntered
+
+    private void btnPesquisarPacienteNovoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarPacienteNovoMouseExited
+
+    private void btnPesquisarPacienteNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoActionPerformed
+        frmEditarPaciente frmP = new frmEditarPaciente();
+        frmP.setVisible(true);
+    }//GEN-LAST:event_btnPesquisarPacienteNovoActionPerformed
+
+    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair1ActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnSalvarprontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarprontActionPerformed
+        txtProntuario1.setEnabled(true);
+         txtProntuario1.setEnabled(true);
+        int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        item = (int) tblProntuario.getModel().getValueAt(item, 0);
+        
+        Prontuario prontuario = new Prontuario(item, txtProntuario1.getText());
+        String resp = new ProntuarioDAO().gravarProntuario(prontuario);
+        
+    }//GEN-LAST:event_btnSalvarprontActionPerformed
+
+    private void btnSalvarprontMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarprontMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarprontMouseExited
+
+    private void btnSalvarprontMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarprontMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarprontMouseEntered
+
+    private void txtProntuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtProntuario1MouseClicked
+        
+        int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        item = (int) tblProntuario.getModel().getValueAt(item, 0);
+      
+        Prontuario p = new ProntuarioDAO().pesquisarProntuario(item);
+        txtProntuario1.setText(p.getDescricao());
+    }//GEN-LAST:event_txtProntuario1MouseClicked
+
+    private void btnSalvarEdicaoProntMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarEdicaoProntMouseEntered
+
+    private void btnSalvarEdicaoProntMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarEdicaoProntMouseExited
+
+    private void btnSalvarEdicaoProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntActionPerformed
+        int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        item = (int) tblProntuario.getModel().getValueAt(item, 0);
+        
+        Prontuario prontuario = new Prontuario(item, txtProntuario1.getText());
+        String resp = new ProntuarioDAO().editarProntuario(prontuario);
+    }//GEN-LAST:event_btnSalvarEdicaoProntActionPerformed
+
+    private void btnAdicionarProntMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarProntMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarProntMouseEntered
+
+    private void btnAdicionarProntMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarProntMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarProntMouseExited
+
+    private void btnAdicionarProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProntActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarProntActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +475,20 @@ public class frmProntuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionarPront;
+    private javax.swing.JButton btnEditarPront;
+    private javax.swing.JButton btnPesquisarPacienteNovo;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSair1;
+    private javax.swing.JButton btnSalvarEdicaoPront;
+    private javax.swing.JButton btnSalvarpront;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblProntuario;
+    private javax.swing.JTextField txtPesquisaProntuario;
+    private javax.swing.JTextArea txtProntuario1;
     // End of variables declaration//GEN-END:variables
 }
