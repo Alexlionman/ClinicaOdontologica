@@ -105,7 +105,7 @@ private void changeComponentColors(Component comp) {
         jLabel2.setForeground(new java.awt.Color(102, 153, 255));
         jLabel2.setText("Olá, bem vindo!");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(690, 240, 250, 40);
+        jLabel2.setBounds(690, 210, 250, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/foto-de-perfil.png"))); // NOI18N
         getContentPane().add(jLabel3);
