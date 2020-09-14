@@ -97,7 +97,7 @@ private void changeComponentColors(Component comp) {
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(102, 153, 255));
-        lblUsuario.setText("CHIFRUDINHO");
+        lblUsuario.setText("CHIFRUDINHOs");
         getContentPane().add(lblUsuario);
         lblUsuario.setBounds(680, 290, 250, 40);
 
