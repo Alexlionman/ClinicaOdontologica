@@ -14,6 +14,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmAgendaGeral extends javax.swing.JFrame {
+    
+    
+    
+    
+    private void habilitaCampos(){
+    txtDataConsulta.setEnabled(true);
+    txtHorarioConsulta.setEnabled(true);
+    txtValorConsulta.setEnabled(true);
+    }
 
     private void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tblAgenda.getModel();
@@ -54,10 +63,8 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgenda = new javax.swing.JTable();
-        btnExcluirConsulta = new javax.swing.JButton();
         txtPesquisaDentista2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        btnEditarConsulta = new javax.swing.JButton();
         btnNovaConsulta2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -72,6 +79,9 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         txtNomeDentista = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtIdConsulta = new javax.swing.JLabel();
+        btnSalvarEdicaoConsulta = new javax.swing.JButton();
+        btnExcluirConsulta1 = new javax.swing.JButton();
+        btnExcluirConsulta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -124,20 +134,6 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(50, 160, 790, 380);
 
-        btnExcluirConsulta.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnExcluirConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluirConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
-        btnExcluirConsulta.setText("Excluir consulta");
-        btnExcluirConsulta.setBorder(null);
-        btnExcluirConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirConsultaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExcluirConsulta);
-        btnExcluirConsulta.setBounds(910, 400, 170, 60);
-
         txtPesquisaDentista2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtPesquisaDentista2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,20 +152,6 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jLabel5.setText("Pesquisar Dentista:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(80, 90, 150, 17);
-
-        btnEditarConsulta.setBackground(new java.awt.Color(88, 138, 255));
-        btnEditarConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnEditarConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
-        btnEditarConsulta.setText("Salvar Edição");
-        btnEditarConsulta.setBorder(null);
-        btnEditarConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarConsultaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEditarConsulta);
-        btnEditarConsulta.setBounds(910, 330, 170, 60);
 
         btnNovaConsulta2.setBackground(new java.awt.Color(88, 138, 255));
         btnNovaConsulta2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -222,6 +204,30 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         txtIdConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtIdConsulta.setForeground(new java.awt.Color(0, 153, 204));
 
+        btnSalvarEdicaoConsulta.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarEdicaoConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSalvarEdicaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarEdicaoConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
+        btnSalvarEdicaoConsulta.setText("Salvar Edição");
+        btnSalvarEdicaoConsulta.setBorder(null);
+        btnSalvarEdicaoConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarEdicaoConsultaActionPerformed(evt);
+            }
+        });
+
+        btnExcluirConsulta1.setBackground(new java.awt.Color(88, 138, 255));
+        btnExcluirConsulta1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExcluirConsulta1.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirConsulta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
+        btnExcluirConsulta1.setText("Editar");
+        btnExcluirConsulta1.setBorder(null);
+        btnExcluirConsulta1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirConsulta1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -243,12 +249,10 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                                     .addComponent(txtDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txtNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(190, 190, 190)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(190, 190, 190)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
@@ -260,40 +264,69 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHorarioConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnSalvarEdicaoConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnExcluirConsulta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtHorarioConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtHorarioConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                        .addComponent(txtIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(txtDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNomeDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(txtDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(btnExcluirConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvarEdicaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
                 .addGap(19, 19, 19))
         );
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(50, 550, 800, 150);
+
+        btnExcluirConsulta.setBackground(new java.awt.Color(255, 102, 102));
+        btnExcluirConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExcluirConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
+        btnExcluirConsulta.setText("Excluir consulta");
+        btnExcluirConsulta.setBorder(null);
+        btnExcluirConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirConsultaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluirConsulta);
+        btnExcluirConsulta.setBounds(910, 340, 170, 50);
 
         setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
@@ -374,21 +407,25 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     
     }//GEN-LAST:event_txtPesquisaDentista2KeyPressed
 
-    private void btnEditarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsultaActionPerformed
-        Consulta consulta=new Consulta(txtDataConsulta.getText(), txtHorarioConsulta.getText(), Float.parseFloat(txtValorConsulta.getText()));
+    private void btnSalvarEdicaoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoConsultaActionPerformed
+        Consulta consulta=new Consulta(Integer.parseInt(txtIdConsulta.getText()),txtDataConsulta.getText(), txtHorarioConsulta.getText(), Float.parseFloat(txtValorConsulta.getText()));
         String resp = new ConsultaDAO().editarConsulta(consulta);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(null, "Dentista Alterado com sucesso.");
+                        JOptionPane.showMessageDialog(null, "Consulta Alterada com sucesso.");
                     } else {
                         JOptionPane.showMessageDialog(null, resp);
                     }
-    }//GEN-LAST:event_btnEditarConsultaActionPerformed
+    }//GEN-LAST:event_btnSalvarEdicaoConsultaActionPerformed
 
     private void btnNovaConsulta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaConsulta2ActionPerformed
         frmAdicionarConsulta frame = new frmAdicionarConsulta();
         frame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnNovaConsulta2ActionPerformed
+
+    private void btnExcluirConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConsulta1ActionPerformed
+        habilitaCampos();
+    }//GEN-LAST:event_btnExcluirConsulta1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,9 +463,10 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditarConsulta;
     private javax.swing.JButton btnExcluirConsulta;
+    private javax.swing.JButton btnExcluirConsulta1;
     private javax.swing.JButton btnNovaConsulta2;
+    private javax.swing.JButton btnSalvarEdicaoConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

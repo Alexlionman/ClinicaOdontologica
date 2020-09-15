@@ -74,23 +74,26 @@ public class ConsultaDAO {
      
      
      
-//        public String editarConsulta(Consulta dentista) {
-//        String resp = "";
-//        try {
-//            Connection con = Conecta.getConexao();
-//            PreparedStatement pstm;
-//            pstm = con.prepareStatement("UPDATE consulta set dataConsulta = ?, hora = ?, valor = ?");
-//            String sql = ;
-//            
-//            stmt.executeUpdate(sql);
-//            stmt.close();
-//            con.close();
-//            resp = "OK";
-//        } catch (Exception e) {
-//            resp = e.toString();
-//        }
-//        return resp;
-//    }
+        public String editarConsulta(Consulta consulta) {
+        String resp = "";
+        try {
+            Connection con = Conecta.getConexao();
+            PreparedStatement pstm;
+            pstm = con.prepareStatement("UPDATE consulta set dataConsulta = ?, hora = ?, valor = ? where id = ? ");
+            pstm.setString(1,consulta.getDataConsulta());
+            pstm.setString(2,consulta.getHoraConsulta());
+            pstm.setString(3,String.valueOf(consulta.getValorConsulta()));
+            pstm.setString(4,String.valueOf(consulta.getIdConsulta()));
+            
+            pstm.executeUpdate();
+            pstm.close();
+            con.close();
+            resp = "OK";
+        } catch (Exception e) {
+            resp = e.toString();
+        }
+        return resp;
+    }
 
     
 }

@@ -33,6 +33,14 @@ public class Consulta {
         this.horaConsulta = horaConsulta;
         this.valorConsulta = valorConsulta;
     }
+
+    public Consulta(int idConsulta, String dataConsulta, String horaConsulta, float valorConsulta) {
+        this.idConsulta = idConsulta;
+        this.dataConsulta = dataConsulta;
+        this.horaConsulta = horaConsulta;
+        this.valorConsulta = valorConsulta;
+    }
+    
     
     
     
