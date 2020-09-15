@@ -1,9 +1,14 @@
 package Formularios;
 
 import Classes.Conecta;
+import Classes.Consulta;
+import Classes.ConsultaDAO;
+import Classes.Dentista;
+import Classes.DentistaDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,11 +22,12 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             Connection con = Conecta.getConexao();
             PreparedStatement pstm;
             ResultSet rs;
-            pstm = con.prepareStatement("SELECT dataConsulta,hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
+            pstm = con.prepareStatement("SELECT id,dataConsulta,hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
                                        +"WHERE C.pacienteId = P.id AND C.dentistaId = D.id ORDER BY dataConsulta,hora");
             rs = pstm.executeQuery();
             while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
                 modelo.addRow(new Object[]{
+                    rs.getInt("id"),
                     rs.getString("dataConsulta"),
                     rs.getString("hora"),
                     rs.getString("D.nome"),
@@ -48,37 +54,46 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgenda = new javax.swing.JTable();
-        btnNovaConsulta = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnExcluirConsulta = new javax.swing.JButton();
+        txtPesquisaDentista2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        btnEditarConsulta = new javax.swing.JButton();
+        btnNovaConsulta2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txtDataConsulta = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtHorarioConsulta = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtValorConsulta = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtNomePaciente = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtNomeDentista = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtIdConsulta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Agenda Geral");
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel1.setText("AGENDA GERAL");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 30, 92, 17);
+        jLabel1.setBounds(80, 37, 240, 40);
 
         tblAgenda.setBorder(new javax.swing.border.MatteBorder(null));
         tblAgenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Data ", "Horário", "Dentista", "Paciente", "Valor"
+                "ID", "Data ", "Horário", "Dentista", "Paciente", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -107,50 +122,273 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 70, 530, 210);
+        jScrollPane1.setBounds(50, 160, 790, 380);
 
-        btnNovaConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnNovaConsulta.png"))); // NOI18N
-        btnNovaConsulta.setText(" Nova Consulta");
-        btnNovaConsulta.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluirConsulta.setBackground(new java.awt.Color(255, 102, 102));
+        btnExcluirConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExcluirConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
+        btnExcluirConsulta.setText("Excluir consulta");
+        btnExcluirConsulta.setBorder(null);
+        btnExcluirConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovaConsultaActionPerformed(evt);
+                btnExcluirConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovaConsulta);
-        btnNovaConsulta.setBounds(560, 220, 160, 60);
+        getContentPane().add(btnExcluirConsulta);
+        btnExcluirConsulta.setBounds(910, 400, 170, 60);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconeAgendaGeral.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(300, 10, 50, 50);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
-        jButton2.setText("Sair");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        txtPesquisaDentista2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtPesquisaDentista2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                txtPesquisaDentista2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(560, 10, 160, 40);
+        txtPesquisaDentista2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisaDentista2KeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtPesquisaDentista2);
+        txtPesquisaDentista2.setBounds(80, 110, 480, 20);
 
-        setSize(new java.awt.Dimension(750, 328));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Pesquisar Dentista:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(80, 90, 150, 17);
+
+        btnEditarConsulta.setBackground(new java.awt.Color(88, 138, 255));
+        btnEditarConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEditarConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
+        btnEditarConsulta.setText("Salvar Edição");
+        btnEditarConsulta.setBorder(null);
+        btnEditarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarConsultaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditarConsulta);
+        btnEditarConsulta.setBounds(910, 330, 170, 60);
+
+        btnNovaConsulta2.setBackground(new java.awt.Color(88, 138, 255));
+        btnNovaConsulta2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnNovaConsulta2.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovaConsulta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        btnNovaConsulta2.setText("Agendar Consulta");
+        btnNovaConsulta2.setBorder(null);
+        btnNovaConsulta2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaConsulta2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNovaConsulta2);
+        btnNovaConsulta2.setBounds(910, 260, 170, 60);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta Selecionada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setText("Id Consulta:");
+
+        txtDataConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setText("Data agendada:");
+
+        txtHorarioConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setText("Horário:");
+
+        txtValorConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel11.setText("Valor:");
+
+        txtNomePaciente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtNomePaciente.setEnabled(false);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel12.setText("Nome do paciente:");
+        jLabel12.setEnabled(false);
+
+        txtNomeDentista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtNomeDentista.setEnabled(false);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setText("Nome do dentista:");
+        jLabel13.setEnabled(false);
+
+        txtIdConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtIdConsulta.setForeground(new java.awt.Color(0, 153, 204));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(txtIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(190, 190, 190)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(190, 190, 190)
+                                    .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(txtNomeDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHorarioConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(157, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHorarioConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(txtDataConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomeDentista, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(50, 550, 800, 150);
+
+        setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaConsultaActionPerformed
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_btnNovaConsultaActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnExcluirConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConsultaActionPerformed
+        int item = tblAgenda.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        item = (int) tblAgenda.getModel().getValueAt(item, 0);
+        String c  = new ConsultaDAO().excluirConsulta(item);
+        
+    }//GEN-LAST:event_btnExcluirConsultaActionPerformed
 
     private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
-        // TODO add your handling code here:
+         int item = tblAgenda.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        String itemString = (String) tblAgenda.getModel().getValueAt(item, 0).toString();
+        
+
+        DefaultTableModel modelo = (DefaultTableModel) tblAgenda.getModel();
+        modelo.setNumRows(0);
+        try {
+            Connection con = Conecta.getConexao();
+            PreparedStatement pstm;
+            ResultSet rs;
+            pstm = con.prepareStatement("SELECT id, dataConsulta,hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
+                                       +"WHERE C.id = ? ");
+            pstm.setString(1, itemString);
+            rs = pstm.executeQuery();
+            
+            txtIdConsulta.setText(rs.getString("id"));
+            txtDataConsulta.setText(rs.getString("dataConsulta"));
+            txtNomeDentista.setText(rs.getString("D.nome"));
+            txtNomePaciente.setText(rs.getString("P.nome"));
+            txtHorarioConsulta.setText(rs.getString("hora"));
+            txtValorConsulta.setText(rs.getString("valor"));
+            
+            pstm.close();
+            con.close();
+            rs.close();
+        } catch (Exception ErroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    
+                                               
     }//GEN-LAST:event_tblAgendaMouseClicked
+
+    private void txtPesquisaDentista2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaDentista2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaDentista2ActionPerformed
+
+    private void txtPesquisaDentista2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaDentista2KeyPressed
+        //para pesquisar conforme o usuario digita uma letra
+        String nome = "%" +txtPesquisaDentista2.getText()+ "%";
+
+        DefaultTableModel modelo = (DefaultTableModel) tblAgenda.getModel();
+        modelo.setNumRows(0);
+        try {
+            Connection con = Conecta.getConexao();
+            PreparedStatement pstm;
+            ResultSet rs;
+            pstm = con.prepareStatement("SELECT dataConsulta,hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
+                                       +"WHERE D.nome like ? ORDER BY dataConsulta,hora");
+            pstm.setString(1, nome);
+            rs = pstm.executeQuery();
+            while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
+                modelo.addRow(new Object[]{
+                    rs.getString("dataConsulta"),
+                    rs.getString("hora"),
+                    rs.getString("D.nome"),
+                    rs.getString("P.nome"),
+                    rs.getFloat("valor")});
+            }
+            pstm.close();
+            con.close();
+            rs.close();
+        } catch (Exception ErroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }//GEN-LAST:event_txtPesquisaDentista2KeyPressed
+
+    private void btnEditarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsultaActionPerformed
+        Consulta consulta=new Consulta(txtDataConsulta.getText(), txtHorarioConsulta.getText(), Float.parseFloat(txtValorConsulta.getText()));
+        String resp = new ConsultaDAO().editarConsulta(consulta);
+                    if (resp.equals("OK")) {
+                        JOptionPane.showMessageDialog(null, "Dentista Alterado com sucesso.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, resp);
+                    }
+    }//GEN-LAST:event_btnEditarConsultaActionPerformed
+
+    private void btnNovaConsulta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaConsulta2ActionPerformed
+        frmAdicionarConsulta frame = new frmAdicionarConsulta();
+        frame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNovaConsulta2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,11 +426,26 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNovaConsulta;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEditarConsulta;
+    private javax.swing.JButton btnExcluirConsulta;
+    private javax.swing.JButton btnNovaConsulta2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAgenda;
+    private javax.swing.JTextField txtDataConsulta;
+    private javax.swing.JTextField txtHorarioConsulta;
+    private javax.swing.JLabel txtIdConsulta;
+    private javax.swing.JTextField txtNomeDentista;
+    private javax.swing.JTextField txtNomePaciente;
+    private javax.swing.JTextField txtPesquisaDentista2;
+    private javax.swing.JTextField txtValorConsulta;
     // End of variables declaration//GEN-END:variables
 }

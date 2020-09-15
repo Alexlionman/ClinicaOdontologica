@@ -27,6 +27,70 @@ public class ConsultaDAO {
         }
         return resp;
     }
+    
+    
+    public String excluirConsulta(int  id) {
+        String resp = "";
+        try {
+            Connection con = Conecta.getConexao();
+            Statement stmt = con.createStatement();
+            String sql = "DELETE from consulta WHERE id =" + id;
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            con.close();
+            resp = "OK";
+        } catch (Exception e) {
+            resp = e.toString();
+        }
+        return resp;
+    }
+    
+    
+     public Consulta pesquisarConsulta(int id) {
+        Consulta d = new Consulta();
+        try {
+            Connection con = Conecta.getConexao();
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM consulta WHERE id=" + id;
+            stmt.executeQuery(sql);
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                d.setIdConsulta(rs.getInt("id"));
+                d.setDentistaId(rs.getInt("dentistaId"));
+                d.setHoraConsulta(rs.getString("horaa"));
+                d.setDataConsulta(rs.getString("dataConsulta"));
+                d.setValorConsulta(rs.getFloat("valorConsulta"));
+                d.setPacienteId(rs.getInt("pacienteID"));
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            d = null;
+        }
+        return d;
+    }
+     
+     
+     
+//        public String editarConsulta(Consulta dentista) {
+//        String resp = "";
+//        try {
+//            Connection con = Conecta.getConexao();
+//            PreparedStatement pstm;
+//            pstm = con.prepareStatement("UPDATE consulta set dataConsulta = ?, hora = ?, valor = ?");
+//            String sql = ;
+//            
+//            stmt.executeUpdate(sql);
+//            stmt.close();
+//            con.close();
+//            resp = "OK";
+//        } catch (Exception e) {
+//            resp = e.toString();
+//        }
+//        return resp;
+//    }
 
     
 }

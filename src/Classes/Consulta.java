@@ -17,6 +17,8 @@ public class Consulta {
         this.dentistaId = dentistaId;
         this.valorConsulta = valorConsulta;
     }
+    
+    
     public Consulta(int idConsulta, String dataConsulta, String horaConsulta, int pacienteId, int dentistaId, float valorConsulta) {
         this.idConsulta = idConsulta;
         this.dataConsulta = dataConsulta;
@@ -25,6 +27,18 @@ public class Consulta {
         this.dentistaId = dentistaId;
         this.valorConsulta = valorConsulta;
     }
+
+    public Consulta(String dataConsulta, String horaConsulta, float valorConsulta) {
+        this.dataConsulta = dataConsulta;
+        this.horaConsulta = horaConsulta;
+        this.valorConsulta = valorConsulta;
+    }
+    
+    
+    
+    
+    
+    
     //MÉTODOS DE ACESSO
     public int getIdConsulta() {
         return idConsulta;
