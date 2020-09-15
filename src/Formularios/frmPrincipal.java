@@ -55,7 +55,7 @@ private void changeComponentColors(Component comp) {
         
         LocalDateTime datetime = LocalDateTime.now();
         String horaFormatada = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(datetime);
-        labelData.setText(horaFormatada);
+        labelData.setText(" "+horaFormatada);
 
        
         
@@ -69,7 +69,10 @@ private void changeComponentColors(Component comp) {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         labelData = new javax.swing.JLabel();
+        btnZoom = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jmiPacientes = new javax.swing.JMenuItem();
         jmiDentistas = new javax.swing.JMenuItem();
@@ -79,9 +82,13 @@ private void changeComponentColors(Component comp) {
         jmiEstoque = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jmiSair = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -93,36 +100,58 @@ private void changeComponentColors(Component comp) {
                 formWindowActivated(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        lblUsuario.setForeground(new java.awt.Color(102, 153, 255));
-        lblUsuario.setText("CHIFRUDINHO");
-        getContentPane().add(lblUsuario);
-        lblUsuario.setBounds(680, 290, 250, 40);
+        lblUsuario.setForeground(new java.awt.Color(129, 167, 255));
+        lblUsuario.setText("CHIFRUDINHO!!");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel2.setForeground(new java.awt.Color(129, 167, 255));
         jLabel2.setText("Olá, bem vindo!");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(690, 210, 250, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/foto-de-perfil.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(740, 340, 110, 140);
 
-        labelData.setFont(new java.awt.Font("Swis721 Blk BT", 0, 10)); // NOI18N
-        labelData.setForeground(new java.awt.Color(0, 0, 102));
+        labelData.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        labelData.setForeground(new java.awt.Color(51, 51, 51));
+        labelData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelData.setText("Hora");
-        getContentPane().add(labelData);
-        labelData.setBounds(720, 490, 120, 20);
+
+        btnZoom.setBackground(new java.awt.Color(139, 215, 255));
+        btnZoom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
+
+        btnSair.setBackground(new java.awt.Color(255, 117, 117));
+        btnSair.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/sair.png"))); // NOI18N
+        btnSair.setText("Sair");
+        btnSair.setBorder(null);
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setBackground(new java.awt.Color(88, 138, 255));
         jMenuBar1.setForeground(new java.awt.Color(88, 138, 255));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(346, 50));
+
+        jMenu5.setText("         ");
+        jMenu5.setEnabled(false);
+        jMenuBar1.add(jMenu5);
 
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
-        jMenu1.setText("Consultório");
+        jMenu1.setText("Registrar");
+        jMenu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu1ActionPerformed(evt);
@@ -181,9 +210,14 @@ private void changeComponentColors(Component comp) {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu4.setText("         ");
+        jMenu4.setEnabled(false);
+        jMenuBar1.add(jMenu4);
+
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
         jMenu2.setText("Agendas");
+        jMenu2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jMenuItem1.setText("Consultas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -203,9 +237,24 @@ private void changeComponentColors(Component comp) {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu6.setText("         ");
+        jMenu6.setEnabled(false);
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu7.setText("Prontuários");
+        jMenu7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jMenuBar1.add(jMenu7);
+
+        jMenu8.setText("         ");
+        jMenu8.setEnabled(false);
+        jMenuBar1.add(jMenu8);
+
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
         jMenu3.setText("Ajuda");
+        jMenu3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         jMenuItem8.setText("Ajuda");
@@ -217,6 +266,45 @@ private void changeComponentColors(Component comp) {
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(188, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblUsuario)
+                        .addComponent(labelData, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(198, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -276,6 +364,14 @@ private void changeComponentColors(Component comp) {
         this.dispose();
     }//GEN-LAST:event_jmiSairActionPerformed
 
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+        
+    }//GEN-LAST:event_btnZoomActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
+
    
     /**
      * @param args the command line arguments
@@ -315,11 +411,18 @@ private void changeComponentColors(Component comp) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
