@@ -9,6 +9,7 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -37,6 +38,8 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         }
         return true;
     }
+     Color azulPadrao = new Color(88, 138, 255);
+     Color vermelhoPadrao = new Color(255,153,153);
 
     public void habilitaCampos() {
        txtNome.setEnabled(true);
@@ -193,6 +196,14 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         btnSalvarRecepcionista.setText("Salvar Recepcionista");
         btnSalvarRecepcionista.setBorder(null);
         btnSalvarRecepcionista.setEnabled(false);
+        btnSalvarRecepcionista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarRecepcionistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarRecepcionistaMouseExited(evt);
+            }
+        });
         btnSalvarRecepcionista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarRecepcionistaActionPerformed(evt);
@@ -205,9 +216,17 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         btnNovoRecepcionista.setBackground(new java.awt.Color(88, 138, 255));
         btnNovoRecepcionista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnNovoRecepcionista.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovoRecepcionista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconAdd.png"))); // NOI18N
+        btnNovoRecepcionista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoRecepcionista.setText("Novo Recepcionista");
         btnNovoRecepcionista.setBorder(null);
+        btnNovoRecepcionista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoRecepcionistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoRecepcionistaMouseExited(evt);
+            }
+        });
         btnNovoRecepcionista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoRecepcionistaActionPerformed(evt);
@@ -220,6 +239,14 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         btnPesquisarRecepcionista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/pesquisar.png"))); // NOI18N
         btnPesquisarRecepcionista.setText("Pesquisar");
         btnPesquisarRecepcionista.setBorder(null);
+        btnPesquisarRecepcionista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPesquisarRecepcionistaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPesquisarRecepcionistaMouseExited(evt);
+            }
+        });
         btnPesquisarRecepcionista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarRecepcionistaActionPerformed(evt);
@@ -419,6 +446,14 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
         btnLimparCampos.setBorder(null);
+        btnLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseExited(evt);
+            }
+        });
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
@@ -647,6 +682,48 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
         
     }//GEN-LAST:event_txtNomeKeyPressed
+ 
+      
+    
+    private void btnNovoRecepcionistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoRecepcionistaMouseEntered
+        btnNovoRecepcionista.setBackground(Color.white);
+       btnNovoRecepcionista.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnNovoRecepcionistaMouseEntered
+
+    private void btnNovoRecepcionistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoRecepcionistaMouseExited
+       btnNovoRecepcionista.setBackground(azulPadrao);
+        btnNovoRecepcionista.setForeground(Color.white);
+    }//GEN-LAST:event_btnNovoRecepcionistaMouseExited
+
+    private void btnSalvarRecepcionistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarRecepcionistaMouseEntered
+       btnSalvarRecepcionista.setBackground(Color.white);
+       btnSalvarRecepcionista.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSalvarRecepcionistaMouseEntered
+
+    private void btnSalvarRecepcionistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarRecepcionistaMouseExited
+        btnSalvarRecepcionista.setBackground(azulPadrao);
+        btnSalvarRecepcionista.setForeground(Color.white);
+    }//GEN-LAST:event_btnSalvarRecepcionistaMouseExited
+
+    private void btnPesquisarRecepcionistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarRecepcionistaMouseEntered
+        btnPesquisarRecepcionista.setBackground(Color.white);
+       btnPesquisarRecepcionista.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnPesquisarRecepcionistaMouseEntered
+
+    private void btnPesquisarRecepcionistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarRecepcionistaMouseExited
+       btnPesquisarRecepcionista.setBackground(azulPadrao);
+        btnPesquisarRecepcionista.setForeground(Color.white);
+    }//GEN-LAST:event_btnPesquisarRecepcionistaMouseExited
+
+    private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
+        btnLimparCampos.setBackground(Color.white);
+       btnLimparCampos.setForeground(Color.black);
+    }//GEN-LAST:event_btnLimparCamposMouseEntered
+
+    private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
+        btnLimparCampos.setBackground(vermelhoPadrao);
+       btnLimparCampos.setForeground(Color.white);
+    }//GEN-LAST:event_btnLimparCamposMouseExited
 
     /**
      * @param args the command line arguments

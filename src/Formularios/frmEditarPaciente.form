@@ -80,10 +80,11 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane2" min="-2" pref="617" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="571" max="-2" attributes="0"/>
+                      <EmptySpace pref="77" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnEditarPaciente" max="32767" attributes="0"/>
                           <Component id="btnLimparCampos" max="32767" attributes="0"/>
@@ -93,11 +94,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="txtPesquisaPaciente1" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="txtPesquisaPaciente1" min="-2" pref="344" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" pref="189" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                       <Component id="btnSair1" min="-2" pref="114" max="-2" attributes="0"/>
@@ -278,6 +278,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tblPaciente">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="eb" red="e2" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="0">
                 <Column editable="false" title="ID" type="java.lang.Object"/>
@@ -558,6 +561,9 @@
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="eb" red="e2" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Endere&#xe7;o">

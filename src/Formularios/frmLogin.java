@@ -276,15 +276,15 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
             
-        RecepcionistaDAO r = new RecepcionistaDAO();
-        if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
+//        RecepcionistaDAO r = new RecepcionistaDAO();
+//        if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
             frmPrincipal fp = new frmPrincipal();
             fp.setVisible(true);
-            fp.usuarioLogado(txtLogin.getText());
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
-        }
+//            fp.usuarioLogado(txtLogin.getText());
+//            this.dispose();
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
+//        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed

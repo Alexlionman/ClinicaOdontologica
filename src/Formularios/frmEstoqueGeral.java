@@ -83,7 +83,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblItens = new javax.swing.JTable();
-        btnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnAdicionarEstoque = new javax.swing.JButton();
         btnNovoProduto = new javax.swing.JButton();
@@ -134,16 +133,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 170, 430, 120);
 
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
-        btnSair.setText("Sair");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(460, 10, 150, 40);
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Produtos");
         getContentPane().add(jLabel1);
@@ -157,7 +146,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdicionarEstoque);
-        btnAdicionarEstoque.setBounds(460, 250, 150, 40);
+        btnAdicionarEstoque.setBounds(880, 450, 150, 40);
 
         btnNovoProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconAdd.png"))); // NOI18N
         btnNovoProduto.setText(" Novo Produto");
@@ -167,7 +156,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnNovoProduto);
-        btnNovoProduto.setBounds(460, 100, 150, 40);
+        btnNovoProduto.setBounds(290, 620, 150, 40);
 
         btnSalvarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
         btnSalvarProduto.setText("Salvar Produto");
@@ -178,7 +167,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarProduto);
-        btnSalvarProduto.setBounds(460, 150, 150, 40);
+        btnSalvarProduto.setBounds(460, 620, 150, 40);
 
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
@@ -189,7 +178,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(460, 200, 150, 40);
+        btnLimparCampos.setBounds(880, 400, 150, 40);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Estoque Geral");
@@ -198,29 +187,25 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
         jLabel3.setText("Fabricante:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 100, 60, 14);
+        jLabel3.setBounds(30, 100, 60, 13);
 
         jLabel4.setText("Produto:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 60, 50, 14);
+        jLabel4.setBounds(30, 60, 50, 13);
 
         txtFabricante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtFabricante.setEnabled(false);
         getContentPane().add(txtFabricante);
-        txtFabricante.setBounds(90, 100, 290, 16);
+        txtFabricante.setBounds(90, 100, 290, 15);
 
         txtProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtProduto.setEnabled(false);
         getContentPane().add(txtProduto);
-        txtProduto.setBounds(80, 60, 300, 16);
+        txtProduto.setBounds(80, 60, 300, 15);
 
-        setSize(new java.awt.Dimension(634, 350));
+        setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnAdicionarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarEstoqueActionPerformed
         frmAdicionarItemEstoque frm = new frmAdicionarItemEstoque();
@@ -301,7 +286,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarEstoque;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoProduto;
-    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvarProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

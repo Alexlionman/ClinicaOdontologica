@@ -5,6 +5,7 @@ import Classes.Consulta;
 import Classes.ConsultaDAO;
 import Classes.Dentista;
 import Classes.DentistaDAO;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class frmAgendaGeral extends javax.swing.JFrame {
-    
+    Color azulClaro = new Color(226, 235, 255);
     
     
     
@@ -54,6 +55,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     public frmAgendaGeral() {
         initComponents();
         carregaTabela();
+         getContentPane().setBackground(azulClaro);
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +84,8 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         btnSalvarEdicaoConsulta = new javax.swing.JButton();
         btnExcluirConsulta1 = new javax.swing.JButton();
         btnExcluirConsulta = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        btnSair1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -173,16 +177,19 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jLabel8.setText("Id Consulta:");
 
         txtDataConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtDataConsulta.setEnabled(false);
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setText("Data agendada:");
 
         txtHorarioConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtHorarioConsulta.setEnabled(false);
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setText("Horário:");
 
         txtValorConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtValorConsulta.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Valor:");
@@ -328,14 +335,40 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         getContentPane().add(btnExcluirConsulta);
         btnExcluirConsulta.setBounds(910, 340, 170, 50);
 
+        btnSair.setBackground(new java.awt.Color(51, 255, 255));
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnSair.setText("voltar");
+        btnSair.setBorder(null);
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSair);
+        btnSair.setBounds(1060, 30, 100, 40);
+
+        btnSair1.setBackground(new java.awt.Color(88, 138, 255));
+        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair1.setText("Zoom");
+        btnSair1.setBorder(null);
+        btnSair1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSair1);
+        btnSair1.setBounds(940, 30, 90, 40);
+
         setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConsultaActionPerformed
         int item = tblAgenda.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
-        item = (int) tblAgenda.getModel().getValueAt(item, 0);
+        item = (int) tblAgenda.getModel().getValueAt(item, 0); //essa coluna se refere ao ID na tabela
         String c  = new ConsultaDAO().excluirConsulta(item);
+        carregaTabela();
         
     }//GEN-LAST:event_btnExcluirConsultaActionPerformed
 
@@ -427,6 +460,14 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         habilitaCampos();
     }//GEN-LAST:event_btnExcluirConsulta1ActionPerformed
 
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -466,6 +507,8 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirConsulta;
     private javax.swing.JButton btnExcluirConsulta1;
     private javax.swing.JButton btnNovaConsulta2;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarEdicaoConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

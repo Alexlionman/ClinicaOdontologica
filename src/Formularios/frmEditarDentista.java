@@ -23,6 +23,7 @@ import javax.swing.text.PlainDocument;
 
 public class frmEditarDentista extends javax.swing.JFrame {
        Color azulPadrao = new Color(88, 138, 255);
+        Color azulClaro = new Color(226, 235, 255);
 
     public String situacao = "";
 
@@ -100,6 +101,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
         initComponents();
         pegarResolucao();
         carregaTabela();
+        getContentPane().setBackground(azulClaro);
         //mudar a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(azulPadrao);
