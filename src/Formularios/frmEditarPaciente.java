@@ -92,16 +92,16 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         }
     }
     
-    private void pegarResolucao() {
+    /*private void pegarResolucao() {
         Toolkit t = Toolkit.getDefaultToolkit();
         Dimension dimensao = t.getScreenSize();
         this.setSize((dimensao.width + 5), (dimensao.height - 38));
 
- }
+ }*/
 
     public frmEditarPaciente() {
         initComponents();
-        pegarResolucao();
+        //pegarResolucao();
         carregaTabela();
          getContentPane().setBackground(azulClaro);
         //muda a cor do cabeçalho da tabela
@@ -166,38 +166,62 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         txtPesquisaPaciente1 = new javax.swing.JTextField();
         txtId = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jmiPacientes = new javax.swing.JMenuItem();
+        jmiDentistas = new javax.swing.JMenuItem();
+        jmiRecepcionistas = new javax.swing.JMenuItem();
+        jmiConsultas = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jmiEstoque = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jmiSair = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
+        setMaximumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(0, 0));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Informações do paciente");
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel4.setText("INFORMAÇÕES DO PACIENTE");
 
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtNome.setPreferredSize(new java.awt.Dimension(0, 20));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Pesquisar Paciente:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("ID:*");
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setText("ID:");
 
         txtTelefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtTelefone.setPreferredSize(new java.awt.Dimension(0, 20));
         txtTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefoneActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Nome:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("RG:");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("CPF:");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Data de Nasc:*");
 
         tblPaciente.setBackground(new java.awt.Color(226, 235, 255));
@@ -310,6 +334,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpf.setPreferredSize(new java.awt.Dimension(0, 20));
 
         txtData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         try {
@@ -317,6 +342,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtData.setPreferredSize(new java.awt.Dimension(0, 20));
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataActionPerformed(evt);
@@ -329,26 +355,29 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtRg.setPreferredSize(new java.awt.Dimension(0, 20));
         txtRg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRgActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Celular:");
 
         txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCelular.setPreferredSize(new java.awt.Dimension(0, 20));
         txtCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCelularActionPerformed(evt);
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("E-mail:");
 
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtEmail.setPreferredSize(new java.awt.Dimension(0, 20));
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -367,69 +396,76 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(226, 235, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         jPanel1.setLayout(null);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel14.setText("Rua:");
         jPanel1.add(jLabel14);
         jLabel14.setBounds(10, 10, 40, 20);
 
         txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtRua.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtRua);
         txtRua.setBounds(10, 30, 270, 20);
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel15.setText("Numero:");
         jPanel1.add(jLabel15);
         jLabel15.setBounds(10, 60, 80, 20);
 
         txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtNumero.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtNumero);
         txtNumero.setBounds(10, 80, 120, 20);
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel16.setText("Complemento:");
         jPanel1.add(jLabel16);
         jLabel16.setBounds(140, 60, 120, 20);
 
         txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtComplemento.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtComplemento);
         txtComplemento.setBounds(140, 80, 120, 20);
 
         txtCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCep.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtCep);
         txtCep.setBounds(10, 130, 220, 20);
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel19.setText("CEP:");
         jPanel1.add(jLabel19);
         jLabel19.setBounds(10, 110, 120, 20);
 
         txtBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtBairro.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtBairro);
         txtBairro.setBounds(10, 170, 220, 20);
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel20.setText("Bairro:");
         jPanel1.add(jLabel20);
         jLabel20.setBounds(10, 150, 120, 20);
 
         txtEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtEstado.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtEstado);
         txtEstado.setBounds(10, 210, 220, 20);
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel24.setText("Estado:");
         jPanel1.add(jLabel24);
         jLabel24.setBounds(10, 190, 120, 20);
 
         txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCidade.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtCidade);
         txtCidade.setBounds(10, 250, 220, 20);
 
-        endwe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        endwe.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         endwe.setText("Cidade:");
         jPanel1.add(endwe);
         endwe.setBounds(10, 230, 120, 20);
@@ -444,10 +480,11 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel18.setText("Telefone:");
 
         txtPesquisaPaciente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtPesquisaPaciente1.setPreferredSize(new java.awt.Dimension(0, 20));
         txtPesquisaPaciente1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPesquisaPaciente1KeyPressed(evt);
@@ -456,15 +493,183 @@ public class frmEditarPaciente extends javax.swing.JFrame {
 
         txtId.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        jMenuBar1.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuBar1.setForeground(new java.awt.Color(129, 167, 255));
+        jMenuBar1.setBorderPainted(false);
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(346, 60));
+
+        jMenu5.setText("         ");
+        jMenu5.setEnabled(false);
+        jMenuBar1.add(jMenu5);
+
+        jMenu1.setBorder(null);
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
+        jMenu1.setText(" Registrar");
+        jMenu1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
+        jmiPacientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiPacientes.setForeground(java.awt.Color.white);
+        jmiPacientes.setText("Registrar Paciente");
+        jmiPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPacientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiPacientes);
+
+        jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
+        jmiDentistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiDentistas.setForeground(java.awt.Color.white);
+        jmiDentistas.setText("Registrar Dentista");
+        jmiDentistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiDentistasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiDentistas);
+
+        jmiRecepcionistas.setBackground(new java.awt.Color(129, 167, 255));
+        jmiRecepcionistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiRecepcionistas.setForeground(java.awt.Color.white);
+        jmiRecepcionistas.setText("Registrar Recepcionista");
+        jmiRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRecepcionistasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiRecepcionistas);
+
+        jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
+        jmiConsultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiConsultas.setForeground(java.awt.Color.white);
+        jmiConsultas.setText("Agendar Consulta");
+        jmiConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiConsultas);
+
+        jSeparator1.setForeground(java.awt.Color.white);
+        jMenu1.add(jSeparator1);
+
+        jmiEstoque.setBackground(new java.awt.Color(129, 167, 255));
+        jmiEstoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiEstoque.setForeground(java.awt.Color.white);
+        jmiEstoque.setText("Estoque");
+        jmiEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEstoqueActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiEstoque);
+
+        jSeparator4.setForeground(java.awt.Color.white);
+        jMenu1.add(jSeparator4);
+
+        jmiSair.setBackground(new java.awt.Color(129, 167, 255));
+        jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiSair.setForeground(java.awt.Color.white);
+        jmiSair.setText("Sair");
+        jmiSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSairActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiSair);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu4.setText("         ");
+        jMenu4.setEnabled(false);
+        jMenuBar1.add(jMenu4);
+
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        jMenu2.setText(" Agendas");
+        jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        jMenuItem1.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem1.setForeground(java.awt.Color.white);
+        jMenuItem1.setText("Consultas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem10.setForeground(java.awt.Color.white);
+        jMenuItem10.setText("Consultas por dentista");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem10);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu6.setText("         ");
+        jMenu6.setEnabled(false);
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu7.setText(" Prontuários");
+        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenuBar1.add(jMenu7);
+
+        jMenu8.setText("         ");
+        jMenu8.setEnabled(false);
+        jMenuBar1.add(jMenu8);
+
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
+        jMenu3.setText(" Ajuda");
+        jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
+        jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem8.setForeground(java.awt.Color.white);
+        jMenuItem8.setText("Ajuda");
+        jMenu3.add(jMenuItem8);
+
+        jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem9.setForeground(java.awt.Color.white);
+        jMenuItem9.setText("Sobre");
+        jMenu3.add(jMenuItem9);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,8 +680,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtCpf))
-                                        .addComponent(txtNome))
+                                            .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(15, 15, 15))
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
@@ -484,7 +689,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                                     .addGap(67, 67, 67)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtData)
+                                .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -494,18 +699,12 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(39, 39, 39)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEditarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLimparCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -551,44 +750,44 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(7, 7, 7)
-                        .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
 
-        setSize(new java.awt.Dimension(1226, 754));
+        setSize(new java.awt.Dimension(1226, 793));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -777,6 +976,57 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPesquisaPaciente1KeyPressed
 
+    private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
+        frmEditarPaciente frm = new frmEditarPaciente();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_jmiPacientesActionPerformed
+
+    private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
+        frmEditarDentista frm = new frmEditarDentista();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiDentistasActionPerformed
+
+    private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
+        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiRecepcionistasActionPerformed
+
+    private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
+        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiConsultasActionPerformed
+
+    private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
+        frmEstoqueGeral frm = new frmEstoqueGeral();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiEstoqueActionPerformed
+
+    private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jmiSairActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        frmAgendaGeral frm = new frmAgendaGeral();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        frmAgendaEspecifica frm = new frmAgendaEspecifica();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -837,8 +1087,29 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem jmiConsultas;
+    private javax.swing.JMenuItem jmiDentistas;
+    private javax.swing.JMenuItem jmiEstoque;
+    private javax.swing.JMenuItem jmiPacientes;
+    private javax.swing.JMenuItem jmiRecepcionistas;
+    private javax.swing.JMenuItem jmiSair;
     private javax.swing.JTable tblPaciente;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCelular;
