@@ -40,6 +40,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     }
      Color azulPadrao = new Color(88, 138, 255);
      Color vermelhoPadrao = new Color(255,153,153);
+      Color azulHover = new Color(192, 216, 235);
 
     public void habilitaCampos() {
        txtNome.setEnabled(true);

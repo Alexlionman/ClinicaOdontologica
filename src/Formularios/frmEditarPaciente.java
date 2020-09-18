@@ -17,6 +17,9 @@ import javax.swing.table.DefaultTableModel;
 public class frmEditarPaciente extends javax.swing.JFrame {
     Color azulPadrao = new Color(88, 138, 255);
     Color azulClaro = new Color(226, 235, 255);
+    Color azulHover = new Color(192, 216, 235);
+    Color vermelhoHover = new Color(242, 198, 196);
+    Color vermelhoPadraoExcluir = new Color(223,107,111);
     public String situacao = "";
 
     public boolean verificaPreenchimento() {
@@ -98,10 +101,18 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         this.setSize((dimensao.width + 5), (dimensao.height - 38));
 
  }*/
+    
+     private void pegarResolucao() {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension dimensao = t.getScreenSize();
+        this.setSize((dimensao.width + 5), (dimensao.height - 38));
+
+ }
 
     public frmEditarPaciente() {
         initComponents();
-        //pegarResolucao();
+        getContentPane().setBackground(azulClaro);
+        pegarResolucao();
         carregaTabela();
          getContentPane().setBackground(azulClaro);
         //muda a cor do cabeçalho da tabela
@@ -189,13 +200,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         setMaximumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(0, 0));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("INFORMAÇÕES DO PACIENTE");
 
-        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtNome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtNome.setPreferredSize(new java.awt.Dimension(0, 20));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -204,7 +216,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("ID:");
 
-        txtTelefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtTelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtTelefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtTelefone.setPreferredSize(new java.awt.Dimension(0, 20));
         txtTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,6 +297,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         btnExcluirPaciente.setText("Excluir Paciente");
         btnExcluirPaciente.setBorder(null);
         btnExcluirPaciente.setEnabled(false);
+        btnExcluirPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExcluirPacienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExcluirPacienteMouseExited(evt);
+            }
+        });
         btnExcluirPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirPacienteActionPerformed(evt);
@@ -297,6 +318,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         btnEditarPaciente.setText(" Editar Paciente");
         btnEditarPaciente.setBorder(null);
         btnEditarPaciente.setEnabled(false);
+        btnEditarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarPacienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarPacienteMouseExited(evt);
+            }
+        });
         btnEditarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarPacienteActionPerformed(evt);
@@ -309,6 +338,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         btnNovoPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoPaciente.setText(" Novo Paciente");
         btnNovoPaciente.setBorder(null);
+        btnNovoPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoPacienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoPacienteMouseExited(evt);
+            }
+        });
         btnNovoPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoPacienteActionPerformed(evt);
@@ -322,26 +359,37 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         btnSalvarPaciente.setText("Salvar Paciente");
         btnSalvarPaciente.setBorder(null);
         btnSalvarPaciente.setEnabled(false);
+        btnSalvarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarPacienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarPacienteMouseExited(evt);
+            }
+        });
         btnSalvarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarPacienteActionPerformed(evt);
             }
         });
 
-        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         try {
             txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtCpf.setPreferredSize(new java.awt.Dimension(0, 20));
+        txtCpf.setSelectionColor(new java.awt.Color(51, 51, 51));
 
-        txtData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         try {
             txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtData.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtData.setPreferredSize(new java.awt.Dimension(0, 20));
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,12 +397,13 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             }
         });
 
-        txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         try {
             txtRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtRg.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtRg.setPreferredSize(new java.awt.Dimension(0, 20));
         txtRg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,7 +414,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Celular:");
 
-        txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCelular.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtCelular.setPreferredSize(new java.awt.Dimension(0, 20));
         txtCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,7 +426,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("E-mail:");
 
-        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtEmail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtEmail.setPreferredSize(new java.awt.Dimension(0, 20));
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,13 +441,21 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
         btnLimparCampos.setBorder(null);
+        btnLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseExited(evt);
+            }
+        });
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(226, 235, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         jPanel1.setLayout(null);
 
@@ -405,7 +464,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jPanel1.add(jLabel14);
         jLabel14.setBounds(10, 10, 40, 20);
 
-        txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtRua.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtRua.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtRua);
         txtRua.setBounds(10, 30, 270, 20);
@@ -415,7 +475,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jPanel1.add(jLabel15);
         jLabel15.setBounds(10, 60, 80, 20);
 
-        txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtNumero.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtNumero.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtNumero);
         txtNumero.setBounds(10, 80, 120, 20);
@@ -425,12 +486,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jPanel1.add(jLabel16);
         jLabel16.setBounds(140, 60, 120, 20);
 
-        txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtComplemento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtComplemento.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtComplemento);
         txtComplemento.setBounds(140, 80, 120, 20);
 
-        txtCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtCep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtCep.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtCep);
         txtCep.setBounds(10, 130, 220, 20);
@@ -440,7 +503,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jPanel1.add(jLabel19);
         jLabel19.setBounds(10, 110, 120, 20);
 
-        txtBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtBairro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtBairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtBairro.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtBairro);
         txtBairro.setBounds(10, 170, 220, 20);
@@ -450,7 +514,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jPanel1.add(jLabel20);
         jLabel20.setBounds(10, 150, 120, 20);
 
-        txtEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtEstado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtEstado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtEstado.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtEstado);
         txtEstado.setBounds(10, 210, 220, 20);
@@ -460,7 +525,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jPanel1.add(jLabel24);
         jLabel24.setBounds(10, 190, 120, 20);
 
-        txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtCidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtCidade.setPreferredSize(new java.awt.Dimension(0, 20));
         jPanel1.add(txtCidade);
         txtCidade.setBounds(10, 250, 220, 20);
@@ -483,7 +549,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel18.setText("Telefone:");
 
-        txtPesquisaPaciente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
+        txtPesquisaPaciente1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtPesquisaPaciente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtPesquisaPaciente1.setPreferredSize(new java.awt.Dimension(0, 20));
         txtPesquisaPaciente1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -702,25 +769,29 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(39, 39, 39)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEditarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimparCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSalvarPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNovoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnExcluirPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(131, 131, 131)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(128, 128, 128))))
+                        .addGap(128, 128, 128))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnNovoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSalvarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEditarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnExcluirPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -779,10 +850,11 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addComponent(jLabel5)
-                        .addGap(7, 7, 7)
-                        .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33))
         );
@@ -1026,6 +1098,56 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void btnNovoPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoPacienteMouseEntered
+       btnNovoPaciente.setBackground(Color.white);
+       btnNovoPaciente.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnNovoPacienteMouseEntered
+
+    private void btnNovoPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoPacienteMouseExited
+       btnNovoPaciente.setBackground(azulPadrao);
+        btnNovoPaciente.setForeground(Color.white);
+    }//GEN-LAST:event_btnNovoPacienteMouseExited
+
+    private void btnSalvarPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarPacienteMouseEntered
+        btnSalvarPaciente.setBackground(Color.white);
+       btnSalvarPaciente.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSalvarPacienteMouseEntered
+
+    private void btnSalvarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarPacienteMouseExited
+        btnSalvarPaciente.setBackground(azulPadrao);
+        btnSalvarPaciente.setForeground(Color.white);
+    }//GEN-LAST:event_btnSalvarPacienteMouseExited
+
+    private void btnEditarPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarPacienteMouseEntered
+        btnEditarPaciente.setBackground(Color.white);
+       btnEditarPaciente.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnEditarPacienteMouseEntered
+
+    private void btnEditarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarPacienteMouseExited
+        btnEditarPaciente.setBackground(azulPadrao);
+        btnEditarPaciente.setForeground(Color.white);
+    }//GEN-LAST:event_btnEditarPacienteMouseExited
+
+    private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
+         btnLimparCampos.setBackground(Color.white);
+       btnLimparCampos.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnLimparCamposMouseEntered
+
+    private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
+         btnLimparCampos.setBackground(azulPadrao);
+        btnLimparCampos.setForeground(Color.white);
+    }//GEN-LAST:event_btnLimparCamposMouseExited
+
+    private void btnExcluirPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirPacienteMouseEntered
+        btnExcluirPaciente.setBackground(vermelhoHover);
+       btnExcluirPaciente.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnExcluirPacienteMouseEntered
+
+    private void btnExcluirPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirPacienteMouseExited
+         btnExcluirPaciente.setBackground(vermelhoPadraoExcluir);
+        btnExcluirPaciente.setForeground(Color.white);
+    }//GEN-LAST:event_btnExcluirPacienteMouseExited
 
     /**
      * @param args the command line arguments

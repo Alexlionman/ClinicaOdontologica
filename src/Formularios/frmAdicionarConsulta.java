@@ -20,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmAdicionarConsulta extends javax.swing.JFrame {
  
-    Color azulPadrao = new Color(88, 138, 255);
-    Color azulClaro = new Color(226, 235, 255);
+    public Color azulPadrao = new Color(88, 138, 255);
+   public  Color azulClaro = new Color(226, 235, 255);
     private void limparCampos() {
         txtData.setText("");
         txtValor.setText("");
