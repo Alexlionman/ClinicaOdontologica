@@ -199,9 +199,9 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         setMaximumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(0, 0));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("INFORMAÇÕES DO PACIENTE");
