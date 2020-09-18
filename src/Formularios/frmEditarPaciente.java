@@ -211,7 +211,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         txtNome.setPreferredSize(new java.awt.Dimension(0, 20));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setText("Pesquisar Paciente:");
+        jLabel5.setText("Pesquisar Paciente:22");
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("ID:");
