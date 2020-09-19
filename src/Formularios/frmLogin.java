@@ -156,7 +156,7 @@ public class frmLogin extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel5.setForeground(new java.awt.Color(129, 167, 255));
         jLabel5.setText("Olá, seja bem vindo!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,7 +214,7 @@ public class frmLogin extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel5)
@@ -228,7 +228,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,15 +254,15 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
             
-       // RecepcionistaDAO r = new RecepcionistaDAO();
-        //if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
+        RecepcionistaDAO r = new RecepcionistaDAO();
+        if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
             frmPrincipal fp = new frmPrincipal();
             fp.setVisible(true);
-           // fp.usuarioLogado(txtLogin.getText());
+            fp.usuarioLogado(txtLogin.getText());
             this.dispose();
-        //} else {
-         //   JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
-       // }
+        } else {
+            JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
