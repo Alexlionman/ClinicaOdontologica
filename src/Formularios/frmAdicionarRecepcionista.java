@@ -641,6 +641,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     private void btnNovoRecepcionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoRecepcionistaActionPerformed
         limparCampos();
         habilitaCampos();
+        btnSalvarRecepcionista.setEnabled(true);
     }//GEN-LAST:event_btnNovoRecepcionistaActionPerformed
 
     private void btnPesquisarRecepcionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarRecepcionistaActionPerformed

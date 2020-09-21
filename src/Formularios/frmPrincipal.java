@@ -429,7 +429,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
-        this.dispose();
+
         frmEditarPaciente frm = new frmEditarPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);

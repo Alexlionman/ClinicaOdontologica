@@ -109,9 +109,7 @@ public class PacienteDAO {
                 p.setNascimento(rs.getString("nascimento"));
          
             }
-            rs.close();
-            stmt.close();
-            con.close();
+           
         }catch(Exception e){
         }
         return p;

@@ -15,7 +15,7 @@ public class RecepcionistaDAO {
         try {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO recepcionista(nome, rg, cpf, dataDeNascimento, telefone, celular, email, rua, numero, complemento, cep, bairo, estado, cidade, login, senha) "
+            String sql = "INSERT INTO recepcionista(nome, rg, cpf, dataDeNascimento, telefone, celular, email, rua, numero, complemento, cep, bairro, estado, cidade, login, senha) "
                     + "VALUES ('" + recepcionista.getNome() +"','" + recepcionista.getRg()+ "','" + recepcionista.getCpf()+ "','" + recepcionista.getDataDeNascimento()+ "', '" + recepcionista.getTelefone()+ "', '" + recepcionista.getCelular()+ "','"
                     + recepcionista.getEmail()+"','" + recepcionista.getRua()+"','" + recepcionista.getNumero()+"','" + recepcionista.getComplemento()+"','" + recepcionista.getCep()+
                     "','" + recepcionista.getBairro()+"','" + recepcionista.getEstado()+"', '" + recepcionista.getCidade()+"','" + recepcionista.getLogin()+"','" + recepcionista.getSenha()+"')";

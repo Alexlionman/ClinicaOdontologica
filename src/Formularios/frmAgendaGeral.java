@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -32,7 +33,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             Connection con = Conecta.getConexao();
             PreparedStatement pstm;
             ResultSet rs;
-            pstm = con.prepareStatement("SELECT id,dataConsulta,hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
+            pstm = con.prepareStatement("SELECT C.id, C.dataConsulta,C.hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
                                        +"WHERE C.pacienteId = P.id AND C.dentistaId = D.id ORDER BY dataConsulta,hora");
             rs = pstm.executeQuery();
             while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
@@ -107,7 +108,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -121,22 +122,28 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblAgenda);
         if (tblAgenda.getColumnModel().getColumnCount() > 0) {
-            tblAgenda.getColumnModel().getColumn(0).setMinWidth(75);
-            tblAgenda.getColumnModel().getColumn(0).setPreferredWidth(75);
-            tblAgenda.getColumnModel().getColumn(0).setMaxWidth(75);
-            tblAgenda.getColumnModel().getColumn(1).setMinWidth(55);
-            tblAgenda.getColumnModel().getColumn(1).setPreferredWidth(55);
-            tblAgenda.getColumnModel().getColumn(1).setMaxWidth(55);
-            tblAgenda.getColumnModel().getColumn(2).setMinWidth(170);
-            tblAgenda.getColumnModel().getColumn(2).setPreferredWidth(170);
-            tblAgenda.getColumnModel().getColumn(2).setMaxWidth(170);
-            tblAgenda.getColumnModel().getColumn(4).setMinWidth(50);
-            tblAgenda.getColumnModel().getColumn(4).setPreferredWidth(50);
-            tblAgenda.getColumnModel().getColumn(4).setMaxWidth(50);
+            tblAgenda.getColumnModel().getColumn(0).setMinWidth(40);
+            tblAgenda.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblAgenda.getColumnModel().getColumn(0).setMaxWidth(40);
+            tblAgenda.getColumnModel().getColumn(1).setMinWidth(80);
+            tblAgenda.getColumnModel().getColumn(1).setPreferredWidth(80);
+            tblAgenda.getColumnModel().getColumn(1).setMaxWidth(80);
+            tblAgenda.getColumnModel().getColumn(2).setMinWidth(80);
+            tblAgenda.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tblAgenda.getColumnModel().getColumn(2).setMaxWidth(80);
+            tblAgenda.getColumnModel().getColumn(3).setMinWidth(160);
+            tblAgenda.getColumnModel().getColumn(3).setPreferredWidth(160);
+            tblAgenda.getColumnModel().getColumn(3).setMaxWidth(160);
+            tblAgenda.getColumnModel().getColumn(4).setMinWidth(160);
+            tblAgenda.getColumnModel().getColumn(4).setPreferredWidth(160);
+            tblAgenda.getColumnModel().getColumn(4).setMaxWidth(160);
+            tblAgenda.getColumnModel().getColumn(5).setMinWidth(90);
+            tblAgenda.getColumnModel().getColumn(5).setPreferredWidth(90);
+            tblAgenda.getColumnModel().getColumn(5).setMaxWidth(90);
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 160, 790, 380);
+        jScrollPane1.setBounds(80, 140, 610, 380);
 
         txtPesquisaDentista2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtPesquisaDentista2.addActionListener(new java.awt.event.ActionListener() {
@@ -381,26 +388,28 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         modelo.setNumRows(0);
         try {
             Connection con = Conecta.getConexao();
-            PreparedStatement pstm;
-            ResultSet rs;
-            pstm = con.prepareStatement("SELECT id, dataConsulta,hora,P.nome,D.nome,valor FROM consulta C, dentista D,paciente P "
-                                       +"WHERE C.id = ? ");
-            pstm.setString(1, itemString);
-            rs = pstm.executeQuery();
+            Statement stmt=con.createStatement();
             
+            String sql = "SELECT C.id, C.dataConsulta, C.hora,P.nome,D.nome,C.valor FROM consulta C, dentista D,paciente P  WHERE C.id = "+ itemString;
+            stmt.execute(sql);
+            ResultSet rs = stmt.getResultSet();
+          
+            while(rs.next()){
             txtIdConsulta.setText(rs.getString("id"));
             txtDataConsulta.setText(rs.getString("dataConsulta"));
             txtNomeDentista.setText(rs.getString("D.nome"));
             txtNomePaciente.setText(rs.getString("P.nome"));
             txtHorarioConsulta.setText(rs.getString("hora"));
             txtValorConsulta.setText(rs.getString("valor"));
+            }
             
-            pstm.close();
+             rs.close();
+            stmt.close();
             con.close();
-            rs.close();
         } catch (Exception ErroSql) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
         }
+        carregaTabela();
     
                                                
     }//GEN-LAST:event_tblAgendaMouseClicked
