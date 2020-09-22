@@ -181,4 +181,82 @@ public class PacienteDAO {
         }
 
     }   
+     public List<Paciente> buscaPacientePorCpf(String cpf) {
+          //esse método é usado para buscar quando digitado uma letra no campo de texto de pesquisa
+        try {
+
+           
+            List<Paciente> lista = new ArrayList<>();
+
+            //pega tudo de clientes
+            String sql = "select * from paciente where cpf = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,cpf);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Paciente obj = new Paciente();
+
+                obj.setId(rs.getInt("id"));
+                obj.setNome(rs.getString("nome"));
+                obj.setRg(rs.getString("rg"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setEmail(rs.getString("email"));
+                obj.setTelefone(rs.getString("telefone"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCep(rs.getString("cep"));
+                obj.setRua(rs.getString("endereco"));
+                obj.setNascimento(rs.getString("nascimento"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setEstado(rs.getString("estado"));
+                obj.setNumero(rs.getString("numero"));
+
+                lista.add(obj);  //adiciona o objeto criado na lista
+            }
+
+            return lista;
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "Erro" + erro);
+            return null;
+        }
+
+    }   
+     
+     
+      public Paciente pesquisarPacientePorNome(String nome){
+        Paciente p=new Paciente();
+        try{
+            Connection con=Conecta.getConexao();
+            Statement stmt=con.createStatement();
+            String sql="SELECT * FROM paciente WHERE nome="+nome;
+            stmt.execute(sql);
+            ResultSet rs=stmt.getResultSet();
+            while(rs.next()){
+                p.setId(rs.getInt("id"));
+                p.setNome(rs.getString("nome"));
+                p.setRua(rs.getString("endereco"));
+                p.setNumero(rs.getString("numero"));
+                p.setComplemento(rs.getString("complemento"));
+                p.setCep(rs.getString("cep"));
+                p.setBairro(rs.getString("bairro"));
+                p.setEmail(rs.getString("email"));
+                p.setCelular(rs.getString("celular"));
+                p.setTelefone(rs.getString("telefone"));
+                p.setEstado(rs.getString("estado"));
+                p.setCidade(rs.getString("cidade"));
+                p.setCpf(rs.getString("cpf"));
+                p.setRg(rs.getString("rg"));
+                p.setNascimento(rs.getString("nascimento"));
+         
+            }
+           
+        }catch(Exception e){
+        }
+        return p;
+    }
 }
