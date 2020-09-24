@@ -65,6 +65,8 @@ public class RecepcionistaDAO {
         }
         return r;
     }
+    
+    
 
     public boolean loginRecepcionista(String login, String senha) {
         Connection con = Conecta.getConexao();

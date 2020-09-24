@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class DentistaDAO {
@@ -179,4 +181,26 @@ public class DentistaDAO {
         }
 
     }   
+    
+     public boolean loginDentista(String login, String senha) {
+        Connection con = Conecta.getConexao();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean check = false;
+        try {
+            stmt = con.prepareStatement("SELECT * FROM dentista WHERE login=? AND senha=?");
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                check = true;
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RecepcionistaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return check;
+    }
 }

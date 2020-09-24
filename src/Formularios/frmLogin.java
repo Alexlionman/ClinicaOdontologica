@@ -1,5 +1,6 @@
 package Formularios;
 
+import Classes.DentistaDAO;
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
 import java.awt.Color;
@@ -57,7 +58,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnEntrar.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/login.png"))); // NOI18N
-        btnEntrar.setText("Entrar");
+        btnEntrar.setText("Entrar ");
         btnEntrar.setBorder(null);
         btnEntrar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -126,7 +127,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(88, 138, 255));
-        jLabel12.setText("SEU,");
+        jLabel12.setText(" O SEU,");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/logo.png"))); // NOI18N
 
@@ -175,7 +176,7 @@ public class frmLogin extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))
@@ -188,28 +189,13 @@ public class frmLogin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,12 +245,32 @@ public class frmLogin extends javax.swing.JFrame {
             frmPrincipal fp = new frmPrincipal();
             fp.setVisible(true);
             fp.usuarioLogado(txtLogin.getText());
+            
             this.dispose();
-        } else {
+        } else{
+            DentistaDAO d = new DentistaDAO();
+            if (d.loginDentista(txtLogin.getText(), txtSenha.getText())) {
+            frmPrincipal fp = new frmPrincipal();
+            fp.setVisible(true);
+            fp.jmiPacientes.setEnabled(false);
+            fp.jmiDentistas.setEnabled(false);
+            fp.jmiRecepcionistas.setEnabled(false);
+            fp.jmiConsultas.setEnabled(false);
+            fp.btnRegistrarPaciente.setEnabled(false);
+            fp.btnAgendarConsulta.setEnabled(false);
+            
+            fp.usuarioLogado(txtLogin.getText());
+            
+            this.dispose();
+        }else {
             JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
-        }
+        
+        }}
+        
+                
+                
     }//GEN-LAST:event_btnEntrarActionPerformed
-
+        Color azulPadrao = new Color(129,167,255);
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
@@ -274,10 +280,12 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarFocusGained
 
     private void btnEntrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseEntered
-        btnEntrar.setForeground(Color.black);
+        btnEntrar.setBackground(Color.white);
+       btnEntrar.setForeground(azulPadrao);
     }//GEN-LAST:event_btnEntrarMouseEntered
 
     private void btnEntrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseExited
+         btnEntrar.setBackground(azulPadrao);
         btnEntrar.setForeground(Color.white);
     }//GEN-LAST:event_btnEntrarMouseExited
 

@@ -78,7 +78,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 modelo.addRow(new Object[]{
                     rs.getInt("id"),
                     rs.getString("nome"),
-                    rs.getString("convenio"),
+                    rs.getString("cro"),
                     rs.getInt("consultorio"),
                     rs.getFloat("valorConsulta"),});
             }
@@ -745,7 +745,8 @@ public class frmEditarDentista extends javax.swing.JFrame {
         int item = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblDentista.getModel().getValueAt(item, 0);
         Dentista d = new DentistaDAO().pesquisarDentista(item);
-        txtEmail.setText(d.getNome());
+        txtEmail.setText(d.getEmail());
+        txtNome1.setText(d.getNome());
         txtId.setText(d.getId() + "");
         txtNascimento.setText(d.getNascimento());
         txtEmail.setText(d.getConsultorio() + "");
@@ -812,7 +813,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private void btnSalvarDentistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDentistaActionPerformed
         if (verificaPreenchimento()) {
             if (situacao == "cadastro") {
-                Dentista dentista = new Dentista(txtEmail.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
+                Dentista dentista = new Dentista(txtNome1.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
                          txtCep.getText(), txtBairro.getText(), txtEstado.getText(),  txtCidade.getText(),
                         txtCro.getText(), txtEmail.getText(),txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
                 txtLogin.getText(), txtSenha.getText());
