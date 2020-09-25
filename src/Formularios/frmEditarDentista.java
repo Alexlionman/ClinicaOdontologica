@@ -42,25 +42,74 @@ public class frmEditarDentista extends javax.swing.JFrame {
         return true;
     }
     public void limparCampos() {
-        txtEmail.setText("");
-        txtEmail.setText("");
-        txtValorConsulta.setText("");
-        txtNascimento.setText("");
         txtId.setText("");
+        txtTelefone.setText("");
+        txtNome1.setText("");
+        txtCpf.setText("");
+        txtRg.setText("");
+        txtNascimento.setText("");
+        txtLogin.setText("");
+        txtSenha.setText("");
+        txtConfirmarSenha.setText("");
+        txtCro.setText("");
+        txtEstado.setText("");
+        txtRua.setText("");
+        txtNumeroConsultorio.setText("");
+        txtValorConsulta.setText("");
+        txtBairro.setText("");
+        txtComplemento.setText("");
+        txtNumero.setText("");
+        txtTelefone.setText("");
+        txtCelular.setText("");
+        txtCep.setText("");
+        txtEmail.setText("");
+        txtCidade.setText("");
     }
     public void habilitaCampos() {
+        txtTelefone.setEnabled(true);
+        txtNome1.setEnabled(true);
+        txtCpf.setEnabled(true);
+        txtRg.setEnabled(true);
         txtNascimento.setEnabled(true);
-        txtEmail.setEnabled(true);
-        txtEmail.setEnabled(true);
-       
+        txtLogin.setEnabled(true);
+        txtSenha.setEnabled(true);
+        txtConfirmarSenha.setEnabled(true);
+        txtCro.setEnabled(true);
+        txtEstado.setEnabled(true);
+        txtRua.setEnabled(true);
+        txtNumeroConsultorio.setEnabled(true);
         txtValorConsulta.setEnabled(true);
+        txtBairro.setEnabled(true);
+        txtComplemento.setEnabled(true);
+        txtNumero.setEnabled(true);
+        txtTelefone.setEnabled(true);
+        txtCelular.setEnabled(true);
+        txtCep.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtCidade.setEnabled(true);
     }
     public void desabilitaCampos() {
+        txtTelefone.setEnabled(false);
+        txtNome1.setEnabled(false);
+        txtCpf.setEnabled(false);
+        txtRg.setEnabled(false);
         txtNascimento.setEnabled(false);
-        txtEmail.setEnabled(false);
-        txtEmail.setEnabled(false);
-     
+        txtLogin.setEnabled(false);
+        txtSenha.setEnabled(false);
+        txtConfirmarSenha.setEnabled(false);
+        txtCro.setEnabled(false);
+        txtEstado.setEnabled(false);
+        txtRua.setEnabled(false);
+        txtNumeroConsultorio.setEnabled(false);
         txtValorConsulta.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtComplemento.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCelular.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtCidade.setEnabled(false);
     }
 
    
@@ -745,13 +794,29 @@ public class frmEditarDentista extends javax.swing.JFrame {
         int item = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblDentista.getModel().getValueAt(item, 0);
         Dentista d = new DentistaDAO().pesquisarDentista(item);
-        txtEmail.setText(d.getEmail());
-        txtNome1.setText(d.getNome());
-        txtId.setText(d.getId() + "");
-        txtNascimento.setText(d.getNascimento());
-        txtEmail.setText(d.getConsultorio() + "");
-        txtValorConsulta.setText(d.getValorConsulta() + "");
+        desabilitaCampos();
         
+        txtId.setText(d.getId()+"");
+        txtNome1.setText(d.getNome());
+        txtNascimento.setText(d.getNascimento());
+        txtNumeroConsultorio.setText(d.getConsultorio());
+        txtRg.setText(d.getRg());
+        txtCpf.setText(d.getCpf());
+        txtTelefone.setText(d.getTelefone());
+        txtCelular.setText(d.getCelular());
+        txtEmail.setText(d.getEmail());
+        txtComplemento.setText(d.getComplemento());
+        txtBairro.setText(d.getBairro());
+        txtCep.setText(d.getCep());
+        txtCidade.setText(d.getCidade());
+        txtLogin.setText(d.getLogin());
+        txtSenha.setText(d.getSenha());
+        txtConfirmarSenha.setText(d.getSenha());
+        txtValorConsulta.setText(d.getValorConsulta() + "");
+        txtCro.setText(d.getCro());
+        txtRua.setText(d.getEndereco());
+        txtEstado.setText(d.getEstado());
+        txtNumero.setText(d.getNumero());
 
         btnEditarDentista.setEnabled(true);
         btnExcluirDentista.setEnabled(true);
@@ -802,7 +867,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
         habilitaCampos();
         btnLimparCampos.setEnabled(true);
         btnSalvarDentista.setEnabled(true);
-        btnNovoDentista.setEnabled(false);
+        btnNovoDentista.setEnabled(true);
         btnEditarDentista.setEnabled(false);
         btnExcluirDentista.setEnabled(false);
         situacao = "cadastro";
@@ -813,9 +878,9 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private void btnSalvarDentistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDentistaActionPerformed
         if (verificaPreenchimento()) {
             if (situacao == "cadastro") {
-                Dentista dentista = new Dentista(txtNome1.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
+                Dentista dentista = new Dentista(txtNome1.getText(), txtRg.getText(), txtCpf.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
                          txtCep.getText(), txtBairro.getText(), txtEstado.getText(),  txtCidade.getText(),
-                        txtCro.getText(), txtEmail.getText(),txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
+                        txtCro.getText(), txtEmail.getText(), txtCelular.getText(), txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
                 txtLogin.getText(), txtSenha.getText());
                 if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtEmail.getText())) {
                     JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");
@@ -837,9 +902,9 @@ public class frmEditarDentista extends javax.swing.JFrame {
                     btnNovoDentista.setEnabled(true);
                 }
             } else if (situacao == "edicao") {
-                Dentista dentista=new Dentista(txtEmail.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
+                 Dentista dentista = new Dentista(txtNome1.getText(), txtRg.getText(), txtCpf.getText(), txtRua.getText(), txtRua.getText(), txtNumero.getText(), txtComplemento.getText(),
                          txtCep.getText(), txtBairro.getText(), txtEstado.getText(),  txtCidade.getText(),
-                        txtCro.getText(), txtEmail.getText(),txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
+                        txtCro.getText(), txtEmail.getText(), txtCelular.getText(), txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
                 txtLogin.getText(), txtSenha.getText());
                 if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtEmail.getText())) {
                     JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");

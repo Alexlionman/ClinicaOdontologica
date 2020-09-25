@@ -24,11 +24,11 @@ public class DentistaDAO {
         try {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
-            String sql = "INSERT INTO dentista (nome, endereco, logradouro, numero, complemento, cep, bairro, estado, cidade, cro, email, telefone, nascimento, consultorio, valorConsulta, "
+            String sql = "INSERT INTO dentista (nome, rg, cpf, endereco, logradouro, numero, complemento, cep, bairro, estado, cidade, cro, email, celular, telefone, nascimento, consultorio, valorConsulta, "
                     + "login, senha) ";
-            sql += "VALUES ('" + dentista.getNome() +"','" + dentista.getEndereco()+ "','" + dentista.getLogradouro()+ "','" + dentista.getNumero()+ "', '" + dentista.getComplemento()+ "', '" + dentista.getCep()+ "','"
+            sql += "VALUES ('" + dentista.getNome() + "','" + dentista.getRg()+"','" + dentista.getCpf()+"','" + dentista.getEndereco()+ "','" + dentista.getLogradouro()+ "','" + dentista.getNumero()+ "', '" + dentista.getComplemento()+ "', '" + dentista.getCep()+ "','"
                     + dentista.getBairro()+"','" + dentista.getEstado()+"','" + dentista.getCidade()+"','" + dentista.getCro()+"','" + dentista.getEmail()+
-                    "','" + dentista.getTelefone()+"','" + dentista.getNascimento()+"','" + dentista.getConsultorio()+"','" + dentista.getValorConsulta()+"','" + dentista.getLogin()+"','" + dentista.getSenha()+"')";
+                    "','" + dentista.getCelular()+"','" + dentista.getTelefone()+"','" + dentista.getNascimento()+"','" + dentista.getConsultorio()+"','" + dentista.getValorConsulta()+"','" + dentista.getLogin()+"','" + dentista.getSenha()+"')";
             stmt.executeUpdate(sql);
             stmt.close();
             con.close();
@@ -45,20 +45,23 @@ public class DentistaDAO {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
             String sql = "UPDATE dentista SET ='" + dentista.getNome() + "',"
-                    + " endereco='" + dentista.getNascimento() + "',"
-                    + " logradouro='" + dentista.getNascimento() + "',"
-                    + " numero='" + dentista.getNascimento() + "',"
-                    + " complemento='" + dentista.getNascimento() + "',"
-                    + " cep='" + dentista.getNascimento() + "',"
-                    + " bairro='" + dentista.getNascimento() + "',"
-                    + " estado='" + dentista.getNascimento() + "',"
-                    + " cidade='" + dentista.getNascimento() + "',"
-                    + " cro='" + dentista.getNascimento() + "',"
-                    + " email='" + dentista.getNascimento() + "',"
-                    + " telefone='" + dentista.getNascimento() + "',"
-                    + " nascimento='" + dentista.getNascimento() + "',"
-                    + " consultorio='" + dentista.getNascimento() + "',"
-                    + " valorConsulta='" + dentista.getConsultorio() + "',"
+                    + " rg='" + dentista.getRg() + "',"
+                    + " cpf='" + dentista.getCpf() + "',"
+                    + " endereco='" + dentista.getEndereco() + "',"
+                    + " logradouro='" + dentista.getLogradouro()+ "',"
+                    + " numero='" + dentista.getNumero() + "',"
+                    + " complemento='" + dentista.getComplemento()+ "',"
+                    + " cep='" + dentista.getCep() + "',"
+                    + " bairro='" + dentista.getBairro() + "',"
+                    + " estado='" + dentista.getEstado() + "',"
+                    + " cidade='" + dentista.getCidade() + "',"
+                    + " cro='" + dentista.getCro() + "',"
+                    + " email='" + dentista.getEmail() + "',"
+                    + " celular='" + dentista.getCelular() + "',"
+                    + " telefone='" + dentista.getTelefone() + "',"
+                    + " nascimento='" + dentista.getNascimento()+ "',"
+                    + " consultorio='" + dentista.getConsultorio()+ "',"
+                    + " valorConsulta='" + dentista.getValorConsulta()+ "',"
                     + " login='" + dentista.getValorConsulta() + "',"
                     + " senha='" + dentista.getSenha() + "'WHERE id='" + dentista.getId() + "'";
 
@@ -102,7 +105,23 @@ public class DentistaDAO {
                 d.setNome(rs.getString("nome"));
                 d.setNascimento(rs.getString("nascimento"));
                 d.setConsultorio(rs.getString("consultorio"));
-                d.setValorConsulta(rs.getString("valorConsulta"));
+                d.setRg(rs.getString("rg"));
+                d.setCpf(rs.getString("cpf"));
+                d.setTelefone(rs.getString("telefone"));
+                d.setCelular(rs.getString("celular"));
+                d.setEmail(rs.getString("email"));
+                d.setComplemento(rs.getString("complemento"));
+                d.setBairro(rs.getString("bairro"));
+                d.setCep(rs.getString("cep"));
+                d.setCidade(rs.getString("cidade"));
+                d.setLogin(rs.getString("login"));
+                d.setSenha(rs.getString("senha"));
+                d.setValorConsulta(rs.getString("valorConsulta")); 
+                d.setCro(rs.getString("cro"));
+                d.setEndereco(rs.getString("endereco"));
+                d.setEstado(rs.getString("estado"));
+                d.setNumero(rs.getString("numero"));
+                
             }
             rs.close();
             stmt.close();

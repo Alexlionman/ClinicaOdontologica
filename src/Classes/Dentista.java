@@ -2,6 +2,8 @@ package Classes;
 public class Dentista {
     private int id;
     private String nome;
+    private String rg;
+    private String cpf;
     private String endereco;
     private String logradouro;
     private String numero;
@@ -13,6 +15,7 @@ public class Dentista {
     private String cro;
     private String email;
     private String telefone;
+    private String celular;
     private String nascimento;
     private String consultorio;
     private String valorConsulta;
@@ -27,11 +30,30 @@ public class Dentista {
         this.id = id;
     } 
 
-    public Dentista(String nome, String endereco, String logradouro, String numero, String complemento, String cep, String bairro, String estado, String cidade, String cro, String email, String telefone, String nascimento, String consultorio, String valorConsulta, String login, String senha) {
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Dentista(String nome, String rg, String cpf, String endereco, String logradouro, String numero, String complemento, String cep, String bairro, String estado, String cidade, String cro, String email, String telefone, String celular, String nascimento, String consultorio, String valorConsulta, String login, String senha) {
         this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
         this.endereco = endereco;
         this.logradouro = logradouro;
         this.numero = numero;
+        this.celular = celular;
         this.complemento = complemento;
         this.cep = cep;
         this.bairro = bairro;
@@ -54,6 +76,14 @@ public class Dentista {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public String getNome() {
