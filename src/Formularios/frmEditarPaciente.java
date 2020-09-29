@@ -134,6 +134,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         //mudar a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(azulPadrao);
+        headerRenderer.setForeground(Color.WHITE);
         for (int i = 0; i < tblPaciente.getModel().getColumnCount(); i++) {
             tblPaciente.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
