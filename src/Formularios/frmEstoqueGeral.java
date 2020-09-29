@@ -66,6 +66,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         //Mudando a cor do fundo da tabela
         jScrollPane1.getViewport().setBackground(Color.WHITE);
+         getContentPane().setBackground(azulClaro);
         carregaTabela();
         //mudar a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
@@ -98,6 +99,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         txtProduto = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
         btnSair1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -263,6 +265,10 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                 btnSair1ActionPerformed(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel5.setText("Esta tela está em processo de desenvolvimento*");
 
         jMenuBar2.setBackground(new java.awt.Color(129, 167, 255));
         jMenuBar2.setForeground(new java.awt.Color(129, 167, 255));
@@ -442,7 +448,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -456,15 +462,20 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(43, 43, 43))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(359, 359, 359)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -663,17 +674,15 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -685,7 +694,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiConsultas;
     private javax.swing.JMenuItem jmiDentistas;
     private javax.swing.JMenuItem jmiEstoque;
-    private javax.swing.JMenuItem jmiPacientes;
     private javax.swing.JMenuItem jmiPacientes1;
     private javax.swing.JMenuItem jmiRecepcionistas;
     private javax.swing.JMenuItem jmiSair;

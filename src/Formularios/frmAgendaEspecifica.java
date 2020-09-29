@@ -18,7 +18,11 @@ import javax.swing.table.DefaultTableModel;
 public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     
-    Color azulPadrao = new Color(88, 138, 255);
+     Color azulPadrao = new Color(129,167,255);
+    Color azulClaro = new Color(226, 235, 255);
+    Color azulHover = new Color(192, 216, 235);
+    Color vermelhoHover = new Color(242, 198, 196);
+    Color vermelhoPadraoExcluir = new Color(223,107,111);
     
     
     private void carregaTabela() {
@@ -73,6 +77,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     public frmAgendaEspecifica() {
         initComponents();
         carregaTabela();
+         getContentPane().setBackground(azulClaro);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(azulPadrao);
         for (int i = 0; i < tblDentista.getModel().getColumnCount(); i++) {

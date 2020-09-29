@@ -5,11 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class RecepcionistaDAO {
-
+private Connection con;
     public String gravarRecepcionista(Recepcionista recepcionista) {
         String resp = "";
         try {
@@ -129,5 +132,66 @@ public class RecepcionistaDAO {
         }
         return resp;
     }
+    
+    public String excluirRecepcionista(Recepcionista p) {
+        String resp = "";
+        try {
+            Connection con = Conecta.getConexao();
+            Statement stmt = con.createStatement();
+            String sql = "DELETE from recepcionista WHERE id =" + p.getId();
+            stmt.executeUpdate(sql);
+            stmt.close();
+            con.close();
+            resp = "OK";
+        } catch (Exception e) {
+            resp = e.toString();
+        }
+        return resp;
+    }
+    
+    
+     public List<Recepcionista> buscaRecepcionistaPorNome(String nome) {
+          //esse método é usado para buscar quando digitado uma letra no campo de texto de pesquisa
+        try {
 
-}
+           
+            List<Recepcionista> lista = new ArrayList<>();
+
+            //pega tudo de clientes
+            String sql = "select * from recepcionista where nome like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1,nome);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Recepcionista obj = new Recepcionista();
+
+                obj.setId(rs.getInt("id"));
+                obj.setNome(rs.getString("nome"));
+                obj.setRg(rs.getString("rg"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setEmail(rs.getString("email"));
+                obj.setTelefone(rs.getString("telefone"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCep(rs.getString("cep"));
+                obj.setRua(rs.getString("endereco"));
+                obj.setDataDeNascimento(rs.getString("nascimento"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setEstado(rs.getString("estado"));
+                obj.setNumero(rs.getString("numero"));
+
+                lista.add(obj);  //adiciona o objeto criado na lista
+            }
+
+            return lista;
+
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "Erro" + erro);
+            return null;
+        }
+
+}}

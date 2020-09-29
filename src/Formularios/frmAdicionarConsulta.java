@@ -22,6 +22,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
  
     public Color azulPadrao = new Color(88, 138, 255);
    public  Color azulClaro = new Color(226, 235, 255);
+   Color vermelhoPadrao = new Color(255,153,153);
     private void limparCampos() {
         txtData.setText("");
         txtValor.setText("");
@@ -105,7 +106,6 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnAgendar = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDentista = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -116,13 +116,14 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         txtData = new javax.swing.JFormattedTextField();
         jcbHora = new javax.swing.JComboBox<>();
         txtValor = new javax.swing.JFormattedTextField();
-        btnLimparCampos = new javax.swing.JToggleButton();
         txtPesquisaDentista1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtPesquisaPaciente1 = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
         btnSair1 = new javax.swing.JButton();
+        btnAgendar = new javax.swing.JButton();
+        btnLimparCampos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -135,18 +136,6 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Valor da consulta:");
-
-        btnAgendar.setBackground(new java.awt.Color(88, 138, 255));
-        btnAgendar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAgendar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
-        btnAgendar.setText("Agendar Consulta");
-        btnAgendar.setBorder(null);
-        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgendarActionPerformed(evt);
-            }
-        });
 
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -212,18 +201,6 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        btnLimparCampos.setBackground(new java.awt.Color(88, 138, 255));
-        btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
-        btnLimparCampos.setText("Limpar Campos    ");
-        btnLimparCampos.setBorder(null);
-        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparCamposActionPerformed(evt);
-            }
-        });
-
         txtPesquisaDentista1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtPesquisaDentista1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,11 +239,52 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
 
         btnSair1.setBackground(new java.awt.Color(88, 138, 255));
         btnSair1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnSair1.setText("Zoom");
         btnSair1.setBorder(null);
         btnSair1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSair1ActionPerformed(evt);
+            }
+        });
+
+        btnAgendar.setBackground(new java.awt.Color(88, 138, 255));
+        btnAgendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgendar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        btnAgendar.setText("Agendar");
+        btnAgendar.setBorder(null);
+        btnAgendar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgendarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgendarMouseExited(evt);
+            }
+        });
+        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendarActionPerformed(evt);
+            }
+        });
+
+        btnLimparCampos.setBackground(new java.awt.Color(255, 153, 153));
+        btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
+        btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorder(null);
+        btnLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseExited(evt);
+            }
+        });
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
             }
         });
 
@@ -315,12 +333,14 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(220, 220, 220)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(91, 91, 91))))
+                            .addGap(481, 481, 481))))
                 .addContainerGap(63, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,39 +378,17 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbHora, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56))
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addComponent(btnAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         setSize(new java.awt.Dimension(1226, 754));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
-        if (verificaPreenchimento()) {
-            int itemD = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
-            int itemP = tblPaciente.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
-            Consulta consulta = new Consulta(txtData.getText(), jcbHora.getSelectedItem().toString(),
-                    Integer.parseInt(tblPaciente.getModel().getValueAt(itemP, 0).toString()),
-                    Integer.parseInt(tblDentista.getModel().getValueAt(itemD, 0).toString()),
-                    Float.parseFloat(txtValor.getText()));
-            String resp = new ConsultaDAO().gravarConsulta(consulta);
-            if (resp.equals("OK")) {
-                JOptionPane.showMessageDialog(rootPane, "Consulta agendada com sucesso");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, resp);
-            }
-            limparCampos();
-        }
-    }//GEN-LAST:event_btnAgendarActionPerformed
-
-    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
-        limparCampos();
-    }//GEN-LAST:event_btnLimparCamposActionPerformed
 
     private void txtPesquisaDentista1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaDentista1ActionPerformed
         // TODO add your handling code here:
@@ -440,6 +438,48 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSair1ActionPerformed
 
+    private void btnAgendarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarMouseEntered
+        btnAgendar.setBackground(Color.white);
+        btnAgendar.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnAgendarMouseEntered
+
+    private void btnAgendarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarMouseExited
+        btnAgendar.setBackground(azulPadrao);
+        btnAgendar.setForeground(Color.white);
+    }//GEN-LAST:event_btnAgendarMouseExited
+
+    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
+        if (verificaPreenchimento()) {
+            int itemD = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+            int itemP = tblPaciente.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+            Consulta consulta = new Consulta(txtData.getText(), jcbHora.getSelectedItem().toString(),
+                    Integer.parseInt(tblPaciente.getModel().getValueAt(itemP, 0).toString()),
+                    Integer.parseInt(tblDentista.getModel().getValueAt(itemD, 0).toString()),
+                    Float.parseFloat(txtValor.getText()));
+            String resp = new ConsultaDAO().gravarConsulta(consulta);
+            if (resp.equals("OK")) {
+                JOptionPane.showMessageDialog(rootPane, "Consulta agendada com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, resp);
+            }
+            limparCampos();
+        }
+    }//GEN-LAST:event_btnAgendarActionPerformed
+
+    private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
+        btnLimparCampos.setBackground(Color.white);
+        btnLimparCampos.setForeground(Color.black);
+    }//GEN-LAST:event_btnLimparCamposMouseEntered
+
+    private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
+        btnLimparCampos.setBackground(vermelhoPadrao);
+        btnLimparCampos.setForeground(Color.white);
+    }//GEN-LAST:event_btnLimparCamposMouseExited
+
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -476,8 +516,8 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnAgendar;
-    private javax.swing.JToggleButton btnLimparCampos;
+    private javax.swing.JButton btnAgendar;
+    private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSair1;
     private javax.swing.JLabel jLabel1;

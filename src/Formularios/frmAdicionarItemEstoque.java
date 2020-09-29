@@ -131,6 +131,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         btnSalvarProduto = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         txtValidade = new javax.swing.JFormattedTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -150,29 +151,29 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         txtQuantidade.setDocument(new campoNumerico());
         txtQuantidade.setEnabled(false);
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(340, 110, 110, 16);
+        txtQuantidade.setBounds(340, 110, 110, 15);
 
         txtPeso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPeso.setDocument(new campoNumerico());
         txtPeso.setEnabled(false);
         getContentPane().add(txtPeso);
-        txtPeso.setBounds(340, 140, 110, 16);
+        txtPeso.setBounds(340, 140, 110, 15);
 
         jLabel4.setText("Fabricante");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(117, 126, 51, 0);
+        jLabel4.setBounds(117, 126, 48, 0);
 
         jLabel5.setText("Qtde:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(300, 110, 40, 14);
+        jLabel5.setBounds(300, 110, 40, 13);
 
         jLabel6.setText("Peso:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(300, 140, 40, 14);
+        jLabel6.setBounds(300, 140, 40, 13);
 
         jLabel7.setText("Validade:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(300, 80, 60, 14);
+        jLabel7.setBounds(300, 80, 60, 13);
 
         tblItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -262,7 +263,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Estoque");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 0, 90, 30);
+        jLabel2.setBounds(280, 0, 90, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Central do estoque");
@@ -310,6 +311,12 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         txtValidade.setEnabled(false);
         getContentPane().add(txtValidade);
         txtValidade.setBounds(350, 80, 100, 20);
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel10.setText("Esta tela está em processo de desenvolvimento*");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(160, 30, 347, 17);
 
         setSize(new java.awt.Dimension(677, 359));
         setLocationRelativeTo(null);
@@ -406,6 +413,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvarProduto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
