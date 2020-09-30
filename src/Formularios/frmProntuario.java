@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Classes.Conecta;
 import Classes.Dentista;
 import Classes.DentistaDAO;
 import Classes.Paciente;
@@ -12,7 +13,10 @@ import Classes.PacienteDAO;
 import Classes.Prontuario;
 import Classes.ProntuarioDAO;
 import java.awt.Color;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,6 +31,8 @@ public class frmProntuario extends javax.swing.JFrame {
      */
     public frmProntuario() {
         initComponents();
+        carregaTabela();
+        lblId.setVisible(false);
         
         //define a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
@@ -61,6 +67,7 @@ public class frmProntuario extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnSalvarEdicaoPront = new javax.swing.JButton();
         btnAdicionarPront = new javax.swing.JButton();
+        lblId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +99,11 @@ public class frmProntuario extends javax.swing.JFrame {
                 "ID", "Nome"
             }
         ));
+        tblProntuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProntuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProntuario);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -231,6 +243,10 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
+        lblId.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        lblId.setForeground(new java.awt.Color(0, 51, 51));
+        lblId.setText("ID");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -238,7 +254,10 @@ public class frmProntuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPesquisaProntuario)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE))
                 .addGap(99, 99, 99)
@@ -301,7 +320,9 @@ public class frmProntuario extends javax.swing.JFrame {
                             .addGap(14, 14, 14)
                             .addComponent(txtPesquisaProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
@@ -330,6 +351,34 @@ public class frmProntuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisaProntuarioActionPerformed
 
+    private void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) tblProntuario.getModel();
+        modelo.setNumRows(0);
+        try {
+            java.sql.Connection con = Conecta.getConexao();
+            PreparedStatement pstm;
+            ResultSet rs;
+
+            pstm = con.prepareStatement("select * from paciente order by nome");
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
+                modelo.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nome")});
+            }
+            pstm.close();
+            con.close();
+            rs.close();
+        } catch (Exception ErroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
+    
+    
+    
     private void txtPesquisaProntuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaProntuarioKeyPressed
         //para pesquisar conforme o usuario digita uma letra
         String nome = "%" +txtPesquisaProntuario.getText()+ "%";
@@ -385,11 +434,12 @@ public class frmProntuario extends javax.swing.JFrame {
 
     private void btnSalvarprontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarprontActionPerformed
         txtProntuario1.setEnabled(true);
-         txtProntuario1.setEnabled(true);
+        txtProntuario1.setEnabled(true);
+        int valorIdDaLabel  = Integer.parseInt(lblId.getText()); //esse id vem da linha selecionada que é setadp no label invisivel
         int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblProntuario.getModel().getValueAt(item, 0);
         
-        Prontuario prontuario = new Prontuario(item, txtProntuario1.getText());
+        Prontuario prontuario = new Prontuario(valorIdDaLabel, txtProntuario1.getText());
         String resp = new ProntuarioDAO().gravarProntuario(prontuario);
         
     }//GEN-LAST:event_btnSalvarprontActionPerformed
@@ -407,6 +457,7 @@ public class frmProntuario extends javax.swing.JFrame {
         int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblProntuario.getModel().getValueAt(item, 0);
       
+      
         Prontuario p = new ProntuarioDAO().pesquisarProntuario(item);
         txtProntuario1.setText(p.getDescricao());
     }//GEN-LAST:event_txtProntuario1MouseClicked
@@ -422,8 +473,9 @@ public class frmProntuario extends javax.swing.JFrame {
     private void btnSalvarEdicaoProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntActionPerformed
         int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblProntuario.getModel().getValueAt(item, 0);
+        int valorIdDaLabel  = Integer.parseInt(lblId.getText()); //esse id vem da linha selecionada que é setado no label invisivel
         
-        Prontuario prontuario = new Prontuario(item, txtProntuario1.getText());
+        Prontuario prontuario = new Prontuario(valorIdDaLabel, txtProntuario1.getText());
         String resp = new ProntuarioDAO().editarProntuario(prontuario);
     }//GEN-LAST:event_btnSalvarEdicaoProntActionPerformed
 
@@ -436,8 +488,15 @@ public class frmProntuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarProntMouseExited
 
     private void btnAdicionarProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProntActionPerformed
-        // TODO add your handling code here:
+        txtProntuario1.setEnabled(true);
     }//GEN-LAST:event_btnAdicionarProntActionPerformed
+
+    private void tblProntuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProntuarioMouseClicked
+        int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        item = (int) tblProntuario.getModel().getValueAt(item, 0);
+        Paciente p = new PacienteDAO().pesquisarPaciente(item);
+        lblId.setText(p.getId() + ""); //esta setando no id para poder usalo quando for inserir um valor no prontuario do paciente
+    }//GEN-LAST:event_tblProntuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -487,6 +546,7 @@ public class frmProntuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblId;
     private javax.swing.JTable tblProntuario;
     private javax.swing.JTextField txtPesquisaProntuario;
     private javax.swing.JTextArea txtProntuario1;

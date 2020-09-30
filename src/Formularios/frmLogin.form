@@ -88,12 +88,8 @@
                       <Component id="txtSenha" min="-2" pref="480" max="-2" attributes="0"/>
                       <Component id="txtLogin" min="-2" pref="480" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="btnEntrar" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnEntrar" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -351,7 +347,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="8a" red="58" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Vers&#xe3;o ALPHA V:2020.09.3.0 "/>
+        <Property name="text" type="java.lang.String" value="Vers&#xe3;o ALPHA V:2020.10.3.0 "/>
       </Properties>
     </Component>
   </SubComponents>
