@@ -6,6 +6,11 @@ import Classes.PacienteDAO;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -21,7 +26,50 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     Color vermelhoHover = new Color(242, 198, 196);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
     public String situacao = "";
+    String logradouro;
+    String bairro;
+    String cidade;
+    String uf;
+    
+    public void buscarCep(String cep) 
+    {
+        String json;        
 
+        try {
+            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
+            URLConnection urlConnection = url.openConnection();
+            InputStream is = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            StringBuilder jsonSb = new StringBuilder();
+
+            br.lines().forEach(l -> jsonSb.append(l.trim()));
+            json = jsonSb.toString();
+            
+            // JOptionPane.showMessageDialog(null, json);
+            
+            json = json.replaceAll("[{},:]", "");
+            json = json.replaceAll("\"", "\n");                       
+            String array[] = new String[30];
+            array = json.split("\n");
+            
+            // JOptionPane.showMessageDialog(null, array);
+                             
+            logradouro = array[7];            
+            bairro = array[15];
+            cidade = array[19]; 
+            uf = array[23];
+            
+            txtRua.setText(logradouro);
+            txtBairro.setText(bairro);
+            txtCidade.setText(cidade);
+            txtEstado.setText(uf);
+            //JOptionPane.showMessageDialog(null, logradouro + " " + bairro + " " + cidade + " " + uf);
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public boolean verificaPreenchimento() {
         if (txtNome.getText().equals("") || 
                 txtEstado.getText().equals("") || 
@@ -526,6 +574,11 @@ public class frmEditarPaciente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCepKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -617,6 +670,11 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         txtPesquisaPaciente1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtPesquisaPaciente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtPesquisaPaciente1.setPreferredSize(new java.awt.Dimension(0, 20));
+        txtPesquisaPaciente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisaPaciente1ActionPerformed(evt);
+            }
+        });
         txtPesquisaPaciente1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPesquisaPaciente1KeyPressed(evt);
@@ -848,7 +906,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -862,7 +920,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
-                                .addGap(0, 132, Short.MAX_VALUE))
+                                .addGap(0, 124, Short.MAX_VALUE))
                             .addComponent(jScrollPane2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1246,6 +1304,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtPesquisaPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPaciente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisaPaciente1ActionPerformed
+
+    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
+        buscarCep(txtCep.getText());
+    }//GEN-LAST:event_txtCepKeyPressed
 
     /**
      * @param args the command line arguments

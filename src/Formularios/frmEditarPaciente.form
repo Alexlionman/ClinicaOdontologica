@@ -365,7 +365,7 @@
                           <Component id="txtEmail" alignment="0" min="-2" pref="343" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                       <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
@@ -383,7 +383,7 @@
                                   <Component id="txtPesquisaPaciente1" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="132" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
                       </Group>
@@ -1167,6 +1167,9 @@
               <Font name="Arial" size="14" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCepKeyPressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -1217,6 +1220,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPesquisaPaciente1ActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesquisaPaciente1KeyPressed"/>
       </Events>
     </Component>
