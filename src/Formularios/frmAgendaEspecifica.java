@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class frmAgendaEspecifica extends javax.swing.JFrame {
 
-    
-     Color azulPadrao = new Color(129,167,255);
-    Color azulClaro = new Color(226, 235, 255);
+    Color azulPadrao = new Color(129,167,255);
+    Color azulFundo = new Color(226, 235, 255);
+    Color azulClaro = new Color (139, 215, 255);
     Color azulHover = new Color(192, 216, 235);
     Color vermelhoHover = new Color(242, 198, 196);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
@@ -104,6 +104,13 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtPesquisaDentista2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        btnSair1 = new javax.swing.JButton();
+        btnAgendaGeral = new javax.swing.JButton();
+        btnAgendarConsulta = new javax.swing.JButton();
+        btnEditarConsulta = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -128,7 +135,6 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(null);
 
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,13 +156,8 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
             tblDentista.getColumnModel().getColumn(0).setMaxWidth(40);
         }
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(50, 250, 330, 330);
-
         jLabel1.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel1.setText("Procedimentos agendados para esse(a) dentista");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(470, 210, 254, 30);
 
         tblAgenda.setBorder(new javax.swing.border.MatteBorder(null));
         tblAgenda.setModel(new javax.swing.table.DefaultTableModel(
@@ -181,20 +182,27 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tblAgenda);
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(460, 250, 730, 330);
+        if (tblAgenda.getColumnModel().getColumnCount() > 0) {
+            tblAgenda.getColumnModel().getColumn(0).setMinWidth(90);
+            tblAgenda.getColumnModel().getColumn(0).setPreferredWidth(90);
+            tblAgenda.getColumnModel().getColumn(0).setMaxWidth(90);
+            tblAgenda.getColumnModel().getColumn(1).setMinWidth(90);
+            tblAgenda.getColumnModel().getColumn(1).setPreferredWidth(90);
+            tblAgenda.getColumnModel().getColumn(1).setMaxWidth(90);
+            tblAgenda.getColumnModel().getColumn(2).setMinWidth(200);
+            tblAgenda.getColumnModel().getColumn(2).setPreferredWidth(200);
+            tblAgenda.getColumnModel().getColumn(2).setMaxWidth(200);
+            tblAgenda.getColumnModel().getColumn(3).setMinWidth(90);
+            tblAgenda.getColumnModel().getColumn(3).setPreferredWidth(90);
+            tblAgenda.getColumnModel().getColumn(3).setMaxWidth(90);
+        }
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 255));
         jLabel4.setText("AGENDA ESPECIFICA");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(60, 100, 213, 22);
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel2.setText("Selecione Um Dentista");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 210, 130, 30);
 
         txtPesquisaDentista2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtPesquisaDentista2.addActionListener(new java.awt.event.ActionListener() {
@@ -207,13 +215,135 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
                 txtPesquisaDentista2KeyPressed(evt);
             }
         });
-        getContentPane().add(txtPesquisaDentista2);
-        txtPesquisaDentista2.setBounds(60, 160, 310, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Pesquisar Dentista:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(60, 140, 150, 17);
+
+        btnSair.setBackground(new java.awt.Color(102, 204, 255));
+        btnSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnSair.setText(" Voltar");
+        btnSair.setActionCommand("Voltar");
+        btnSair.setBorder(null);
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSairMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSairMouseExited(evt);
+            }
+        });
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+
+        btnSair1.setBackground(new java.awt.Color(102, 204, 255));
+        btnSair1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnSair1.setText(" Voltar");
+        btnSair1.setActionCommand("Voltar");
+        btnSair1.setBorder(null);
+        btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSair1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSair1MouseExited(evt);
+            }
+        });
+        btnSair1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair1ActionPerformed(evt);
+            }
+        });
+
+        btnAgendaGeral.setBackground(new java.awt.Color(129, 167, 255));
+        btnAgendaGeral.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgendaGeral.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgendaGeral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        btnAgendaGeral.setText("Agenda Geral");
+        btnAgendaGeral.setBorder(null);
+        btnAgendaGeral.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgendaGeralMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgendaGeralMouseExited(evt);
+            }
+        });
+        btnAgendaGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendaGeralActionPerformed(evt);
+            }
+        });
+
+        btnAgendarConsulta.setBackground(new java.awt.Color(129, 167, 255));
+        btnAgendarConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgendarConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgendarConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/incluir.png"))); // NOI18N
+        btnAgendarConsulta.setText("Agendar Consulta");
+        btnAgendarConsulta.setBorder(null);
+        btnAgendarConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgendarConsultaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgendarConsultaMouseExited(evt);
+            }
+        });
+        btnAgendarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendarConsultaActionPerformed(evt);
+            }
+        });
+
+        btnEditarConsulta.setBackground(new java.awt.Color(129, 167, 255));
+        btnEditarConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEditarConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
+        btnEditarConsulta.setText("Editar Consulta");
+        btnEditarConsulta.setBorder(null);
+        btnEditarConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarConsultaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarConsultaMouseExited(evt);
+            }
+        });
+        btnEditarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarConsultaActionPerformed(evt);
+            }
+        });
+
+        btnZoom.setBackground(new java.awt.Color(129, 167, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnZoomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnZoomMouseExited(evt);
+            }
+        });
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setBackground(new java.awt.Color(129, 167, 255));
         jMenuBar1.setForeground(new java.awt.Color(129, 167, 255));
@@ -378,7 +508,86 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1226, 754));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(587, 587, 587)
+                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txtPesquisaDentista2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgendaGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel4))
+                    .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel5)
+                .addGap(3, 3, 3)
+                .addComponent(txtPesquisaDentista2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnAgendaGeral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnEditarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+
+        setSize(new java.awt.Dimension(1224, 767));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -477,6 +686,94 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
+    private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
+        btnSair.setBackground(Color.white);
+        btnSair.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSairMouseEntered
+
+    private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
+        btnSair.setBackground(azulClaro);
+        btnSair.setForeground(Color.white);
+    }//GEN-LAST:event_btnSairMouseExited
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair1MouseEntered
+
+    private void btnSair1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair1MouseExited
+
+    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSair1ActionPerformed
+
+    private void btnAgendaGeralMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendaGeralMouseEntered
+        btnAgendaGeral.setBackground(Color.white);
+        btnAgendaGeral.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnAgendaGeralMouseEntered
+
+    private void btnAgendaGeralMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendaGeralMouseExited
+        btnAgendaGeral.setBackground(azulPadrao);
+        btnAgendaGeral.setForeground(Color.white);
+    }//GEN-LAST:event_btnAgendaGeralMouseExited
+
+    private void btnAgendaGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaGeralActionPerformed
+        frmAgendaGeral frm = new frmAgendaGeral();
+        frm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgendaGeralActionPerformed
+
+    private void btnAgendarConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarConsultaMouseEntered
+        btnAgendarConsulta.setBackground(Color.white);
+        btnAgendarConsulta.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnAgendarConsultaMouseEntered
+
+    private void btnAgendarConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarConsultaMouseExited
+        btnAgendarConsulta.setBackground(azulPadrao);
+        btnAgendarConsulta.setForeground(Color.white);
+    }//GEN-LAST:event_btnAgendarConsultaMouseExited
+
+    private void btnAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarConsultaActionPerformed
+        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgendarConsultaActionPerformed
+
+    private void btnEditarConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsultaMouseEntered
+        btnEditarConsulta.setBackground(Color.white);
+        btnEditarConsulta.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnEditarConsultaMouseEntered
+
+    private void btnEditarConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsultaMouseExited
+        btnEditarConsulta.setBackground(azulPadrao);
+        btnEditarConsulta.setForeground(Color.white);
+    }//GEN-LAST:event_btnEditarConsultaMouseExited
+
+    private void btnEditarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsultaActionPerformed
+       frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEditarConsultaActionPerformed
+
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
+        btnZoom.setBackground(Color.white);
+        btnZoom.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnZoomMouseEntered
+
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
+        btnZoom.setBackground(azulPadrao);
+        btnZoom.setForeground(Color.white);
+    }//GEN-LAST:event_btnZoomMouseExited
+
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnZoomActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -513,6 +810,12 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgendaGeral;
+    private javax.swing.JButton btnAgendarConsulta;
+    private javax.swing.JButton btnEditarConsulta;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSair1;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -533,6 +836,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenuItem jmiConsultas;
     private javax.swing.JMenuItem jmiDentistas;

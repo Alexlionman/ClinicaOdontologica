@@ -1028,7 +1028,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                                 .addGap(1, 1, 1)
                                 .addComponent(txtCro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jLabel13))
                         .addGap(1, 1, 1)
@@ -1123,7 +1123,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 if (resp.equals("OK")) {
                     JOptionPane.showMessageDialog(null, "Dentista excluido com sucesso");
                 } else {
-                    JOptionPane.showMessageDialog(null, resp);
+                    JOptionPane.showMessageDialog(null, "Não é possivel excluir esse dentista, pois existem consultas agendadas para ele.");
                 }
                 carregaTabela();
                 limparCampos();
@@ -1195,9 +1195,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                          txtCep.getText(), txtBairro.getText(), txtEstado.getText(),  txtCidade.getText(),
                         txtCro.getText(), txtEmail.getText(), txtCelular1.getText(), txtTelefone.getText(),txtNascimento.getText(), txtNumeroConsultorio.getText(), txtValorConsulta.getText(),
                 txtLogin.getText(), txtSenha.getText());
-                if (new DentistaDAO().verificaNomeExistente(dentista).equals(txtEmail.getText())) {
-                    JOptionPane.showMessageDialog(null, "Dentista ja cadastrado!\nEsse Dentista ja esta cadastrado, digite outro.");
-                } else {
+                
                     String resp = new DentistaDAO().editarDentista(dentista);
                     if (resp.equals("OK")) {
                         JOptionPane.showMessageDialog(null, "Dentista Alterado com sucesso.");
@@ -1212,9 +1210,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
                     btnLimparCampos.setEnabled(false);
                     btnSalvarDentista.setEnabled(false);
                     btnNovoDentista.setEnabled(true);
-                }
-            } else {
-                situacao = "";
             }
 
         } else {

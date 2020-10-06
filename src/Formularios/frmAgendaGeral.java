@@ -345,7 +345,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                 .addComponent(btnExcluirConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvarEdicaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -554,7 +554,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1226, 661));
+        setSize(new java.awt.Dimension(1224, 767));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
