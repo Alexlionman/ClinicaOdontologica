@@ -488,6 +488,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiDentistasActionPerformed
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
+        this.dispose();
         frmAdicionarConsulta frm = new frmAdicionarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
