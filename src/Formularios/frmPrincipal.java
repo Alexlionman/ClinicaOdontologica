@@ -92,11 +92,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
@@ -376,12 +376,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenu6.setEnabled(false);
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
-        jMenu7.setText(" Prontuários");
-        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu7);
-
         jMenu8.setText("         ");
         jMenu8.setEnabled(false);
         jMenuBar1.add(jMenu8);
@@ -405,6 +399,17 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem9);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu7.setText(" Prontuários");
+        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -615,6 +620,12 @@ public class frmPrincipal extends javax.swing.JFrame {
        btnSair.setBackground(vermelhoPadraoExcluir);
         btnSair.setForeground(Color.white);
     }//GEN-LAST:event_btnSairMouseExited
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        frmProntuario frm = new frmProntuario();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenu7MouseClicked
 
    
     /**

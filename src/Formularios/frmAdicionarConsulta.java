@@ -145,11 +145,11 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -460,17 +460,11 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem10);
 
-        jMenuBar1.add(jMenu2);
-
         jMenu6.setText("         ");
         jMenu6.setEnabled(false);
-        jMenuBar1.add(jMenu6);
+        jMenu2.add(jMenu6);
 
-        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
-        jMenu7.setText(" Prontuários");
-        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(jMenu2);
 
         jMenu8.setText("         ");
         jMenu8.setEnabled(false);
@@ -495,6 +489,17 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         jMenu3.add(jMenuItem9);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu7.setText(" Prontuários");
+        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -737,6 +742,10 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu7MouseClicked
 
     /**
      * @param args the command line arguments

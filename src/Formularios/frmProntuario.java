@@ -32,6 +32,7 @@ public class frmProntuario extends javax.swing.JFrame {
     public frmProntuario() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(MAXIMIZED_BOTH);
         lblId.setVisible(false);
         
         //define a cor do cabeçalho da tabela
@@ -68,6 +69,28 @@ public class frmProntuario extends javax.swing.JFrame {
         btnSalvarEdicaoPront = new javax.swing.JButton();
         btnAdicionarPront = new javax.swing.JButton();
         lblId = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jmiPacientes1 = new javax.swing.JMenuItem();
+        jmiDentistas = new javax.swing.JMenuItem();
+        jmiRecepcionistas = new javax.swing.JMenuItem();
+        jmiConsultas = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jmiEstoque = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jmiSair = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -184,6 +207,7 @@ public class frmProntuario extends javax.swing.JFrame {
 
         btnSair1.setBackground(new java.awt.Color(88, 138, 255));
         btnSair1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnSair1.setText("Zoom");
         btnSair1.setBorder(null);
         btnSair1.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +271,178 @@ public class frmProntuario extends javax.swing.JFrame {
         lblId.setForeground(new java.awt.Color(0, 51, 51));
         lblId.setText("ID");
 
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel21.setText("Esta tela está em processo de desenvolvimento e/ou adaptação dos componentes*");
+
+        jMenuBar2.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuBar2.setForeground(new java.awt.Color(129, 167, 255));
+        jMenuBar2.setBorderPainted(false);
+        jMenuBar2.setPreferredSize(new java.awt.Dimension(346, 60));
+
+        jMenu6.setText("         ");
+        jMenu6.setEnabled(false);
+        jMenuBar2.add(jMenu6);
+
+        jMenu2.setBorder(null);
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
+        jMenu2.setText(" Registrar");
+        jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jmiPacientes1.setBackground(new java.awt.Color(129, 167, 255));
+        jmiPacientes1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiPacientes1.setForeground(java.awt.Color.white);
+        jmiPacientes1.setText("Registrar Paciente");
+        jmiPacientes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiPacientes1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiPacientes1);
+
+        jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
+        jmiDentistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiDentistas.setForeground(java.awt.Color.white);
+        jmiDentistas.setText("Registrar Dentista");
+        jmiDentistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiDentistasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiDentistas);
+
+        jmiRecepcionistas.setBackground(new java.awt.Color(129, 167, 255));
+        jmiRecepcionistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiRecepcionistas.setForeground(java.awt.Color.white);
+        jmiRecepcionistas.setText("Registrar Recepcionista");
+        jmiRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRecepcionistasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiRecepcionistas);
+
+        jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
+        jmiConsultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiConsultas.setForeground(java.awt.Color.white);
+        jmiConsultas.setText("Agendar Consulta");
+        jmiConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiConsultasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiConsultas);
+
+        jSeparator1.setForeground(java.awt.Color.white);
+        jMenu2.add(jSeparator1);
+
+        jmiEstoque.setBackground(new java.awt.Color(129, 167, 255));
+        jmiEstoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiEstoque.setForeground(java.awt.Color.white);
+        jmiEstoque.setText("Estoque");
+        jmiEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEstoqueActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiEstoque);
+
+        jSeparator4.setForeground(java.awt.Color.white);
+        jMenu2.add(jSeparator4);
+
+        jmiSair.setBackground(new java.awt.Color(129, 167, 255));
+        jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiSair.setForeground(java.awt.Color.white);
+        jmiSair.setText("Sair");
+        jmiSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSairActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiSair);
+
+        jMenuBar2.add(jMenu2);
+
+        jMenu4.setText("         ");
+        jMenu4.setEnabled(false);
+        jMenuBar2.add(jMenu4);
+
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        jMenu3.setText(" Agendas");
+        jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        jMenuItem1.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem1.setForeground(java.awt.Color.white);
+        jMenuItem1.setText("Consultas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem10.setForeground(java.awt.Color.white);
+        jMenuItem10.setText("Consultas por dentista");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem10);
+
+        jMenuBar2.add(jMenu3);
+
+        jMenu7.setText("         ");
+        jMenu7.setEnabled(false);
+        jMenuBar2.add(jMenu7);
+
+        jMenu9.setText("         ");
+        jMenu9.setEnabled(false);
+        jMenuBar2.add(jMenu9);
+
+        jMenu10.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
+        jMenu10.setText(" Ajuda");
+        jMenu10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
+        jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem8.setForeground(java.awt.Color.white);
+        jMenuItem8.setText("Ajuda");
+        jMenu10.add(jMenuItem8);
+
+        jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
+        jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItem9.setForeground(java.awt.Color.white);
+        jMenuItem9.setText("Sobre");
+        jMenu10.add(jMenuItem9);
+
+        jMenuBar2.add(jMenu10);
+
+        jMenu8.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu8.setText(" Prontuários");
+        jMenu8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenu8MouseEntered(evt);
+            }
+        });
+        jMenuBar2.add(jMenu8);
+
+        setJMenuBar(jMenuBar2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -270,19 +466,20 @@ public class frmProntuario extends javax.swing.JFrame {
                         .addGap(395, 395, 395))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(btnPesquisarPacienteNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
                                 .addComponent(btnAdicionarPront, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSalvarpront, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnSalvarpront, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(btnPesquisarPacienteNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,47 +498,51 @@ public class frmProntuario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(280, 280, 280)
+                        .addGap(286, 286, 286)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSalvarpront, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAdicionarPront, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisarPacienteNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(txtPesquisaProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(84, 84, 84))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(txtPesquisaProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSalvarEdicaoPront, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnEditarPront, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(2, 2, 2)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(694, Short.MAX_VALUE)))
+                    .addContainerGap(634, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(136, 136, 136)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(579, Short.MAX_VALUE)))
+                    .addContainerGap(519, Short.MAX_VALUE)))
         );
 
         pack();
@@ -412,11 +613,13 @@ public class frmProntuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarProntActionPerformed
 
     private void btnPesquisarPacienteNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoMouseEntered
-        // TODO add your handling code here:
+        btnPesquisarPacienteNovo.setBackground(Color.white);
+        btnPesquisarPacienteNovo.setForeground(azulPadrao);
     }//GEN-LAST:event_btnPesquisarPacienteNovoMouseEntered
 
     private void btnPesquisarPacienteNovoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoMouseExited
-        // TODO add your handling code here:
+       btnPesquisarPacienteNovo.setBackground(azulPadrao);
+        btnPesquisarPacienteNovo.setForeground(Color.white);
     }//GEN-LAST:event_btnPesquisarPacienteNovoMouseExited
 
     private void btnPesquisarPacienteNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoActionPerformed
@@ -439,17 +642,24 @@ public class frmProntuario extends javax.swing.JFrame {
         int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblProntuario.getModel().getValueAt(item, 0);
         
-        Prontuario prontuario = new Prontuario(valorIdDaLabel, txtProntuario1.getText());
+        Prontuario prontuario = new Prontuario(valorIdDaLabel, txtProntuario1.getText()); //passando o id do paciente, e as informações do prontuario
         String resp = new ProntuarioDAO().gravarProntuario(prontuario);
+        if (resp.equals("OK")) {
+                        JOptionPane.showMessageDialog(rootPane, "As informações foram adicionadas ao paciente com sucesso.");
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, resp);
+                    }
         
     }//GEN-LAST:event_btnSalvarprontActionPerformed
 
     private void btnSalvarprontMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarprontMouseExited
-        // TODO add your handling code here:
+         btnSalvarpront.setBackground(azulPadrao);
+        btnSalvarpront.setForeground(Color.white);
     }//GEN-LAST:event_btnSalvarprontMouseExited
 
     private void btnSalvarprontMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarprontMouseEntered
-        // TODO add your handling code here:
+        btnSalvarpront.setBackground(Color.white);
+       btnSalvarpront.setForeground(azulPadrao);
     }//GEN-LAST:event_btnSalvarprontMouseEntered
 
     private void txtProntuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtProntuario1MouseClicked
@@ -463,11 +673,13 @@ public class frmProntuario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProntuario1MouseClicked
 
     private void btnSalvarEdicaoProntMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntMouseEntered
-        // TODO add your handling code here:
+        btnSalvarEdicaoPront.setBackground(Color.white);
+       btnSalvarEdicaoPront.setForeground(azulPadrao);
     }//GEN-LAST:event_btnSalvarEdicaoProntMouseEntered
 
     private void btnSalvarEdicaoProntMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntMouseExited
-        // TODO add your handling code here:
+        btnSalvarEdicaoPront.setBackground(azulPadrao);
+        btnSalvarEdicaoPront.setForeground(Color.white);
     }//GEN-LAST:event_btnSalvarEdicaoProntMouseExited
 
     private void btnSalvarEdicaoProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoProntActionPerformed
@@ -477,14 +689,22 @@ public class frmProntuario extends javax.swing.JFrame {
         
         Prontuario prontuario = new Prontuario(valorIdDaLabel, txtProntuario1.getText());
         String resp = new ProntuarioDAO().editarProntuario(prontuario);
+        
+        if (resp.equals("OK")) {
+                        JOptionPane.showMessageDialog(rootPane, "As informações foram editadas com sucesso.");
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, resp);
+                    }
     }//GEN-LAST:event_btnSalvarEdicaoProntActionPerformed
 
     private void btnAdicionarProntMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarProntMouseEntered
-        // TODO add your handling code here:
+         btnAdicionarPront.setBackground(Color.white);
+       btnAdicionarPront.setForeground(azulPadrao);
     }//GEN-LAST:event_btnAdicionarProntMouseEntered
 
     private void btnAdicionarProntMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarProntMouseExited
-        // TODO add your handling code here:
+        btnAdicionarPront.setBackground(azulPadrao);
+        btnAdicionarPront.setForeground(Color.white);
     }//GEN-LAST:event_btnAdicionarProntMouseExited
 
     private void btnAdicionarProntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProntActionPerformed
@@ -495,8 +715,67 @@ public class frmProntuario extends javax.swing.JFrame {
         int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblProntuario.getModel().getValueAt(item, 0);
         Paciente p = new PacienteDAO().pesquisarPaciente(item);
+        ProntuarioDAO prontDAO = new ProntuarioDAO();
         lblId.setText(p.getId() + ""); //esta setando no id para poder usalo quando for inserir um valor no prontuario do paciente
+        
+        Prontuario prontPreenchido = prontDAO.pesquisarProntuario(p.getId());
+        txtProntuario1.setText(prontPreenchido.getDescricao());
+        
     }//GEN-LAST:event_tblProntuarioMouseClicked
+
+    private void jmiPacientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientes1ActionPerformed
+        frmEditarPaciente frm = new frmEditarPaciente();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiPacientes1ActionPerformed
+
+    private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
+        frmEditarDentista frm = new frmEditarDentista();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiDentistasActionPerformed
+
+    private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
+        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiRecepcionistasActionPerformed
+
+    private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
+        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiConsultasActionPerformed
+
+    private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
+        frmEstoqueGeral frm = new frmEstoqueGeral();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jmiEstoqueActionPerformed
+
+    private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jmiSairActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        frmAgendaGeral frm = new frmAgendaGeral();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        frmAgendaEspecifica frm = new frmAgendaEspecifica();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenu8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu8MouseEntered
 
     /**
      * @param args the command line arguments
@@ -541,11 +820,33 @@ public class frmProntuario extends javax.swing.JFrame {
     private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarEdicaoPront;
     private javax.swing.JButton btnSalvarpront;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem jmiConsultas;
+    private javax.swing.JMenuItem jmiDentistas;
+    private javax.swing.JMenuItem jmiEstoque;
+    private javax.swing.JMenuItem jmiPacientes1;
+    private javax.swing.JMenuItem jmiRecepcionistas;
+    private javax.swing.JMenuItem jmiSair;
     private javax.swing.JLabel lblId;
     private javax.swing.JTable tblProntuario;
     private javax.swing.JTextField txtPesquisaProntuario;
