@@ -3,6 +3,7 @@ package Formularios;
 import Classes.Conecta;
 import Classes.Paciente;
 import Classes.PacienteDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -1110,7 +1111,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                 } else {
                     String resp = new PacienteDAO().gravarPaciente(paciente);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(rootPane, "Paciente gravada(o) com sucesso");
+                        Utilidades.criarMensagemSucesso();
                         limparCampos();
                         desabilitaCampos();
                         carregaTabela();

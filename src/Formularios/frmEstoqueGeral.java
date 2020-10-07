@@ -3,6 +3,7 @@ package Formularios;
 import Classes.Conecta;
 import Classes.Produto;
 import Classes.ProdutoDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -536,7 +537,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             String resp = new ProdutoDAO().gravarProduto(produto);
 
             if (resp.equals("OK")) {
-                JOptionPane.showMessageDialog(rootPane, "Produto adocionado com sucesso!");
+                Utilidades.criarMensagemSucesso();
             } else {
                 JOptionPane.showMessageDialog(rootPane, resp);
             }

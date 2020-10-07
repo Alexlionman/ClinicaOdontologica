@@ -12,6 +12,7 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Prontuario;
 import Classes.ProntuarioDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -645,7 +646,7 @@ public class frmProntuario extends javax.swing.JFrame {
         Prontuario prontuario = new Prontuario(valorIdDaLabel, txtProntuario1.getText()); //passando o id do paciente, e as informações do prontuario
         String resp = new ProntuarioDAO().gravarProntuario(prontuario);
         if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(rootPane, "As informações foram adicionadas ao paciente com sucesso.");
+                        Utilidades.criarMensagemSucesso();
                     } else {
                         JOptionPane.showMessageDialog(rootPane, resp);
                     }

@@ -3,6 +3,7 @@ package Formularios;
 import Classes.DentistaDAO;
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -266,6 +267,11 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
             
+       /* frmPrincipal no = new frmPrincipal();
+        no.setVisible(true);
+          usado pra quando se trabalha sem banco
+        */
+        
         RecepcionistaDAO r = new RecepcionistaDAO();
         if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
             frmPrincipal fp = new frmPrincipal();

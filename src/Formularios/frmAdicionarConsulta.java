@@ -9,6 +9,7 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -671,7 +672,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
                     Float.parseFloat(txtValor.getText()));
             String resp = new ConsultaDAO().gravarConsulta(consulta);
             if (resp.equals("OK")) {
-                JOptionPane.showMessageDialog(rootPane, "Consulta agendada com sucesso");
+                Utilidades.criarMensagemSucesso();
             } else {
                 JOptionPane.showMessageDialog(rootPane, resp);
             }

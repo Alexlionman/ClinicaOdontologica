@@ -10,6 +10,7 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Recepcionista;
 import Classes.RecepcionistaDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -150,6 +151,11 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
         this.setSize((dimensao.width + 5), (dimensao.height - 38));
 
  }
+      
+    private static void criarMensagemSucesso(){
+        frmImagemSucesso form = new frmImagemSucesso();
+        form.setVisible(true);
+    }
     
 
     @SuppressWarnings("unchecked")
@@ -945,7 +951,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
                     } else {
                         String resp = new RecepcionistaDAO().gravarRecepcionista(recepcionista);
                         if (resp.equals("OK")) {
-                            JOptionPane.showMessageDialog(rootPane, "Recepcionista gravada(o) com sucesso");
+                            Utilidades.criarMensagemSucesso();
                             limparCampos();
                             desabilitaCampos();
                             btnNovoRecepcionista.setEnabled(true);
@@ -979,7 +985,7 @@ public class frmAdicionarRecepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_btnSair1ActionPerformed
 
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed

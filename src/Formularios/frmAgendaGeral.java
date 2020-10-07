@@ -67,6 +67,12 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             tblAgenda.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
     }
+    
+       private static void criarMensagemSucesso(){
+        frmImagemSucesso form = new frmImagemSucesso();
+        form.setVisible(true);
+         form.setLocationRelativeTo(null);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -661,7 +667,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnSair1ActionPerformed
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed

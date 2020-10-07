@@ -4,6 +4,7 @@ import Classes.Conecta;
 import Classes.Dentista;
 import Classes.DentistaDAO;
 import Classes.Paciente;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -1181,7 +1182,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 } else {
                     String resp = new DentistaDAO().gravarDentista(dentista);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(rootPane, "Dentista gravada(o) com sucesso.");
+                        Utilidades.criarMensagemSucesso();
                         limparCampos();
                         desabilitaCampos();
                         carregaTabela();
