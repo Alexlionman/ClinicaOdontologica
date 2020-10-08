@@ -25,11 +25,35 @@ public final class Utilidades {
     }
      
      
-    //Cria a imagem para uma ação teve erro
+    //Cria a imagem para uma ação que teve erro
      public static void criarMensagemErro(){
         frmImagemErro form = new frmImagemErro();
         form.setVisible(true);
          form.setLocationRelativeTo(null);
     }
-   
+     
+     
+    //Fechar a aplicaçao totalmente(em caso de erro insesperado)
+     public static void fecharPrograma(){
+       System.exit(0);
+     }
+     
+     //retorna o nome enviado, mas com o Sr(a) na frente
+     public static String incluiSreSra(String nome){
+         String res =  "Sr(a) " + nome;
+         return res;
+     }
+     
+     //inclui o cifrão recebendo uma string
+     public static String incluiCifrão(String valor){
+         String res =  "R$ " + valor;
+         return res;
+     }
+    
+     //inclui o cifrão recebendo um float
+     public static String incluiCifrãoParaFloat(Float valor){
+        String res =  "R$ " + valor.toString();
+         return res;
+     }
+  
 }

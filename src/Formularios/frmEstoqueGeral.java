@@ -37,7 +37,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         txtFabricante.setEnabled(false);
         txtProduto.setEnabled(false);
     }
-    private void carregaTabela() {
+   /* private void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tblItens.getModel();
         modelo.setNumRows(0);
         try {
@@ -53,6 +53,36 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                     rs.getString("nome"),
                     rs.getString("fabricante"),
                     rs.getInt("sum(e.quantidade)")});
+            }
+            pstm.close();
+            con.close();
+            rs.close();
+        } catch (Exception ErroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    */
+    
+     private void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) tblItens.getModel();
+        modelo.setNumRows(0);
+        try {
+            java.sql.Connection con = Conecta.getConexao();
+            PreparedStatement pstm;
+            ResultSet rs;
+
+            pstm = con.prepareStatement("SELECT e.id, p.nome, p.fabricante, e.quantidade, e.peso, e.validade "
+                    + "FROM produto p, produtoEstoque e WHERE p.id=e.produtoId");
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
+                modelo.addRow(new Object[]{
+                    rs.getInt("e.id"),
+                    rs.getString("p.nome"),
+                    rs.getString("p.fabricante"),
+                    rs.getInt("e.quantidade"),
+                    rs.getFloat("e.peso"),
+                    rs.getString("e.validade")});
             }
             pstm.close();
             con.close();
@@ -132,11 +162,11 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Produto", "Fabricante", "Quantidade", "Peso"
+                "ID", "Produto", "Fabricante", "Quantidade", "Peso", "Validade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -153,7 +183,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             tblItens.getColumnModel().getColumn(2).setPreferredWidth(120);
             tblItens.getColumnModel().getColumn(3).setResizable(false);
             tblItens.getColumnModel().getColumn(3).setPreferredWidth(50);
-            tblItens.getColumnModel().getColumn(4).setResizable(false);
             tblItens.getColumnModel().getColumn(4).setPreferredWidth(40);
         }
 
@@ -250,6 +279,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
         btnSair1.setBackground(new java.awt.Color(129, 167, 255));
         btnSair1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnSair1.setText("Zoom");
         btnSair1.setBorder(null);
         btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -448,8 +478,8 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,9 +534,9 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(50, 50, 50)
+                        .addGap(46, 46, 46)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))))
+                        .addGap(61, 61, 61))))
         );
 
         setBounds(0, 0, 1112, 567);

@@ -74,6 +74,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         }
     }
 
+    /*
     private void carregaTabelaItens() {
         DefaultTableModel modelo = (DefaultTableModel) tblItens.getModel();
         modelo.setNumRows(0);
@@ -103,10 +104,11 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         }
     }
 
+    */
     public frmAdicionarItemEstoque() {
         initComponents();
         carregaTabela();
-        carregaTabelaItens();
+       // carregaTabelaItens();
     }
 
     @SuppressWarnings("unchecked")
@@ -120,18 +122,16 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblItens = new javax.swing.JTable();
-        btnSair = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         btnNovoProduto = new javax.swing.JButton();
         btnSalvarProduto = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         txtValidade = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
+        btnNovoProduto1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -142,101 +142,47 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel1.setText("Selecione o Produto:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 50, 135, 19);
+        jLabel1.setBounds(30, 130, 135, 19);
 
+        txtQuantidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtQuantidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtQuantidade.setDocument(new campoNumerico());
         txtQuantidade.setEnabled(false);
         getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(340, 110, 110, 15);
+        txtQuantidade.setBounds(360, 70, 120, 20);
 
+        txtPeso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtPeso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPeso.setDocument(new campoNumerico());
         txtPeso.setEnabled(false);
         getContentPane().add(txtPeso);
-        txtPeso.setBounds(340, 140, 110, 15);
+        txtPeso.setBounds(40, 70, 120, 20);
 
         jLabel4.setText("Fabricante");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(117, 126, 48, 0);
 
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Qtde:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(300, 110, 40, 13);
+        jLabel5.setBounds(360, 50, 40, 17);
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Peso:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(300, 140, 40, 13);
+        jLabel6.setBounds(40, 50, 40, 13);
 
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Validade:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(300, 80, 60, 13);
-
-        tblItens.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Produto", "Fabricante", "Qtde", "Peso", "Validade"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblItens.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblItensMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblItens);
-        if (tblItens.getColumnModel().getColumnCount() > 0) {
-            tblItens.getColumnModel().getColumn(0).setMinWidth(40);
-            tblItens.getColumnModel().getColumn(0).setPreferredWidth(40);
-            tblItens.getColumnModel().getColumn(0).setMaxWidth(40);
-            tblItens.getColumnModel().getColumn(3).setMinWidth(50);
-            tblItens.getColumnModel().getColumn(3).setPreferredWidth(50);
-            tblItens.getColumnModel().getColumn(3).setMaxWidth(50);
-            tblItens.getColumnModel().getColumn(4).setMinWidth(50);
-            tblItens.getColumnModel().getColumn(4).setPreferredWidth(50);
-            tblItens.getColumnModel().getColumn(4).setMaxWidth(50);
-            tblItens.getColumnModel().getColumn(5).setMinWidth(75);
-            tblItens.getColumnModel().getColumn(5).setPreferredWidth(75);
-            tblItens.getColumnModel().getColumn(5).setMaxWidth(75);
-        }
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 220, 470, 90);
-
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/btnSairPequeno.png"))); // NOI18N
-        btnSair.setText("Sair");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(500, 10, 150, 40);
+        jLabel7.setBounds(200, 50, 70, 17);
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "Produto", "Fabricante"
@@ -258,30 +204,33 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 70, 260, 90);
+        jScrollPane2.setBounds(30, 160, 490, 250);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Estoque");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(280, 0, 90, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Central do estoque");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(200, 200, 135, 19);
-
-        btnNovoProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconAdd.png"))); // NOI18N
-        btnNovoProduto.setText(" Novo Produto");
+        btnNovoProduto.setBackground(new java.awt.Color(129, 167, 255));
+        btnNovoProduto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnNovoProduto.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
+        btnNovoProduto.setText(" Novo Lote");
+        btnNovoProduto.setBorder(null);
         btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoProdutoActionPerformed(evt);
             }
         });
         getContentPane().add(btnNovoProduto);
-        btnNovoProduto.setBounds(500, 170, 150, 40);
+        btnNovoProduto.setBounds(560, 140, 180, 60);
 
-        btnSalvarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconSalvar.png"))); // NOI18N
-        btnSalvarProduto.setText("Salvar Produto");
+        btnSalvarProduto.setBackground(new java.awt.Color(129, 167, 255));
+        btnSalvarProduto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSalvarProduto.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalvarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
+        btnSalvarProduto.setText("Salvar ");
+        btnSalvarProduto.setBorder(null);
         btnSalvarProduto.setEnabled(false);
         btnSalvarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,10 +238,14 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSalvarProduto);
-        btnSalvarProduto.setBounds(500, 220, 150, 40);
+        btnSalvarProduto.setBounds(560, 280, 180, 60);
 
-        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/iconLimpar.png"))); // NOI18N
+        btnLimparCampos.setBackground(new java.awt.Color(255, 117, 117));
+        btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorder(null);
         btnLimparCampos.setEnabled(false);
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,7 +253,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(500, 270, 150, 40);
+        btnLimparCampos.setBounds(560, 350, 180, 60);
 
         txtValidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -309,16 +262,46 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtValidade.setEnabled(false);
+        txtValidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         getContentPane().add(txtValidade);
-        txtValidade.setBounds(350, 80, 100, 20);
+        txtValidade.setBounds(200, 70, 110, 20);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 51, 51));
         jLabel10.setText("Esta tela está em processo de desenvolvimento*");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(160, 30, 347, 17);
+        jLabel10.setBounds(370, 20, 220, 13);
 
-        setSize(new java.awt.Dimension(677, 359));
+        btnSair.setBackground(new java.awt.Color(139, 215, 255));
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnSair.setText("voltar");
+        btnSair.setBorder(null);
+        btnSair.setMaximumSize(new java.awt.Dimension(61, 31));
+        btnSair.setMinimumSize(new java.awt.Dimension(61, 31));
+        btnSair.setPreferredSize(new java.awt.Dimension(61, 31));
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSair);
+        btnSair.setBounds(600, 30, 110, 50);
+
+        btnNovoProduto1.setBackground(new java.awt.Color(129, 167, 255));
+        btnNovoProduto1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnNovoProduto1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNovoProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
+        btnNovoProduto1.setText("Editar Quantidade");
+        btnNovoProduto1.setBorder(null);
+        btnNovoProduto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoProduto1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNovoProduto1);
+        btnNovoProduto1.setBounds(560, 210, 180, 60);
+
+        setSize(new java.awt.Dimension(796, 483));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -326,26 +309,19 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        frmEstoqueGeral frmestoque = new frmEstoqueGeral();
-        frmestoque.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
-
-    private void tblItensMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItensMouseClicked
-
-
-    }//GEN-LAST:event_tblItensMouseClicked
-
+     String opc = null;
+     
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         limparCampos();
         habilitaCampos();
+        opc = "novo";
         btnNovoProduto.setEnabled(false);
         btnSalvarProduto.setEnabled(true);
         btnLimparCampos.setEnabled(true);
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnSalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProdutoActionPerformed
+       if(opc.equals("novo")){ 
         if (verificaPreenchimento()) {
             int item = tblProdutos.getSelectionModel().getMinSelectionIndex();
             ProdutoEstoque pe = new ProdutoEstoque(Integer.parseInt(txtQuantidade.getText()),
@@ -359,18 +335,36 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
             }
             limparCampos();
             desabilitaCampos();
-            carregaTabelaItens();
+//         carregaTabelaItens();
             btnNovoProduto.setEnabled(true);
             btnSalvarProduto.setEnabled(false);
             btnLimparCampos.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(null, "Campo Vazio!\nPreencha todos os campos obrigatórios.");
         }
+       }
+       
+       if(opc.equals("editar")){
+       //lógica de edição(apenas editar quantidade)
+       
+       
+       }
     }//GEN-LAST:event_btnSalvarProdutoActionPerformed
 
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
         limparCampos();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
+   
+    
+    private void btnNovoProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProduto1ActionPerformed
+        txtQuantidade.setEnabled(true);
+        opc = "edicao";
+    }//GEN-LAST:event_btnNovoProduto1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,19 +404,17 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoProduto;
+    private javax.swing.JButton btnNovoProduto1;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvarProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblItens;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtPeso;
     private javax.swing.JTextField txtQuantidade;

@@ -396,6 +396,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem8.setForeground(java.awt.Color.white);
         jMenuItem8.setText("Ajuda");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem8);
 
         jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
@@ -621,6 +626,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu7MouseClicked
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+         frmTelaDeAjuda frm = new frmTelaDeAjuda();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
    
     /**
