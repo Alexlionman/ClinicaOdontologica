@@ -488,7 +488,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiDentistasActionPerformed
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
-        this.dispose();
+        
         frmAdicionarConsulta frm = new frmAdicionarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -501,7 +501,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
-        this.dispose();
+    
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -541,7 +541,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
-        this.dispose();
+      
         frmEditarPaciente frm = new frmEditarPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -560,7 +560,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgendasActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        this.dispose();
+
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
