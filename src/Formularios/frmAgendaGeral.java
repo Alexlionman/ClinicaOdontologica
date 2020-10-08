@@ -5,6 +5,7 @@ import Classes.Consulta;
 import Classes.ConsultaDAO;
 import Classes.Dentista;
 import Classes.DentistaDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +28,12 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     txtHorarioConsulta.setEnabled(true);
     txtValorConsulta.setEnabled(true);
     }
-
+    
+    private void desabilitaCampos(){
+     txtDataConsulta.setEnabled(false);
+    txtHorarioConsulta.setEnabled(false);
+    txtValorConsulta.setEnabled(false);
+    }
     private void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tblAgenda.getModel();
         modelo.setNumRows(0);
@@ -117,7 +123,6 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
@@ -524,10 +529,6 @@ public class frmAgendaGeral extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu6.setText("         ");
-        jMenu6.setEnabled(false);
-        jMenuBar1.add(jMenu6);
-
         jMenu7.setForeground(new java.awt.Color(255, 255, 255));
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
         jMenu7.setText(" Prontuários");
@@ -567,8 +568,17 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     private void btnExcluirConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConsultaActionPerformed
         int item = tblAgenda.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblAgenda.getModel().getValueAt(item, 0); //essa coluna se refere ao ID na tabela
-        String c  = new ConsultaDAO().excluirConsulta(item);
-        carregaTabela();
+        String resp  = new ConsultaDAO().excluirConsulta(item);
+                    if (resp.equals("OK")) {
+                        Utilidades.criarMensagemSucesso();
+                        carregaTabela();
+                        desabilitaCampos();
+                        
+                    } else {
+                        Utilidades.criarMensagemErro();
+                        carregaTabela();
+                        desabilitaCampos();
+                    }
         
     }//GEN-LAST:event_btnExcluirConsultaActionPerformed
 
@@ -646,9 +656,14 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         Consulta consulta=new Consulta(Integer.parseInt(txtIdConsulta.getText()),txtDataConsulta.getText(), txtHorarioConsulta.getText(), Float.parseFloat(txtValorConsulta.getText()));
         String resp = new ConsultaDAO().editarConsulta(consulta);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(null, "Consulta Alterada com sucesso.");
+                        Utilidades.criarMensagemSucesso();
+                        carregaTabela();
+                        desabilitaCampos();
+                        
                     } else {
-                        JOptionPane.showMessageDialog(null, resp);
+                        Utilidades.criarMensagemErro();
+                        carregaTabela();
+                        desabilitaCampos();
                     }
     }//GEN-LAST:event_btnSalvarEdicaoConsultaActionPerformed
 
@@ -774,7 +789,6 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;

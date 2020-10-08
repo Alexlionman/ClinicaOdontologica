@@ -254,11 +254,10 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
 
         txtCelular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -854,9 +853,16 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jMenu7.setEnabled(false);
         jMenuBar2.add(jMenu7);
 
-        jMenu9.setText("         ");
-        jMenu9.setEnabled(false);
-        jMenuBar2.add(jMenu9);
+        jMenu8.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu8.setText(" Prontuários");
+        jMenu8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenu8MouseEntered(evt);
+            }
+        });
+        jMenuBar2.add(jMenu8);
 
         jMenu10.setForeground(new java.awt.Color(255, 255, 255));
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
@@ -877,17 +883,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jMenu10.add(jMenuItem9);
 
         jMenuBar2.add(jMenu10);
-
-        jMenu8.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
-        jMenu8.setText(" Prontuários");
-        jMenu8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMenu8MouseEntered(evt);
-            }
-        });
-        jMenuBar2.add(jMenu8);
 
         setJMenuBar(jMenuBar2);
 
@@ -1127,12 +1122,16 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 String resp = new DentistaDAO().excluirDentista(dentista);
 
                 if (resp.equals("OK")) {
-                    JOptionPane.showMessageDialog(null, "Dentista excluido com sucesso");
+                    Utilidades.criarMensagemSucesso();
+                    limparCampos();
+                    desabilitaCampos();
+                    carregaTabela();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Não é possivel excluir esse dentista, pois existem consultas agendadas para ele.");
-                }
-                carregaTabela();
-                limparCampos();
+                Utilidades.criarMensagemErro();
+                    limparCampos();
+                    desabilitaCampos();
+                    carregaTabela();                }
+          
                 btnNovoDentista.setEnabled(true);
                 btnEditarDentista.setEnabled(false);
                 btnExcluirDentista.setEnabled(false);
@@ -1187,7 +1186,10 @@ public class frmEditarDentista extends javax.swing.JFrame {
                         desabilitaCampos();
                         carregaTabela();
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, resp);
+                        Utilidades.criarMensagemErro();
+                        limparCampos();
+                        desabilitaCampos();
+                        carregaTabela();
                     }
                     situacao = "";
                     btnEditarDentista.setEnabled(false);
@@ -1204,9 +1206,15 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 
                     String resp = new DentistaDAO().editarDentista(dentista);
                     if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(null, "Dentista Alterado com sucesso.");
+                        Utilidades.criarMensagemSucesso();
+                        limparCampos();
+                        desabilitaCampos();
+                        carregaTabela();
                     } else {
-                        JOptionPane.showMessageDialog(null, resp);
+                        Utilidades.criarMensagemErro();
+                        limparCampos();
+                        desabilitaCampos();
+                        carregaTabela();
                     }
                     carregaTabela();
                     limparCampos();
@@ -1339,7 +1347,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSair2MouseExited
 
     private void btnSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair2ActionPerformed
-        // TODO add your handling code here:
+        Utilidades.criarMensagemSucesso();
     }//GEN-LAST:event_btnSair2ActionPerformed
 
     private void jmiPacientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientes1ActionPerformed
@@ -1466,7 +1474,6 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;

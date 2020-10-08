@@ -117,11 +117,10 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -402,9 +401,16 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jMenu7.setEnabled(false);
         jMenuBar2.add(jMenu7);
 
-        jMenu9.setText("         ");
-        jMenu9.setEnabled(false);
-        jMenuBar2.add(jMenu9);
+        jMenu8.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        jMenu8.setText(" Prontuários");
+        jMenu8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jMenu8MouseEntered(evt);
+            }
+        });
+        jMenuBar2.add(jMenu8);
 
         jMenu10.setForeground(new java.awt.Color(255, 255, 255));
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
@@ -425,17 +431,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jMenu10.add(jMenuItem9);
 
         jMenuBar2.add(jMenu10);
-
-        jMenu8.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
-        jMenu8.setText(" Prontuários");
-        jMenu8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMenu8MouseEntered(evt);
-            }
-        });
-        jMenuBar2.add(jMenu8);
 
         setJMenuBar(jMenuBar2);
 
@@ -692,7 +687,6 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
