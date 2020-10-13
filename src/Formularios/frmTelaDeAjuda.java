@@ -18,6 +18,7 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
      */
     public frmTelaDeAjuda() {
         initComponents();
+        getContentPane().setBackground(azulFundo);
     }
 
     /**
@@ -38,14 +39,23 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
         btnPesquisar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnAgenda = new javax.swing.JButton();
+        btnProntuario = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        btnVoltar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         btnNovo.setBackground(new java.awt.Color(88, 138, 255));
         btnNovo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnNovo.setForeground(new java.awt.Color(255, 255, 255));
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
-        btnNovo.setText("Novo");
+        btnNovo.setText("Nova");
         btnNovo.setBorder(null);
         btnNovo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -89,8 +99,10 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Passe o mouse em cima de um item e aprenda o que ele faz e como usa-lo.");
+        jLabel1.setBackground(new java.awt.Color(88, 138, 255));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(88, 138, 255));
+        jLabel1.setText("SUA CENTRAL DE AJUDA");
 
         btnEditar.setBackground(new java.awt.Color(88, 138, 255));
         btnEditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -172,55 +184,224 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(88, 138, 255));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Passe o mouse em cimda de cada item para aprender como utilizá-lo");
+
+        btnAgenda.setBackground(new java.awt.Color(88, 138, 255));
+        btnAgenda.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgenda.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        btnAgenda.setText("Agenda");
+        btnAgenda.setBorder(null);
+        btnAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgendaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgendaMouseExited(evt);
+            }
+        });
+        btnAgenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendaActionPerformed(evt);
+            }
+        });
+
+        btnProntuario.setBackground(new java.awt.Color(88, 138, 255));
+        btnProntuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnProntuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnProntuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        btnProntuario.setText("Prontuario");
+        btnProntuario.setBorder(null);
+        btnProntuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnProntuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnProntuarioMouseExited(evt);
+            }
+        });
+        btnProntuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProntuarioActionPerformed(evt);
+            }
+        });
+
+        btnAdicionar.setBackground(new java.awt.Color(88, 138, 255));
+        btnAdicionar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAdicionar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/incluir.png"))); // NOI18N
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setBorder(null);
+        btnAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAdicionarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAdicionarMouseExited(evt);
+            }
+        });
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setBackground(new java.awt.Color(51, 255, 255));
+        btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.setBorder(null);
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseExited(evt);
+            }
+        });
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnZoom.setBackground(new java.awt.Color(88, 138, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnZoomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnZoomMouseExited(evt);
+            }
+        });
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
+
+        btnSair.setBackground(new java.awt.Color(223, 107, 111));
+        btnSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/sair.png"))); // NOI18N
+        btnSair.setText("Sair");
+        btnSair.setBorder(null);
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSairMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSairMouseExited(evt);
+            }
+        });
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
+        btnVoltar1.setBackground(new java.awt.Color(51, 255, 255));
+        btnVoltar1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnVoltar1.setText("Clique para voltar");
+        btnVoltar1.setBorder(null);
+        btnVoltar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVoltar1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVoltar1MouseExited(evt);
+            }
+        });
+        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(108, 108, 108)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(51, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProntuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 55, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,7 +413,8 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
  Color vermelhoPadraoExcluir = new Color(223,107,111);
   Color azulPadrao = new Color(88, 138, 255);
      Color vermelhoPadrao = new Color(255,153,153);
-      Color azulHover = new Color(192, 216, 235);
+     Color azulFundo = new Color(226, 235, 255);
+      Color azulVoltar = new Color(51,255,255);
  
  
     private void btnNovoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseEntered
@@ -336,6 +518,115 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnAgendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendaMouseEntered
+         btnAgenda.setBackground(Color.white);
+        btnAgenda.setForeground(azulPadrao);
+        txtTextoDeAjuda.setText("Esse botão libera o acesso imediato a agenda geral de consultas do consultório");
+    }//GEN-LAST:event_btnAgendaMouseEntered
+
+    private void btnAgendaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendaMouseExited
+         btnAgenda.setBackground(azulPadrao);
+        btnAgenda.setForeground(Color.white);
+        txtTextoDeAjuda.setText("");
+    }//GEN-LAST:event_btnAgendaMouseExited
+
+    private void btnAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgendaActionPerformed
+
+    private void btnProntuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProntuarioMouseEntered
+        btnProntuario.setBackground(Color.white);
+        btnProntuario.setForeground(azulPadrao);
+        txtTextoDeAjuda.setText("Esse botão libera o acesso imediato as informações registradas em todos os prontuários de pacientes do consultório");
+    }//GEN-LAST:event_btnProntuarioMouseEntered
+
+    private void btnProntuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProntuarioMouseExited
+       btnProntuario.setBackground(azulPadrao);
+        btnProntuario.setForeground(Color.white);
+        txtTextoDeAjuda.setText("");
+    }//GEN-LAST:event_btnProntuarioMouseExited
+
+    private void btnProntuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProntuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProntuarioActionPerformed
+
+    private void btnAdicionarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarMouseEntered
+        btnAdicionar.setBackground(Color.white);
+        btnAdicionar.setForeground(azulPadrao);
+        txtTextoDeAjuda.setText("Esse botão efetua a inclusão de um item de estoque no sistema do consultório, pode ser acessado por dentistas e recepcionistas.");
+    }//GEN-LAST:event_btnAdicionarMouseEntered
+
+    private void btnAdicionarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarMouseExited
+         btnAdicionar.setBackground(azulPadrao);
+        btnAdicionar.setForeground(Color.white);
+        txtTextoDeAjuda.setText("");
+    }//GEN-LAST:event_btnAdicionarMouseExited
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnVoltarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseEntered
+        btnVoltar.setBackground(Color.white);
+        btnVoltar.setForeground(azulPadrao);
+        txtTextoDeAjuda.setText("O botão serve para retornar a tela anterior a partir de qualquer ponto do sistema e de qualquer tela.");
+    }//GEN-LAST:event_btnVoltarMouseEntered
+
+    private void btnVoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseExited
+         btnVoltar.setBackground(azulVoltar);
+        btnVoltar.setForeground(Color.white);
+        txtTextoDeAjuda.setText("");
+    }//GEN-LAST:event_btnVoltarMouseExited
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
+        btnZoom.setBackground(Color.white);
+        btnZoom.setForeground(azulPadrao);
+        txtTextoDeAjuda.setText("O botão zoom auxilia pessoas com dificuldades visuais, todos os itens e fontes da tela são ampliados para "
+                + "facilitar a visibilidade.");
+    }//GEN-LAST:event_btnZoomMouseEntered
+
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
+        btnZoom.setBackground(azulPadrao);
+        btnZoom.setForeground(Color.white);
+        txtTextoDeAjuda.setText("");
+    }//GEN-LAST:event_btnZoomMouseExited
+
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnZoomActionPerformed
+
+    private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
+        btnSair.setBackground(Color.white);
+        btnSair.setForeground(vermelhoHover);
+        txtTextoDeAjuda.setText("Fecha completamente o sistema. Até logo:)");
+    }//GEN-LAST:event_btnSairMouseEntered
+
+    private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
+        btnSair.setBackground(vermelhoPadraoExcluir);
+        btnSair.setForeground(Color.white);
+        txtTextoDeAjuda.setText("");
+    }//GEN-LAST:event_btnSairMouseExited
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnVoltar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltar1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltar1MouseEntered
+
+    private void btnVoltar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltar1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltar1MouseExited
+
+    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVoltar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,13 +663,21 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAgenda;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnProntuario;
+    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnVoltar1;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtTextoDeAjuda;
     // End of variables declaration//GEN-END:variables
