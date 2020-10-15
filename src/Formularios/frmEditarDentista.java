@@ -8,6 +8,11 @@ import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -29,6 +34,11 @@ public class frmEditarDentista extends javax.swing.JFrame {
          Color vermelhoPadraoExcluir = new Color(223,107,111);
 
     public String situacao = "";
+    
+    String logradouro;
+    String bairro;
+    String cidade;
+    String uf;
 
     class campoNumerico extends PlainDocument{
         @Override
@@ -117,7 +127,44 @@ public class frmEditarDentista extends javax.swing.JFrame {
         txtEmail.setEnabled(false);
         txtCidade.setEnabled(false);
     }
+    public void buscarCep(String cep){
+        String json;        
 
+        try {
+            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
+            URLConnection urlConnection = url.openConnection();
+            InputStream is = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            StringBuilder jsonSb = new StringBuilder();
+
+            br.lines().forEach(l -> jsonSb.append(l.trim()));
+            json = jsonSb.toString();
+            
+            // JOptionPane.showMessageDialog(null, json);
+            
+            json = json.replaceAll("[{},:]", "");
+            json = json.replaceAll("\"", "\n");                       
+            String array[] = new String[30];
+            array = json.split("\n");
+            
+            // JOptionPane.showMessageDialog(null, array);
+                             
+            logradouro = array[7];            
+            bairro = array[15];
+            cidade = array[19]; 
+            uf = array[23];
+            
+            txtRua.setText(logradouro);
+            txtBairro.setText(bairro);
+            txtCidade.setText(cidade);
+            txtEstado.setText(uf);
+            //JOptionPane.showMessageDialog(null, logradouro + " " + bairro + " " + cidade + " " + uf);
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
    
 
     private void carregaTabela() {
@@ -560,7 +607,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel24.setText("Estado:");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(140, 10, 54, 20);
+        jLabel24.setBounds(140, 10, 52, 20);
 
         txtCidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -579,6 +626,11 @@ public class frmEditarDentista extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCepKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtCep);
         txtCep.setBounds(10, 30, 120, 19);
 
@@ -1403,6 +1455,10 @@ public class frmEditarDentista extends javax.swing.JFrame {
     private void jMenu8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu8MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu8MouseEntered
+
+    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
+        buscarCep(txtCep.getText());
+    }//GEN-LAST:event_txtCepKeyPressed
 
     /**
      * @param args the command line arguments

@@ -239,6 +239,12 @@
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu8MouseEntered"/>
           </Events>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu11">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="         "/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu10">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

@@ -259,6 +259,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
+        jMenu11 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -856,6 +857,10 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         });
         jMenuBar2.add(jMenu8);
 
+        jMenu11.setText("         ");
+        jMenu11.setEnabled(false);
+        jMenuBar2.add(jMenu11);
+
         jMenu10.setForeground(new java.awt.Color(255, 255, 255));
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
         jMenu10.setText(" Ajuda");
@@ -1390,6 +1395,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
