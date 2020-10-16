@@ -319,6 +319,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
         jLabel12.setText("Celular:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Data de Nasc:");
@@ -1153,7 +1154,7 @@ public class frmEditarDentista extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
         );
 
-        setSize(new java.awt.Dimension(1226, 769));
+        setSize(new java.awt.Dimension(1212, 732));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

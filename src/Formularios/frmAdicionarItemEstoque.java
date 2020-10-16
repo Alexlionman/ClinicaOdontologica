@@ -155,6 +155,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -511,7 +512,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(796, 614));
+        setSize(new java.awt.Dimension(782, 577));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

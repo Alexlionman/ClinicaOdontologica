@@ -131,6 +131,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -592,7 +593,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1224, 767));
+        setSize(new java.awt.Dimension(1210, 730));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

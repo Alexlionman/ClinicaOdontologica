@@ -134,6 +134,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
@@ -612,7 +613,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
                         .addComponent(btnEditarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
-        setSize(new java.awt.Dimension(1224, 767));
+        setSize(new java.awt.Dimension(1210, 730));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

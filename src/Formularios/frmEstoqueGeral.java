@@ -154,6 +154,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jScrollPane1.setBorder(null);
 
@@ -566,7 +567,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                         .addGap(61, 61, 61))))
         );
 
-        setBounds(0, 0, 1112, 567);
+        setBounds(0, 0, 1098, 530);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarEstoqueActionPerformed

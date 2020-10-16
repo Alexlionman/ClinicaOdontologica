@@ -94,6 +94,7 @@ public class frmProntuario extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel4.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
