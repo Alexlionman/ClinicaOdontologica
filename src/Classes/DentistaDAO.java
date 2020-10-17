@@ -44,7 +44,7 @@ public class DentistaDAO {
         try {
             Connection con = Conecta.getConexao();
             Statement stmt = con.createStatement();
-            String sql = "UPDATE dentista SET ='" + dentista.getNome() + "',"
+            String sql = "UPDATE dentista SET nome ='" + dentista.getNome() + "',"
                     + " rg='" + dentista.getRg() + "',"
                     + " cpf='" + dentista.getCpf() + "',"
                     + " endereco='" + dentista.getEndereco() + "',"

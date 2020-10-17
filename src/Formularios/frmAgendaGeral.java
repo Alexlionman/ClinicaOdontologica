@@ -20,7 +20,8 @@ import javax.swing.table.DefaultTableModel;
 public class frmAgendaGeral extends javax.swing.JFrame {
     Color azulClaro = new Color(226, 235, 255);
     Color azulPadrao = new Color(129,167,255);
-    
+    Color azulFundo = new Color(226, 235, 255);
+    Color vermelhoPadrao = new Color(255,153,153);
     
     
     private void habilitaCampos(){
@@ -64,6 +65,8 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     public frmAgendaGeral() {
         initComponents();
         carregaTabela();
+        this.setExtendedState(MAXIMIZED_BOTH);
+        getContentPane().setBackground(azulFundo);
          getContentPane().setBackground(azulClaro);
          //mudar a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();

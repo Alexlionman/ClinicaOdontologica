@@ -27,7 +27,7 @@ public class ProntuarioDAO {
         try{
             Connection con=Conecta.getConexao();
             Statement stmt=con.createStatement();
-            String sql="SELECT * FROM prontuario WHERE id="+id;
+            String sql="SELECT * FROM prontuario WHERE idPaciente="+id;
             stmt.execute(sql);
             ResultSet rs=stmt.getResultSet();
             while(rs.next()){

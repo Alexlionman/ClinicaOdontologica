@@ -252,12 +252,12 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
             
-        frmPrincipal no = new frmPrincipal();
-        no.setVisible(true);
-         
+        //frmPrincipal no = new frmPrincipal();
+        //no.setVisible(true);
+  
         
         
-        /*RecepcionistaDAO r = new RecepcionistaDAO();
+        RecepcionistaDAO r = new RecepcionistaDAO();
         if (r.loginRecepcionista(txtLogin.getText(), txtSenha.getText())) {
             frmPrincipal fp = new frmPrincipal();
             fp.setVisible(true);
@@ -282,7 +282,7 @@ public class frmLogin extends javax.swing.JFrame {
         }else {
             JOptionPane.showMessageDialog(null, "Login ou senha invalidos!");
         }}
-        */
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
         Color azulPadrao = new Color(129,167,255);
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
