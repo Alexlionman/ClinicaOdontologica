@@ -22,6 +22,10 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     Color azulPadrao = new Color(129,167,255);
     Color azulFundo = new Color(226, 235, 255);
     Color vermelhoPadrao = new Color(255,153,153);
+    Color azulClaroo = new Color (139, 215, 255);
+    Color azulHover = new Color(192, 216, 235);
+    Color vermelhoHover = new Color(242, 198, 196);
+    Color vermelhoPadraoExcluir = new Color(223,107,111);
     
     
     private void habilitaCampos(){
@@ -34,6 +38,13 @@ public class frmAgendaGeral extends javax.swing.JFrame {
      txtDataConsulta.setEnabled(false);
     txtHorarioConsulta.setEnabled(false);
     txtValorConsulta.setEnabled(false);
+    
+    }
+    
+    private void desabilitaBotoes(){
+        btnEditarConsulta.setEnabled(false);
+        btnExcluirConsulta.setEnabled(false);
+        btnSalvarEdicaoConsulta.setEnabled(false);
     }
     private void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tblAgenda.getModel();
@@ -105,12 +116,12 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         txtNomeDentista = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtIdConsulta = new javax.swing.JLabel();
-        btnExcluirConsulta1 = new javax.swing.JButton();
+        btnEditarConsulta = new javax.swing.JButton();
         btnSalvarEdicaoConsulta = new javax.swing.JButton();
         txtNomePaciente = new javax.swing.JTextField();
         btnExcluirConsulta = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -136,13 +147,10 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 153, 255));
         jLabel1.setText("AGENDA GERAL");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 37, 240, 40);
 
         tblAgenda.setBorder(new javax.swing.border.MatteBorder(null));
         tblAgenda.setModel(new javax.swing.table.DefaultTableModel(
@@ -188,9 +196,6 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             tblAgenda.getColumnModel().getColumn(5).setMaxWidth(90);
         }
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 140, 610, 450);
-
         txtPesquisaDentista2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(88, 138, 255)));
         txtPesquisaDentista2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,27 +207,29 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                 txtPesquisaDentista2KeyPressed(evt);
             }
         });
-        getContentPane().add(txtPesquisaDentista2);
-        txtPesquisaDentista2.setBounds(30, 110, 480, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Pesquisar Dentista:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 90, 150, 17);
 
-        btnNovaConsulta2.setBackground(new java.awt.Color(88, 138, 255));
+        btnNovaConsulta2.setBackground(new java.awt.Color(129, 167, 255));
         btnNovaConsulta2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnNovaConsulta2.setForeground(new java.awt.Color(255, 255, 255));
         btnNovaConsulta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
         btnNovaConsulta2.setText("Agendar Consulta");
         btnNovaConsulta2.setBorder(null);
+        btnNovaConsulta2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovaConsulta2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovaConsulta2MouseExited(evt);
+            }
+        });
         btnNovaConsulta2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovaConsulta2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovaConsulta2);
-        btnNovaConsulta2.setBounds(1010, 470, 170, 50);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta Selecionada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
@@ -262,24 +269,42 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         txtIdConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtIdConsulta.setForeground(new java.awt.Color(0, 153, 204));
 
-        btnExcluirConsulta1.setBackground(new java.awt.Color(88, 138, 255));
-        btnExcluirConsulta1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnExcluirConsulta1.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluirConsulta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
-        btnExcluirConsulta1.setText("Editar consulta");
-        btnExcluirConsulta1.setBorder(null);
-        btnExcluirConsulta1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarConsulta.setBackground(new java.awt.Color(129, 167, 255));
+        btnEditarConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEditarConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
+        btnEditarConsulta.setText("Editar consulta");
+        btnEditarConsulta.setBorder(null);
+        btnEditarConsulta.setEnabled(false);
+        btnEditarConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarConsultaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarConsultaMouseExited(evt);
+            }
+        });
+        btnEditarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirConsulta1ActionPerformed(evt);
+                btnEditarConsultaActionPerformed(evt);
             }
         });
 
-        btnSalvarEdicaoConsulta.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarEdicaoConsulta.setBackground(new java.awt.Color(129, 167, 255));
         btnSalvarEdicaoConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSalvarEdicaoConsulta.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarEdicaoConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
         btnSalvarEdicaoConsulta.setText("Salvar Edição");
         btnSalvarEdicaoConsulta.setBorder(null);
+        btnSalvarEdicaoConsulta.setEnabled(false);
+        btnSalvarEdicaoConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarEdicaoConsultaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarEdicaoConsultaMouseExited(evt);
+            }
+        });
         btnSalvarEdicaoConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarEdicaoConsultaActionPerformed(evt);
@@ -289,18 +314,35 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         txtNomePaciente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtNomePaciente.setEnabled(false);
 
+        btnExcluirConsulta.setBackground(new java.awt.Color(223, 107, 111));
+        btnExcluirConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExcluirConsulta.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluirConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
+        btnExcluirConsulta.setText("Excluir consulta");
+        btnExcluirConsulta.setBorder(null);
+        btnExcluirConsulta.setEnabled(false);
+        btnExcluirConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExcluirConsultaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExcluirConsultaMouseExited(evt);
+            }
+        });
+        btnExcluirConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirConsultaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnExcluirConsulta1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSalvarEdicaoConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNomePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,15 +361,19 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                                         .addComponent(txtHorarioConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNomeDentista, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)))
-                        .addGap(25, 25, 25)))
-                .addGap(288, 288, 288))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtNomeDentista)))
+                        .addGap(313, 313, 313))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnExcluirConsulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvarEdicaoConsulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditarConsulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,55 +404,54 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(btnExcluirConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvarEdicaoConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExcluirConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(670, 140, 300, 450);
-
-        btnExcluirConsulta.setBackground(new java.awt.Color(255, 102, 102));
-        btnExcluirConsulta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnExcluirConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        btnExcluirConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/excluir.png"))); // NOI18N
-        btnExcluirConsulta.setText("Excluir consulta");
-        btnExcluirConsulta.setBorder(null);
-        btnExcluirConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirConsultaActionPerformed(evt);
+        btnVoltar.setBackground(new java.awt.Color(102, 204, 255));
+        btnVoltar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnVoltar.setText("voltar");
+        btnVoltar.setBorder(null);
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseExited(evt);
             }
         });
-        getContentPane().add(btnExcluirConsulta);
-        btnExcluirConsulta.setBounds(1010, 540, 170, 50);
-
-        btnSair.setBackground(new java.awt.Color(51, 255, 255));
-        btnSair.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
-        btnSair.setText("voltar");
-        btnSair.setBorder(null);
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(1060, 30, 120, 50);
 
-        btnSair1.setBackground(new java.awt.Color(88, 138, 255));
-        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair1.setText("Zoom");
-        btnSair1.setBorder(null);
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
+        btnZoom.setBackground(new java.awt.Color(129, 167, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnZoomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnZoomMouseExited(evt);
             }
         });
-        getContentPane().add(btnSair1);
-        btnSair1.setBounds(940, 30, 110, 50);
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setBackground(new java.awt.Color(129, 167, 255));
         jMenuBar1.setForeground(new java.awt.Color(129, 167, 255));
@@ -596,6 +641,54 @@ public class frmAgendaGeral extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(670, 670, 670)
+                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtPesquisaDentista2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnNovaConsulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel5)
+                .addGap(3, 3, 3)
+                .addComponent(txtPesquisaDentista2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(btnNovaConsulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+
         setSize(new java.awt.Dimension(1210, 730));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -608,17 +701,21 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                         Utilidades.criarMensagemSucesso();
                         carregaTabela();
                         desabilitaCampos();
+                        desabilitaBotoes();
                         
                     } else {
                         Utilidades.criarMensagemErro();
                         carregaTabela();
                         desabilitaCampos();
+                        desabilitaBotoes();
                     }
         
     }//GEN-LAST:event_btnExcluirConsultaActionPerformed
 
     private void tblAgendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendaMouseClicked
-         int item = tblAgenda.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        btnEditarConsulta.setEnabled(true);
+        btnExcluirConsulta.setEnabled(true);
+        int item = tblAgenda.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         String itemString = (String) tblAgenda.getModel().getValueAt(item, 0).toString();
         
 
@@ -708,17 +805,18 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnNovaConsulta2ActionPerformed
 
-    private void btnExcluirConsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConsulta1ActionPerformed
+    private void btnEditarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsultaActionPerformed
+        btnSalvarEdicaoConsulta.setEnabled(true);
         habilitaCampos();
-    }//GEN-LAST:event_btnExcluirConsulta1ActionPerformed
+    }//GEN-LAST:event_btnEditarConsultaActionPerformed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
 
-    }//GEN-LAST:event_btnSair1ActionPerformed
+    }//GEN-LAST:event_btnZoomActionPerformed
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
@@ -800,6 +898,66 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void btnEditarConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsultaMouseEntered
+        btnEditarConsulta.setBackground(Color.white);
+       btnEditarConsulta.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnEditarConsultaMouseEntered
+
+    private void btnEditarConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarConsultaMouseExited
+        btnEditarConsulta.setBackground(azulPadrao);
+        btnEditarConsulta.setForeground(Color.white);
+    }//GEN-LAST:event_btnEditarConsultaMouseExited
+
+    private void btnSalvarEdicaoConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoConsultaMouseEntered
+        btnSalvarEdicaoConsulta.setBackground(Color.white);
+       btnSalvarEdicaoConsulta.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSalvarEdicaoConsultaMouseEntered
+
+    private void btnSalvarEdicaoConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarEdicaoConsultaMouseExited
+        btnSalvarEdicaoConsulta.setBackground(azulPadrao);
+        btnSalvarEdicaoConsulta.setForeground(Color.white);
+    }//GEN-LAST:event_btnSalvarEdicaoConsultaMouseExited
+
+    private void btnNovaConsulta2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaConsulta2MouseEntered
+        btnNovaConsulta2.setBackground(Color.white);
+       btnNovaConsulta2.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnNovaConsulta2MouseEntered
+
+    private void btnNovaConsulta2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovaConsulta2MouseExited
+        btnNovaConsulta2.setBackground(azulPadrao);
+        btnNovaConsulta2.setForeground(Color.white);
+    }//GEN-LAST:event_btnNovaConsulta2MouseExited
+
+    private void btnExcluirConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirConsultaMouseEntered
+        btnExcluirConsulta.setBackground(vermelhoHover);
+       btnExcluirConsulta.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnExcluirConsultaMouseEntered
+
+    private void btnExcluirConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirConsultaMouseExited
+         btnExcluirConsulta.setBackground(vermelhoPadraoExcluir);
+        btnExcluirConsulta.setForeground(Color.white);
+    }//GEN-LAST:event_btnExcluirConsultaMouseExited
+
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
+         btnZoom.setBackground(vermelhoHover);
+       btnZoom.setForeground(Color.BLACK);
+    }//GEN-LAST:event_btnZoomMouseEntered
+
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
+        btnZoom.setBackground(vermelhoPadraoExcluir);
+        btnZoom.setForeground(Color.white);
+    }//GEN-LAST:event_btnZoomMouseExited
+
+    private void btnVoltarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseEntered
+         btnVoltar.setBackground(Color.white);
+       btnVoltar.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnVoltarMouseEntered
+
+    private void btnVoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseExited
+         btnVoltar.setBackground(azulClaroo);
+        btnVoltar.setForeground(Color.white);
+    }//GEN-LAST:event_btnVoltarMouseExited
+
     
  
     public static void main(String args[]) {
@@ -835,12 +993,12 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarConsulta;
     private javax.swing.JButton btnExcluirConsulta;
-    private javax.swing.JButton btnExcluirConsulta1;
     private javax.swing.JButton btnNovaConsulta2;
-    private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarEdicaoConsulta;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

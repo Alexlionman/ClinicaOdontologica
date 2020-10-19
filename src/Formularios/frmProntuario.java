@@ -147,7 +147,7 @@ public class frmProntuario extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(txtProntuario1);
 
-        btnEditarPront.setBackground(new java.awt.Color(88, 138, 255));
+        btnEditarPront.setBackground(new java.awt.Color(129, 167, 255));
         btnEditarPront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEditarPront.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarPront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/editar.png"))); // NOI18N
@@ -167,7 +167,7 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
-        btnSalvarpront.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarpront.setBackground(new java.awt.Color(129, 167, 255));
         btnSalvarpront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvarpront.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarpront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/incluir.png"))); // NOI18N
@@ -187,7 +187,7 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisarPacienteNovo.setBackground(new java.awt.Color(88, 138, 255));
+        btnPesquisarPacienteNovo.setBackground(new java.awt.Color(129, 167, 255));
         btnPesquisarPacienteNovo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnPesquisarPacienteNovo.setForeground(new java.awt.Color(255, 255, 255));
         btnPesquisarPacienteNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/pesquisar.png"))); // NOI18N
@@ -207,7 +207,7 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
-        btnSair1.setBackground(new java.awt.Color(88, 138, 255));
+        btnSair1.setBackground(new java.awt.Color(129, 167, 255));
         btnSair1.setForeground(new java.awt.Color(255, 255, 255));
         btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnSair1.setText("Zoom");
@@ -218,7 +218,7 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setBackground(new java.awt.Color(51, 255, 255));
+        btnSair.setBackground(new java.awt.Color(102, 204, 255));
         btnSair.setForeground(new java.awt.Color(255, 255, 255));
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
         btnSair.setText("voltar");
@@ -229,7 +229,7 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
-        btnSalvarEdicaoPront.setBackground(new java.awt.Color(88, 138, 255));
+        btnSalvarEdicaoPront.setBackground(new java.awt.Color(129, 167, 255));
         btnSalvarEdicaoPront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvarEdicaoPront.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarEdicaoPront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
@@ -249,7 +249,7 @@ public class frmProntuario extends javax.swing.JFrame {
             }
         });
 
-        btnAdicionarPront.setBackground(new java.awt.Color(88, 138, 255));
+        btnAdicionarPront.setBackground(new java.awt.Color(129, 167, 255));
         btnAdicionarPront.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAdicionarPront.setForeground(new java.awt.Color(255, 255, 255));
         btnAdicionarPront.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
@@ -738,12 +738,15 @@ public class frmProntuario extends javax.swing.JFrame {
     private void tblProntuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProntuarioMouseClicked
         int item = tblProntuario.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblProntuario.getModel().getValueAt(item, 0);
-        Paciente p = new PacienteDAO().pesquisarPaciente(item);
+
         ProntuarioDAO prontDAO = new ProntuarioDAO();
-        lblId.setText(p.getId() + ""); //esta setando no id para poder usalo quando for inserir um valor no prontuario do paciente
+         Prontuario prontPreenchido = prontDAO.pesquisarProntuario(item);
+         txtProntuario1.setText(prontPreenchido.getDescricao());
+       
+        lblId.setText(String.valueOf(item)); //esta setando no id para poder usalo quando for inserir um valor no prontuario do paciente
+       
+       
         
-        Prontuario prontPreenchido = prontDAO.pesquisarProntuario(p.getId());
-        txtProntuario1.setText(prontPreenchido.getDescricao());
         
     }//GEN-LAST:event_tblProntuarioMouseClicked
 
