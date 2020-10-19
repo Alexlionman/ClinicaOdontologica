@@ -17,6 +17,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     Color azulClaro = new Color(226, 235, 255);
     Color azulHover = new Color(192, 216, 235);
     Color vermelhoHover = new Color(242, 198, 196);
+     Color azulClaroo = new Color (139, 215, 255);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
     
     private boolean verificaPreenchimento() {
@@ -131,6 +132,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnSair1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        lblInstrucao = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -197,9 +199,19 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         btnAdicionarEstoque.setForeground(new java.awt.Color(255, 255, 255));
         btnAdicionarEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/incluir.png"))); // NOI18N
         btnAdicionarEstoque.setText("Adicionar Item");
+        btnAdicionarEstoque.setToolTipText("Abrir tela de itens");
+        btnAdicionarEstoque.setBorder(null);
         btnAdicionarEstoque.setMaximumSize(new java.awt.Dimension(141, 31));
         btnAdicionarEstoque.setMinimumSize(new java.awt.Dimension(141, 31));
         btnAdicionarEstoque.setPreferredSize(new java.awt.Dimension(141, 31));
+        btnAdicionarEstoque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAdicionarEstoqueMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAdicionarEstoqueMouseExited(evt);
+            }
+        });
         btnAdicionarEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarEstoqueActionPerformed(evt);
@@ -211,9 +223,18 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         btnNovoProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoProduto.setText(" Novo Produto");
+        btnNovoProduto.setBorder(null);
         btnNovoProduto.setMaximumSize(new java.awt.Dimension(141, 31));
         btnNovoProduto.setMinimumSize(new java.awt.Dimension(141, 31));
         btnNovoProduto.setPreferredSize(new java.awt.Dimension(141, 31));
+        btnNovoProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoProdutoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoProdutoMouseExited(evt);
+            }
+        });
         btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoProdutoActionPerformed(evt);
@@ -225,10 +246,19 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         btnSalvarProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
         btnSalvarProduto.setText("Salvar Produto");
+        btnSalvarProduto.setBorder(null);
         btnSalvarProduto.setEnabled(false);
         btnSalvarProduto.setMaximumSize(new java.awt.Dimension(141, 31));
         btnSalvarProduto.setMinimumSize(new java.awt.Dimension(141, 31));
         btnSalvarProduto.setPreferredSize(new java.awt.Dimension(141, 31));
+        btnSalvarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarProdutoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarProdutoMouseExited(evt);
+            }
+        });
         btnSalvarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarProdutoActionPerformed(evt);
@@ -240,10 +270,19 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorder(null);
         btnLimparCampos.setEnabled(false);
         btnLimparCampos.setMaximumSize(new java.awt.Dimension(141, 31));
         btnLimparCampos.setMinimumSize(new java.awt.Dimension(141, 31));
         btnLimparCampos.setPreferredSize(new java.awt.Dimension(141, 31));
+        btnLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseExited(evt);
+            }
+        });
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
@@ -264,7 +303,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         txtProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtProduto.setEnabled(false);
 
-        btnSair.setBackground(new java.awt.Color(51, 255, 255));
+        btnSair.setBackground(new java.awt.Color(102, 204, 255));
         btnSair.setForeground(new java.awt.Color(255, 255, 255));
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
         btnSair.setText("voltar");
@@ -305,6 +344,9 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("Esta tela está em processo de desenvolvimento*");
+
+        lblInstrucao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblInstrucao.setText("Clique em novo produto para adicionar um novo tipo de item");
 
         jMenuBar1.setBackground(new java.awt.Color(129, 167, 255));
         jMenuBar1.setForeground(new java.awt.Color(129, 167, 255));
@@ -502,54 +544,48 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(256, 256, 256)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAdicionarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(43, 43, 43))
+                            .addComponent(btnAdicionarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(256, 256, 256)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(43, 43, 43))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(359, 359, 359)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblInstrucao, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(104, 104, 104)
-                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(btnAdicionarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -562,9 +598,25 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(46, 46, 46)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))))
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(lblInstrucao)
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(btnAdicionarEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
         );
 
         setBounds(0, 0, 1098, 530);
@@ -578,6 +630,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         habilitaCampos();
+        lblInstrucao.setText("Preencha os campos produto e fabricante e clique em salvar");
         btnNovoProduto.setEnabled(false);
         btnLimparCampos.setEnabled(true);
         btnSalvarProduto.setEnabled(true);
@@ -585,6 +638,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnSalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProdutoActionPerformed
+        lblInstrucao.setText("Clique em novo produto para adicionar um novo tipo de item");
         if (verificaPreenchimento()) {
             Produto produto = new Produto(txtProduto.getText(), txtFabricante.getText());
             String resp = new ProdutoDAO().gravarProduto(produto);
@@ -611,12 +665,12 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparCamposActionPerformed
 
     private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
-        btnSair.setBackground(Color.white);
-        btnSair.setForeground(azulPadrao);
+       btnSair.setBackground(Color.white);
+       btnSair.setForeground(azulPadrao);
     }//GEN-LAST:event_btnSairMouseEntered
 
     private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
-        btnSair.setBackground(azulClaro);
+        btnSair.setBackground(azulClaroo);
         btnSair.setForeground(Color.white);
     }//GEN-LAST:event_btnSairMouseExited
 
@@ -717,6 +771,46 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void btnNovoProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseEntered
+        btnNovoProduto.setBackground(Color.white);
+        btnNovoProduto.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnNovoProdutoMouseEntered
+
+    private void btnNovoProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseExited
+        btnNovoProduto.setBackground(azulPadrao);
+        btnNovoProduto.setForeground(Color.white);
+    }//GEN-LAST:event_btnNovoProdutoMouseExited
+
+    private void btnSalvarProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarProdutoMouseEntered
+        btnSalvarProduto.setBackground(Color.white);
+        btnSalvarProduto.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSalvarProdutoMouseEntered
+
+    private void btnSalvarProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarProdutoMouseExited
+        btnSalvarProduto.setBackground(azulPadrao);
+        btnSalvarProduto.setForeground(Color.white);
+    }//GEN-LAST:event_btnSalvarProdutoMouseExited
+
+    private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
+        btnLimparCampos.setBackground(Color.white);
+        btnLimparCampos.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnLimparCamposMouseEntered
+
+    private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
+          btnLimparCampos.setBackground(azulPadrao);
+        btnLimparCampos.setForeground(Color.white);
+    }//GEN-LAST:event_btnLimparCamposMouseExited
+
+    private void btnAdicionarEstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarEstoqueMouseEntered
+        btnAdicionarEstoque.setBackground(Color.white);
+        btnAdicionarEstoque.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnAdicionarEstoqueMouseEntered
+
+    private void btnAdicionarEstoqueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarEstoqueMouseExited
+        btnAdicionarEstoque.setBackground(azulPadrao);
+        btnAdicionarEstoque.setForeground(Color.white);
+    }//GEN-LAST:event_btnAdicionarEstoqueMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -785,6 +879,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmiPacientes;
     public javax.swing.JMenuItem jmiRecepcionistas;
     private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JLabel lblInstrucao;
     private javax.swing.JTable tblItens;
     private javax.swing.JTextField txtFabricante;
     private javax.swing.JTextField txtProduto;
