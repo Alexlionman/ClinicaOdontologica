@@ -725,7 +725,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             Connection con = Conecta.getConexao();
             Statement stmt=con.createStatement();
             
-            String sql = "SELECT C.id, C.dataConsulta, C.hora,P.nome,D.nome,C.valor FROM consulta C, dentista D,paciente P  WHERE C.id = "+ itemString;
+            String sql = "SELECT C.id, C.dataConsulta, C.hora,P.nome,D.nome,C.valor FROM consulta C, dentista D,paciente P  WHERE C.id = "+ itemString+" AND C.dentistaId=D.id AND C.pacienteId=P.id";
             stmt.execute(sql);
             ResultSet rs = stmt.getResultSet();
           

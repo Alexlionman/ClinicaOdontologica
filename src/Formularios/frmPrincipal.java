@@ -499,7 +499,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
-
+        this.dispose();
         frmEditarPaciente frm = new frmEditarPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -507,39 +507,42 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-      frmEditarDentista frm = new frmEditarDentista();
+      this.dispose();
+        frmEditarDentista frm = new frmEditarDentista();
       frm.setVisible(true);
       frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiDentistasActionPerformed
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
-        
+        this.dispose();
         frmAdicionarConsulta frm = new frmAdicionarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiConsultasActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.dispose();
         frmAgendaGeral frm = new frmAgendaGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
-    
+        this.dispose();
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiEstoqueActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        this.dispose();
         frmAgendaEspecifica frm = new frmAgendaEspecifica();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
-        
+        this.dispose();
         frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -566,26 +569,28 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
-      
+        this.dispose();
         frmEditarPaciente frm = new frmEditarPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
 
     private void btnAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarConsultaActionPerformed
+        this.dispose();
         frmAdicionarConsulta frm = new frmAdicionarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAgendarConsultaActionPerformed
 
     private void btnAgendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendasActionPerformed
+        this.dispose();
         frmAgendaGeral frm = new frmAgendaGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAgendasActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-
+        this.dispose();
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -598,7 +603,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnRegistrarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteMouseExited
         btnRegistrarPaciente.setBackground(azulPadrao);
-       btnRegistrarPaciente.setForeground(Color.white);
+        btnRegistrarPaciente.setForeground(Color.white);
     }//GEN-LAST:event_btnRegistrarPacienteMouseExited
 
     private void btnAgendarConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarConsultaMouseEntered
@@ -608,22 +613,22 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnAgendarConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarConsultaMouseExited
         btnAgendarConsulta.setBackground(azulPadrao);
-       btnAgendarConsulta.setForeground(Color.white);
+        btnAgendarConsulta.setForeground(Color.white);
     }//GEN-LAST:event_btnAgendarConsultaMouseExited
 
     private void btnAgendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendasMouseEntered
         btnAgendas.setBackground(Color.white);
-       btnAgendas.setForeground(azulPadrao);
+        btnAgendas.setForeground(azulPadrao);
     }//GEN-LAST:event_btnAgendasMouseEntered
 
     private void btnAgendasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendasMouseExited
         btnAgendas.setBackground(azulPadrao);
-       btnAgendas.setForeground(Color.white);
+        btnAgendas.setForeground(Color.white);
     }//GEN-LAST:event_btnAgendasMouseExited
 
     private void btnEstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseEntered
         btnEstoque.setBackground(Color.white);
-       btnEstoque.setForeground(azulPadrao);
+        btnEstoque.setForeground(azulPadrao);
     }//GEN-LAST:event_btnEstoqueMouseEntered
 
     private void btnEstoqueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseExited
@@ -632,23 +637,24 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstoqueMouseExited
 
     private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
-         btnSair.setBackground(vermelhoHover);
-       btnSair.setForeground(Color.BLACK);
+        btnSair.setBackground(vermelhoHover);
+        btnSair.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnSairMouseEntered
 
     private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
-       btnSair.setBackground(vermelhoPadraoExcluir);
+        btnSair.setBackground(vermelhoPadraoExcluir);
         btnSair.setForeground(Color.white);
     }//GEN-LAST:event_btnSairMouseExited
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        this.dispose();
         frmProntuario frm = new frmProntuario();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-         frmTelaDeAjuda frm = new frmTelaDeAjuda();
+        frmTelaDeAjuda frm = new frmTelaDeAjuda();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
