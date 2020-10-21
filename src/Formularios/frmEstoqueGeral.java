@@ -625,7 +625,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     private void btnAdicionarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarEstoqueActionPerformed
         frmAdicionarItemEstoque frm = new frmAdicionarItemEstoque();
         frm.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_btnAdicionarEstoqueActionPerformed
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
@@ -676,6 +676,9 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
+        frmPrincipal frm=new frmPrincipal();
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered

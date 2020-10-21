@@ -129,30 +129,7 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         btnSalvarProduto = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         txtValidade = new javax.swing.JFormattedTextField();
-        jLabel10 = new javax.swing.JLabel();
         btnSair = new javax.swing.JButton();
-        btnNovoProduto1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jmiPacientes = new javax.swing.JMenuItem();
-        jmiDentistas = new javax.swing.JMenuItem();
-        jmiRecepcionistas = new javax.swing.JMenuItem();
-        jmiConsultas = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jmiEstoque = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jmiSair = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -162,45 +139,33 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
                 formWindowClosed(evt);
             }
         });
-        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel1.setText("Selecione o Produto:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 130, 135, 19);
 
         txtQuantidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtQuantidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtQuantidade.setDocument(new campoNumerico());
         txtQuantidade.setEnabled(false);
-        getContentPane().add(txtQuantidade);
-        txtQuantidade.setBounds(360, 70, 120, 20);
 
         txtPeso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtPeso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPeso.setDocument(new campoNumerico());
         txtPeso.setEnabled(false);
-        getContentPane().add(txtPeso);
-        txtPeso.setBounds(40, 70, 120, 20);
 
         jLabel4.setText("Fabricante");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(117, 126, 48, 0);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Qtde:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(360, 50, 40, 17);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Peso:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 50, 40, 13);
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Validade:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(200, 50, 70, 17);
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,33 +190,27 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
             tblProdutos.getColumnModel().getColumn(0).setMaxWidth(40);
         }
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(30, 160, 490, 250);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Estoque");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(280, 0, 90, 30);
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(129, 167, 255));
+        jLabel2.setText("CADASTRO DO ESTOQUE");
 
         btnNovoProduto.setBackground(new java.awt.Color(129, 167, 255));
         btnNovoProduto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnNovoProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnNovoProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
-        btnNovoProduto.setText(" Novo Lote");
+        btnNovoProduto.setText(" Novo Produto");
         btnNovoProduto.setBorder(null);
         btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNovoProduto);
-        btnNovoProduto.setBounds(560, 140, 180, 60);
 
         btnSalvarProduto.setBackground(new java.awt.Color(129, 167, 255));
         btnSalvarProduto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvarProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/salvar.png"))); // NOI18N
-        btnSalvarProduto.setText("Salvar ");
+        btnSalvarProduto.setText("Salvar Produto");
         btnSalvarProduto.setBorder(null);
         btnSalvarProduto.setEnabled(false);
         btnSalvarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -259,8 +218,6 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
                 btnSalvarProdutoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalvarProduto);
-        btnSalvarProduto.setBounds(560, 280, 180, 60);
 
         btnLimparCampos.setBackground(new java.awt.Color(255, 117, 117));
         btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -274,8 +231,6 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
                 btnLimparCamposActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimparCampos);
-        btnLimparCampos.setBounds(560, 350, 180, 60);
 
         txtValidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -285,13 +240,6 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         }
         txtValidade.setEnabled(false);
         txtValidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        getContentPane().add(txtValidade);
-        txtValidade.setBounds(200, 70, 110, 20);
-
-        jLabel10.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel10.setText("Esta tela está em processo de desenvolvimento*");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(370, 20, 220, 13);
 
         btnSair.setBackground(new java.awt.Color(139, 215, 255));
         btnSair.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,213 +254,83 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair);
-        btnSair.setBounds(600, 30, 110, 50);
 
-        btnNovoProduto1.setBackground(new java.awt.Color(129, 167, 255));
-        btnNovoProduto1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnNovoProduto1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNovoProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
-        btnNovoProduto1.setText("Editar Quantidade");
-        btnNovoProduto1.setBorder(null);
-        btnNovoProduto1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoProduto1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnNovoProduto1);
-        btnNovoProduto1.setBounds(560, 210, 180, 60);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)))
+                .addGap(28, 28, 28))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
+        );
 
-        jMenuBar1.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuBar1.setForeground(new java.awt.Color(129, 167, 255));
-        jMenuBar1.setBorderPainted(false);
-        jMenuBar1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(346, 60));
-
-        jMenu5.setText("         ");
-        jMenu5.setEnabled(false);
-        jMenuBar1.add(jMenu5);
-
-        jMenu1.setBorder(null);
-        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
-        jMenu1.setText(" Registrar");
-        jMenu1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
-
-        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
-        jmiPacientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jmiPacientes.setForeground(java.awt.Color.white);
-        jmiPacientes.setText("Registrar Paciente");
-        jmiPacientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiPacientesActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiPacientes);
-
-        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
-        jmiDentistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jmiDentistas.setForeground(java.awt.Color.white);
-        jmiDentistas.setText("Registrar Dentista");
-        jmiDentistas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiDentistasActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiDentistas);
-
-        jmiRecepcionistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiRecepcionistas.setBackground(new java.awt.Color(129, 167, 255));
-        jmiRecepcionistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jmiRecepcionistas.setForeground(java.awt.Color.white);
-        jmiRecepcionistas.setText("Registrar Recepcionista");
-        jmiRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiRecepcionistasActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiRecepcionistas);
-
-        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
-        jmiConsultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jmiConsultas.setForeground(java.awt.Color.white);
-        jmiConsultas.setText("Agendar Consulta");
-        jmiConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiConsultasActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiConsultas);
-
-        jSeparator1.setForeground(java.awt.Color.white);
-        jMenu1.add(jSeparator1);
-
-        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiEstoque.setBackground(new java.awt.Color(129, 167, 255));
-        jmiEstoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jmiEstoque.setForeground(java.awt.Color.white);
-        jmiEstoque.setText("Estoque");
-        jmiEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiEstoqueActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiEstoque);
-
-        jSeparator4.setForeground(java.awt.Color.white);
-        jMenu1.add(jSeparator4);
-
-        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiSair.setBackground(new java.awt.Color(129, 167, 255));
-        jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jmiSair.setForeground(java.awt.Color.white);
-        jmiSair.setText("Sair");
-        jmiSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiSairActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jmiSair);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu4.setText("         ");
-        jMenu4.setEnabled(false);
-        jMenuBar1.add(jMenu4);
-
-        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
-        jMenu2.setText(" Agendas");
-        jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem1.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem1.setForeground(java.awt.Color.white);
-        jMenuItem1.setText("Consultas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem1);
-
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem10.setForeground(java.awt.Color.white);
-        jMenuItem10.setText("Consultas por dentista");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem10);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu6.setText("         ");
-        jMenu6.setEnabled(false);
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
-        jMenu7.setText(" Prontuários");
-        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu7MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu7);
-
-        jMenu8.setText("         ");
-        jMenu8.setEnabled(false);
-        jMenuBar1.add(jMenu8);
-
-        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
-        jMenu3.setText(" Ajuda");
-        jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem8.setForeground(java.awt.Color.white);
-        jMenuItem8.setText("Ajuda");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem8);
-
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem9.setForeground(java.awt.Color.white);
-        jMenuItem9.setText("Sobre");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
-
-        setSize(new java.awt.Dimension(782, 577));
+        setSize(new java.awt.Dimension(758, 498));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -572,94 +390,6 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
 
    
     
-    private void btnNovoProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProduto1ActionPerformed
-        txtQuantidade.setEnabled(true);
-        opc = "edicao";
-    }//GEN-LAST:event_btnNovoProduto1ActionPerformed
-
-    private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
-
-        frmEditarPaciente frm = new frmEditarPaciente();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-
-    }//GEN-LAST:event_jmiPacientesActionPerformed
-
-    private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-        frmEditarDentista frm = new frmEditarDentista();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jmiDentistasActionPerformed
-
-    private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
-
-        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jmiRecepcionistasActionPerformed
-
-    private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
-
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jmiConsultasActionPerformed
-
-    private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
-
-        frmEstoqueGeral frm = new frmEstoqueGeral();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jmiEstoqueActionPerformed
-
-    private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jmiSairActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        frmAgendaGeral frm = new frmAgendaGeral();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        frmAgendaEspecifica frm = new frmAgendaEspecifica();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
-        frmProntuario frm = new frmProntuario();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jMenu7MouseClicked
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        frmTelaDeAjuda frm = new frmTelaDeAjuda();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        frmSobre frm = new frmSobre();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -698,38 +428,15 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoProduto;
-    private javax.swing.JButton btnNovoProduto1;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvarProduto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
-    public javax.swing.JMenuItem jmiConsultas;
-    public javax.swing.JMenuItem jmiDentistas;
-    private javax.swing.JMenuItem jmiEstoque;
-    public javax.swing.JMenuItem jmiPacientes;
-    public javax.swing.JMenuItem jmiRecepcionistas;
-    private javax.swing.JMenuItem jmiSair;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtPeso;
     private javax.swing.JTextField txtQuantidade;
