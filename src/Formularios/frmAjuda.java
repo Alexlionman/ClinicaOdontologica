@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author a.pereira
  */
-public class frmTelaDeAjuda extends javax.swing.JFrame {
+public class frmAjuda extends javax.swing.JFrame {
 
     /**
      * Creates new form frmTelaDeAjuda
      */
-    public frmTelaDeAjuda() {
+    public frmAjuda() {
         initComponents();
         getContentPane().setBackground(azulFundo);
     }
@@ -312,7 +312,7 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
         btnVoltar1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
-        btnVoltar1.setText("Clique para voltar");
+        btnVoltar1.setText("Voltar");
         btnVoltar1.setBorder(null);
         btnVoltar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -405,6 +405,7 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -625,6 +626,8 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         this.dispose();
+        frmPrincipal frm=new frmPrincipal();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     /**
@@ -644,20 +647,21 @@ public class frmTelaDeAjuda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmTelaDeAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmTelaDeAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmTelaDeAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmTelaDeAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAjuda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmTelaDeAjuda().setVisible(true);
+                new frmAjuda().setVisible(true);
             }
         });
     }

@@ -1,64 +1,40 @@
 package Formularios;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.MenuElement;
 import javax.swing.Timer;
-import javax.swing.plaf.basic.BasicMenuBarUI;
-import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 public class frmPrincipal extends javax.swing.JFrame {
-    
     Color azulPadrao = new Color(129,167,255);
-        Color azulClaro = new Color(226, 235, 255);
-         Color vermelhoHover = new Color(242, 198, 196);
-         Color vermelhoPadraoExcluir = new Color(255,117,117);
+    Color azulClaro = new Color(226, 235, 255);
+    Color vermelhoHover = new Color(242, 198, 196);
+    Color vermelhoPadraoExcluir = new Color(255,117,117);
     
     public void usuarioLogado(String usuario){
         lblUsuario.setText(usuario);
     }
-//    private void logado(String user){
-//        
-//        if(user.equals("admin")){
-//            jmiRecepcionistas.setEnabled(true);            
-//        }else{
-//            jmiRecepcionistas.setEnabled(false);
-//        }
-//    } 
-    
-    public frmPrincipal() {
-        initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);     
-      
-        //hora
-        Date data= new Date();
-        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
-        lblData.setText(formato.format(data));
-        //hora
-        Timer timer= new Timer(1000, new hora());
-        timer.start();
-    }
     //classe para atualizar a hora em segundos
     class hora implements ActionListener{
+        @Override
         public void actionPerformed(ActionEvent e){
             Calendar now=Calendar.getInstance();
             lblHora.setText(String.format("%1$tH:%1$tM:%1$tS", now));
         }
+    }
+    
+    public frmPrincipal() {
+        initComponents();
+        //Iniciando a data da maquina no JLabel
+        Date data= new Date();
+        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
+        lblData.setText(formato.format(data));
+        //Iniciando a hora da maquina no JLabel
+        Timer timer= new Timer(1000, new hora());
+        timer.start();
     }
     
     @SuppressWarnings("unchecked")
@@ -66,8 +42,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         lblUsuario = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblBemVindo = new javax.swing.JLabel();
+        lblFotoUsuario = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         btnZoom = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
@@ -76,9 +52,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnAgendas = new javax.swing.JButton();
         btnAgendarConsulta = new javax.swing.JButton();
         btnRegistrarPaciente = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        barraMenu = new javax.swing.JMenuBar();
+        mnEspaco1 = new javax.swing.JMenu();
+        mnRegistrar = new javax.swing.JMenu();
         jmiPacientes = new javax.swing.JMenuItem();
         jmiDentistas = new javax.swing.JMenuItem();
         jmiRecepcionistas = new javax.swing.JMenuItem();
@@ -87,38 +63,33 @@ public class frmPrincipal extends javax.swing.JFrame {
         jmiEstoque = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jmiSair = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        mnEspaco2 = new javax.swing.JMenu();
+        mnAgendas = new javax.swing.JMenu();
+        jmiAgenda = new javax.swing.JMenuItem();
+        jmiAgendaEspecifica = new javax.swing.JMenuItem();
+        mnEspaco3 = new javax.swing.JMenu();
+        mnProntuarios = new javax.swing.JMenu();
+        mnEspaco4 = new javax.swing.JMenu();
+        mnAjuda = new javax.swing.JMenu();
+        jmiAjuda = new javax.swing.JMenuItem();
+        jmiSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
         lblUsuario.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(129, 167, 255));
         lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUsuario.setText("Bruce Wayne");
+        lblUsuario.setText("admin");
         lblUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(129, 167, 255));
-        jLabel2.setText("Olá, bem vindo!");
+        lblBemVindo.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        lblBemVindo.setForeground(new java.awt.Color(129, 167, 255));
+        lblBemVindo.setText("Olá, bem vindo!");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/foto-de-perfil.png"))); // NOI18N
+        lblFotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/foto-de-perfil.png"))); // NOI18N
 
         lblHora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblHora.setForeground(new java.awt.Color(51, 51, 51));
@@ -132,11 +103,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnZoom.setText("Zoom");
         btnZoom.setBorder(null);
-        btnZoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZoomActionPerformed(evt);
-            }
-        });
 
         btnSair.setBackground(new java.awt.Color(255, 117, 117));
         btnSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -244,26 +210,21 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuBar1.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuBar1.setForeground(new java.awt.Color(129, 167, 255));
-        jMenuBar1.setBorderPainted(false);
-        jMenuBar1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(346, 60));
+        barraMenu.setBackground(new java.awt.Color(129, 167, 255));
+        barraMenu.setForeground(new java.awt.Color(129, 167, 255));
+        barraMenu.setBorderPainted(false);
+        barraMenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        barraMenu.setPreferredSize(new java.awt.Dimension(346, 60));
 
-        jMenu5.setText("         ");
-        jMenu5.setEnabled(false);
-        jMenuBar1.add(jMenu5);
+        mnEspaco1.setText("         ");
+        mnEspaco1.setEnabled(false);
+        barraMenu.add(mnEspaco1);
 
-        jMenu1.setBorder(null);
-        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
-        jMenu1.setText(" Registrar");
-        jMenu1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
+        mnRegistrar.setBorder(null);
+        mnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        mnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
+        mnRegistrar.setText(" Registrar");
+        mnRegistrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
@@ -275,7 +236,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jmiPacientesActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiPacientes);
+        mnRegistrar.add(jmiPacientes);
 
         jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
@@ -287,7 +248,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jmiDentistasActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiDentistas);
+        mnRegistrar.add(jmiDentistas);
 
         jmiRecepcionistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiRecepcionistas.setBackground(new java.awt.Color(129, 167, 255));
@@ -299,7 +260,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jmiRecepcionistasActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiRecepcionistas);
+        mnRegistrar.add(jmiRecepcionistas);
 
         jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
@@ -311,10 +272,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jmiConsultasActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiConsultas);
+        mnRegistrar.add(jmiConsultas);
 
         jSeparator1.setForeground(java.awt.Color.white);
-        jMenu1.add(jSeparator1);
+        mnRegistrar.add(jSeparator1);
 
         jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiEstoque.setBackground(new java.awt.Color(129, 167, 255));
@@ -326,10 +287,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jmiEstoqueActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiEstoque);
+        mnRegistrar.add(jmiEstoque);
 
         jSeparator4.setForeground(java.awt.Color.white);
-        jMenu1.add(jSeparator4);
+        mnRegistrar.add(jSeparator4);
 
         jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiSair.setBackground(new java.awt.Color(129, 167, 255));
@@ -341,97 +302,97 @@ public class frmPrincipal extends javax.swing.JFrame {
                 jmiSairActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiSair);
+        mnRegistrar.add(jmiSair);
 
-        jMenuBar1.add(jMenu1);
+        barraMenu.add(mnRegistrar);
 
-        jMenu4.setText("         ");
-        jMenu4.setEnabled(false);
-        jMenuBar1.add(jMenu4);
+        mnEspaco2.setText("         ");
+        mnEspaco2.setEnabled(false);
+        barraMenu.add(mnEspaco2);
 
-        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
-        jMenu2.setText(" Agendas");
-        jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        mnAgendas.setForeground(new java.awt.Color(255, 255, 255));
+        mnAgendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        mnAgendas.setText(" Agendas");
+        mnAgendas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem1.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem1.setForeground(java.awt.Color.white);
-        jMenuItem1.setText("Consultas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiAgenda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiAgenda.setBackground(new java.awt.Color(129, 167, 255));
+        jmiAgenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiAgenda.setForeground(java.awt.Color.white);
+        jmiAgenda.setText("Consultas");
+        jmiAgenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiAgendaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        mnAgendas.add(jmiAgenda);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem10.setForeground(java.awt.Color.white);
-        jMenuItem10.setText("Consultas por dentista");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jmiAgendaEspecifica.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiAgendaEspecifica.setBackground(new java.awt.Color(129, 167, 255));
+        jmiAgendaEspecifica.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiAgendaEspecifica.setForeground(java.awt.Color.white);
+        jmiAgendaEspecifica.setText("Consultas por dentista");
+        jmiAgendaEspecifica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jmiAgendaEspecificaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem10);
+        mnAgendas.add(jmiAgendaEspecifica);
 
-        jMenuBar1.add(jMenu2);
+        barraMenu.add(mnAgendas);
 
-        jMenu6.setText("         ");
-        jMenu6.setEnabled(false);
-        jMenuBar1.add(jMenu6);
+        mnEspaco3.setText("         ");
+        mnEspaco3.setEnabled(false);
+        barraMenu.add(mnEspaco3);
 
-        jMenu7.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
-        jMenu7.setText(" Prontuários");
-        jMenu7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+        mnProntuarios.setForeground(new java.awt.Color(255, 255, 255));
+        mnProntuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/prontuario.png"))); // NOI18N
+        mnProntuarios.setText(" Prontuários");
+        mnProntuarios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        mnProntuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu7MouseClicked(evt);
+                mnProntuariosMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu7);
+        barraMenu.add(mnProntuarios);
 
-        jMenu8.setText("         ");
-        jMenu8.setEnabled(false);
-        jMenuBar1.add(jMenu8);
+        mnEspaco4.setText("         ");
+        mnEspaco4.setEnabled(false);
+        barraMenu.add(mnEspaco4);
 
-        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
-        jMenu3.setText(" Ajuda");
-        jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        mnAjuda.setForeground(new java.awt.Color(255, 255, 255));
+        mnAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/ajuda.png"))); // NOI18N
+        mnAjuda.setText(" Ajuda");
+        mnAjuda.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        mnAjuda.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem8.setForeground(java.awt.Color.white);
-        jMenuItem8.setText("Ajuda");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jmiAjuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiAjuda.setBackground(new java.awt.Color(129, 167, 255));
+        jmiAjuda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiAjuda.setForeground(java.awt.Color.white);
+        jmiAjuda.setText("Ajuda");
+        jmiAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jmiAjudaActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem8);
+        mnAjuda.add(jmiAjuda);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
-        jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem9.setForeground(java.awt.Color.white);
-        jMenuItem9.setText("Sobre");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jmiSobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiSobre.setBackground(new java.awt.Color(129, 167, 255));
+        jmiSobre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jmiSobre.setForeground(java.awt.Color.white);
+        jmiSobre.setText("Sobre");
+        jmiSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jmiSobreActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem9);
+        mnAjuda.add(jmiSobre);
 
-        jMenuBar1.add(jMenu3);
+        barraMenu.add(mnAjuda);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(barraMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -459,12 +420,12 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
+                        .addComponent(lblFotoUsuario))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)))
+                        .addComponent(lblBemVindo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -477,11 +438,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBemVindo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFotoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -500,69 +461,49 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
         this.dispose();
-        frmEditarPaciente frm = new frmEditarPaciente();
+        frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-        
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
       this.dispose();
-        frmEditarDentista frm = new frmEditarDentista();
+      frmDentista frm = new frmDentista();
       frm.setVisible(true);
-      frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiDentistasActionPerformed
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
         this.dispose();
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiConsultasActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgendaActionPerformed
         this.dispose();
         frmAgendaGeral frm = new frmAgendaGeral();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiAgendaActionPerformed
 
     private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
         this.dispose();
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiEstoqueActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    private void jmiAgendaEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgendaEspecificaActionPerformed
         this.dispose();
         frmAgendaEspecifica frm = new frmAgendaEspecifica();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_jmiAgendaEspecificaActionPerformed
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
         this.dispose();
-        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frmRecepcionista frm = new frmRecepcionista();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jmiRecepcionistasActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-        
-    }//GEN-LAST:event_jMenu1ActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-//        logado(lblUsuario.getText());
-    }//GEN-LAST:event_formWindowActivated
 
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jmiSairActionPerformed
-
-    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
-        
-    }//GEN-LAST:event_btnZoomActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         System.exit(0);
@@ -570,30 +511,26 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
         this.dispose();
-        frmEditarPaciente frm = new frmEditarPaciente();
+        frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
 
     private void btnAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarConsultaActionPerformed
         this.dispose();
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAgendarConsultaActionPerformed
 
     private void btnAgendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendasActionPerformed
         this.dispose();
         frmAgendaGeral frm = new frmAgendaGeral();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAgendasActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
         this.dispose();
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
     private void btnRegistrarPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteMouseEntered
@@ -646,26 +583,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnSair.setForeground(Color.white);
     }//GEN-LAST:event_btnSairMouseExited
 
-    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+    private void mnProntuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnProntuariosMouseClicked
         this.dispose();
         frmProntuario frm = new frmProntuario();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenu7MouseClicked
+    }//GEN-LAST:event_mnProntuariosMouseClicked
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        frmTelaDeAjuda frm = new frmTelaDeAjuda();
+    private void jmiAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAjudaActionPerformed
+        frmAjuda frm = new frmAjuda();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_jmiAjudaActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jmiSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSobreActionPerformed
         frmSobre frm = new frmSobre();
         frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jmiSobreActionPerformed
 
-   
     /**
      * @param args the command line arguments
      */
@@ -704,37 +637,37 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar barraMenu;
     public javax.swing.JButton btnAgendarConsulta;
     private javax.swing.JButton btnAgendas;
     private javax.swing.JButton btnEstoque;
     public javax.swing.JButton btnRegistrarPaciente;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnZoom;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem jmiAgenda;
+    private javax.swing.JMenuItem jmiAgendaEspecifica;
+    private javax.swing.JMenuItem jmiAjuda;
     public javax.swing.JMenuItem jmiConsultas;
     public javax.swing.JMenuItem jmiDentistas;
     private javax.swing.JMenuItem jmiEstoque;
     public javax.swing.JMenuItem jmiPacientes;
     public javax.swing.JMenuItem jmiRecepcionistas;
     private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JMenuItem jmiSobre;
+    private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblFotoUsuario;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JMenu mnAgendas;
+    private javax.swing.JMenu mnAjuda;
+    private javax.swing.JMenu mnEspaco1;
+    private javax.swing.JMenu mnEspaco2;
+    private javax.swing.JMenu mnEspaco3;
+    private javax.swing.JMenu mnEspaco4;
+    private javax.swing.JMenu mnProntuarios;
+    private javax.swing.JMenu mnRegistrar;
     // End of variables declaration//GEN-END:variables
 }

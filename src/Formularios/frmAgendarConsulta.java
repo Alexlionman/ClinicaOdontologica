@@ -7,19 +7,16 @@ import Classes.Dentista;
 import Classes.DentistaDAO;
 import Classes.Paciente;
 import Classes.PacienteDAO;
-import Classes.Recepcionista;
-import Classes.RecepcionistaDAO;
 import Classes.Utilidades;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class frmAdicionarConsulta extends javax.swing.JFrame {
+public class frmAgendarConsulta extends javax.swing.JFrame {
     Color azulFundo = new Color(226, 235, 255);
     Color azulPadrao = new Color(129,167,255);
     Color vermelhoPadrao = new Color(255,153,153);
@@ -83,7 +80,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
         }
     }
 
-    public frmAdicionarConsulta() {
+    public frmAgendarConsulta() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         getContentPane().setBackground(azulFundo);
@@ -665,6 +662,8 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
+        frmPrincipal frm=new frmPrincipal();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
@@ -717,7 +716,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
-        frmEditarPaciente frm = new frmEditarPaciente();
+        frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -725,7 +724,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-        frmEditarDentista frm = new frmEditarDentista();
+        frmDentista frm = new frmDentista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -733,7 +732,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
 
-        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frmRecepcionista frm = new frmRecepcionista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -781,7 +780,7 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        frmTelaDeAjuda frm = new frmTelaDeAjuda();
+        frmAjuda frm = new frmAjuda();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -811,20 +810,21 @@ public class frmAdicionarConsulta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmAdicionarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmAdicionarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmAdicionarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmAdicionarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmAgendarConsulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmAdicionarConsulta().setVisible(true);
+                new frmAgendarConsulta().setVisible(true);
             }
         });
     }

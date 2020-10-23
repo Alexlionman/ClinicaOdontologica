@@ -5,8 +5,6 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Utilidades;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,12 +13,11 @@ import java.net.URLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class frmEditarPaciente extends javax.swing.JFrame {
+public class frmPaciente extends javax.swing.JFrame {
     Color azulPadrao = new Color(129,167,255);
     Color azulFundo = new Color(226, 235, 255);
     Color azulClaroo = new Color (139, 215, 255);
@@ -172,7 +169,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         }
     }
 
-    public frmEditarPaciente() {
+    public frmPaciente() {
         initComponents();
         desabilitaCampos();
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -324,6 +321,8 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         tblPaciente.setGridColor(new java.awt.Color(255, 255, 255));
         tblPaciente.setOpaque(false);
         tblPaciente.setSelectionBackground(new java.awt.Color(129, 167, 255));
+        tblPaciente.getTableHeader().setResizingAllowed(false);
+        tblPaciente.getTableHeader().setReorderingAllowed(false);
         tblPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPacienteMouseClicked(evt);
@@ -331,16 +330,14 @@ public class frmEditarPaciente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblPaciente);
         if (tblPaciente.getColumnModel().getColumnCount() > 0) {
-            tblPaciente.getColumnModel().getColumn(0).setMinWidth(40);
+            tblPaciente.getColumnModel().getColumn(0).setResizable(false);
             tblPaciente.getColumnModel().getColumn(0).setPreferredWidth(40);
-            tblPaciente.getColumnModel().getColumn(0).setMaxWidth(40);
-            tblPaciente.getColumnModel().getColumn(1).setMinWidth(140);
+            tblPaciente.getColumnModel().getColumn(1).setResizable(false);
             tblPaciente.getColumnModel().getColumn(1).setPreferredWidth(140);
-            tblPaciente.getColumnModel().getColumn(1).setMaxWidth(140);
+            tblPaciente.getColumnModel().getColumn(2).setResizable(false);
             tblPaciente.getColumnModel().getColumn(2).setPreferredWidth(110);
-            tblPaciente.getColumnModel().getColumn(3).setMinWidth(110);
+            tblPaciente.getColumnModel().getColumn(3).setResizable(false);
             tblPaciente.getColumnModel().getColumn(3).setPreferredWidth(110);
-            tblPaciente.getColumnModel().getColumn(3).setMaxWidth(110);
             tblPaciente.getColumnModel().getColumn(4).setResizable(false);
             tblPaciente.getColumnModel().getColumn(4).setPreferredWidth(80);
         }
@@ -1297,7 +1294,9 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisaPaciente1ActionPerformed
 
     private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
-        buscarCep(txtCep.getText());
+        
+            buscarCep(txtCep.getText());
+        
     }//GEN-LAST:event_txtCepKeyPressed
 
     private void txtCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepActionPerformed
@@ -1309,7 +1308,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-        frmEditarDentista frm = new frmEditarDentista();
+        frmDentista frm = new frmDentista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -1317,7 +1316,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
 
-        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frmRecepcionista frm = new frmRecepcionista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -1325,7 +1324,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
 
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -1369,7 +1368,7 @@ public class frmEditarPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        frmTelaDeAjuda frm = new frmTelaDeAjuda();
+        frmAjuda frm = new frmAjuda();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -1399,20 +1398,21 @@ public class frmEditarPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmEditarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmEditarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmEditarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmEditarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmEditarPaciente().setVisible(true);
+                new frmPaciente().setVisible(true);
             }
         });
     }

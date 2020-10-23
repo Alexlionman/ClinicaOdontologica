@@ -5,7 +5,6 @@ import Classes.ProdutoEstoque;
 import Classes.ProdutoEstoqueDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.AttributeSet;

@@ -6,8 +6,6 @@
 package Formularios;
 
 import Classes.Conecta;
-import Classes.Dentista;
-import Classes.DentistaDAO;
 import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Prontuario;
@@ -16,6 +14,7 @@ import Classes.Utilidades;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -33,7 +32,6 @@ public class frmProntuario extends javax.swing.JFrame {
     public frmProntuario() {
         initComponents();
         carregaTabela();
-        this.setExtendedState(MAXIMIZED_BOTH);
         lblId.setVisible(false);
         
         //define a cor do cabeçalho da tabela
@@ -595,7 +593,7 @@ public class frmProntuario extends javax.swing.JFrame {
             pstm.close();
             con.close();
             rs.close();
-        } catch (Exception ErroSql) {
+        } catch (SQLException ErroSql) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -647,7 +645,7 @@ public class frmProntuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarPacienteNovoMouseExited
 
     private void btnPesquisarPacienteNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarPacienteNovoActionPerformed
-        frmEditarPaciente frmP = new frmEditarPaciente();
+        frmPaciente frmP = new frmPaciente();
         frmP.setVisible(true);
     }//GEN-LAST:event_btnPesquisarPacienteNovoActionPerformed
 
@@ -657,6 +655,8 @@ public class frmProntuario extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
+        frmPrincipal frm=new frmPrincipal();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSalvarprontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarprontActionPerformed
@@ -752,7 +752,7 @@ public class frmProntuario extends javax.swing.JFrame {
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
-        frmEditarPaciente frm = new frmEditarPaciente();
+        frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -760,7 +760,7 @@ public class frmProntuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-        frmEditarDentista frm = new frmEditarDentista();
+        frmDentista frm = new frmDentista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -768,7 +768,7 @@ public class frmProntuario extends javax.swing.JFrame {
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
 
-        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frmRecepcionista frm = new frmRecepcionista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -776,7 +776,7 @@ public class frmProntuario extends javax.swing.JFrame {
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
 
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -817,7 +817,7 @@ public class frmProntuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        frmTelaDeAjuda frm = new frmTelaDeAjuda();
+        frmAjuda frm = new frmAjuda();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();

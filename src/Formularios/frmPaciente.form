@@ -654,22 +654,22 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="40" minWidth="40" prefWidth="40" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="140" minWidth="140" prefWidth="140" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="140" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="110" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="110" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="110" minWidth="110" prefWidth="110" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="110" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -689,12 +689,15 @@
               <Color blue="ff" green="a7" red="81" type="rgb"/>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+              <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPacienteMouseClicked"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="frmPaciente_tblPaciente"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -674,6 +673,8 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
+        frmPrincipal frm=new frmPrincipal();
+        frm.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
@@ -715,7 +716,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgendarConsultaMouseExited
 
     private void btnAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarConsultaActionPerformed
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAgendarConsultaActionPerformed
@@ -731,7 +732,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarConsultaMouseExited
 
     private void btnEditarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConsultaActionPerformed
-       frmAdicionarConsulta frm = new frmAdicionarConsulta();
+       frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditarConsultaActionPerformed
@@ -752,7 +753,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
-        frmEditarPaciente frm = new frmEditarPaciente();
+        frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -760,7 +761,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-        frmEditarDentista frm = new frmEditarDentista();
+        frmDentista frm = new frmDentista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -768,7 +769,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
 
-        frmAdicionarRecepcionista frm = new frmAdicionarRecepcionista();
+        frmRecepcionista frm = new frmRecepcionista();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -776,7 +777,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
 
-        frmAdicionarConsulta frm = new frmAdicionarConsulta();
+        frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
@@ -817,7 +818,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu7MouseClicked
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        frmTelaDeAjuda frm = new frmTelaDeAjuda();
+        frmAjuda frm = new frmAjuda();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
