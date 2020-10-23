@@ -197,7 +197,7 @@
                   <KeyStroke key="Ctrl+BACK_SPACE"/>
                 </Property>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="a7" red="81" type="rgb"/>
+                  <Color blue="6f" green="6b" red="df" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>

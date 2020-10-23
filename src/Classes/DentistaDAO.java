@@ -222,4 +222,37 @@ public class DentistaDAO {
         }
         return check;
     }
+     
+     
+     
+     
+     public Dentista pesquisarValorDaConsulta(int id) {
+        Dentista d = new Dentista();
+        try {
+            Connection con = Conecta.getConexao();
+            Statement stmt = con.createStatement();
+            String sql = "SELECT valorConsulta FROM dentista WHERE id=" + id;
+            stmt.executeQuery(sql);
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+      
+                d.setValorConsulta(rs.getString("valorConsulta")); 
+        
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            d = null;
+        }
+        return d;
+    }
+     
+     
+     
+     
+     
 }
+
+
+

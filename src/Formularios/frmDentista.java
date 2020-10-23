@@ -611,7 +611,7 @@ public class frmDentista extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel24.setText("Estado:");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(170, 20, 52, 20);
+        jLabel24.setBounds(170, 20, 54, 20);
 
         txtCidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -865,7 +865,7 @@ public class frmDentista extends javax.swing.JFrame {
         jMenu1.add(jSeparator4);
 
         jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiSair.setBackground(new java.awt.Color(129, 167, 255));
+        jmiSair.setBackground(new java.awt.Color(223, 107, 111));
         jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiSair.setForeground(java.awt.Color.white);
         jmiSair.setText("Sair");

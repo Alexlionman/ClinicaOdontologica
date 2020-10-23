@@ -179,6 +179,11 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDentista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDentistaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDentista);
         if (tblDentista.getColumnModel().getColumnCount() > 0) {
             tblDentista.getColumnModel().getColumn(0).setResizable(false);
@@ -204,6 +209,12 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblPaciente.setEnabled(false);
+        tblPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPacienteMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblPaciente);
         if (tblPaciente.getColumnModel().getColumnCount() > 0) {
             tblPaciente.getColumnModel().getColumn(0).setResizable(false);
@@ -224,11 +235,13 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtData.setEnabled(false);
         txtData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jcbHora.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jcbHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "09:00", "09:45", "10:30", "11:15", "13:00", "13:45", "14:30", "15:15", "16:00", "16:45", "17:30" }));
         jcbHora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jcbHora.setEnabled(false);
 
         txtValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -236,6 +249,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtValor.setEnabled(false);
         txtValor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         txtPesquisaDentista1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -295,6 +309,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         btnAgendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
         btnAgendar.setText("Agendar Consulta");
         btnAgendar.setBorder(null);
+        btnAgendar.setEnabled(false);
         btnAgendar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAgendarMouseEntered(evt);
@@ -420,7 +435,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         jMenu1.add(jSeparator4);
 
         jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiSair.setBackground(new java.awt.Color(129, 167, 255));
+        jmiSair.setBackground(new java.awt.Color(223, 107, 111));
         jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiSair.setForeground(java.awt.Color.white);
         jmiSair.setText("Sair");
@@ -792,6 +807,34 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         frm.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    
+    private void habilitarTudo(){
+    txtValor.setEnabled(true);
+    txtData.setEnabled(true);
+    jcbHora.setEnabled(true);
+    btnAgendar.setEnabled(true);
+    }
+    
+    
+    
+    
+    //usado para pegar o valor padrão da consulta definido para aquele dentista, e insere esse valor no campo (pode ser alterado pelo usuário)
+    private void tblDentistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDentistaMouseClicked
+        tblPaciente.setEnabled(true);
+        int item = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
+        item = (int) tblDentista.getModel().getValueAt(item, 0);
+        Dentista d = new DentistaDAO().pesquisarValorDaConsulta(item);
+        
+        txtValor.setText(d.getValorConsulta()); 
+        
+        
+        
+    }//GEN-LAST:event_tblDentistaMouseClicked
+
+    private void tblPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacienteMouseClicked
+       habilitarTudo();
+    }//GEN-LAST:event_tblPacienteMouseClicked
 
     /**
      * @param args the command line arguments

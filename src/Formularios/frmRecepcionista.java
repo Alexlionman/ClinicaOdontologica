@@ -728,7 +728,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jMenu1.add(jSeparator4);
 
         jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiSair.setBackground(new java.awt.Color(129, 167, 255));
+        jmiSair.setBackground(new java.awt.Color(223, 107, 111));
         jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiSair.setForeground(java.awt.Color.white);
         jmiSair.setText("Sair");
