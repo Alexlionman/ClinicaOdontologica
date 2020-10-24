@@ -41,7 +41,6 @@ public class frmDentista extends javax.swing.JFrame {
             super.insertString(offs, str.replaceAll("[^0-9]", ""), a);
         }
     }
-    
     public boolean verificaPreenchimento() {
         if (txtEmail.getText().equals("") || txtEmail.getText().equals("") || txtNascimento.getText().equals("  /  /    ")
                  || txtValorConsulta.getText().equals("   .  ")) {
@@ -204,7 +203,7 @@ public class frmDentista extends javax.swing.JFrame {
         //mudar a cor do cabeçalho da tabela
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(azulPadrao);
-
+        headerRenderer.setForeground(Color.WHITE);
         for (int i = 0; i < tblDentista.getModel().getColumnCount(); i++) {
             tblDentista.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
 }
@@ -340,6 +339,8 @@ public class frmDentista extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDentista.getTableHeader().setResizingAllowed(false);
+        tblDentista.getTableHeader().setReorderingAllowed(false);
         tblDentista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDentistaMouseClicked(evt);
@@ -611,7 +612,7 @@ public class frmDentista extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel24.setText("Estado:");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(170, 20, 54, 20);
+        jLabel24.setBounds(170, 20, 52, 20);
 
         txtCidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -634,6 +635,9 @@ public class frmDentista extends javax.swing.JFrame {
         txtCep.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCepKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCepKeyReleased(evt);
             }
         });
         jPanel1.add(txtCep);
@@ -1422,10 +1426,6 @@ public class frmDentista extends javax.swing.JFrame {
         Utilidades.criarMensagemSucesso();
     }//GEN-LAST:event_btnSair2ActionPerformed
 
-    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
-        buscarCep(txtCep.getText());
-    }//GEN-LAST:event_txtCepKeyPressed
-
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
         frmPaciente frm = new frmPaciente();
@@ -1505,6 +1505,17 @@ public class frmDentista extends javax.swing.JFrame {
         frm.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void txtCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyReleased
+        buscarCep(txtCep.getText());
+    }//GEN-LAST:event_txtCepKeyReleased
+
+    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
+        txtCidade.setText("");
+        txtRua.setText("");
+        txtEstado.setText("");
+        txtBairro.setText("");
+    }//GEN-LAST:event_txtCepKeyPressed
 
     /**
      * @param args the command line arguments

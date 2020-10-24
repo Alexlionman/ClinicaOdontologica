@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Formularios;
 
 import Classes.Conecta;
@@ -12,6 +7,11 @@ import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -22,21 +22,25 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-/**
- *
- * @author perei
- */
 public class frmRecepcionista extends javax.swing.JFrame {
- public  Color azulClaro = new Color(226, 235, 255);
- Color vermelhoHover = new Color(242, 198, 196);
- Color vermelhoPadraoExcluir = new Color(223,107,111);
+    Color azulClaro = new Color(226, 235, 255);
+    Color vermelhoHover = new Color(242, 198, 196);
+    Color vermelhoPadraoExcluir = new Color(223,107,111);
+    Color azulPadrao = new Color(88, 138, 255);
+    Color vermelhoPadrao = new Color(255,153,153);
+    Color azulHover = new Color(192, 216, 235);
+    
+    String logradouro;
+    String bairro;
+    String cidade;
+    String uf;
+    
     class campoNumerico extends PlainDocument{
         @Override
         public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
             super.insertString(offs, str.replaceAll("[^0-9]", ""), a);
         }
     }
-    
     public boolean verificaPreenchimento() {
         if (txtNome.getText().equals("") || txtLogin.getText().equals("") || txtCpf.getText().equals("   .   .   -  ")
                 || txtSenha.getText().equals("") || txtConfirmarSenha.getText().equals("")) {
@@ -44,10 +48,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         }
         return true;
     }
-     Color azulPadrao = new Color(88, 138, 255);
-     Color vermelhoPadrao = new Color(255,153,153);
-      Color azulHover = new Color(192, 216, 235);
-
     public void habilitaCampos() {
        txtNome.setEnabled(true);
         txtTelefone.setEnabled(true);
@@ -68,7 +68,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         txtConfirmarSenha.setEnabled(true);
         txtDataNascimento.setEnabled(true);
     }
-
     public void desabilitaCampos() {
         txtNome.setEnabled(false);
         txtTelefone.setEnabled(false);
@@ -89,7 +88,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         txtConfirmarSenha.setEnabled(false);
         txtDataNascimento.setEnabled(false);
     }
-
     public void limparCampos() {
           txtNome.setText("");
         txtTelefone.setText("");
@@ -109,24 +107,44 @@ public class frmRecepcionista extends javax.swing.JFrame {
         txtSenha.setText("");
         txtConfirmarSenha.setText("");
     }
+    public void buscarCep(String cep){
+        String json;        
 
-    public frmRecepcionista() {
-        initComponents();
-        carregaTabela();
-        getContentPane().setBackground(azulClaro);
-        desabilitaCampos();
-        pegarResolucao();
-        this.setExtendedState(MAXIMIZED_BOTH);
-        carregaTabela();
-        //mudar a cor do cabeçalho da tabela
-        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
-        headerRenderer.setBackground(azulPadrao);
-        headerRenderer.setForeground(Color.WHITE);
-        for (int i = 0; i < tblRecepcionista.getModel().getColumnCount(); i++) {
-            tblRecepcionista.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
-}
+        try {
+            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
+            URLConnection urlConnection = url.openConnection();
+            InputStream is = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            StringBuilder jsonSb = new StringBuilder();
+
+            br.lines().forEach(l -> jsonSb.append(l.trim()));
+            json = jsonSb.toString();
+            
+            // JOptionPane.showMessageDialog(null, json);
+            
+            json = json.replaceAll("[{},:]", "");
+            json = json.replaceAll("\"", "\n");                       
+            String array[] = new String[30];
+            array = json.split("\n");
+            
+            // JOptionPane.showMessageDialog(null, array);
+                             
+            logradouro = array[7];            
+            bairro = array[15];
+            cidade = array[19]; 
+            uf = array[23];
+            
+            txtRua.setText(logradouro);
+            txtBairro.setText(bairro);
+            txtCidade.setText(cidade);
+            txtEstado.setText(uf);
+            //JOptionPane.showMessageDialog(null, logradouro + " " + bairro + " " + cidade + " " + uf);
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
-    
     public void limpaCampos(){
         txtNome.setText("");
         txtTelefone.setText("");
@@ -143,18 +161,59 @@ public class frmRecepcionista extends javax.swing.JFrame {
         txtEstado.setText("");
         txtEmail.setText("");
     }
-     private void pegarResolucao() {
+    private void pegarResolucao() {
         Toolkit t = Toolkit.getDefaultToolkit();
         Dimension dimensao = t.getScreenSize();
         this.setSize((dimensao.width + 5), (dimensao.height - 38));
 
  }
-      
     private static void criarMensagemSucesso(){
         frmImagemSucesso form = new frmImagemSucesso();
         form.setVisible(true);
     }
+    private void carregaTabela() {
+        DefaultTableModel modelo = (DefaultTableModel) tblRecepcionista.getModel();
+        modelo.setNumRows(0);
+        try {
+            java.sql.Connection con = Conecta.getConexao();
+            PreparedStatement pstm;
+            ResultSet rs;
+
+            pstm = con.prepareStatement("select * from recepcionista order by nome");
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
+                modelo.addRow(new Object[]{
+                    rs.getInt("id"),
+                    rs.getString("nome"),
+                    rs.getString("cpf"),
+                    rs.getString("rg"),
+                    rs.getString("dataDeNascimento"),});
+            }
+            pstm.close();
+            con.close();
+            rs.close();
+        } catch (Exception ErroSql) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
+    public frmRecepcionista() {
+        initComponents();
+        getContentPane().setBackground(azulClaro);
+        desabilitaCampos();
+        pegarResolucao();
+        this.setExtendedState(MAXIMIZED_BOTH);
+        
+        //mudar a cor do cabeçalho da tabela
+        DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
+        headerRenderer.setBackground(azulPadrao);
+        headerRenderer.setForeground(Color.WHITE);
+        for (int i = 0; i < tblRecepcionista.getModel().getColumnCount(); i++) {
+            tblRecepcionista.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
+        }
+        carregaTabela();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -198,7 +257,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         nconsu4 = new javax.swing.JLabel();
         btnLimparCampos = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblRecepcionista = new javax.swing.JTable();
         btnExcluirRecepcionista = new javax.swing.JButton();
@@ -292,11 +351,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
 
         txtNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNomeKeyPressed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Nome:");
@@ -372,6 +426,14 @@ public class frmRecepcionista extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCep.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCepKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCepKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtCep);
         txtCep.setBounds(10, 40, 140, 20);
 
@@ -383,11 +445,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         txtRua.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtRua.setEnabled(false);
-        txtRua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRuaActionPerformed(evt);
-            }
-        });
         jPanel1.add(txtRua);
         txtRua.setBounds(10, 90, 300, 20);
 
@@ -500,21 +557,16 @@ public class frmRecepcionista extends javax.swing.JFrame {
             }
         });
 
-        btnSair1.setBackground(new java.awt.Color(88, 138, 255));
-        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair1.setText("Zoom");
-        btnSair1.setBorder(null);
-        btnSair1.setMaximumSize(new java.awt.Dimension(75, 31));
-        btnSair1.setMinimumSize(new java.awt.Dimension(75, 31));
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
-            }
-        });
+        btnZoom.setBackground(new java.awt.Color(88, 138, 255));
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.setMaximumSize(new java.awt.Dimension(75, 31));
+        btnZoom.setMinimumSize(new java.awt.Dimension(75, 31));
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane2.setBorder(null);
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         jScrollPane2.setOpaque(false);
 
         tblRecepcionista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -538,6 +590,8 @@ public class frmRecepcionista extends javax.swing.JFrame {
         tblRecepcionista.setOpaque(false);
         tblRecepcionista.setPreferredSize(new java.awt.Dimension(480, 0));
         tblRecepcionista.setSelectionBackground(new java.awt.Color(129, 167, 255));
+        tblRecepcionista.getTableHeader().setResizingAllowed(false);
+        tblRecepcionista.getTableHeader().setReorderingAllowed(false);
         tblRecepcionista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblRecepcionistaMouseClicked(evt);
@@ -545,20 +599,13 @@ public class frmRecepcionista extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblRecepcionista);
         if (tblRecepcionista.getColumnModel().getColumnCount() > 0) {
-            tblRecepcionista.getColumnModel().getColumn(0).setMinWidth(40);
-            tblRecepcionista.getColumnModel().getColumn(0).setPreferredWidth(40);
-            tblRecepcionista.getColumnModel().getColumn(0).setMaxWidth(40);
-            tblRecepcionista.getColumnModel().getColumn(1).setMinWidth(140);
-            tblRecepcionista.getColumnModel().getColumn(1).setPreferredWidth(140);
-            tblRecepcionista.getColumnModel().getColumn(1).setMaxWidth(140);
-            tblRecepcionista.getColumnModel().getColumn(2).setMinWidth(110);
-            tblRecepcionista.getColumnModel().getColumn(2).setPreferredWidth(110);
-            tblRecepcionista.getColumnModel().getColumn(2).setMaxWidth(110);
-            tblRecepcionista.getColumnModel().getColumn(3).setMinWidth(110);
-            tblRecepcionista.getColumnModel().getColumn(3).setPreferredWidth(110);
-            tblRecepcionista.getColumnModel().getColumn(3).setMaxWidth(110);
+            tblRecepcionista.getColumnModel().getColumn(0).setResizable(false);
+            tblRecepcionista.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblRecepcionista.getColumnModel().getColumn(1).setResizable(false);
+            tblRecepcionista.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tblRecepcionista.getColumnModel().getColumn(2).setResizable(false);
+            tblRecepcionista.getColumnModel().getColumn(3).setResizable(false);
             tblRecepcionista.getColumnModel().getColumn(4).setResizable(false);
-            tblRecepcionista.getColumnModel().getColumn(4).setPreferredWidth(80);
         }
 
         btnExcluirRecepcionista.setBackground(new java.awt.Color(223, 107, 111));
@@ -569,9 +616,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         btnExcluirRecepcionista.setBorder(null);
         btnExcluirRecepcionista.setEnabled(false);
         btnExcluirRecepcionista.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExcluirRecepcionistaMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnExcluirRecepcionistaMouseEntered(evt);
             }
@@ -656,11 +700,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/registrar.png"))); // NOI18N
         jMenu1.setText(" Registrar");
         jMenu1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
 
         jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
@@ -690,11 +729,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jmiRecepcionistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiRecepcionistas.setForeground(java.awt.Color.white);
         jmiRecepcionistas.setText("Acessando tela de recepcionistas...");
-        jmiRecepcionistas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiRecepcionistasActionPerformed(evt);
-            }
-        });
         jMenu1.add(jmiRecepcionistas);
 
         jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -839,7 +873,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -900,7 +934,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -961,7 +995,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
 
         txtNome.getAccessibleContext().setAccessibleDescription("");
 
-        setSize(new java.awt.Dimension(1212, 732));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1005,66 +1039,23 @@ public class frmRecepcionista extends javax.swing.JFrame {
         btnSalvarRecepcionista.setEnabled(true);
     }//GEN-LAST:event_btnNovoRecepcionistaActionPerformed
 
-    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuaActionPerformed
-
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
         limpaCampos();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
-
-    
-     private void carregaTabela() {
-        DefaultTableModel modelo = (DefaultTableModel) tblRecepcionista.getModel();
-        modelo.setNumRows(0);
-        try {
-            java.sql.Connection con = Conecta.getConexao();
-            PreparedStatement pstm;
-            ResultSet rs;
-
-            pstm = con.prepareStatement("select * from recepcionista order by nome");
-            rs = pstm.executeQuery();
-
-            while (rs.next()) {  //enquanto existirem registros no banco, ele continuar
-                modelo.addRow(new Object[]{
-                    rs.getInt("id"),
-                    rs.getString("nome"),
-                    rs.getString("cpf"),
-                    rs.getString("rg"),
-                    rs.getString("dataDeNascimento"),});
-            }
-            pstm.close();
-            con.close();
-            rs.close();
-        } catch (Exception ErroSql) {
-            JOptionPane.showMessageDialog(null, "Erro ao carregar a tabela de dados" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    
-    
-    
-    
-    
-    private void txtNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyPressed
-        
-    }//GEN-LAST:event_txtNomeKeyPressed
- 
-      
-    
+       
     private void btnNovoRecepcionistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoRecepcionistaMouseEntered
         btnNovoRecepcionista.setBackground(Color.white);
-       btnNovoRecepcionista.setForeground(azulPadrao);
+        btnNovoRecepcionista.setForeground(azulPadrao);
     }//GEN-LAST:event_btnNovoRecepcionistaMouseEntered
 
     private void btnNovoRecepcionistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoRecepcionistaMouseExited
-       btnNovoRecepcionista.setBackground(azulPadrao);
+        btnNovoRecepcionista.setBackground(azulPadrao);
         btnNovoRecepcionista.setForeground(Color.white);
     }//GEN-LAST:event_btnNovoRecepcionistaMouseExited
 
     private void btnSalvarRecepcionistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarRecepcionistaMouseEntered
-       btnSalvarRecepcionista.setBackground(Color.white);
-       btnSalvarRecepcionista.setForeground(azulPadrao);
+        btnSalvarRecepcionista.setBackground(Color.white);
+        btnSalvarRecepcionista.setForeground(azulPadrao);
     }//GEN-LAST:event_btnSalvarRecepcionistaMouseEntered
 
     private void btnSalvarRecepcionistaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarRecepcionistaMouseExited
@@ -1074,12 +1065,12 @@ public class frmRecepcionista extends javax.swing.JFrame {
 
     private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
         btnLimparCampos.setBackground(Color.white);
-       btnLimparCampos.setForeground(Color.black);
+        btnLimparCampos.setForeground(Color.black);
     }//GEN-LAST:event_btnLimparCamposMouseEntered
 
     private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
         btnLimparCampos.setBackground(vermelhoPadrao);
-       btnLimparCampos.setForeground(Color.white);
+        btnLimparCampos.setForeground(Color.white);
     }//GEN-LAST:event_btnLimparCamposMouseExited
 
     private void btnExcluirRecepcionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirRecepcionistaActionPerformed
@@ -1114,7 +1105,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
 
     private void txtPesquisaRecepcionistaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaRecepcionistaKeyPressed
         //para pesquisar conforme o usuario digita uma letra
-        String nome = "%" +txtPesquisaRecepcionista.getText()+ "%";
+        String nome = txtPesquisaRecepcionista.getText()+ "%";
 
         RecepcionistaDAO dao = new RecepcionistaDAO();
         List<Recepcionista> lista = dao.buscaRecepcionistaPorNome(nome);
@@ -1132,10 +1123,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPesquisaRecepcionistaKeyPressed
 
-    private void btnExcluirRecepcionistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirRecepcionistaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirRecepcionistaMouseClicked
-
     private void btnExcluirRecepcionistaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirRecepcionistaMouseEntered
        btnExcluirRecepcionista.setBackground(vermelhoHover);
        btnExcluirRecepcionista.setForeground(Color.BLACK);
@@ -1147,12 +1134,10 @@ public class frmRecepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirRecepcionistaMouseExited
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
-
         frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
         this.dispose();
-
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
@@ -1162,12 +1147,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jmiDentistasActionPerformed
 
-    private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
-
-    }//GEN-LAST:event_jmiRecepcionistasActionPerformed
-
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
-
         frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -1175,7 +1155,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiConsultasActionPerformed
 
     private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
-
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
@@ -1185,10 +1164,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jmiSairActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         frmAgendaGeral frm = new frmAgendaGeral();
@@ -1231,10 +1206,6 @@ public class frmRecepcionista extends javax.swing.JFrame {
         frm.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-
-    }//GEN-LAST:event_btnSair1ActionPerformed
-
     private void tblRecepcionistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecepcionistaMouseClicked
         desabilitaCampos();
         int item = tblRecepcionista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
@@ -1260,6 +1231,17 @@ public class frmRecepcionista extends javax.swing.JFrame {
         btnExcluirRecepcionista.setEnabled(true);
         btnLimparCampos.setEnabled(false);
     }//GEN-LAST:event_tblRecepcionistaMouseClicked
+
+    private void txtCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyReleased
+        buscarCep(txtCep.getText());
+    }//GEN-LAST:event_txtCepKeyReleased
+
+    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
+        txtCidade.setText("");
+        txtRua.setText("");
+        txtEstado.setText("");
+        txtBairro.setText("");
+    }//GEN-LAST:event_txtCepKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1302,8 +1284,8 @@ public class frmRecepcionista extends javax.swing.JFrame {
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoRecepcionista;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarRecepcionista;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel endwe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

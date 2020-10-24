@@ -232,7 +232,7 @@ public class frmPaciente extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
         txtCep = new javax.swing.JFormattedTextField();
-        btnSair1 = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         txtPesquisaPaciente1 = new javax.swing.JTextField();
         txtId = new javax.swing.JLabel();
@@ -464,11 +464,6 @@ public class frmPaciente extends javax.swing.JFrame {
         }
         txtData.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtData.setPreferredSize(new java.awt.Dimension(0, 20));
-        txtData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDataActionPerformed(evt);
-            }
-        });
 
         txtRg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         try {
@@ -478,11 +473,6 @@ public class frmPaciente extends javax.swing.JFrame {
         }
         txtRg.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtRg.setPreferredSize(new java.awt.Dimension(0, 20));
-        txtRg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRgActionPerformed(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setText("Celular:");
@@ -493,11 +483,6 @@ public class frmPaciente extends javax.swing.JFrame {
         txtEmail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtEmail.setPreferredSize(new java.awt.Dimension(0, 20));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
 
         btnLimparCampos.setBackground(new java.awt.Color(129, 167, 255));
         btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -563,7 +548,7 @@ public class frmPaciente extends javax.swing.JFrame {
         endwe.setText("Cidade:");
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel14.setText("Rua:");
+        jLabel14.setText("Logradouro:");
 
         txtRua.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
@@ -576,14 +561,12 @@ public class frmPaciente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCep.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txtCep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCepActionPerformed(evt);
-            }
-        });
         txtCep.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCepKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCepKeyReleased(evt);
             }
         });
 
@@ -602,7 +585,6 @@ public class frmPaciente extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(138, 138, 138)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(95, 95, 95)
@@ -615,7 +597,8 @@ public class frmPaciente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel14))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -652,23 +635,18 @@ public class frmPaciente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnSair1.setBackground(new java.awt.Color(129, 167, 255));
-        btnSair1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair1.setText("Zoom");
-        btnSair1.setBorder(null);
-        btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnZoom.setBackground(new java.awt.Color(129, 167, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSair1MouseEntered(evt);
+                btnZoomMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSair1MouseExited(evt);
-            }
-        });
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
+                btnZoomMouseExited(evt);
             }
         });
 
@@ -678,11 +656,6 @@ public class frmPaciente extends javax.swing.JFrame {
         txtPesquisaPaciente1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtPesquisaPaciente1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         txtPesquisaPaciente1.setPreferredSize(new java.awt.Dimension(0, 20));
-        txtPesquisaPaciente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisaPaciente1ActionPerformed(evt);
-            }
-        });
         txtPesquisaPaciente1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPesquisaPaciente1KeyPressed(evt);
@@ -945,7 +918,7 @@ public class frmPaciente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -973,7 +946,7 @@ public class frmPaciente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -1179,22 +1152,6 @@ public class frmPaciente extends javax.swing.JFrame {
         limparCampos();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
 
-    private void txtRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRgActionPerformed
-
-    private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDataActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair1ActionPerformed
-
     private void txtPesquisaPaciente1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaPaciente1KeyPressed
         //para pesquisar conforme o usuario digita uma letra
         String nome = txtPesquisaPaciente1.getText()+ "%";
@@ -1265,15 +1222,15 @@ public class frmPaciente extends javax.swing.JFrame {
         btnExcluirPaciente.setForeground(Color.white);
     }//GEN-LAST:event_btnExcluirPacienteMouseExited
 
-    private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
-         btnSair1.setBackground(Color.white);
-       btnSair1.setForeground(azulPadrao);
-    }//GEN-LAST:event_btnSair1MouseEntered
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
+         btnZoom.setBackground(Color.white);
+       btnZoom.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnZoomMouseEntered
 
-    private void btnSair1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseExited
-       btnSair1.setBackground(azulPadrao);
-        btnSair1.setForeground(Color.white);
-    }//GEN-LAST:event_btnSair1MouseExited
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
+       btnZoom.setBackground(azulPadrao);
+        btnZoom.setForeground(Color.white);
+    }//GEN-LAST:event_btnZoomMouseExited
 
     private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
          btnSair.setBackground(Color.white);
@@ -1288,20 +1245,6 @@ public class frmPaciente extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void txtPesquisaPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaPaciente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPesquisaPaciente1ActionPerformed
-
-    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
-        
-            buscarCep(txtCep.getText());
-        
-    }//GEN-LAST:event_txtCepKeyPressed
-
-    private void txtCepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCepActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCepActionPerformed
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
@@ -1381,6 +1324,17 @@ public class frmPaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void txtCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyReleased
+        buscarCep(txtCep.getText());
+    }//GEN-LAST:event_txtCepKeyReleased
+
+    private void txtCepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyPressed
+        txtCidade.setText("");
+        txtRua.setText("");
+        txtEstado.setText("");
+        txtBairro.setText("");
+    }//GEN-LAST:event_txtCepKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1423,8 +1377,8 @@ public class frmPaciente extends javax.swing.JFrame {
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoPaciente;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarPaciente;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel endwe;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

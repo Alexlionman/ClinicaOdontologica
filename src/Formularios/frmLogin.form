@@ -57,40 +57,18 @@
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtSenha" min="-2" pref="480" max="-2" attributes="0"/>
-                  <Component id="txtLogin" min="-2" pref="480" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="txtSenha" min="-2" pref="480" max="-2" attributes="0"/>
+                      <Component id="txtLogin" min="-2" pref="480" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblVersao" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDente" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBemVindo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLogin" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEntrar" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblVersao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblDente" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblBemVindo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblSenha" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnEntrar" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
