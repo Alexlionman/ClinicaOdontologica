@@ -584,7 +584,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairMouseExited
 
     private void mnProntuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnProntuariosMouseClicked
-        this.dispose();
+
         frmProntuario frm = new frmProntuario();
         frm.setVisible(true);
     }//GEN-LAST:event_mnProntuariosMouseClicked

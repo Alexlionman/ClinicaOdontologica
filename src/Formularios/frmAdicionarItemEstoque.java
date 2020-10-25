@@ -3,6 +3,7 @@ package Formularios;
 import Classes.Conecta;
 import Classes.ProdutoEstoque;
 import Classes.ProdutoEstoqueDAO;
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -20,6 +21,13 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
             super.insertString(offs, str.replaceAll("[^0-9]", ""), a);
         }
     }
+
+    Color azulPadrao = new Color(129, 167, 255);
+    Color azulClaro = new Color(226, 235, 255);
+    Color azulHover = new Color(192, 216, 235);
+    Color vermelhoHover = new Color(242, 198, 196);
+    Color azulClaroo = new Color(139, 215, 255);
+    Color vermelhoPadraoExcluir = new Color(223, 107, 111);
 
     private void habilitaCampos() {
         txtPeso.setEnabled(true);
@@ -103,11 +111,12 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         }
     }
 
-    */
+     */
     public frmAdicionarItemEstoque() {
         initComponents();
+        getContentPane().setBackground(azulClaro);
         carregaTabela();
-       // carregaTabelaItens();
+        // carregaTabelaItens();
     }
 
     @SuppressWarnings("unchecked")
@@ -182,6 +191,11 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProdutosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblProdutos);
         if (tblProdutos.getColumnModel().getColumnCount() > 0) {
             tblProdutos.getColumnModel().getColumn(0).setMinWidth(40);
@@ -199,6 +213,15 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         btnNovoProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
         btnNovoProduto.setText(" Novo Produto");
         btnNovoProduto.setBorder(null);
+        btnNovoProduto.setEnabled(false);
+        btnNovoProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNovoProdutoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNovoProdutoMouseExited(evt);
+            }
+        });
         btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoProdutoActionPerformed(evt);
@@ -212,19 +235,35 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         btnSalvarProduto.setText("Salvar Produto");
         btnSalvarProduto.setBorder(null);
         btnSalvarProduto.setEnabled(false);
+        btnSalvarProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalvarProdutoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalvarProdutoMouseExited(evt);
+            }
+        });
         btnSalvarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarProdutoActionPerformed(evt);
             }
         });
 
-        btnLimparCampos.setBackground(new java.awt.Color(255, 117, 117));
+        btnLimparCampos.setBackground(new java.awt.Color(129, 167, 255));
         btnLimparCampos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/limpar.png"))); // NOI18N
         btnLimparCampos.setText("Limpar Campos");
         btnLimparCampos.setBorder(null);
         btnLimparCampos.setEnabled(false);
+        btnLimparCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimparCamposMouseExited(evt);
+            }
+        });
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
@@ -272,33 +311,29 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,8 +372,8 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosed
 
-     String opc = null;
-     
+    String opc = null;
+
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         limparCampos();
         habilitaCampos();
@@ -349,34 +384,36 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnSalvarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarProdutoActionPerformed
-       if(opc.equals("novo")){ 
-        if (verificaPreenchimento()) {
-            int item = tblProdutos.getSelectionModel().getMinSelectionIndex();
-            ProdutoEstoque pe = new ProdutoEstoque(Integer.parseInt(txtQuantidade.getText()),
-                    Integer.parseInt(txtPeso.getText()), txtValidade.getText(),
-                    Integer.parseInt(tblProdutos.getModel().getValueAt(item, 0).toString()));
-            String resp = new ProdutoEstoqueDAO().gravarEstoque(pe);
-            if (resp.equals("OK")) {
-                JOptionPane.showMessageDialog(rootPane, "Estoque incluído com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, resp);
-            }
-            limparCampos();
-            desabilitaCampos();
+        if (opc.equals("novo")) {
+            if (verificaPreenchimento()) {
+                int item = tblProdutos.getSelectionModel().getMinSelectionIndex();
+                ProdutoEstoque pe = new ProdutoEstoque(Integer.parseInt(txtQuantidade.getText()),
+                        Integer.parseInt(txtPeso.getText()), txtValidade.getText(),
+                        Integer.parseInt(tblProdutos.getModel().getValueAt(item, 0).toString()));
+                String resp = new ProdutoEstoqueDAO().gravarEstoque(pe);
+                if (resp.equals("OK")) {
+                    JOptionPane.showMessageDialog(rootPane, "Estoque incluído com sucesso!");
+                    btnNovoProduto.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, resp);
+                    btnNovoProduto.setEnabled(false);
+
+                }
+                limparCampos();
+                desabilitaCampos();
 //         carregaTabelaItens();
-            btnNovoProduto.setEnabled(true);
-            btnSalvarProduto.setEnabled(false);
-            btnLimparCampos.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Campo Vazio!\nPreencha todos os campos obrigatórios.");
+                btnNovoProduto.setEnabled(true);
+                btnSalvarProduto.setEnabled(false);
+                btnLimparCampos.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Campo Vazio!\nPreencha todos os campos obrigatórios.");
+            }
         }
-       }
-       
-       if(opc.equals("editar")){
-       //lógica de edição(apenas editar quantidade)
-       
-       
-       }
+
+        if (opc.equals("editar")) {
+            //lógica de edição(apenas editar quantidade)
+
+        }
     }//GEN-LAST:event_btnSalvarProdutoActionPerformed
 
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
@@ -387,8 +424,39 @@ public class frmAdicionarItemEstoque extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
-   
-    
+    private void btnNovoProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseEntered
+        btnNovoProduto.setBackground(Color.white);
+        btnNovoProduto.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnNovoProdutoMouseEntered
+
+    private void btnNovoProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseExited
+        btnNovoProduto.setBackground(azulPadrao);
+        btnNovoProduto.setForeground(Color.white);
+    }//GEN-LAST:event_btnNovoProdutoMouseExited
+
+    private void btnSalvarProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarProdutoMouseEntered
+        btnSalvarProduto.setBackground(Color.white);
+        btnSalvarProduto.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnSalvarProdutoMouseEntered
+
+    private void btnSalvarProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarProdutoMouseExited
+        btnSalvarProduto.setBackground(azulPadrao);
+        btnSalvarProduto.setForeground(Color.white);
+    }//GEN-LAST:event_btnSalvarProdutoMouseExited
+
+    private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
+        btnLimparCampos.setBackground(Color.white);
+        btnLimparCampos.setForeground(azulPadrao);    }//GEN-LAST:event_btnLimparCamposMouseEntered
+
+    private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
+        btnLimparCampos.setBackground(azulPadrao);
+        btnLimparCampos.setForeground(Color.white);
+    }//GEN-LAST:event_btnLimparCamposMouseExited
+
+    private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMouseClicked
+        btnNovoProduto.setEnabled(true);
+    }//GEN-LAST:event_tblProdutosMouseClicked
+
     /**
      * @param args the command line arguments
      */

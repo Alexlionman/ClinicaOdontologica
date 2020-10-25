@@ -18,7 +18,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     Color azulPadrao = new Color(129,167,255);
     Color azulFundo = new Color(226, 235, 255);
-    Color azulClaro = new Color (139, 215, 255);
+    Color azulClaro = new Color(226, 235, 255);
     Color azulHover = new Color(192, 216, 235);
     Color vermelhoHover = new Color(242, 198, 196);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
@@ -75,6 +75,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     public frmAgendaEspecifica() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         carregaTabela();
          getContentPane().setBackground(azulClaro);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();

@@ -27,10 +27,9 @@ public class Prontuario {
     }
     
     
-
-    Prontuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   public Prontuario(){
+   
+   };
 
     public int getIdProntuario() {
         return idProntuario;
