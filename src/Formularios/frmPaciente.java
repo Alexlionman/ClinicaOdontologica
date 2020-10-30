@@ -5,6 +5,8 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Utilidades;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,29 +14,38 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class frmPaciente extends javax.swing.JFrame {
-    Color azulPadrao = new Color(129,167,255);
+
+    Color azulPadrao = new Color(129, 167, 255);
     Color azulFundo = new Color(226, 235, 255);
-    Color azulClaroo = new Color (139, 215, 255);
+    Color azulClaroo = new Color(139, 215, 255);
     Color azulHover = new Color(192, 216, 235);
     Color vermelhoHover = new Color(242, 198, 196);
-    Color vermelhoPadraoExcluir = new Color(223,107,111);
+    Color vermelhoPadraoExcluir = new Color(223, 107, 111);
     public String situacao = "";
     String logradouro;
     String bairro;
     String cidade;
     String uf;
+
+    //fonte para o zoom
+    Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    Font fonteNormal = new Font("Arial", Font.BOLD, 14);
     
-    public void buscarCep(String cep){
-        String json;        
+    Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
+
+    public void buscarCep(String cep) {
+        String json;
 
         try {
-            URL url = new URL("http://viacep.com.br/ws/"+ cep +"/json");
+            URL url = new URL("http://viacep.com.br/ws/" + cep + "/json");
             URLConnection urlConnection = url.openConnection();
             InputStream is = urlConnection.getInputStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -43,50 +54,50 @@ public class frmPaciente extends javax.swing.JFrame {
 
             br.lines().forEach(l -> jsonSb.append(l.trim()));
             json = jsonSb.toString();
-            
+
             // JOptionPane.showMessageDialog(null, json);
-            
             json = json.replaceAll("[{},:]", "");
-            json = json.replaceAll("\"", "\n");                       
+            json = json.replaceAll("\"", "\n");
             String array[] = new String[30];
             array = json.split("\n");
-            
+
             // JOptionPane.showMessageDialog(null, array);
-                             
-            logradouro = array[7];            
+            logradouro = array[7];
             bairro = array[15];
-            cidade = array[19]; 
+            cidade = array[19];
             uf = array[23];
-            
+
             txtRua.setText(logradouro);
             txtBairro.setText(bairro);
             txtCidade.setText(cidade);
             txtEstado.setText(uf);
             //JOptionPane.showMessageDialog(null, logradouro + " " + bairro + " " + cidade + " " + uf);
-            
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
     public boolean verificaPreenchimento() {
-        if (txtNome.getText().equals("") || 
-                txtEstado.getText().equals("") || 
-                txtCelular.getText().equals("") || 
-                txtBairro.getText().equals("") || 
-                txtRua.getText().equals("") || 
-                txtEstado.getText().equals("") || 
-                txtEmail.getText().equals("") || 
-                txtNumero.getText().equals("") || 
-                txtComplemento.getText().equals("") || 
-                txtCidade.getText().equals("") || 
-                txtTelefone.getText().equals("") || 
-                txtCpf.getText().equals("   .   .   -  ")|| 
-                txtRg.getText().equals("  .   .   - ") || 
-                txtData.getText().equals("  /  /    ")) {
+        if (txtNome.getText().equals("")
+                || txtEstado.getText().equals("")
+                || txtCelular.getText().equals("")
+                || txtBairro.getText().equals("")
+                || txtRua.getText().equals("")
+                || txtEstado.getText().equals("")
+                || txtEmail.getText().equals("")
+                || txtNumero.getText().equals("")
+                || txtComplemento.getText().equals("")
+                || txtCidade.getText().equals("")
+                || txtTelefone.getText().equals("")
+                || txtCpf.getText().equals("   .   .   -  ")
+                || txtRg.getText().equals("  .   .   - ")
+                || txtData.getText().equals("  /  /    ")) {
             return false;
         }
         return true;
     }
+
     public void habilitaCampos() {
         txtTelefone.setEnabled(true);
         txtNome.setEnabled(true);
@@ -103,8 +114,9 @@ public class frmPaciente extends javax.swing.JFrame {
         txtCep.setEnabled(true);
         txtEmail.setEnabled(true);
         txtCidade.setEnabled(true);
-     
+
     }
+
     public void desabilitaCampos() {
         txtTelefone.setEnabled(false);
         txtNome.setEnabled(false);
@@ -121,10 +133,11 @@ public class frmPaciente extends javax.swing.JFrame {
         txtCep.setEnabled(false);
         txtEmail.setEnabled(false);
         txtCidade.setEnabled(false);
-      
+
     }
+
     public void limparCampos() {
-       
+
         txtNome.setText("");
         txtTelefone.setText("");
         txtRg.setText("");
@@ -142,6 +155,7 @@ public class frmPaciente extends javax.swing.JFrame {
         txtEstado.setText("");
         txtEmail.setText("");
     }
+
     private void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) tblPaciente.getModel();
         modelo.setNumRows(0);
@@ -649,6 +663,11 @@ public class frmPaciente extends javax.swing.JFrame {
                 btnZoomMouseExited(evt);
             }
         });
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel18.setText("Telefone:");
@@ -1013,7 +1032,7 @@ public class frmPaciente extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
-        frmPrincipal frm=new frmPrincipal();
+        frmPrincipal frm = new frmPrincipal();
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnSairActionPerformed
@@ -1039,10 +1058,6 @@ public class frmPaciente extends javax.swing.JFrame {
         txtCep.setText(p.getCep());
         txtTelefone.setText(p.getTelefone());
         txtBairro.setText(p.getBairro());
-        
-        
-        
-
 
         btnEditarPaciente.setEnabled(true);
         btnExcluirPaciente.setEnabled(true);
@@ -1098,8 +1113,8 @@ public class frmPaciente extends javax.swing.JFrame {
         if (verificaPreenchimento()) {
             if (situacao == "cadastro") {
                 Paciente paciente = new Paciente(txtNome.getText(), txtCpf.getText(), txtRg.getText(), txtData.getText(), txtRua.getText(),
-                         txtNumero.getText(), txtTelefone.getText(), txtCelular.getText(),  txtComplemento.getText(),
-                        txtCep.getText(), txtEmail.getText(),txtBairro.getText(), txtEstado.getText(), txtCidade.getText());
+                        txtNumero.getText(), txtTelefone.getText(), txtCelular.getText(), txtComplemento.getText(),
+                        txtCep.getText(), txtEmail.getText(), txtBairro.getText(), txtEstado.getText(), txtCidade.getText());
                 if (new PacienteDAO().verificaCpfExistente(paciente).equals(txtCpf.getText())) {
                     JOptionPane.showMessageDialog(null, "CPF ja cadastrado!\nEsse CPF ja esta cadastrado, digite outro.");
                 } else {
@@ -1122,25 +1137,24 @@ public class frmPaciente extends javax.swing.JFrame {
                 }
             } else if (situacao == "edicao") {
                 Paciente paciente = new Paciente(txtNome.getText(), txtCpf.getText(), txtRg.getText(), txtData.getText(), txtRua.getText(),
-                         txtNumero.getText(), txtTelefone.getText(), txtCelular.getText(),  txtComplemento.getText(),
-                        txtCep.getText(), txtEmail.getText(),txtBairro.getText(), txtEstado.getText(), txtCidade.getText());
-             
-                    String resp = new PacienteDAO().editarPaciente(paciente);
-                    if (resp.equals("OK")) {
-                        JOptionPane.showMessageDialog(null, "Paciente Alterado com sucesso");
-                    } else {
-                        JOptionPane.showMessageDialog(null, resp);
-                    }
-                    carregaTabela();
-                    limparCampos();
-                    situacao = "";
-                    btnEditarPaciente.setEnabled(false);
-                    btnExcluirPaciente.setEnabled(false);
-                    btnLimparCampos.setEnabled(false);
-                    btnSalvarPaciente.setEnabled(false);
-                    btnNovoPaciente.setEnabled(true);
-                
-     
+                        txtNumero.getText(), txtTelefone.getText(), txtCelular.getText(), txtComplemento.getText(),
+                        txtCep.getText(), txtEmail.getText(), txtBairro.getText(), txtEstado.getText(), txtCidade.getText());
+
+                String resp = new PacienteDAO().editarPaciente(paciente);
+                if (resp.equals("OK")) {
+                    JOptionPane.showMessageDialog(null, "Paciente Alterado com sucesso");
+                } else {
+                    JOptionPane.showMessageDialog(null, resp);
+                }
+                carregaTabela();
+                limparCampos();
+                situacao = "";
+                btnEditarPaciente.setEnabled(false);
+                btnExcluirPaciente.setEnabled(false);
+                btnLimparCampos.setEnabled(false);
+                btnSalvarPaciente.setEnabled(false);
+                btnNovoPaciente.setEnabled(true);
+
             }
 
         } else {
@@ -1154,37 +1168,37 @@ public class frmPaciente extends javax.swing.JFrame {
 
     private void txtPesquisaPaciente1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaPaciente1KeyPressed
         //para pesquisar conforme o usuario digita uma letra
-        String nome = txtPesquisaPaciente1.getText()+ "%";
-        
+        String nome = txtPesquisaPaciente1.getText() + "%";
+
         PacienteDAO dao = new PacienteDAO();
         List<Paciente> lista = dao.buscaPacientePorNome(nome);
         DefaultTableModel dados = (DefaultTableModel) tblPaciente.getModel();
         dados.setNumRows(0); //limpar
-        
-        for(Paciente c: lista){
-           dados.addRow(new Object[]{
-             c.getId(),
-             c.getNome(),
-             c.getCpf(),
-             c.getRg(),
-             c.getNascimento()   
-           });
+
+        for (Paciente c : lista) {
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getCpf(),
+                c.getRg(),
+                c.getNascimento()
+            });
         }
     }//GEN-LAST:event_txtPesquisaPaciente1KeyPressed
 
     private void btnNovoPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoPacienteMouseEntered
-       btnNovoPaciente.setBackground(Color.white);
-       btnNovoPaciente.setForeground(azulPadrao);
+        btnNovoPaciente.setBackground(Color.white);
+        btnNovoPaciente.setForeground(azulPadrao);
     }//GEN-LAST:event_btnNovoPacienteMouseEntered
 
     private void btnNovoPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoPacienteMouseExited
-       btnNovoPaciente.setBackground(azulPadrao);
+        btnNovoPaciente.setBackground(azulPadrao);
         btnNovoPaciente.setForeground(Color.white);
     }//GEN-LAST:event_btnNovoPacienteMouseExited
 
     private void btnSalvarPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarPacienteMouseEntered
         btnSalvarPaciente.setBackground(Color.white);
-       btnSalvarPaciente.setForeground(azulPadrao);
+        btnSalvarPaciente.setForeground(azulPadrao);
     }//GEN-LAST:event_btnSalvarPacienteMouseEntered
 
     private void btnSalvarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarPacienteMouseExited
@@ -1194,7 +1208,7 @@ public class frmPaciente extends javax.swing.JFrame {
 
     private void btnEditarPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarPacienteMouseEntered
         btnEditarPaciente.setBackground(Color.white);
-       btnEditarPaciente.setForeground(azulPadrao);
+        btnEditarPaciente.setForeground(azulPadrao);
     }//GEN-LAST:event_btnEditarPacienteMouseEntered
 
     private void btnEditarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarPacienteMouseExited
@@ -1203,38 +1217,38 @@ public class frmPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarPacienteMouseExited
 
     private void btnLimparCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseEntered
-         btnLimparCampos.setBackground(Color.white);
-       btnLimparCampos.setForeground(azulPadrao);
+        btnLimparCampos.setBackground(Color.white);
+        btnLimparCampos.setForeground(azulPadrao);
     }//GEN-LAST:event_btnLimparCamposMouseEntered
 
     private void btnLimparCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparCamposMouseExited
-         btnLimparCampos.setBackground(azulPadrao);
+        btnLimparCampos.setBackground(azulPadrao);
         btnLimparCampos.setForeground(Color.white);
     }//GEN-LAST:event_btnLimparCamposMouseExited
 
     private void btnExcluirPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirPacienteMouseEntered
         btnExcluirPaciente.setBackground(vermelhoHover);
-       btnExcluirPaciente.setForeground(Color.BLACK);
+        btnExcluirPaciente.setForeground(Color.BLACK);
     }//GEN-LAST:event_btnExcluirPacienteMouseEntered
 
     private void btnExcluirPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirPacienteMouseExited
-         btnExcluirPaciente.setBackground(vermelhoPadraoExcluir);
+        btnExcluirPaciente.setBackground(vermelhoPadraoExcluir);
         btnExcluirPaciente.setForeground(Color.white);
     }//GEN-LAST:event_btnExcluirPacienteMouseExited
 
     private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
-         btnZoom.setBackground(Color.white);
-       btnZoom.setForeground(azulPadrao);
+        btnZoom.setBackground(Color.white);
+        btnZoom.setForeground(azulPadrao);
     }//GEN-LAST:event_btnZoomMouseEntered
 
     private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
-       btnZoom.setBackground(azulPadrao);
+        btnZoom.setBackground(azulPadrao);
         btnZoom.setForeground(Color.white);
     }//GEN-LAST:event_btnZoomMouseExited
 
     private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
-         btnSair.setBackground(Color.white);
-       btnSair.setForeground(azulPadrao);
+        btnSair.setBackground(Color.white);
+        btnSair.setForeground(azulPadrao);
     }//GEN-LAST:event_btnSairMouseEntered
 
     private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
@@ -1334,6 +1348,80 @@ public class frmPaciente extends javax.swing.JFrame {
         txtEstado.setText("");
         txtBairro.setText("");
     }//GEN-LAST:event_txtCepKeyPressed
+
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+
+        if (btnZoom.getText().equals("Zoom")) {
+            btnZoom.setText("Normal");
+            aplicarZoomTexto();
+            aplicarZoomBotoes();
+        }else{
+            btnZoom.setText("Zoom");
+            aplicarFonteNormal();
+            aplicarFonteBotoesNormal();
+        
+        }
+        
+    }//GEN-LAST:event_btnZoomActionPerformed
+
+    private void aplicarFonteNormal() {
+        txtNome.setFont(fonteNormal);
+        txtTelefone.setFont(fonteNormal);
+        txtRg.setFont(fonteNormal);
+        txtCpf.setFont(fonteNormal);
+        txtData.setFont(fonteNormal);
+        txtNome.setFont(fonteNormal);
+        txtBairro.setFont(fonteNormal);
+        txtCelular.setFont(fonteNormal);
+        txtCep.setFont(fonteNormal);
+        txtCidade.setFont(fonteNormal);
+        txtRua.setFont(fonteNormal);
+        txtPesquisaPaciente1.setFont(fonteNormal);
+        txtComplemento.setFont(fonteNormal);
+        txtNumero.setFont(fonteNormal);
+        txtEstado.setFont(fonteNormal);
+        txtEmail.setFont(fonteNormal);
+
+    }
+    
+    private void aplicarFonteBotoesNormal(){
+     btnEditarPaciente.setFont(fonteNormalBotoes);
+        btnExcluirPaciente.setFont(fonteNormalBotoes);
+        btnLimparCampos.setFont(fonteNormalBotoes);
+        btnNovoPaciente.setFont(fonteNormalBotoes);
+        btnSalvarPaciente.setFont(fonteNormalBotoes);
+    
+    }
+    
+    
+    
+    private void aplicarZoomTexto() {
+        txtNome.setFont(fonteZoomTexto);
+        txtTelefone.setFont(fonteZoomTexto);
+        txtRg.setFont(fonteZoomTexto);
+        txtCpf.setFont(fonteZoomTexto);
+        txtData.setFont(fonteZoomTexto);
+        txtNome.setFont(fonteZoomTexto);
+        txtBairro.setFont(fonteZoomTexto);
+        txtCelular.setFont(fonteZoomTexto);
+        txtCep.setFont(fonteZoomTexto);
+        txtCidade.setFont(fonteZoomTexto);
+        txtRua.setFont(fonteZoomTexto);
+        txtPesquisaPaciente1.setFont(fonteZoomTexto);
+        txtComplemento.setFont(fonteZoomTexto);
+        txtNumero.setFont(fonteZoomTexto);
+        txtEstado.setFont(fonteZoomTexto);
+        txtEmail.setFont(fonteZoomTexto);
+
+    }
+
+    private void aplicarZoomBotoes() {
+        btnEditarPaciente.setFont(fonteZoomBotoes);
+        btnExcluirPaciente.setFont(fonteZoomBotoes);
+        btnLimparCampos.setFont(fonteZoomBotoes);
+        btnNovoPaciente.setFont(fonteZoomBotoes);
+        btnSalvarPaciente.setFont(fonteZoomBotoes);
+    }
 
     /**
      * @param args the command line arguments
