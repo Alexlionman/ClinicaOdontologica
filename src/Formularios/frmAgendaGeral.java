@@ -808,8 +808,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
-        frmPrincipal frm=new frmPrincipal();
-        frm.setVisible(true);
+        
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed

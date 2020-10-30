@@ -1,6 +1,7 @@
 package Formularios;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -9,34 +10,45 @@ import java.util.Date;
 import javax.swing.Timer;
 
 public class frmPrincipal extends javax.swing.JFrame {
-    Color azulPadrao = new Color(129,167,255);
+
+    Color azulPadrao = new Color(129, 167, 255);
     Color azulClaro = new Color(226, 235, 255);
     Color vermelhoHover = new Color(242, 198, 196);
-    Color vermelhoPadraoExcluir = new Color(255,117,117);
+    Color vermelhoPadraoExcluir = new Color(255, 117, 117);
     
-    public void usuarioLogado(String usuario){
+    //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 24);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 18);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
+
+    public void usuarioLogado(String usuario) {
         lblUsuario.setText(usuario);
     }
+
     //classe para atualizar a hora em segundos
-    class hora implements ActionListener{
+    class hora implements ActionListener {
+
         @Override
-        public void actionPerformed(ActionEvent e){
-            Calendar now=Calendar.getInstance();
+        public void actionPerformed(ActionEvent e) {
+            Calendar now = Calendar.getInstance();
             lblHora.setText(String.format("%1$tH:%1$tM:%1$tS", now));
         }
     }
-    
+
     public frmPrincipal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         //Iniciando a data da maquina no JLabel
-        Date data= new Date();
-        SimpleDateFormat formato= new SimpleDateFormat("dd/MM/yyyy");
+        Date data = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         lblData.setText(formato.format(data));
         //Iniciando a hora da maquina no JLabel
-        Timer timer= new Timer(1000, new hora());
+        Timer timer = new Timer(1000, new hora());
         timer.start();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,7 +62,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         lblData = new javax.swing.JLabel();
         btnEstoque = new javax.swing.JButton();
         btnAgendas = new javax.swing.JButton();
-        btnAgendarConsulta = new javax.swing.JButton();
+        Agendar = new javax.swing.JButton();
         btnRegistrarPaciente = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         mnEspaco1 = new javax.swing.JMenu();
@@ -103,6 +115,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnZoom.setText("Zoom");
         btnZoom.setBorder(null);
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
 
         btnSair.setBackground(new java.awt.Color(255, 117, 117));
         btnSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -170,23 +187,23 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnAgendarConsulta.setBackground(new java.awt.Color(129, 167, 255));
-        btnAgendarConsulta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnAgendarConsulta.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgendarConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
-        btnAgendarConsulta.setText("Agendar Consulta");
-        btnAgendarConsulta.setBorder(null);
-        btnAgendarConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+        Agendar.setBackground(new java.awt.Color(129, 167, 255));
+        Agendar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        Agendar.setForeground(new java.awt.Color(255, 255, 255));
+        Agendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/agendar.png"))); // NOI18N
+        Agendar.setText("Agendar");
+        Agendar.setBorder(null);
+        Agendar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgendarConsultaMouseEntered(evt);
+                AgendarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgendarConsultaMouseExited(evt);
+                AgendarMouseExited(evt);
             }
         });
-        btnAgendarConsulta.addActionListener(new java.awt.event.ActionListener() {
+        Agendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgendarConsultaActionPerformed(evt);
+                AgendarActionPerformed(evt);
             }
         });
 
@@ -194,7 +211,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnRegistrarPaciente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnRegistrarPaciente.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/novo.png"))); // NOI18N
-        btnRegistrarPaciente.setText("Registrar Paciente");
+        btnRegistrarPaciente.setText("Pacientes");
         btnRegistrarPaciente.setBorder(null);
         btnRegistrarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -404,7 +421,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnRegistrarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(btnAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Agendar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(btnAgendas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -451,7 +468,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgendas, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Agendar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -460,43 +477,43 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
-        this.dispose();
+
         frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
     }//GEN-LAST:event_jmiPacientesActionPerformed
 
     private void jmiDentistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiDentistasActionPerformed
-      this.dispose();
-      frmDentista frm = new frmDentista();
-      frm.setVisible(true);
+
+        frmDentista frm = new frmDentista();
+        frm.setVisible(true);
     }//GEN-LAST:event_jmiDentistasActionPerformed
 
     private void jmiConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiConsultasActionPerformed
-        this.dispose();
+
         frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
     }//GEN-LAST:event_jmiConsultasActionPerformed
 
     private void jmiAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgendaActionPerformed
-        this.dispose();
+
         frmAgendaGeral frm = new frmAgendaGeral();
         frm.setVisible(true);
     }//GEN-LAST:event_jmiAgendaActionPerformed
 
     private void jmiEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEstoqueActionPerformed
-        this.dispose();
+
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
     }//GEN-LAST:event_jmiEstoqueActionPerformed
 
     private void jmiAgendaEspecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgendaEspecificaActionPerformed
-        this.dispose();
+
         frmAgendaEspecifica frm = new frmAgendaEspecifica();
         frm.setVisible(true);
     }//GEN-LAST:event_jmiAgendaEspecificaActionPerformed
 
     private void jmiRecepcionistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRecepcionistasActionPerformed
-        this.dispose();
+
         frmRecepcionista frm = new frmRecepcionista();
         frm.setVisible(true);
     }//GEN-LAST:event_jmiRecepcionistasActionPerformed
@@ -510,52 +527,56 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnRegistrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteActionPerformed
-        this.dispose();
+
         frmPaciente frm = new frmPaciente();
         frm.setVisible(true);
     }//GEN-LAST:event_btnRegistrarPacienteActionPerformed
 
-    private void btnAgendarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarConsultaActionPerformed
-        this.dispose();
+    private void AgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendarActionPerformed
+
         frmAgendarConsulta frm = new frmAgendarConsulta();
         frm.setVisible(true);
-    }//GEN-LAST:event_btnAgendarConsultaActionPerformed
+    }//GEN-LAST:event_AgendarActionPerformed
 
     private void btnAgendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendasActionPerformed
-        this.dispose();
+
         frmAgendaGeral frm = new frmAgendaGeral();
         frm.setVisible(true);
     }//GEN-LAST:event_btnAgendasActionPerformed
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        this.dispose();
+
         frmEstoqueGeral frm = new frmEstoqueGeral();
         frm.setVisible(true);
     }//GEN-LAST:event_btnEstoqueActionPerformed
 
     private void btnRegistrarPacienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteMouseEntered
-       btnRegistrarPaciente.setBackground(Color.white);
-       btnRegistrarPaciente.setForeground(azulPadrao);
+        btnRegistrarPaciente.setBackground(Color.white);
+        btnRegistrarPaciente.setForeground(azulPadrao);
     }//GEN-LAST:event_btnRegistrarPacienteMouseEntered
 
     private void btnRegistrarPacienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarPacienteMouseExited
         btnRegistrarPaciente.setBackground(azulPadrao);
         btnRegistrarPaciente.setForeground(Color.white);
+        
     }//GEN-LAST:event_btnRegistrarPacienteMouseExited
 
-    private void btnAgendarConsultaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarConsultaMouseEntered
-        btnAgendarConsulta.setBackground(Color.white);
-        btnAgendarConsulta.setForeground(azulPadrao);
-    }//GEN-LAST:event_btnAgendarConsultaMouseEntered
+    private void AgendarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarMouseEntered
+        Agendar.setBackground(Color.white);
+        Agendar.setForeground(azulPadrao);
+        
+    }//GEN-LAST:event_AgendarMouseEntered
 
-    private void btnAgendarConsultaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarConsultaMouseExited
-        btnAgendarConsulta.setBackground(azulPadrao);
-        btnAgendarConsulta.setForeground(Color.white);
-    }//GEN-LAST:event_btnAgendarConsultaMouseExited
+    private void AgendarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendarMouseExited
+        Agendar.setBackground(azulPadrao);
+        Agendar.setForeground(Color.white);
+        
+    }//GEN-LAST:event_AgendarMouseExited
 
     private void btnAgendasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendasMouseEntered
         btnAgendas.setBackground(Color.white);
         btnAgendas.setForeground(azulPadrao);
+ 
     }//GEN-LAST:event_btnAgendasMouseEntered
 
     private void btnAgendasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendasMouseExited
@@ -566,11 +587,12 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnEstoqueMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseEntered
         btnEstoque.setBackground(Color.white);
         btnEstoque.setForeground(azulPadrao);
+        
     }//GEN-LAST:event_btnEstoqueMouseEntered
 
     private void btnEstoqueMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstoqueMouseExited
         btnEstoque.setBackground(azulPadrao);
-       btnEstoque.setForeground(Color.white);
+        btnEstoque.setForeground(Color.white);
     }//GEN-LAST:event_btnEstoqueMouseExited
 
     private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
@@ -599,11 +621,56 @@ public class frmPrincipal extends javax.swing.JFrame {
         frm.setVisible(true);
     }//GEN-LAST:event_jmiSobreActionPerformed
 
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+         if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
+        }
+    }//GEN-LAST:event_btnZoomActionPerformed
+
+    
+    private void aplicarZoomBotoes(){
+        Agendar.setFont(fonteZoomBotoes);
+        btnAgendas.setFont(fonteZoomBotoes);
+        btnEstoque.setFont(fonteZoomBotoes);
+        btnRegistrarPaciente.setFont(fonteZoomBotoes);
+        btnSair.setFont(fonteZoomBotoes);
+        btnZoom.setFont(fonteZoomBotoes);
+    }
+    
+      private void aplicarFonteBotoesNormal(){
+        Agendar.setFont(fonteNormalBotoes);
+        btnAgendas.setFont(fonteNormalBotoes);
+        btnEstoque.setFont(fonteNormalBotoes);
+        btnRegistrarPaciente.setFont(fonteNormalBotoes);
+        btnSair.setFont(fonteNormalBotoes);
+        btnZoom.setFont(fonteNormalBotoes);
+    }
+   
+    private void aplicarZoomTexto(){
+      lblHora.setFont(fonteZoomTexto);
+    }
+    
+     private void aplicarFonteNormal(){
+      lblHora.setFont(fonteNormal);
+    }
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -631,14 +698,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmPrincipal().setVisible(true);
-                
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Agendar;
     private javax.swing.JMenuBar barraMenu;
-    public javax.swing.JButton btnAgendarConsulta;
     private javax.swing.JButton btnAgendas;
     private javax.swing.JButton btnEstoque;
     public javax.swing.JButton btnRegistrarPaciente;

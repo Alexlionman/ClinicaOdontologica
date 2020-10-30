@@ -626,8 +626,7 @@ public class frmAjuda extends javax.swing.JFrame {
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         this.dispose();
-        frmPrincipal frm=new frmPrincipal();
-        frm.setVisible(true);
+        
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     /**

@@ -6,6 +6,7 @@ import Classes.RecepcionistaDAO;
 import Classes.Utilidades;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -29,6 +30,13 @@ public class frmRecepcionista extends javax.swing.JFrame {
     Color azulPadrao = new Color(88, 138, 255);
     Color vermelhoPadrao = new Color(255,153,153);
     Color azulHover = new Color(192, 216, 235);
+    
+       //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
     
     /*
     
@@ -551,6 +559,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         });
 
         btnSair.setBackground(new java.awt.Color(102, 204, 255));
+        btnSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSair.setForeground(new java.awt.Color(255, 255, 255));
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
         btnSair.setText("voltar");
@@ -565,12 +574,18 @@ public class frmRecepcionista extends javax.swing.JFrame {
         });
 
         btnZoom.setBackground(new java.awt.Color(88, 138, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnZoom.setForeground(new java.awt.Color(255, 255, 255));
         btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnZoom.setText("Zoom");
         btnZoom.setBorder(null);
         btnZoom.setMaximumSize(new java.awt.Dimension(75, 31));
         btnZoom.setMinimumSize(new java.awt.Dimension(75, 31));
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZoomActionPerformed(evt);
+            }
+        });
 
         btnExcluirRecepcionista.setBackground(new java.awt.Color(223, 107, 111));
         btnExcluirRecepcionista.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -698,7 +713,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jMenu1.setText(" Registrar");
         jMenu1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
         jmiPacientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiPacientes.setForeground(java.awt.Color.white);
@@ -710,7 +725,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         });
         jMenu1.add(jmiPacientes);
 
-        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
         jmiDentistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiDentistas.setForeground(java.awt.Color.white);
@@ -728,7 +743,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jmiRecepcionistas.setText("Acessando tela de recepcionistas...");
         jMenu1.add(jmiRecepcionistas);
 
-        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
         jmiConsultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiConsultas.setForeground(java.awt.Color.white);
@@ -743,7 +758,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jSeparator1.setForeground(java.awt.Color.white);
         jMenu1.add(jSeparator1);
 
-        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiEstoque.setBackground(new java.awt.Color(129, 167, 255));
         jmiEstoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiEstoque.setForeground(java.awt.Color.white);
@@ -758,7 +773,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jSeparator4.setForeground(java.awt.Color.white);
         jMenu1.add(jSeparator4);
 
-        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_MASK));
+        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiSair.setBackground(new java.awt.Color(223, 107, 111));
         jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiSair.setForeground(java.awt.Color.white);
@@ -781,7 +796,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jMenu2.setText(" Agendas");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem1.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem1.setForeground(java.awt.Color.white);
@@ -793,7 +808,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem10.setForeground(java.awt.Color.white);
@@ -832,7 +847,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem8.setForeground(java.awt.Color.white);
@@ -844,7 +859,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem8);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem9.setForeground(java.awt.Color.white);
@@ -1201,8 +1216,7 @@ public class frmRecepcionista extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
-        frmPrincipal frm=new frmPrincipal();
-        frm.setVisible(true);
+        
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void txtCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCepKeyReleased
@@ -1242,6 +1256,87 @@ public class frmRecepcionista extends javax.swing.JFrame {
         btnLimparCampos.setEnabled(false);
     }//GEN-LAST:event_tblRecepcionistaMouseClicked
 
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+       if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
+        }
+       
+       
+    }//GEN-LAST:event_btnZoomActionPerformed
+
+    
+    private void aplicarFonteNormal() {
+        txtId.setFont(fonteNormal);
+        txtTelefone.setFont(fonteNormal);
+        txtNome.setFont(fonteNormal);
+        txtCpf.setFont(fonteNormal);
+        txtRg.setFont(fonteNormal);
+        txtDataNascimento.setFont(fonteNormal);
+        txtLogin.setFont(fonteNormal);
+        txtSenha.setFont(fonteNormal);
+        txtConfirmarSenha.setFont(fonteNormal);
+        txtEstado.setFont(fonteNormal);
+        txtRua.setFont(fonteNormal);
+        txtBairro.setFont(fonteNormal);
+        txtComplemento.setFont(fonteNormal);
+        txtNumero.setFont(fonteNormal);
+        txtTelefone.setFont(fonteNormal);
+        txtCelular.setFont(fonteNormal);
+        txtCep.setFont(fonteNormal);
+        txtEmail.setFont(fonteNormal);
+        txtCidade.setFont(fonteNormal);
+
+    }
+    
+    private void aplicarFonteBotoesNormal(){
+         btnExcluirRecepcionista.setFont(fonteNormalBotoes);
+        btnLimparCampos.setFont(fonteNormalBotoes);
+        btnSalvarRecepcionista.setFont(fonteNormalBotoes);
+        btnLimparCampos.setFont(fonteNormalBotoes);
+        btnNovoRecepcionista.setFont(fonteNormalBotoes); 
+    
+    }
+    
+    
+    
+    private void aplicarZoomTexto() {
+       txtId.setFont(fonteZoomTexto);
+        txtTelefone.setFont(fonteZoomTexto);
+        txtNome.setFont(fonteZoomTexto);
+        txtCpf.setFont(fonteZoomTexto);
+        txtRg.setFont(fonteZoomTexto);
+        txtDataNascimento.setFont(fonteZoomTexto);
+        txtLogin.setFont(fonteZoomTexto);
+        txtSenha.setFont(fonteZoomTexto);
+        txtConfirmarSenha.setFont(fonteZoomTexto);
+        txtEstado.setFont(fonteZoomTexto);
+        txtRua.setFont(fonteZoomTexto);
+        txtBairro.setFont(fonteZoomTexto);
+        txtComplemento.setFont(fonteZoomTexto);
+        txtNumero.setFont(fonteZoomTexto);
+        txtTelefone.setFont(fonteZoomTexto);
+        txtCelular.setFont(fonteZoomTexto);
+        txtCep.setFont(fonteZoomTexto);
+        txtEmail.setFont(fonteZoomTexto);
+        txtCidade.setFont(fonteZoomTexto);
+
+    }
+
+    private void aplicarZoomBotoes() {
+        btnNovoRecepcionista.setFont(fonteZoomBotoes);
+         btnExcluirRecepcionista.setFont(fonteZoomBotoes);
+        btnLimparCampos.setFont(fonteZoomBotoes);
+        btnSalvarRecepcionista.setFont(fonteZoomBotoes);
+        btnLimparCampos.setFont(fonteZoomBotoes);
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -375,7 +375,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnRegistrarPaciente" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="btnAgendarConsulta" min="-2" pref="166" max="-2" attributes="0"/>
+                      <Component id="Agendar" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="btnAgendas" min="-2" pref="166" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -434,7 +434,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnEstoque" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="btnAgendas" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="btnAgendarConsulta" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="Agendar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="btnRegistrarPaciente" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -506,6 +506,9 @@
           <Border info="null"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZoomActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSair">
       <Properties>
@@ -595,7 +598,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAgendarConsulta">
+    <Component class="javax.swing.JButton" name="Agendar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="a7" red="81" type="rgb"/>
@@ -609,15 +612,15 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ImagensIcones/newIcons/agendar.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Agendar Consulta"/>
+        <Property name="text" type="java.lang.String" value="Agendar"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgendarConsultaMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgendarConsultaMouseExited"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgendarConsultaActionPerformed"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AgendarMouseExited"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgendarActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -637,7 +640,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ImagensIcones/newIcons/novo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Registrar Paciente"/>
+        <Property name="text" type="java.lang.String" value="Pacientes"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

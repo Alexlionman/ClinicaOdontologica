@@ -244,7 +244,7 @@ public class frmLogin extends javax.swing.JFrame {
             fpd.jmiRecepcionistas.setEnabled(false);
             fpd.jmiConsultas.setEnabled(false);
             fpd.btnRegistrarPaciente.setEnabled(false);
-            fpd.btnAgendarConsulta.setEnabled(false);
+            fpd.Agendar.setEnabled(false);
             fpd.usuarioLogado(txtLogin.getText());     
             this.dispose();
         }else {

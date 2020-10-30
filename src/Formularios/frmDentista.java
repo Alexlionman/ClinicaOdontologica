@@ -15,6 +15,8 @@ import java.net.URLConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import Formularios.frmPaciente;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +29,13 @@ public class frmDentista extends javax.swing.JFrame {
         Color azulClaro = new Color(226, 235, 255);
          Color vermelhoHover = new Color(242, 198, 196);
          Color vermelhoPadraoExcluir = new Color(223,107,111);
+         
+         //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
 
     public String situacao = "";
     
@@ -275,7 +284,7 @@ public class frmDentista extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JFormattedTextField();
         txtCelular1 = new javax.swing.JFormattedTextField();
-        btnSair2 = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         txtId = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -480,6 +489,7 @@ public class frmDentista extends javax.swing.JFrame {
         nconsu.setText("Email");
 
         jButton3.setBackground(new java.awt.Color(102, 204, 255));
+        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
         jButton3.setText("voltar");
@@ -612,7 +622,7 @@ public class frmDentista extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel24.setText("Estado:");
         jPanel1.add(jLabel24);
-        jLabel24.setBounds(170, 20, 52, 20);
+        jLabel24.setBounds(170, 20, 54, 20);
 
         txtCidade.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtCidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -755,22 +765,23 @@ public class frmDentista extends javax.swing.JFrame {
         }
         txtCelular1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        btnSair2.setBackground(new java.awt.Color(129, 167, 255));
-        btnSair2.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair2.setText("Zoom");
-        btnSair2.setBorder(null);
-        btnSair2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnZoom.setBackground(new java.awt.Color(129, 167, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSair2MouseEntered(evt);
+                btnZoomMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSair2MouseExited(evt);
+                btnZoomMouseExited(evt);
             }
         });
-        btnSair2.addActionListener(new java.awt.event.ActionListener() {
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair2ActionPerformed(evt);
+                btnZoomActionPerformed(evt);
             }
         });
 
@@ -1052,7 +1063,7 @@ public class frmDentista extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(430, 430, 430)
-                                .addComponent(btnSair2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -1065,7 +1076,7 @@ public class frmDentista extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSair2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1312,8 +1323,7 @@ public class frmDentista extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        frmPrincipal frm=new frmPrincipal();
-        frm.setVisible(true);
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1414,18 +1424,100 @@ public class frmDentista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisaDentista1ActionPerformed
 
-    private void btnSair2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseEntered
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair2MouseEntered
+    }//GEN-LAST:event_btnZoomMouseEntered
 
-    private void btnSair2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair2MouseExited
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair2MouseExited
+    }//GEN-LAST:event_btnZoomMouseExited
 
-    private void btnSair2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair2ActionPerformed
-        Utilidades.criarMensagemSucesso();
-    }//GEN-LAST:event_btnSair2ActionPerformed
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+        if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
+        }
+    }//GEN-LAST:event_btnZoomActionPerformed
+private void aplicarFonteNormal() {
+        txtId.setFont(fonteNormal);
+        txtTelefone.setFont(fonteNormal);
+        txtNome1.setFont(fonteNormal);
+        txtCpf.setFont(fonteNormal);
+        txtRg.setFont(fonteNormal);
+        txtNascimento.setFont(fonteNormal);
+        txtLogin.setFont(fonteNormal);
+        txtSenha.setFont(fonteNormal);
+        txtConfirmarSenha.setFont(fonteNormal);
+        txtEstado.setFont(fonteNormal);
+        txtRua.setFont(fonteNormal);
+        txtNumeroConsultorio.setFont(fonteNormal);
+        txtValorConsulta.setFont(fonteNormal);
+        txtBairro.setFont(fonteNormal);
+        txtComplemento.setFont(fonteNormal);
+        txtNumero.setFont(fonteNormal);
+        txtTelefone.setFont(fonteNormal);
+        txtCelular.setFont(fonteNormal);
+        txtCep.setFont(fonteNormal);
+        txtEmail.setFont(fonteNormal);
+        txtCidade.setFont(fonteNormal);
 
+    }
+    
+    private void aplicarFonteBotoesNormal(){
+         btnEditarDentista.setFont(fonteNormalBotoes);
+        btnExcluirDentista.setFont(fonteNormalBotoes);
+        btnLimparCampos.setFont(fonteNormalBotoes);
+        btnNovoDentista.setFont(fonteNormalBotoes);
+        btnLimparCampos.setFont(fonteNormalBotoes);
+        btnSalvarDentista.setFont(fonteNormalBotoes);
+    
+    }
+    
+    
+    
+    private void aplicarZoomTexto() {
+       txtId.setFont(fonteZoomTexto);
+        txtTelefone.setFont(fonteZoomTexto);
+        txtNome1.setFont(fonteZoomTexto);
+        txtCpf.setFont(fonteZoomTexto);
+        txtRg.setFont(fonteZoomTexto);
+        txtNascimento.setFont(fonteZoomTexto);
+        txtLogin.setFont(fonteZoomTexto);
+        txtSenha.setFont(fonteZoomTexto);
+        txtConfirmarSenha.setFont(fonteZoomTexto);
+        txtEstado.setFont(fonteZoomTexto);
+        txtRua.setFont(fonteZoomTexto);
+        txtNumeroConsultorio.setFont(fonteZoomTexto);
+        txtValorConsulta.setFont(fonteZoomTexto);
+        txtBairro.setFont(fonteZoomTexto);
+        txtComplemento.setFont(fonteZoomTexto);
+        txtNumero.setFont(fonteZoomTexto);
+        txtTelefone.setFont(fonteZoomTexto);
+        txtCelular.setFont(fonteZoomTexto);
+        txtCep.setFont(fonteZoomTexto);
+        txtEmail.setFont(fonteZoomTexto);
+        txtCidade.setFont(fonteZoomTexto);
+
+    }
+
+    private void aplicarZoomBotoes() {
+         btnEditarDentista.setFont(fonteZoomBotoes);
+        btnExcluirDentista.setFont(fonteZoomBotoes);
+        btnLimparCampos.setFont(fonteZoomBotoes);
+        btnNovoDentista.setFont(fonteZoomBotoes);
+        btnLimparCampos.setFont(fonteZoomBotoes);
+        btnSalvarDentista.setFont(fonteZoomBotoes);
+    }
+    
+    
+    
+    
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
         frmPaciente frm = new frmPaciente();
@@ -1558,8 +1650,8 @@ public class frmDentista extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirDentista;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoDentista;
-    private javax.swing.JButton btnSair2;
     private javax.swing.JButton btnSalvarDentista;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel endwe;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel11;

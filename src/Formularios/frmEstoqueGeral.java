@@ -675,8 +675,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
-        frmPrincipal frm=new frmPrincipal();
-        frm.setVisible(true);
+      
         
     }//GEN-LAST:event_btnSairActionPerformed
 

@@ -1032,9 +1032,6 @@ public class frmPaciente extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
-        frmPrincipal frm = new frmPrincipal();
-        frm.setVisible(true);
-        frm.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void tblPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacienteMouseClicked
@@ -1350,18 +1347,16 @@ public class frmPaciente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCepKeyPressed
 
     private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
-
-        if (btnZoom.getText().equals("Zoom")) {
-            btnZoom.setText("Normal");
-            aplicarZoomTexto();
-            aplicarZoomBotoes();
+        if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
         }else{
-            btnZoom.setText("Zoom");
-            aplicarFonteNormal();
-            aplicarFonteBotoesNormal();
-        
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
         }
-        
     }//GEN-LAST:event_btnZoomActionPerformed
 
     private void aplicarFonteNormal() {
