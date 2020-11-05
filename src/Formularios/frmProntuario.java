@@ -74,7 +74,6 @@ public class frmProntuario extends javax.swing.JFrame {
         txtProntuario1 = new javax.swing.JTextArea();
         btnSalvarpront = new javax.swing.JButton();
         btnPesquisarPacienteNovo = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         btnAdicionarPront = new javax.swing.JButton();
         lblId = new javax.swing.JLabel();
@@ -209,17 +208,6 @@ public class frmProntuario extends javax.swing.JFrame {
         btnPesquisarPacienteNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarPacienteNovoActionPerformed(evt);
-            }
-        });
-
-        btnSair1.setBackground(new java.awt.Color(129, 167, 255));
-        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair1.setText("Zoom");
-        btnSair1.setBorder(null);
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
             }
         });
 
@@ -459,9 +447,7 @@ public class frmProntuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(400, Short.MAX_VALUE)
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(163, 163, 163)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
@@ -503,9 +489,7 @@ public class frmProntuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(484, 484, 484))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
@@ -604,10 +588,6 @@ public class frmProntuario extends javax.swing.JFrame {
         frmPaciente frmP = new frmPaciente();
         frmP.setVisible(true);
     }//GEN-LAST:event_btnPesquisarPacienteNovoActionPerformed
-
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair1ActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
@@ -799,7 +779,6 @@ public class frmProntuario extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarPront;
     private javax.swing.JButton btnPesquisarPacienteNovo;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarpront;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;

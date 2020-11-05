@@ -369,28 +369,31 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="240" max="-2" attributes="0"/>
-              <EmptySpace min="670" pref="670" max="-2" attributes="0"/>
-              <Component id="btnZoom" min="-2" pref="110" max="-2" attributes="0"/>
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="btnVoltar" min="-2" pref="120" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Component id="jLabel5" min="-2" pref="150" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Component id="txtPesquisaDentista2" min="-2" pref="480" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="610" max="-2" attributes="0"/>
-              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="300" max="-2" attributes="0"/>
-              <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-              <Component id="btnNovaConsulta2" min="-2" pref="170" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel5" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Component id="txtPesquisaDentista2" min="-2" pref="480" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel1" min="-2" pref="240" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="504" max="-2" attributes="0"/>
+                              <Component id="btnZoom" min="-2" pref="186" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jScrollPane1" min="-2" pref="610" max="-2" attributes="0"/>
+                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                              <Component id="jPanel1" min="-2" pref="300" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnNovaConsulta2" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="btnVoltar" min="-2" pref="180" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -403,8 +406,10 @@
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnZoom" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnVoltar" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnVoltar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="btnZoom" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>

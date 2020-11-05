@@ -5,6 +5,7 @@ import Classes.Consulta;
 import Classes.ConsultaDAO;
 import Classes.Utilidades;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,13 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     Color azulHover = new Color(192, 216, 235);
     Color vermelhoHover = new Color(242, 198, 196);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
+    
+      //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
     
     
     private void habilitaCampos(){
@@ -470,7 +478,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
             }
         });
 
-        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
         jmiPacientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiPacientes.setForeground(java.awt.Color.white);
@@ -482,7 +490,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         });
         jMenu1.add(jmiPacientes);
 
-        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
         jmiDentistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiDentistas.setForeground(java.awt.Color.white);
@@ -494,7 +502,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         });
         jMenu1.add(jmiDentistas);
 
-        jmiRecepcionistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jmiRecepcionistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiRecepcionistas.setBackground(new java.awt.Color(129, 167, 255));
         jmiRecepcionistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiRecepcionistas.setForeground(java.awt.Color.white);
@@ -506,7 +514,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         });
         jMenu1.add(jmiRecepcionistas);
 
-        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
         jmiConsultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiConsultas.setForeground(java.awt.Color.white);
@@ -521,7 +529,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jSeparator1.setForeground(java.awt.Color.white);
         jMenu1.add(jSeparator1);
 
-        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jmiEstoque.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiEstoque.setBackground(new java.awt.Color(129, 167, 255));
         jmiEstoque.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiEstoque.setForeground(java.awt.Color.white);
@@ -536,7 +544,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jSeparator4.setForeground(java.awt.Color.white);
         jMenu1.add(jSeparator4);
 
-        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_MASK));
+        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiSair.setBackground(new java.awt.Color(223, 107, 111));
         jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiSair.setForeground(java.awt.Color.white);
@@ -570,7 +578,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem10.setForeground(java.awt.Color.white);
@@ -609,7 +617,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem8.setForeground(java.awt.Color.white);
@@ -621,7 +629,7 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem8);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem9.setForeground(java.awt.Color.white);
@@ -642,25 +650,25 @@ public class frmAgendaGeral extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(670, 670, 670)
-                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(txtPesquisaDentista2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnNovaConsulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisaDentista2, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(504, 504, 504)
+                                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnNovaConsulta2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,8 +678,9 @@ public class frmAgendaGeral extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel5)
                 .addGap(3, 3, 3)
@@ -812,9 +821,55 @@ public class frmAgendaGeral extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
-
+            if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
+        }
     }//GEN-LAST:event_btnZoomActionPerformed
 
+      private void aplicarFonteNormal() {
+        txtDataConsulta.setFont(fonteNormal);
+        txtHorarioConsulta.setFont(fonteNormal);
+        txtNomeDentista.setFont(fonteNormal);
+        txtNomePaciente.setFont(fonteNormal);
+    }
+    
+    private void aplicarFonteBotoesNormal(){
+         btnEditarConsulta.setFont(fonteNormalBotoes);
+        btnSalvarEdicaoConsulta.setFont(fonteNormalBotoes);
+        btnExcluirConsulta.setFont(fonteNormalBotoes);
+        btnZoom.setFont(fonteNormalBotoes);
+        btnVoltar.setFont(fonteNormalBotoes); 
+        
+    
+    }
+    
+    
+    
+    private void aplicarZoomTexto() {
+       txtDataConsulta.setFont(fonteZoomTexto);
+        txtHorarioConsulta.setFont(fonteZoomTexto);
+        txtNomeDentista.setFont(fonteZoomTexto);
+        txtNomePaciente.setFont(fonteZoomTexto);
+
+    }
+
+    private void aplicarZoomBotoes() {
+         btnEditarConsulta.setFont(fonteZoomBotoes);
+        btnSalvarEdicaoConsulta.setFont(fonteZoomBotoes);
+        btnExcluirConsulta.setFont(fonteZoomBotoes);
+        btnZoom.setFont(fonteZoomBotoes);
+        btnVoltar.setFont(fonteZoomBotoes); 
+    }
+    
+    
+    
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
         frmPaciente frm = new frmPaciente();

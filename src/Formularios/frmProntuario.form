@@ -372,9 +372,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="400" max="32767" attributes="0"/>
               <Component id="jLabel21" min="-2" pref="635" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-              <Component id="btnSair1" min="-2" pref="114" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
               <Component id="btnSair" min="-2" pref="112" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
           </Group>
@@ -430,10 +428,7 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnSair" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="btnSair1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnSair" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="484" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -655,26 +650,6 @@
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPesquisarPacienteNovoMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPesquisarPacienteNovoMouseExited"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarPacienteNovoActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnSair1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="a7" red="81" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ImagensIcones/newIcons/zoom.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Zoom"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSair1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSair">

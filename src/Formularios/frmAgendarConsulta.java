@@ -9,6 +9,7 @@ import Classes.Paciente;
 import Classes.PacienteDAO;
 import Classes.Utilidades;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -20,6 +21,13 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
     Color azulFundo = new Color(226, 235, 255);
     Color azulPadrao = new Color(129,167,255);
     Color vermelhoPadrao = new Color(255,153,153);
+    
+      //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
     private void limparCampos() {
         txtData.setText("");
         txtValor.setText("");
@@ -106,9 +114,9 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
+        lblValorConsulta = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDentista = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -123,7 +131,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtPesquisaPaciente1 = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         btnAgendar = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -153,14 +161,14 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setText("Data:");
+        lblData.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblData.setText("Data:");
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setText("Hora:");
+        lblHora.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblHora.setText("Hora:");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("Valor da consulta:");
+        lblValorConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblValorConsulta.setText("Valor da consulta:");
 
         tblDentista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
@@ -291,15 +299,15 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
             }
         });
 
-        btnSair1.setBackground(new java.awt.Color(129, 167, 255));
-        btnSair1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair1.setText("Zoom");
-        btnSair1.setBorder(null);
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
+        btnZoom.setBackground(new java.awt.Color(129, 167, 255));
+        btnZoom.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
+                btnZoomActionPerformed(evt);
             }
         });
 
@@ -550,17 +558,17 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jcbHora, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
@@ -574,7 +582,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(47, 47, 47)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblValorConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,7 +605,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -615,9 +623,9 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblValorConsulta)
+                            .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -680,9 +688,58 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair1ActionPerformed
+    public void aplicarZoomBotoes(){
+         btnAgendar.setFont(fonteZoomBotoes);
+         btnAgendar.setText("Agendar");
+         btnLimparCampos.setFont(fonteZoomBotoes);
+         btnSair.setFont(fonteZoomBotoes);
+         btnZoom.setFont(fonteZoomBotoes);
+    
+    }
+    
+    public void aplicarZoomTexto(){
+    lblData.setFont(fonteZoomTexto);
+    lblHora.setFont(fonteZoomTexto);
+    lblValorConsulta.setFont(fonteZoomTexto);
+    txtData.setFont(fonteZoomTexto);
+    txtValor.setFont(fonteZoomTexto);
+    
+    }
+    
+    public void aplicarFonteNormal(){
+    lblData.setFont(fonteNormal);
+    lblHora.setFont(fonteNormal);
+    lblValorConsulta.setFont(fonteNormal);
+    txtData.setFont(fonteNormal);
+    txtValor.setFont(fonteNormal);
+    
+    }
+    
+     public void aplicarFonteBotoesNormal(){
+         btnAgendar.setFont(fonteNormalBotoes);
+         btnAgendar.setText("Agendar consulta");
+         btnLimparCampos.setFont(fonteNormalBotoes);
+         btnSair.setFont(fonteNormalBotoes);
+         btnZoom.setFont(fonteNormalBotoes);
+    
+    }
+    
+    
+    
+    
+    
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+       if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
+        }
+    }//GEN-LAST:event_btnZoomActionPerformed
 
     private void btnAgendarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgendarMouseEntered
         btnAgendar.setBackground(Color.white);
@@ -875,13 +932,10 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btnAgendar;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -908,6 +962,9 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmiPacientes;
     public javax.swing.JMenuItem jmiRecepcionistas;
     private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel lblValorConsulta;
     private javax.swing.JTable tblDentista;
     private javax.swing.JTable tblPaciente;
     private javax.swing.JFormattedTextField txtData;

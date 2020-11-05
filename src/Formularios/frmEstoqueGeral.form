@@ -388,18 +388,18 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnSair1" min="-2" pref="144" max="-2" attributes="0"/>
+                              <Component id="btnZoom" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="btnSair" min="-2" pref="144" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel4" min="-2" pref="77" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
+                                      <Component id="lblProduto" min="-2" pref="143" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txtFabricante" min="-2" pref="290" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" pref="87" max="-2" attributes="0"/>
+                                          <Component id="lblFabricante" min="-2" pref="137" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="txtProduto" min="-2" pref="300" max="-2" attributes="0"/>
@@ -435,8 +435,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFabricante" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
@@ -450,7 +450,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSair" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="btnSair1" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="btnZoom" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="lblInstrucao" min="-2" max="-2" attributes="0"/>
@@ -693,7 +693,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparCamposActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblFabricante">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -701,7 +701,7 @@
         <Property name="text" type="java.lang.String" value="Fabricante:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblProduto">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
@@ -757,7 +757,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSair1">
+    <Component class="javax.swing.JButton" name="btnZoom">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="a7" red="81" type="rgb"/>
@@ -774,9 +774,9 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSair1MouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSair1MouseExited"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSair1ActionPerformed"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnZoomMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnZoomMouseExited"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnZoomActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">

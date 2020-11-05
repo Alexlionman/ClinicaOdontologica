@@ -5,6 +5,7 @@ import Classes.Produto;
 import Classes.ProdutoDAO;
 import Classes.Utilidades;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -18,6 +19,13 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     Color vermelhoHover = new Color(242, 198, 196);
      Color azulClaroo = new Color (139, 215, 255);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
+    
+      //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
     
     private boolean verificaPreenchimento() {
         if (txtFabricante.getText().equals("") || txtProduto.getText().equals("")) {
@@ -124,12 +132,12 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         btnNovoProduto = new javax.swing.JButton();
         btnSalvarProduto = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblFabricante = new javax.swing.JLabel();
+        lblProduto = new javax.swing.JLabel();
         txtFabricante = new javax.swing.JTextField();
         txtProduto = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
-        btnSair1 = new javax.swing.JButton();
+        btnZoom = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         lblInstrucao = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -288,11 +296,11 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Fabricante:");
+        lblFabricante.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblFabricante.setText("Fabricante:");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Produto:");
+        lblProduto.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblProduto.setText("Produto:");
 
         txtFabricante.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtFabricante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -321,22 +329,22 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
 
-        btnSair1.setBackground(new java.awt.Color(129, 167, 255));
-        btnSair1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
-        btnSair1.setText("Zoom");
-        btnSair1.setBorder(null);
-        btnSair1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnZoom.setBackground(new java.awt.Color(129, 167, 255));
+        btnZoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
+        btnZoom.setText("Zoom");
+        btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSair1MouseEntered(evt);
+                btnZoomMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSair1MouseExited(evt);
+                btnZoomMouseExited(evt);
             }
         });
-        btnSair1.addActionListener(new java.awt.event.ActionListener() {
+        btnZoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSair1ActionPerformed(evt);
+                btnZoomActionPerformed(evt);
             }
         });
 
@@ -368,7 +376,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
             }
         });
 
-        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jmiPacientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiPacientes.setBackground(new java.awt.Color(129, 167, 255));
         jmiPacientes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiPacientes.setForeground(java.awt.Color.white);
@@ -380,7 +388,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         });
         jMenu1.add(jmiPacientes);
 
-        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        jmiDentistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiDentistas.setBackground(new java.awt.Color(129, 167, 255));
         jmiDentistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiDentistas.setForeground(java.awt.Color.white);
@@ -392,7 +400,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         });
         jMenu1.add(jmiDentistas);
 
-        jmiRecepcionistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        jmiRecepcionistas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiRecepcionistas.setBackground(new java.awt.Color(129, 167, 255));
         jmiRecepcionistas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiRecepcionistas.setForeground(java.awt.Color.white);
@@ -404,7 +412,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         });
         jMenu1.add(jmiRecepcionistas);
 
-        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        jmiConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiConsultas.setBackground(new java.awt.Color(129, 167, 255));
         jmiConsultas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiConsultas.setForeground(java.awt.Color.white);
@@ -433,7 +441,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jSeparator4.setForeground(java.awt.Color.white);
         jMenu1.add(jSeparator4);
 
-        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_MASK));
+        jmiSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jmiSair.setBackground(new java.awt.Color(223, 107, 111));
         jmiSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jmiSair.setForeground(java.awt.Color.white);
@@ -456,7 +464,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jMenu2.setText(" Agendas");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem1.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem1.setForeground(java.awt.Color.white);
@@ -468,7 +476,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem10.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem10.setForeground(java.awt.Color.white);
@@ -507,7 +515,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         jMenu3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem8.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem8.setForeground(java.awt.Color.white);
@@ -519,7 +527,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem8);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_9, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem9.setBackground(new java.awt.Color(129, 167, 255));
         jMenuItem9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem9.setForeground(java.awt.Color.white);
@@ -556,17 +564,17 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
                                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(256, 256, 256)
+                                        .addComponent(lblProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(190, 190, 190)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(lblFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(43, 43, 43))))
@@ -591,8 +599,8 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
+                                    .addComponent(lblFabricante)
+                                    .addComponent(lblProduto))
                                 .addGap(23, 23, 23))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -601,7 +609,7 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
                         .addComponent(lblInstrucao)
                         .addGap(18, 18, 18)))
@@ -679,20 +687,63 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
-        btnSair1.setBackground(Color.white);
-        btnSair1.setForeground(azulPadrao);
-    }//GEN-LAST:event_btnSair1MouseEntered
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
+        btnZoom.setBackground(Color.white);
+        btnZoom.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnZoomMouseEntered
 
-    private void btnSair1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseExited
-        btnSair1.setBackground(azulPadrao);
-        btnSair1.setForeground(Color.white);
-    }//GEN-LAST:event_btnSair1MouseExited
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
+        btnZoom.setBackground(azulPadrao);
+        btnZoom.setForeground(Color.white);
+    }//GEN-LAST:event_btnZoomMouseExited
 
-    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSair1ActionPerformed
+    private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
+        if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+             aplicarZoomTexto();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteNormal();
+              aplicarFonteBotoesNormal();
+              
+        }
+    }//GEN-LAST:event_btnZoomActionPerformed
 
+    
+    
+     private void aplicarFonteNormal() {
+        lblFabricante.setFont(fonteNormal);
+        lblProduto.setFont(fonteNormal);
+    }
+    
+    private void aplicarFonteBotoesNormal(){
+         btnAdicionarEstoque.setFont(fonteNormalBotoes);
+        btnLimparCampos.setFont(fonteNormalBotoes);
+        btnNovoProduto.setFont(fonteNormalBotoes);
+        btnZoom.setFont(fonteNormalBotoes);
+        btnSalvarProduto.setFont(fonteNormalBotoes); 
+        btnSair.setFont(fonteNormalBotoes); 
+    
+    }
+    
+    
+    
+    private void aplicarZoomTexto() {
+       lblFabricante.setFont(fonteZoomTexto);
+        lblProduto.setFont(fonteZoomTexto);
+
+    }
+
+    private void aplicarZoomBotoes() {
+        btnAdicionarEstoque.setFont(fonteZoomBotoes);
+        btnLimparCampos.setFont(fonteZoomBotoes);
+        btnNovoProduto.setFont(fonteZoomBotoes);
+        btnZoom.setFont(fonteZoomBotoes);
+        btnSalvarProduto.setFont(fonteZoomBotoes);
+        btnSair.setFont(fonteZoomBotoes); 
+    }
+    
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
         frmPaciente frm = new frmPaciente();
@@ -852,11 +903,9 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNovoProduto;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvarProduto;
+    private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -880,7 +929,9 @@ public class frmEstoqueGeral extends javax.swing.JFrame {
     public javax.swing.JMenuItem jmiPacientes;
     public javax.swing.JMenuItem jmiRecepcionistas;
     private javax.swing.JMenuItem jmiSair;
+    private javax.swing.JLabel lblFabricante;
     private javax.swing.JLabel lblInstrucao;
+    private javax.swing.JLabel lblProduto;
     private javax.swing.JTable tblItens;
     private javax.swing.JTextField txtFabricante;
     private javax.swing.JTextField txtProduto;
