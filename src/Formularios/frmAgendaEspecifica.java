@@ -7,6 +7,7 @@ package Formularios;
 
 import Classes.Conecta;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,14 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     Color azulHover = new Color(192, 216, 235);
     Color vermelhoHover = new Color(242, 198, 196);
     Color vermelhoPadraoExcluir = new Color(223,107,111);
+      //fonte para o zoom
+    public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
+    
+    public Font fonteZoomBotoes = new Font("Arial", Font.BOLD, 18);
+    public Font fonteNormalBotoes = new Font("Arial", Font.BOLD, 14);
+    
+    
     
     
     private void carregaTabela() {
@@ -104,7 +113,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtPesquisaDentista2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        btnSair = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         btnSair1 = new javax.swing.JButton();
         btnAgendaGeral = new javax.swing.JButton();
@@ -220,24 +229,24 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Pesquisar Dentista:");
 
-        btnSair.setBackground(new java.awt.Color(102, 204, 255));
-        btnSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
-        btnSair.setText(" Voltar");
-        btnSair.setActionCommand("Voltar");
-        btnSair.setBorder(null);
-        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVoltar.setBackground(new java.awt.Color(102, 204, 255));
+        btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnVoltar.setText(" Voltar");
+        btnVoltar.setActionCommand("Voltar");
+        btnVoltar.setBorder(null);
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSairMouseEntered(evt);
+                btnVoltarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSairMouseExited(evt);
+                btnVoltarMouseExited(evt);
             }
         });
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
@@ -545,7 +554,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
                 .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
@@ -585,7 +594,7 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel4))
                     .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel5)
@@ -662,20 +671,20 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtPesquisaDentista2KeyPressed
 
-    private void btnSairMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseEntered
-        btnSair.setBackground(Color.white);
-        btnSair.setForeground(azulPadrao);
-    }//GEN-LAST:event_btnSairMouseEntered
+    private void btnVoltarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseEntered
+        btnVoltar.setBackground(Color.white);
+        btnVoltar.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnVoltarMouseEntered
 
-    private void btnSairMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseExited
-        btnSair.setBackground(azulClaro);
-        btnSair.setForeground(Color.white);
-    }//GEN-LAST:event_btnSairMouseExited
+    private void btnVoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseExited
+        btnVoltar.setBackground(azulClaro);
+        btnVoltar.setForeground(Color.white);
+    }//GEN-LAST:event_btnVoltarMouseExited
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
         
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSair1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSair1MouseEntered
         // TODO add your handling code here:
@@ -748,9 +757,53 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnZoomMouseExited
 
     private void btnZoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZoomActionPerformed
-        // TODO add your handling code here:
+        if(btnZoom.getText().equals("Zoom")){
+             btnZoom.setText("Restaurar");
+             aplicarZoomBotoes();
+        }else{
+              btnZoom.setText("Zoom");
+              aplicarFonteBotoesNormal();
+              
+        }
     }//GEN-LAST:event_btnZoomActionPerformed
 
+    
+    
+     
+    
+    private void aplicarFonteBotoesNormal(){
+         btnEditarConsulta.setFont(fonteNormalBotoes);
+         btnEditarConsulta.setText("Editar Consulta");
+         
+        btnAgendarConsulta.setFont(fonteNormalBotoes);
+        btnAgendarConsulta.setText("Agendar Consulta");
+                
+        btnAgendaGeral.setFont(fonteNormalBotoes);
+        btnAgendaGeral.setText("Agenda Geral");
+        
+        btnZoom.setFont(fonteNormalBotoes);
+        btnVoltar.setFont(fonteNormalBotoes); 
+        
+    
+    }
+    
+    
+    
+ 
+
+    private void aplicarZoomBotoes() {
+       btnEditarConsulta.setFont(fonteZoomBotoes);
+       btnEditarConsulta.setText("Editar");
+        btnAgendarConsulta.setFont(fonteZoomBotoes);
+        btnAgendarConsulta.setText("Agendar");
+        btnAgendaGeral.setFont(fonteZoomBotoes);
+        btnAgendaGeral.setText("Geral");
+        btnZoom.setFont(fonteZoomBotoes);
+        
+        btnVoltar.setFont(fonteZoomBotoes);  
+    }
+    
+    
     private void jmiPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiPacientesActionPerformed
 
         frmPaciente frm = new frmPaciente();
@@ -870,8 +923,8 @@ public class frmAgendaEspecifica extends javax.swing.JFrame {
     private javax.swing.JButton btnAgendaGeral;
     private javax.swing.JButton btnAgendarConsulta;
     private javax.swing.JButton btnEditarConsulta;
-    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSair1;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

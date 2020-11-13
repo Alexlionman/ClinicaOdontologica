@@ -375,7 +375,7 @@
               <Component id="btnZoom" min="-2" pref="130" max="-2" attributes="0"/>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSair" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Component id="btnVoltar" min="-2" pref="140" max="-2" attributes="0"/>
                   <Component id="btnSair1" min="-2" pref="140" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -429,7 +429,7 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="btnZoom" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnSair" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnVoltar" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btnSair1" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -611,7 +611,7 @@
         <Property name="text" type="java.lang.String" value="Pesquisar Dentista:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnSair">
+    <Component class="javax.swing.JButton" name="btnVoltar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="cc" red="66" type="rgb"/>
@@ -632,9 +632,9 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSairMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSairMouseExited"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVoltarMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVoltarMouseExited"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator2">
