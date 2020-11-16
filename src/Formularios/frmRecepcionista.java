@@ -1251,6 +1251,9 @@ public class frmRecepcionista extends javax.swing.JFrame {
         txtCep.setText(p.getCep());
         txtTelefone.setText(p.getTelefone());
         txtBairro.setText(p.getBairro());
+        txtLogin.setText(p.getLogin());
+        txtSenha.setText(p.getSenha());
+        txtConfirmarSenha.setText(p.getSenha());
 
         btnExcluirRecepcionista.setEnabled(true);
         btnLimparCampos.setEnabled(false);

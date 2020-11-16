@@ -2,6 +2,7 @@ package Formularios;
 
 import Classes.DentistaDAO;
 import Classes.RecepcionistaDAO;
+import Classes.Utilidades;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -11,7 +12,9 @@ public class frmLogin extends javax.swing.JFrame {
     Color vermelhoPadrao = new Color(223,107,111);
    
     public frmLogin() {
-        initComponents();      
+        initComponents();   
+        Utilidades u = new Utilidades();
+        u.InserirIcone(this);
         this.setExtendedState(MAXIMIZED_BOTH);
     }
     

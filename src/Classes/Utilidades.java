@@ -9,6 +9,7 @@ import Formularios.frmImagemErro;
 import Formularios.frmImagemSucesso;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 
 /**
  *
@@ -55,5 +56,15 @@ public final class Utilidades {
         String res =  "R$ " + valor.toString();
          return res;
      }
+     
+     public void InserirIcone(JFrame frm){
+    
+         try {
+             frm.setIconImage(Toolkit.getDefaultToolkit().getImage("ImagensIcones.newIcons/logo_icone.png"));
+             
+         } catch (Exception e) {
+             System.out.println(e.toString());
+         }
+    }
   
 }
