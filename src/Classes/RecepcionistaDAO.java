@@ -68,8 +68,6 @@ private Connection con;
         }
         return r;
     }
-    
-    
 
     public boolean loginRecepcionista(String login, String senha) {
         Connection con = Conecta.getConexao();
@@ -148,7 +146,6 @@ private Connection con;
         }
         return resp;
     }
-    
     
      public List<Recepcionista> buscaRecepcionistaPorNome(String nome) {
           //esse método é usado para buscar quando digitado uma letra no campo de texto de pesquisa

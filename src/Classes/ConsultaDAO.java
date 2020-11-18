@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,7 +60,7 @@ public class ConsultaDAO {
             while (rs.next()) {
                 d.setIdConsulta(rs.getInt("id"));
                 d.setDentistaId(rs.getInt("dentistaId"));
-                d.setHoraConsulta(rs.getString("horaa"));
+                d.setHoraConsulta(rs.getString("hora"));
                 d.setDataConsulta(rs.getString("dataConsulta"));
                 d.setValorConsulta(rs.getFloat("valorConsulta"));
                 d.setPacienteId(rs.getInt("pacienteID"));
@@ -95,5 +97,23 @@ public class ConsultaDAO {
         return resp;
     }
 
-    
+    public List horasIndisponiveis(String data, int dentista){
+	List<String> lista = new ArrayList<String>();
+	String query = "SELECT hora FROM consulta WHERE dentistaId="+dentista+" and dataConsulta='"+data+"'";
+	try {
+            Connection con = Conecta.getConexao();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next()){
+		lista.add(rs.getString("hora"));
+            }
+            stmt.close();
+            rs.close();
+            con.close();
+	}
+	catch(SQLException e){
+		e.printStackTrace();
+	}
+	return lista;
+    }
 }

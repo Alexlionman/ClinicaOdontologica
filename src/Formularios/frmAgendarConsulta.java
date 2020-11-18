@@ -12,7 +12,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +23,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
     Color azulFundo = new Color(226, 235, 255);
     Color azulPadrao = new Color(129,167,255);
     Color vermelhoPadrao = new Color(255,153,153);
-    
+    Color azulClaroo = new Color(139, 215, 255);
       //fonte para o zoom
     public Font fonteZoomTexto = new Font("Arial", Font.BOLD, 18);
     public Font fonteNormal = new Font("Arial", Font.BOLD, 14);
@@ -130,7 +132,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtPesquisaPaciente1 = new javax.swing.JTextField();
-        btnSair = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         btnZoom = new javax.swing.JButton();
         btnAgendar = new javax.swing.JButton();
         btnLimparCampos = new javax.swing.JButton();
@@ -170,6 +172,10 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         lblValorConsulta.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblValorConsulta.setText("Valor da consulta:");
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
+        jScrollPane1.setOpaque(false);
+
         tblDentista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblDentista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,9 +193,16 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDentista.setGridColor(new java.awt.Color(255, 255, 255));
+        tblDentista.setOpaque(false);
+        tblDentista.getTableHeader().setResizingAllowed(false);
+        tblDentista.getTableHeader().setReorderingAllowed(false);
         tblDentista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDentistaMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblDentistaMouseReleased(evt);
             }
         });
         jScrollPane1.setViewportView(tblDentista);
@@ -199,6 +212,10 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
             tblDentista.getColumnModel().getColumn(1).setResizable(false);
             tblDentista.getColumnModel().getColumn(1).setPreferredWidth(380);
         }
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
+        jScrollPane2.setOpaque(false);
 
         tblPaciente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tblPaciente.setModel(new javax.swing.table.DefaultTableModel(
@@ -218,6 +235,10 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
             }
         });
         tblPaciente.setEnabled(false);
+        tblPaciente.setGridColor(new java.awt.Color(255, 255, 255));
+        tblPaciente.setOpaque(false);
+        tblPaciente.getTableHeader().setResizingAllowed(false);
+        tblPaciente.getTableHeader().setReorderingAllowed(false);
         tblPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPacienteMouseClicked(evt);
@@ -245,11 +266,21 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         }
         txtData.setEnabled(false);
         txtData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDataKeyReleased(evt);
+            }
+        });
 
         jcbHora.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jcbHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "09:00", "09:45", "10:30", "11:15", "13:00", "13:45", "14:30", "15:15", "16:00", "16:45", "17:30" }));
         jcbHora.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jcbHora.setEnabled(false);
+        jcbHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbHoraActionPerformed(evt);
+            }
+        });
 
         txtValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -287,15 +318,23 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setBackground(new java.awt.Color(102, 204, 255));
-        btnSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
-        btnSair.setText("voltar");
-        btnSair.setBorder(null);
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setBackground(new java.awt.Color(102, 204, 255));
+        btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/voltar.png"))); // NOI18N
+        btnVoltar.setText("voltar");
+        btnVoltar.setBorder(null);
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseExited(evt);
+            }
+        });
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
@@ -305,6 +344,14 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         btnZoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensIcones/newIcons/zoom.png"))); // NOI18N
         btnZoom.setText("Zoom");
         btnZoom.setBorder(null);
+        btnZoom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnZoomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnZoomMouseExited(evt);
+            }
+        });
         btnZoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZoomActionPerformed(evt);
@@ -569,9 +616,8 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
+                                .addGap(28, 28, 28)
+                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,19 +652,19 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
                             .addComponent(jLabel11)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnZoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPesquisaDentista1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPesquisaPaciente1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
@@ -683,16 +729,16 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPesquisaPaciente1KeyPressed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
         
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     public void aplicarZoomBotoes(){
          btnAgendar.setFont(fonteZoomBotoes);
          btnAgendar.setText("Agendar");
          btnLimparCampos.setFont(fonteZoomBotoes);
-         btnSair.setFont(fonteZoomBotoes);
+         btnVoltar.setFont(fonteZoomBotoes);
          btnZoom.setFont(fonteZoomBotoes);
     
     }
@@ -719,7 +765,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
          btnAgendar.setFont(fonteNormalBotoes);
          btnAgendar.setText("Agendar consulta");
          btnLimparCampos.setFont(fonteNormalBotoes);
-         btnSair.setFont(fonteNormalBotoes);
+         btnVoltar.setFont(fonteNormalBotoes);
          btnZoom.setFont(fonteNormalBotoes);
     
     }
@@ -767,7 +813,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
             } else {
                 Utilidades.criarMensagemErro();
             }
-            limparCampos();
+            limparCampos();         
         }
     }//GEN-LAST:event_btnAgendarActionPerformed
 
@@ -881,16 +927,67 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
         int item = tblDentista.getSelectionModel().getMinSelectionIndex();  //pega a linha selecionada
         item = (int) tblDentista.getModel().getValueAt(item, 0);
         Dentista d = new DentistaDAO().pesquisarValorDaConsulta(item);
-        
-        txtValor.setText(d.getValorConsulta()); 
-        
-        
-        
+        txtValor.setText(d.getValorConsulta());
+        jcbHora.removeAllItems();
+        jcbHora.addItem("");
+        jcbHora.addItem("09:00");
+        jcbHora.addItem("09:45");
+        jcbHora.addItem("10:30");
+        jcbHora.addItem("11:15");
+        jcbHora.addItem("13:00");
+        jcbHora.addItem("13:45");
+        jcbHora.addItem("14:30");
+        jcbHora.addItem("15:15");
+        jcbHora.addItem("16:00");
+        jcbHora.addItem("16:45");
+        jcbHora.addItem("17:30");
+        jcbHora.setSelectedIndex(0);
+        txtData.setText("");
     }//GEN-LAST:event_tblDentistaMouseClicked
 
     private void tblPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacienteMouseClicked
        habilitarTudo();
     }//GEN-LAST:event_tblPacienteMouseClicked
+
+    private void jcbHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbHoraActionPerformed
+
+    private void txtDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDataKeyReleased
+        List hrs;
+        hrs= new ConsultaDAO().horasIndisponiveis(txtData.getText(), tblDentista.getSelectionModel().getMinSelectionIndex()+1);
+        for (int x = 0; x < hrs.size(); x++) {
+            for (int i = 0; i < jcbHora.getItemCount(); i++) {
+                if(jcbHora.getItemAt(i).equals(hrs.get(x).toString())){ 
+                    jcbHora.removeItemAt(i);
+                }
+            }
+        }
+    }//GEN-LAST:event_txtDataKeyReleased
+
+    private void tblDentistaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDentistaMouseReleased
+        
+    }//GEN-LAST:event_tblDentistaMouseReleased
+
+    private void btnVoltarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseEntered
+        btnVoltar.setBackground(Color.white);
+        btnVoltar.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnVoltarMouseEntered
+
+    private void btnVoltarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseExited
+        btnVoltar.setBackground(azulClaroo);
+        btnVoltar.setForeground(Color.white);
+    }//GEN-LAST:event_btnVoltarMouseExited
+
+    private void btnZoomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseEntered
+        btnZoom.setBackground(Color.white);
+        btnZoom.setForeground(azulPadrao);
+    }//GEN-LAST:event_btnZoomMouseEntered
+
+    private void btnZoomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnZoomMouseExited
+        btnZoom.setBackground(azulPadrao);
+        btnZoom.setForeground(Color.white);
+    }//GEN-LAST:event_btnZoomMouseExited
 
     /**
      * @param args the command line arguments
@@ -931,7 +1028,7 @@ public class frmAgendarConsulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgendar;
     private javax.swing.JButton btnLimparCampos;
-    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btnZoom;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
